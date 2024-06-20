@@ -15,7 +15,6 @@ connetion.once('open', ()=>{
     const line = '-'.repeat(terminalWidth);
     const requestTime = moment().tz('America/Mexico_City').format('DD-MM-YYYY HH:mm:ss');
 
-
-    console.log(colors.green(`${requestTime}    [ DATABASE ] La base de datos se lanzó en ${URI}`));
+    console.log(colors.green(`${requestTime}    [ DATABASE ] Base de datos conectada exitosamente`));
     console.log(colors.green(line)+'\n');
 });
