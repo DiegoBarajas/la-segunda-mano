@@ -1,13 +1,15 @@
 import React from 'react'
-import Navbar from '../Fragments/Navbar'
+
+import StandardLayout from '../Layouts/StandardLayout'
+import ContententLayout from '../Layouts/ContentLayout'
+
+
 
 const Index = () => {
     return (
-        <div>
-            
-            <Navbar/>
-
-        </div>
+        <StandardLayout>
+            <h1>Hola</h1>
+        </StandardLayout>
     )
 }
 

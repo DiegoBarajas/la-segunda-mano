@@ -1,0 +1,16 @@
+@import url(../../index.css);
+
+.content-layout {
+    background-color: white;
+    border-radius: 15px;
+    padding: 50px 40px;
+
+    width: min(1500px, 75%);
+}
+
+@media (max-width: 870px){
+    .content-layout {
+        width: min(1500px, 95%);
+        padding: 30px 25px;
+    }
+}

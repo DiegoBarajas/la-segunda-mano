@@ -1,0 +1,25 @@
+@import url(../../index.css);
+
+.title {
+    width: 100%;
+    font-size: 30px;
+}
+
+.subtitle {
+    width: 100%;
+    font-size: 20px;
+}
+
+.parragraph {
+    text-align: justify;
+    width: 100%;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.center {
+    text-align: center;
+}

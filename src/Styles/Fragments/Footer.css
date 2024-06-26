@@ -1,0 +1,43 @@
+@import url('../../index.css');
+
+.footer {
+    width: 100%;
+    background-color: var(--gray);
+}
+
+.links-footer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    padding: 50px 0px 50px;
+}
+
+.link-footer {
+    text-decoration: underline;
+    color: black;
+    transition: all 2ms ease-in;
+    font-weight: 700;
+}
+
+.link-footer:hover{
+    color: var(--blue);
+}
+
+.info-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-info-footer {
+    margin-bottom: 7px;
+    font-size: 12px;
+}
+
+@media (max-width: 870px){
+    .links-footer{
+        flex-direction: column;
+        gap: 20px;
+    }
+}

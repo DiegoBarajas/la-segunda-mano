@@ -1,0 +1,18 @@
+@import url(../../index.css);
+
+.standard-layout {
+    min-height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    gap: 45px;
+    padding: 45px 0px;
+}
+
+@media (max-width: 870px){
+    .standard-layout {
+        padding: 20px 0px;
+        gap: 30px;
+    }
+}
