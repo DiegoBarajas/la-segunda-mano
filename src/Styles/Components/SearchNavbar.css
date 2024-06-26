@@ -1,0 +1,33 @@
+@import url(../../index.css);
+
+.search-navbar {
+    position: fixed;
+    width: min(40%, 750px);
+    margin-left: calc((100%/2) - min(40%, 750px)/2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75px;
+    z-index: 10;
+}
+
+.input-search-navbar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+@media (max-width: 1000px){
+    .search-navbar {
+        width: min(30%, 750px);
+        margin-left: calc((100%/2) - min(30%, 750px)/2);
+    }
+}
+
+@media (max-width: 870px){
+    .search-navbar {
+        width: min(54%, 750px);
+        margin-left: calc((100%/2) - min(54%, 750px)/2);
+    }
+}

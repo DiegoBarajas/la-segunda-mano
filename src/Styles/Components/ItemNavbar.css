@@ -1,0 +1,26 @@
+@import url(../../index.css);
+
+.item-navbar {
+    height: 75px;
+}
+
+.link-item-navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.link-item-navbar:hover {
+    text-decoration: underline;
+}
+
+.icon-item-navbar {
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px;
+}
+
+.horizontal-item-navbar {
+    flex-direction: column;
+}

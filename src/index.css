@@ -1,13 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+
+:root{
+    --blue: #2C3E50;
+    --mint: #1ABC9C;
+    --red: #FF5E58;
+    --gray: #BDC3C7;
+    --backgound: #ECF0F1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+
+    transition: all 0.3s ease;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--backgound);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }

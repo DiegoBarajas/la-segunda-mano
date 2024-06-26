@@ -1,8 +1,13 @@
 import React from 'react'
+import Navbar from '../Fragments/Navbar'
 
 const Index = () => {
     return (
-        <div>Index</div>
+        <div>
+            
+            <Navbar/>
+
+        </div>
     )
 }
 

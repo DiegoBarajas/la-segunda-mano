@@ -1,0 +1,31 @@
+@import url(../../index.css);
+
+/* COLORS */
+.mint {
+    border: 2px solid var(--blue);
+    background-color: var(--mint);
+    color: black;
+}
+
+/* ICON BUTTON */
+
+.icon-button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 40px;
+    min-height: 40px;
+    max-height: 40px;
+
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-button-img {
+    width: 80%;
+    height: 80%;
+}
