@@ -2,13 +2,16 @@ import React from 'react'
 
 import StandardLayout from '../Layouts/StandardLayout'
 import ContententLayout from '../Layouts/ContentLayout'
+import Title from '../Components/Title'
 
 
 
 const Index = () => {
     return (
         <StandardLayout>
-            <h1>Hola</h1>
+            <ContententLayout>
+                <Title center>Hola Mundo</Title>
+            </ContententLayout>
         </StandardLayout>
     )
 }
