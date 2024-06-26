@@ -8,8 +8,6 @@ const userSchema = new Schema({
 
     estado: { type: String, default: null, required: false },
     foto: { type: Buffer, default: null, required: false },
-
-    codigoRecuperacion: { type: String, default: null, required: false },
 },{
     timestapms: true
 });
