@@ -1,6 +1,6 @@
 {
   "name": "la-segunda-mano",
-  "version": "0.1.0",
+  "version": "development",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
