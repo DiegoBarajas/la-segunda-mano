@@ -30,9 +30,6 @@ const Navbar = () => {
             <SearchNavbar/>
 
             <ul className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
-
-                
-
                 {
                     isMenuOpen
                     ? <>
@@ -86,18 +83,13 @@ const Navbar = () => {
                         >Iniciar sesión</ItemNavbar>
                     </>
                 }
-
-                
             </ul>
             
             <div className="navbar-toggle" onClick={toggleMenu} title={isMenuOpen ? "Cerrar menú" : "Abir menú"}>
-                {
-                    !isMenuOpen ? <>
-                        <div className="burger-line"></div>
-                        <div className="burger-line"></div>
-                    </> : <></>
-                }
+                <div className={`burger-line ${isMenuOpen ? 'burger-close-top' : ''}`}></div>
                 <div className="burger-line"></div>
+                <div className={`burger-line ${isMenuOpen ? 'burger-close-bottom' : ''}`}></div>
+
             </div>
 
         </nav>

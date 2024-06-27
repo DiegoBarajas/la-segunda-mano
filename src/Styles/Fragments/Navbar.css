@@ -62,7 +62,8 @@
 }
   
 .navbar-toggle.active {
-    display: block; 
+    display: block;
+    
 }
   
 .burger-line {
@@ -72,17 +73,26 @@
     margin: 7px 0;
     border-radius: 2px;
 }
-  
+
+.burger-close-top{
+    transform: translateY(12px);
+}
+
+.burger-close-bottom{
+    transform: translateY(-12px);
+}
+
 @media (max-width: 870px) {
     .navbar-links {
-        display: none; 
+        /* display: none; */
+        display: flex;
         flex-direction: column;
         position: absolute;
         top: 75px;
-        left: 0;
+        left: 100%;
         width: 100%;
         height: calc(100vh - 75px);
-        background-color: rgba(44, 62, 80, 0.9);
+        background-color: rgba(44, 62, 80, 0.92);
         text-align: center;
         z-index: 9;
     }
@@ -92,7 +102,8 @@
     }
   
     .navbar-links.active {
-        display: flex; 
+        display: flex;
+        left: 0;
     }
   
     .navbar-links li {

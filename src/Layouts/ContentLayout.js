@@ -1,9 +1,9 @@
 import React from 'react'
 import '../Styles/Layouts/ContentLayout.css'
 
-const ContentLayout = ({children}) => {
+const ContentLayout = ({children, complete=false}) => {
     return (
-        <section className='content-layout'>
+        <section className={complete ? 'complete-layout content-layout' : 'content-layout'}>
             {children}
         </section>
     )
