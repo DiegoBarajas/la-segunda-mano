@@ -8,7 +8,7 @@ const Select = ({id, options=[], width=null, label, className}) => {
             <select id={id} className='select'>
                 {
                     options.map((opt, index) => 
-                        <option key={'option-'+opt}>{opt}</option>
+                        <option className='option' key={'option-'+opt}>{opt}</option>
                     )
                 }
             </select>

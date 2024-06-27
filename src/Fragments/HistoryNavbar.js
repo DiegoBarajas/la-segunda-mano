@@ -15,7 +15,7 @@ const HistoryNavbar = ({visible, handleClose}) => {
         }
 
         getHistory()
-    }, [false]);
+    }, []);
     
     return (<>
             <div className={visible ? 'history-navbar-background' : 'none'} onClick={handleClose} title='Cerrar historial'></div>
@@ -49,7 +49,7 @@ const HistoryNavbar = ({visible, handleClose}) => {
                 </section>
 
                 {
-                    history.slice(0, 12).map((item, index) => <ItemHistory key={'ItemHistory'+index}>{item}</ItemHistory>)
+                    history.slice(0, 10).map((item, index) => <ItemHistory key={'ItemHistory'+index}>{item}</ItemHistory>)
                 }
 
             </section>
