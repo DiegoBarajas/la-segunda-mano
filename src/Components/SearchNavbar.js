@@ -4,7 +4,8 @@ import IconButton from './IconButton'
 
 import searchSvg from '../Assets/Icons/search.svg'
 
-const SearchNavbar = () => {
+const SearchNavbar = ({onFocus, onBlur}) => {
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -18,6 +19,9 @@ const SearchNavbar = () => {
                 placeholder='Busca productos, caracteristicas o categorias'
                 title='Busca productos, caracteristicas o categorias'
                 name='busqueda'
+
+                onFocus={onFocus}
+                onBlur={onBlur}
             />
             <IconButton 
                 icon={searchSvg} 

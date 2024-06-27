@@ -12,87 +12,98 @@ import categorySvg from '../Assets/Icons/category.svg'
 import createAccountSvg from '../Assets/Icons/create_account.svg'
 import reportSvg from '../Assets/Icons/report.svg'
 import helpSvg from '../Assets/Icons/help.svg'
+import HistoryNavbar from './HistoryNavbar';
 
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [ isMenuOpen, setIsMenuOpen ] = useState(false);
+    const [ showHistory, setShowHostory ] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
-        <nav className="navbar">
-            <Link className='link-navbar' to='/' title="Inicio">
-                <Logo className='logo-navbar' white/>
-            </Link>    
+        <>
+            <HistoryNavbar 
+                visible={showHistory}
+                handleClose={() => setShowHostory(false)}
+            />
 
-            <SearchNavbar/>
+            <nav className="navbar">
+                <Link className='link-navbar' to='/' title="Inicio">
+                    <Logo className='logo-navbar' white/>
+                </Link>    
 
-            <ul className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
-                {
-                    isMenuOpen
-                    ? <>
-                        <ItemNavbar 
-                            to='/'
-                            icon={sellSvg} 
-                            direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                        >Quiero vender</ItemNavbar>
+                <SearchNavbar
+                    onFocus={() => setShowHostory(true)}
+                />
 
-                        <ItemNavbar 
-                            to='/'
-                            icon={categorySvg} 
-                            direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                        >Categorias</ItemNavbar>
+                <ul className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
+                    {
+                        isMenuOpen
+                        ? <>
+                            <ItemNavbar 
+                                to='/'
+                                icon={sellSvg} 
+                                direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                            >Quiero vender</ItemNavbar>
 
-                        <ItemNavbar 
-                            to='/' 
-                            icon={loginSvg} 
-                            direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                        >Iniciar sesión</ItemNavbar>
+                            <ItemNavbar 
+                                to='/'
+                                icon={categorySvg} 
+                                direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                            >Categorias</ItemNavbar>
 
-                        <ItemNavbar 
-                            to='/' 
-                            icon={createAccountSvg} 
-                            direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                        >Crear cuenta</ItemNavbar>
+                            <ItemNavbar 
+                                to='/' 
+                                icon={loginSvg} 
+                                direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                            >Iniciar sesión</ItemNavbar>
 
-                        <ItemNavbar 
-                            to='/' 
-                            icon={reportSvg} 
-                            direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                        >Reportar un problema</ItemNavbar>
+                            <ItemNavbar 
+                                to='/' 
+                                icon={createAccountSvg} 
+                                direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                            >Crear cuenta</ItemNavbar>
 
-                        <ItemNavbar 
-                            to='/' 
-                            icon={helpSvg} 
-                            direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                        >Preguntas frecuentes</ItemNavbar>
-                    </>
-                    : <>
-                        <ItemNavbar 
-                            to='/'
-                            icon={sellSvg} 
-                            direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                        >Quiero vender</ItemNavbar>
+                            <ItemNavbar 
+                                to='/' 
+                                icon={reportSvg} 
+                                direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                            >Reportar un problema</ItemNavbar>
 
-                        <ItemNavbar 
-                            to='/' 
-                            icon={loginSvg} 
-                            direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                        >Iniciar sesión</ItemNavbar>
-                    </>
-                }
-            </ul>
-            
-            <div className="navbar-toggle" onClick={toggleMenu} title={isMenuOpen ? "Cerrar menú" : "Abir menú"}>
-                <div className={`burger-line ${isMenuOpen ? 'burger-close-top' : ''}`}></div>
-                <div className="burger-line"></div>
-                <div className={`burger-line ${isMenuOpen ? 'burger-close-bottom' : ''}`}></div>
+                            <ItemNavbar 
+                                to='/' 
+                                icon={helpSvg} 
+                                direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                            >Preguntas frecuentes</ItemNavbar>
+                        </>
+                        : <>
+                            <ItemNavbar 
+                                to='/'
+                                icon={sellSvg} 
+                                direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                            >Quiero vender</ItemNavbar>
 
-            </div>
+                            <ItemNavbar 
+                                to='/' 
+                                icon={loginSvg} 
+                                direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                            >Iniciar sesión</ItemNavbar>
+                        </>
+                    }
+                </ul>
+                
+                <div className="navbar-toggle" onClick={toggleMenu} title={isMenuOpen ? "Cerrar menú" : "Abir menú"}>
+                    <div className={`burger-line ${isMenuOpen ? 'burger-close-top' : ''}`}></div>
+                    <div className="burger-line"></div>
+                    <div className={`burger-line ${isMenuOpen ? 'burger-close-bottom' : ''}`}></div>
 
-        </nav>
+                </div>
+
+            </nav>
+        </>
     );
 };
 

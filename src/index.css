@@ -25,7 +25,29 @@ body {
     background-color: var(--backgound);
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+::-webkit-scrollbar {
+    width: 5px; 
+    height: 5px; 
+}
+
+::-webkit-scrollbar-track {
+    background: var(--backgound);
+    border-radius: 5px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--mint);
+    border-radius: 5px; 
+}
+
+.scroll-container {
+    scrollbar-width: thin; 
+    scrollbar-color: var(--mint) var(--backgound); 
+    width: 5px; 
+    height: 5px; 
+    border-radius: 5px;
+}
+
+.none {
+    display: none;
 }

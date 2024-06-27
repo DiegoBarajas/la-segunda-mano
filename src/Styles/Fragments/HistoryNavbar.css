@@ -1,0 +1,110 @@
+@import url(../../index.css);
+
+.history-navbar-background {
+    background-color: rgba(0,0,0,0.25);
+    width: 100%;
+    height: calc(100vh - 75px);
+    top: 75px;
+    position: fixed;
+    z-index: 5;
+}
+
+.history-navbar {
+    background-color: white;
+    width: min(650px, 100%);
+    position: fixed;
+    top: 75px;
+    left: calc( (100vw / 2) - (min(650px, 100%) / 2) );
+    z-index: 6;
+    transition: all 0.25s ease;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    border: 2px solid black;
+    border-top: none;
+}
+
+.history-navbar.invisible {
+    z-index: 2;
+    top: -100%;
+    transition: all 0.5s ease;
+}
+
+.item-history {
+    transition: all 0s ease;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 3px;
+    padding: 10px 7.5px;
+    text-decoration: none;
+    color: black;
+
+    cursor: pointer;
+}
+
+.item-history:last-child{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.item-history:hover {
+    background-color: var(--gray);
+    text-decoration: underline;
+}
+
+.item-history p{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.p-close-history {
+    color: var(--red);
+    font-weight: 700;
+    text-align: end;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.p-close-history:hover {
+    text-decoration: underline;
+}
+
+.filters-navbar-select-zone {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-bottom: 5px;
+}
+
+.filters-navbar-select {
+    width: 21% !important;
+}
+
+@media (max-width: 870px){
+    .filters-navbar-select-zone{
+        display: grid; 
+        grid-auto-columns: 1fr; 
+        grid-template-columns: 48% 48%; 
+        grid-template-rows: 48% 48%; 
+        gap: 5px 0px; 
+        grid-template-areas: 
+            ". ."
+            ". ."; 
+        padding: 0px 10px 10px 10px;
+        margin-top: 0px;
+    }
+
+    .filters-navbar-select {
+        width: 100% !important;
+    }
+
+    .p-close-history {
+        padding: 10px 10px;
+    }
+}

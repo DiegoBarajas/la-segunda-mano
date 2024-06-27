@@ -1,6 +1,7 @@
 @import url('../../index.css');
 
 .navbar {
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,7 +9,6 @@
     width: 100%;
     background-color: var(--blue);
     height: 75px;
-    z-index: 10;
 
     position: fixed;
     top: 0px;
@@ -18,26 +18,12 @@
 .link-navbar {
     display: inline-block;
     height: clamp(75px, 100%, 75px);
-    margin-left: min(calc(100vw * 0.035), 40px);
+    margin-left: min(calc(100vw * 0.035), 30px);
 }
 
 .logo-navbar {
     height: 100%;
 } 
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    width: 100%;
-    background-color: var(--blue);
-    height: 75px;
-
-    position: fixed;
-    top: 0px;
-    left: 0px;
-}
 
 .navbar-links {
     display: flex;
@@ -47,7 +33,7 @@
 }
   
 .navbar-links li:last-child {
-    margin-right: min(calc(100vw * 0.035), 40px);
+    margin-right: min(calc(100vw * 0.035), 30px);
 }
   
 .navbar-links a {
@@ -58,7 +44,7 @@
 .navbar-toggle {
     display: none;
     cursor: pointer;
-    margin-right: min(calc(100vw * 0.035), 40px);
+    margin-right: min(calc(100vw * 0.035), 30px);
 }
   
 .navbar-toggle.active {
