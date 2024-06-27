@@ -35,7 +35,7 @@
         "Zacatecas"
     ],
     "categorias": [
-        "Todas",
+        "Mostrar todo",
         "Accesorios personales",
         "Alimentos y bebidas",
         "Antigüedades y coleccionables",
@@ -66,6 +66,7 @@
         "Vehículos"
     ],
     "usos": [
+        "Mostrar todo",
         "Nuevo",
         "Usado (como nuevo)",
         "Usado (desgastado)",
@@ -73,10 +74,10 @@
         "Para piezas"
     ],
     "ordenar": [
-        "Alfabéticamente (A-Z)",
-        "Alfabéticamente (Z-A)",
         "Fecha de publicación (Mas reciente primero)",
         "Fecha de publicación (Mas antiguo primero)",
+        "Alfabéticamente (A-Z)",
+        "Alfabéticamente (Z-A)",
         "Precio (Mas barato primero)",
         "Precio (Mas caro primero)"
     ]
