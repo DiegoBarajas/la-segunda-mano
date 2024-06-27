@@ -4,8 +4,24 @@
     background-color: white;
     border-radius: 15px;
     padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
 
-    width: min(1250px, 75%);
+    width: min(1250px, 70%);
+}
+
+.regular {
+    width: min(1250px, 70%);
+}
+
+.small {
+    width: min(900px, 45%);
+}
+
+.large {
+    width: min(1600px, 87%);
 }
 
 @media (max-width: 870px){

@@ -1,9 +1,9 @@
 import React, { Children } from 'react';
-import '../Styles/Layouts/StandardLayout.css';
+import '../Styles/Layouts/PageLayout.css';
 import Navbar from '../Fragments/Navbar';
 import Footer from '../Fragments/Footer';
 
-const StandardLayout = ({ navbar=true, footer=true, children }) => {
+const PageLayout = ({ navbar=true, footer=true, children }) => {
     return (
         <>
             { navbar ? <Navbar/> : <></>}
@@ -24,4 +24,4 @@ const StandardLayout = ({ navbar=true, footer=true, children }) => {
     )
 }
 
-export default StandardLayout
+export default PageLayout

@@ -1,0 +1,58 @@
+@import url(../../index.css);
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
+.input-element {
+    display: flex;
+    justify-content: start;
+    align-items: start; 
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.input-with-icon{
+    padding-left: 35px;
+}
+
+.icon-input {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin-left: 3px;
+}
+
+.required {
+    color: var(--red);
+}
+
+.input-aux-text {
+    font-size: 0.8em;
+}
+
+@media (max-width: 870px){
+    .input {
+        padding: 10px 5px 10px 5px;
+    }
+
+    .icon-input {
+        position: absolute;
+        width: 30px;
+        height: 40px;
+        margin-left: 3px;
+    }
+
+    .input-with-icon{
+        padding-left: 35px;
+    }
+}

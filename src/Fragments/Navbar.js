@@ -56,7 +56,7 @@ const Navbar = () => {
                             >Categorias</ItemNavbar>
 
                             <ItemNavbar 
-                                to='/' 
+                                to='/login' 
                                 icon={loginSvg} 
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Iniciar sesión</ItemNavbar>
@@ -87,7 +87,7 @@ const Navbar = () => {
                             >Quiero vender</ItemNavbar>
 
                             <ItemNavbar 
-                                to='/' 
+                                to='/login' 
                                 icon={loginSvg} 
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Iniciar sesión</ItemNavbar>

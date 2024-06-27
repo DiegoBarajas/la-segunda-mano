@@ -1,0 +1,25 @@
+@import url(../../index.css);
+
+.logo-login {
+    width: min(30%, 200px);
+    cursor: pointer;
+}
+
+.login-content-layout {
+    min-height: 100vh;
+}
+
+.link-forgot-password {
+    color: var(--mint);
+    margin-bottom: 20px;
+}
+
+.link-forgot-password:hover {
+    filter: brightness(0.9);
+}
+
+@media (max-width: 870px){
+    .logo-login {
+        width: 50%;
+    }
+}

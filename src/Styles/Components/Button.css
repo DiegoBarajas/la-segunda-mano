@@ -2,9 +2,15 @@
 
 /* COLORS */
 .mint {
-    border: 2px solid var(--blue);
-    background-color: var(--mint);
-    color: black;
+    border: 2px solid var(--mint) !important;
+    background-color: var(--mint) !important;
+    color: black !important;
+}
+
+.red {
+    border: 2px solid var(--red) !important;
+    background-color: var(--red) !important;
+    color: white !important;
 }
 
 /* ICON BUTTON */
@@ -28,4 +34,34 @@
 .icon-button-img {
     width: 80%;
     height: 80%;
+}
+
+/* BUTTON */
+.button {
+    cursor: pointer;
+    background-color: var(--mint);
+    color: black;
+    font-weight: 700;
+
+    padding: 7.5px 12px;
+    border: 2px solid var(--mint);
+    border-radius: 5px;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.horizontal {
+    flex-direction: row;
+}
+
+.button:hover {
+    filter: brightness(0.92);
 }

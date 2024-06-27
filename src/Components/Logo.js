@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Logo = ({ className='', white=false, simple=false }) => {
+const Logo = ({ className='', white=false, simple=false, onClick }) => {
   return (
-    <svg className={className} viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
         <text
             style={{
                 fill: 'rgb(26, 188, 156)',
