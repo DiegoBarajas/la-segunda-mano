@@ -5,17 +5,15 @@
     cursor: pointer;
 }
 
-.login-content-layout {
-    min-height: 100vh;
-}
-
 .link-forgot-password {
     color: var(--mint);
     margin-bottom: 20px;
+
+    transition: all 0s ease;
 }
 
 .link-forgot-password:hover {
-    filter: brightness(0.9);
+    filter: brightness(0.85);
 }
 
 @media (max-width: 870px){

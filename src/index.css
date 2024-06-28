@@ -25,6 +25,22 @@ body {
     background-color: var(--backgound);
 }
 
+
+/* Generics */
+.none {
+    display: none;
+}
+
+/* Swal */
+.swal {
+    font-family: "Lexend Deca", sans-serif;
+}
+
+.swal2-popup {
+    border-radius: 10px !important; 
+}
+
+/* Scroll bar */
 ::-webkit-scrollbar {
     width: 5px; 
     height: 5px; 
@@ -46,8 +62,4 @@ body {
     width: 5px; 
     height: 5px; 
     border-radius: 5px;
-}
-
-.none {
-    display: none;
 }

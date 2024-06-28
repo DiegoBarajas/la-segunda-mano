@@ -1,15 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import '../Styles/Layouts/ContentLayout.css'
 
-const ContentLayout = ({children, id, className, complete=false, size="regular", verticalAlign='start', horizontalAlign='start', form=false, onSubmit}) => {
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
-    
-        return () => {
-          document.body.style.overflow = 'auto';
-        };
-      }, []);
-    
+const ContentLayout = ({children, id, className, complete=false, size="regular", verticalAlign='start', horizontalAlign='start', form=false, onSubmit}) => {    
       return form
       ? (
         <form 

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import '../Styles/Components/Input.css';
 
-const Input = ({ label, id, name, placeholder, auxText, value=null, type='text', width='100%', mb='5px', required=false, icon=null, onChange }) => {
+const Input = ({ label, id, name, placeholder, auxText, value=null, type='text', minLength, width='100%', mb='5px', required=false, icon=null, onChange }) => {
 
     const afterTextElement = useRef(null);
 
@@ -19,6 +19,7 @@ const Input = ({ label, id, name, placeholder, auxText, value=null, type='text',
                     name={name}
                     className={`input ${icon ? 'input-with-icon' : ''} `}
                     placeholder={placeholder}
+                    minLength={minLength}
                     type={type}
                     onChange={onChange}
                     value={value}

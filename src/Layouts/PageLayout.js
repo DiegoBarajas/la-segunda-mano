@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import '../Styles/Layouts/PageLayout.css';
 import Navbar from '../Fragments/Navbar';
 import Footer from '../Fragments/Footer';

@@ -11,12 +11,24 @@ import Logo from '../Components/Logo'
 import EmailSvg from '../Assets/Icons/email.svg'
 import PasswordSvg from '../Assets/Icons/password.svg'
 import { Link, Navigate } from 'react-router-dom'
+import Modals from '../Modals.js'
 
 const Login = () => {
     const [ redirect, setRedirect ] = useState(null);
 
+    const [ email, setEmail ] = useState('');
+    const [ password, setPassword ] = useState('');
+    const [ disabled, setDisabled ] = useState(false);
+
     const handelSubmit = (e) => {
         e.preventDefault();
+        if(disabled) return;
+
+        if(email === '' || password === ''){
+            return Modals.alert("Atención", "Debes escribir correo y contraseña", 'warning');
+        }
+
+        setDisabled(true);
     }
 
     return (
@@ -31,29 +43,40 @@ const Login = () => {
                     label="Correo Electronico"
                     width="75%"
                     type='email'
-                    placeholder="Correo Electronico"
+                    placeholder="Ej. juanito@correo.com"
+                    required
                     icon={EmailSvg}
                     mb='12px'
+
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <Input
                     label="Contraseña"
                     width="75%"
                     type='password'
-                    placeholder="Contraseña"
+                    placeholder="Ingresa tu contraseña"
+                    required
+                    minLength="8"
                     icon={PasswordSvg}
                     mb='5px'
+
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
-                <Link className='link-forgot-password' to='/'>Olvide mi contraseña</Link>
+                <Link className='link-forgot-password' to='/'>¿Olvidaste tu contraseña?</Link>
 
                 <Button
                     width="75%"
-                    onClick={() => {}}
+                    mb='10px'
+                    disabled={disabled}
                 >Iniciar sesión</Button>
                 <Button
                     width="75%"
                     color='red'
                     onClick={() => setRedirect('/signin')}
+                    mb='10px'
                 >Crear cuenta</Button>
 
             </ContententLayout>
