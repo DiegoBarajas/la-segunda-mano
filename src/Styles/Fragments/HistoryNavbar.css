@@ -21,7 +21,7 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 
-    border: 2px solid black;
+    outline: 2px solid black;
     border-top: none;
 
     overflow-y: auto;
@@ -78,14 +78,23 @@
 
 .filters-navbar-select-zone {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 
     margin-bottom: 5px;
 }
 
+.filters-apply-button-section {
+    width: 95%;
+    margin: auto;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .filters-navbar-select {
-    width: 21% !important;
+    width: 23% !important;
 }
 
 @media (max-width: 870px){
@@ -108,5 +117,9 @@
 
     .p-close-history {
         padding: 10px 10px;
+    }
+
+    .filters-apply-button-section {
+        margin-top: -10px;
     }
 }

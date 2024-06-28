@@ -1,84 +1,309 @@
 {
     "estados": [
-        "Toda la republica",
-        "Aguascalientes",
-        "Baja California",
-        "Baja California Sur",
-        "Campeche",
-        "Chiapas",
-        "Chihuahua",
-        "Ciudad de México",
-        "Coahuila",
-        "Colima",
-        "Durango",
-        "Estado de México",
-        "Guanajuato",
-        "Guerrero",
-        "Hidalgo",
-        "Jalisco",
-        "Michoacán",
-        "Morelos",
-        "Nayarit",
-        "Nuevo León",
-        "Oaxaca",
-        "Puebla",
-        "Querétaro",
-        "Quintana Roo",
-        "San Luis Potosí",
-        "Sinaloa",
-        "Sonora",
-        "Tabasco",
-        "Tamaulipas",
-        "Tlaxcala",
-        "Veracruz",
-        "Yucatán",
-        "Zacatecas"
-    ],
+        {
+            "text": "Toda la república",
+            "value": "toda la república"
+        },
+        {
+            "text": "Aguascalientes",
+            "value": "aguascalientes"
+        },
+        {
+            "text": "Baja California",
+            "value": "baja california"
+        },
+        {
+            "text": "Baja California Sur",
+            "value": "baja california sur"
+        },
+        {
+            "text": "Campeche",
+            "value": "campeche"
+        },
+        {
+            "text": "Chiapas",
+            "value": "chiapas"
+        },
+        {
+            "text": "Chihuahua",
+            "value": "chihuahua"
+        },
+        {
+            "text": "Ciudad de México",
+            "value": "ciudad de méxico"
+        },
+        {
+            "text": "Coahuila",
+            "value": "coahuila"
+        },
+        {
+            "text": "Colima",
+            "value": "colima"
+        },
+        {
+            "text": "Durango",
+            "value": "durango"
+        },
+        {
+            "text": "Estado de México",
+            "value": "estado de méxico"
+        },
+        {
+            "text": "Guanajuato",
+            "value": "guanajuato"
+        },
+        {
+            "text": "Guerrero",
+            "value": "guerrero"
+        },
+        {
+            "text": "Hidalgo",
+            "value": "hidalgo"
+        },
+        {
+            "text": "Jalisco",
+            "value": "jalisco"
+        },
+        {
+            "text": "Michoacán",
+            "value": "michoacán"
+        },
+        {
+            "text": "Morelos",
+            "value": "morelos"
+        },
+        {
+            "text": "Nayarit",
+            "value": "nayarit"
+        },
+        {
+            "text": "Nuevo León",
+            "value": "nuevo león"
+        },
+        {
+            "text": "Oaxaca",
+            "value": "oaxaca"
+        },
+        {
+            "text": "Puebla",
+            "value": "puebla"
+        },
+        {
+            "text": "Querétaro",
+            "value": "querétaro"
+        },
+        {
+            "text": "Quintana Roo",
+            "value": "quintana roo"
+        },
+        {
+            "text": "San Luis Potosí",
+            "value": "san luis potosí"
+        },
+        {
+            "text": "Sinaloa",
+            "value": "sinaloa"
+        },
+        {
+            "text": "Sonora",
+            "value": "sonora"
+        },
+        {
+            "text": "Tabasco",
+            "value": "tabasco"
+        },
+        {
+            "text": "Tamaulipas",
+            "value": "tamaulipas"
+        },
+        {
+            "text": "Tlaxcala",
+            "value": "tlaxcala"
+        },
+        {
+            "text": "Veracruz",
+            "value": "veracruz"
+        },
+        {
+            "text": "Yucatán",
+            "value": "yucatán"
+        },
+        {
+            "text": "Zacatecas",
+            "value": "zacatecas"
+        }
+    ]
+    ,
     "categorias": [
-        "Mostrar todo",
-        "Accesorios personales",
-        "Alimentos y bebidas",
-        "Antigüedades y coleccionables",
-        "Arte, manualidades y papelería",
-        "Articulos para oficina",
-        "Autopartes",
-        "Bebés",
-        "Belleza y cuidado personal",
-        "Computación y telefonia",
-        "Deportes",
-        "Electrodomésticos",
-        "Electrónica",
-        "Gratis",
-        "Herramientas",
-        "Hogar y jardín",
-        "Inmuebles",
-        "Instrumentos musicales",
-        "Joyas y relojes",
-        "Juguetes y juegos",
-        "Libros, películas y música",
-        "Maquinaria",
-        "Mascotas",
-        "Muebles",
-        "Ropa y calzado",
-        "Servicios",
-        "Televisiones y pantallas",
-        "Terrenos",
-        "Vehículos"
+        {
+            "text": "Mostrar todo",
+            "value": "mostrar todo"
+        },
+        {
+            "text": "Accesorios personales",
+            "value": "accesorios personales"
+        },
+        {
+            "text": "Alimentos y bebidas",
+            "value": "alimentos y bebidas"
+        },
+        {
+            "text": "Antigüedades y coleccionables",
+            "value": "antigüedades y coleccionables"
+        },
+        {
+            "text": "Arte, manualidades y papelería",
+            "value": "arte, manualidades y papelería"
+        },
+        {
+            "text": "Artículos para oficina",
+            "value": "artículos para oficina"
+        },
+        {
+            "text": "Autopartes",
+            "value": "autopartes"
+        },
+        {
+            "text": "Bebés",
+            "value": "bebés"
+        },
+        {
+            "text": "Belleza y cuidado personal",
+            "value": "belleza y cuidado personal"
+        },
+        {
+            "text": "Computación y telefonía",
+            "value": "computación y telefonía"
+        },
+        {
+            "text": "Deportes",
+            "value": "deportes"
+        },
+        {
+            "text": "Electrodomésticos",
+            "value": "electrodomésticos"
+        },
+        {
+            "text": "Electrónica",
+            "value": "electrónica"
+        },
+        {
+            "text": "Gratis",
+            "value": "gratis"
+        },
+        {
+            "text": "Herramientas",
+            "value": "herramientas"
+        },
+        {
+            "text": "Hogar y jardín",
+            "value": "hogar y jardín"
+        },
+        {
+            "text": "Inmuebles",
+            "value": "inmuebles"
+        },
+        {
+            "text": "Instrumentos musicales",
+            "value": "instrumentos musicales"
+        },
+        {
+            "text": "Joyas y relojes",
+            "value": "joyas y relojes"
+        },
+        {
+            "text": "Juguetes y juegos",
+            "value": "juguetes y juegos"
+        },
+        {
+            "text": "Libros, películas y música",
+            "value": "libros, películas y música"
+        },
+        {
+            "text": "Maquinaria",
+            "value": "maquinaria"
+        },
+        {
+            "text": "Mascotas",
+            "value": "mascotas"
+        },
+        {
+            "text": "Muebles",
+            "value": "muebles"
+        },
+        {
+            "text": "Ropa y calzado",
+            "value": "ropa y calzado"
+        },
+        {
+            "text": "Servicios",
+            "value": "servicios"
+        },
+        {
+            "text": "Televisiones y pantallas",
+            "value": "televisiones y pantallas"
+        },
+        {
+            "text": "Terrenos",
+            "value": "terrenos"
+        },
+        {
+            "text": "Vehículos",
+            "value": "vehículos"
+        }
     ],
     "usos": [
-        "Mostrar todo",
-        "Nuevo",
-        "Usado (como nuevo)",
-        "Usado (desgastado)",
-        "Requiere arreglo",
-        "Para piezas"
-    ],
-    "ordenar": [
-        "Fecha de publicación (Mas reciente primero)",
-        "Fecha de publicación (Mas antiguo primero)",
-        "Alfabéticamente (A-Z)",
-        "Alfabéticamente (Z-A)",
-        "Precio (Mas barato primero)",
-        "Precio (Mas caro primero)"
+        {
+            "text": "Mostrar todo",
+            "value": "mostrar todo"
+        },
+        {
+            "text": "Nuevo",
+            "value": "nuevo"
+        },
+        {
+            "text": "Usado (como nuevo)",
+            "value": "usado (como nuevo)"
+        },
+        {
+            "text": "Usado (desgastado)",
+            "value": "usado (desgastado)"
+        },
+        {
+            "text": "Requiere arreglo",
+            "value": "requiere arreglo"
+        },
+        {
+            "text": "Para piezas",
+            "value": "para piezas"
+        }
     ]
+    ,
+    "ordenar": [
+        {
+            "text": "Fecha de publicación (Mas reciente primero)",
+            "value": "fecha de publicación (mas reciente primero)"
+        },
+        {
+            "text": "Fecha de publicación (Mas antiguo primero)",
+            "value": "fecha de publicación (mas antiguo primero)"
+        },
+        {
+            "text": "Alfabéticamente (A-Z)",
+            "value": "alfabéticamente (a-z)"
+        },
+        {
+            "text": "Alfabéticamente (Z-A)",
+            "value": "alfabéticamente (z-a)"
+        },
+        {
+            "text": "Precio (Mas barato primero)",
+            "value": "precio (mas barato primero)"
+        },
+        {
+            "text": "Precio (Mas caro primero)",
+            "value": "precio (mas caro primero)"
+        }
+    ]
+    
 }

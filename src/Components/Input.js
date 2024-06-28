@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
 import '../Styles/Components/Input.css';
 
-const Input = ({ label, id, name, placeholder, auxText, value=null, type='text', minLength, width='100%', mb='5px', required=false, icon=null, onChange }) => {
+const Input = ({ label, id, name, className, placeholder, auxText, value=null, type='text', minLength, width='100%', mb='5px', required=false, icon=null, onChange }) => {
 
     const afterTextElement = useRef(null);
 
     return (
-        <div className='input-container' style={{ width: width, marginBottom: mb }}>
+        <div className={`input-container ${className}`} style={{ width: width, marginBottom: mb }}>
             <label htmlFor={id}><b>{label}{required ? <span className='required'>*</span> : ""}</b></label>
             <div className='input-element'>
                 {
