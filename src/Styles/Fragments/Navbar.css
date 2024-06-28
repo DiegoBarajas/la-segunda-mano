@@ -81,6 +81,7 @@
         background-color: rgba(44, 62, 80, 0.92);
         text-align: center;
         z-index: 9;
+        overflow-y: auto;
     }
 
     .navbar-links li:last-child {
@@ -94,7 +95,8 @@
   
     .navbar-links li {
         margin-right: 0;
-        margin-bottom: 10px;
+        margin-bottom: 7.5px;
+        margin-top: 7.5pxx;
     }
   
     .navbar-toggle {

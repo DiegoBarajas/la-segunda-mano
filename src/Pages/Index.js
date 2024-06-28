@@ -1,17 +1,18 @@
 import React from 'react'
 
 import PageLayout from '../Layouts/PageLayout'
-import ContententLayout from '../Layouts/ContentLayout'
+import ContententLayout from '../Layouts/ContentLayout.js'
 import Title from '../Components/Title'
 
 
 const Index = () => {
     return (
         <PageLayout>
-            <ContententLayout>
-                <Title center>Hola Mundo</Title>
-
+            
+            <ContententLayout horizontalAlign='center'>
+                <h1>Hola</h1>
             </ContententLayout>
+
 
             
         </PageLayout>

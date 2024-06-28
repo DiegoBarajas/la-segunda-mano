@@ -23,11 +23,13 @@
 
     border: 2px solid black;
     border-top: none;
+
+    overflow-y: auto;
 }
 
 .history-navbar.invisible {
     z-index: 2;
-    top: -100%;
+    top: -200%;
     transition: all 0.5s ease;
 }
 

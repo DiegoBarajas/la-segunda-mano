@@ -11,7 +11,7 @@ const ContentLayout = ({children, id, className, complete=false, size="regular",
             className={
                 complete 
                     ? `complete-layout content-layout ${size} ${className}`
-                    : `complete-layout ${size} ${className}`
+                    : `content-layout ${size} ${className}`
             }
         >
             {children}
@@ -24,7 +24,7 @@ const ContentLayout = ({children, id, className, complete=false, size="regular",
             className={
                 complete 
                     ? `complete-layout content-layout ${size} ${className}`
-                    : `complete-layout ${size} ${className}`
+                    : `content-layout ${size} ${className}`
             }
         >
             {children}
