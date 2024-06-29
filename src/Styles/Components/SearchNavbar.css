@@ -27,7 +27,7 @@
 
 @media (max-width: 870px){
     .search-navbar {
-        width: min(54%, 750px);
-        margin-left: calc((100%/2) - min(54%, 750px)/2);
+        width: min(50%, 750px);
+        margin-left: calc((100%/2) - min(50%, 750px)/2);
     }
 }
