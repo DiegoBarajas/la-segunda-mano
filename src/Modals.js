@@ -12,7 +12,7 @@ class Modals{
     alert(title, content, icon=null, confirmButtonText='Aceptar'){
         return Swal.fire({
             title,
-            text: content,
+            html: `<p>${content}</p>`,
             icon,
             iconColor: this.#getIconColor(icon),
 
@@ -39,4 +39,5 @@ class Modals{
     }
 }
 
-export default new Modals(); 
+const modals = new Modals();
+export default modals; 

@@ -5,9 +5,17 @@
     cursor: pointer;
 }
 
+.form-login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .link-forgot-password {
     color: var(--mint);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 
     transition: all 0s ease;
 }

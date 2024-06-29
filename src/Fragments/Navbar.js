@@ -46,36 +46,42 @@ const Navbar = () => {
                             <ItemNavbar 
                                 to='/'
                                 icon={sellSvg} 
+                                title='Quiero publicar producto, servicio, vehiculo o inmueble'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Quiero vender</ItemNavbar>
 
                             <ItemNavbar 
                                 to='/'
                                 icon={categorySvg} 
+                                title='Ver un listado de todas las categorias'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Categorias</ItemNavbar>
 
                             <ItemNavbar 
                                 to='/login' 
                                 icon={loginSvg} 
+                                title='Iniciar sesión'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Iniciar sesión</ItemNavbar>
 
                             <ItemNavbar 
                                 to='/' 
                                 icon={createAccountSvg} 
+                                title='Crear una cuenta'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Crear cuenta</ItemNavbar>
 
                             <ItemNavbar 
                                 to='/' 
                                 icon={reportSvg} 
+                                title='Reportar un problema o bug'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Reportar un problema</ItemNavbar>
 
                             <ItemNavbar 
                                 to='/' 
                                 icon={helpSvg} 
+                                title='Ver un listado de las preguntas más frecuentes'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Preguntas frecuentes</ItemNavbar>
                         </>
@@ -83,12 +89,14 @@ const Navbar = () => {
                             <ItemNavbar 
                                 to='/'
                                 icon={sellSvg} 
+                                title='Quiero publicar producto, servicio, vehiculo o inmueble'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Quiero vender</ItemNavbar>
 
                             <ItemNavbar 
                                 to='/login' 
                                 icon={loginSvg} 
+                                title='Iniciar sesión'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Iniciar sesión</ItemNavbar>
                         </>
