@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../Styles/Fragments/Navbar.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Logo from '../Components/Logo';
 
 import ItemNavbar from '../Components/ItemNavbar';
@@ -14,19 +14,21 @@ import createAccountSvg from '../Assets/Icons/create_account.svg'
 import reportSvg from '../Assets/Icons/report.svg'
 import helpSvg from '../Assets/Icons/help.svg'
 
+const useSearchValue = () => {
+    const query = new URLSearchParams(useLocation().search)
+    const searchValue = query.get('nombre');
+
+    return searchValue ? searchValue : '';
+}
+
 const Navbar = () => {
     const [ isMenuOpen, setIsMenuOpen ] = useState(false);
     const [ showHistory, setShowHostory ] = useState(false);
+    const [searchValue, setSearchValue] = useState(useSearchValue());
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
-    const handleSubmit = (e) => {
-        //e.preventDefault();
-
-        console.log('Wasap');
-    }
 
     return (
         <form action='/buscar'>
@@ -42,7 +44,8 @@ const Navbar = () => {
 
                 <SearchNavbar
                     onFocus={() => setShowHostory(true)}
-                    onSubmit={handleSubmit}
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
                 />
 
                 <ul className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>

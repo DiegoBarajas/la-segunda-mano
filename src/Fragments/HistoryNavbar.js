@@ -36,10 +36,6 @@ const HistoryNavbar = ({visible, handleClose}) => {
         getHistory()
     }, []);
 
-    const handleApplyAndSearch = () => {
-        console.log(filters);      
-    }
-
     const handleResetFilters = () => {
         setShowApplyBtn(false);
         setFIlters({
@@ -131,7 +127,8 @@ const HistoryNavbar = ({visible, handleClose}) => {
                             title="Aplicar y buscar"
                             icon={applySvg}
                             width='49.5%'
-                            onClick={handleApplyAndSearch}
+
+                            type='submit'
                         >Aplicar y buscar</Button>
                     </section>
                     : <></>
