@@ -16,5 +16,5 @@ connetion.once('open', ()=>{
     const requestTime = moment().tz('America/Mexico_City').format('DD-MM-YYYY HH:mm:ss');
 
     console.log(colors.green(`${requestTime}    [ DATABASE ] Base de datos conectada exitosamente`));
-    console.log(colors.green(line)+'\n');
+    console.log(colors.green(line));
 });
