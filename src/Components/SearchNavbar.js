@@ -4,21 +4,20 @@ import IconButton from './IconButton'
 
 import searchSvg from '../Assets/Icons/search.svg'
 
-const SearchNavbar = ({onFocus, onBlur}) => {
 
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    }
+const SearchNavbar = ({onFocus, onBlur, value, onChange}) => {
 
     return (
-        <form className='search-navbar' onSubmit={handleSubmit}>
+        <section className='search-navbar'>
             <input 
                 className='input-search-navbar' 
                 type='search'
                 placeholder='Busca productos, caracteristicas o categorias'
                 title='Busca productos, caracteristicas o categorias'
-                name='busqueda'
+                name='nombre'
+                value={value}
+                onChange={onChange}
+                required
 
                 onFocus={onFocus}
                 onBlur={onBlur}
@@ -27,8 +26,9 @@ const SearchNavbar = ({onFocus, onBlur}) => {
                 icon={searchSvg} 
                 alt="Buscar" 
                 title="Buscar" 
-                style={{ width: '43px', height: '43px', position: 'absolute', right: '-30px' }}/>
-        </form>
+                style={{ width: '43px', height: '43px', position: 'absolute', right: '-30px' }}
+            />
+        </section>
     )
 }
 

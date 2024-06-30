@@ -21,10 +21,10 @@ const HistoryNavbar = ({visible, handleClose}) => {
     const [ showApplyBtn, setShowApplyBtn ] = useState(false);
 
     const [ filters, setFIlters ] = useState({
-        state: '',
-        category: '',
-        usage: '',
-        orderBy: ''
+        estado: '',
+        categoria: '',
+        uso: '',
+        ordenar: ''
     });
 
 
@@ -43,10 +43,10 @@ const HistoryNavbar = ({visible, handleClose}) => {
     const handleResetFilters = () => {
         setShowApplyBtn(false);
         setFIlters({
-            state: '',
-            category: '',
-            usage: '',
-            orderBy: ''
+            estado: '',
+            categoria: '',
+            uso: '',
+            ordenar: ''
         });
     }
 
@@ -65,7 +65,7 @@ const HistoryNavbar = ({visible, handleClose}) => {
                     <Select 
                         className='filters-navbar-select' 
                         id='Estado'
-                        name='state'
+                        name='estado'
                         label="Estado"
                         title="Buscar anuncios por algun estado en especifico"
                         options={constants.estados}
@@ -77,7 +77,7 @@ const HistoryNavbar = ({visible, handleClose}) => {
                     <Select 
                         className='filters-navbar-select' 
                         id='Categoria' 
-                        name='category'
+                        name='categoria'
                         label="Categoria"
                         title="Buscar anuncios con una categoria en especifico"
                         options={constants.categorias}
@@ -89,7 +89,7 @@ const HistoryNavbar = ({visible, handleClose}) => {
                     <Select 
                         className='filters-navbar-select' 
                         id='Uso' 
-                        name='usage'
+                        name='uso'
                         label="Uso"
                         title="Buscar anuncios por un uso en especifico"
                         options={constants.usos}
@@ -101,7 +101,7 @@ const HistoryNavbar = ({visible, handleClose}) => {
                     <Select 
                         className='filters-navbar-select' 
                         id='Ordenar' 
-                        name='orderBy'
+                        name='ordenar'
                         label="Ordenar por"
                         title="Ordenar resultados de una manera en especifico"
                         options={constants.ordenar}
@@ -116,11 +116,13 @@ const HistoryNavbar = ({visible, handleClose}) => {
                     showApplyBtn
                     ? <section className='filters-apply-button-section'>
                         <Button
-                            color='red'
-                            horizontal
                             title="Aplicar y buscar"
                             icon={clearSvg}
+                            color='red'
                             width='49.5%'
+                            horizontal
+                            type='reset'
+
                             onClick={handleResetFilters}
                         >Borrar filtros</Button>
 

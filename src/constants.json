@@ -2,7 +2,7 @@
     "estados": [
         {
             "text": "Toda la república",
-            "value": "toda la república"
+            "value": "all"
         },
         {
             "text": "Aguascalientes",
@@ -137,7 +137,7 @@
     "categorias": [
         {
             "text": "Mostrar todo",
-            "value": "mostrar todo"
+            "value": "all"
         },
         {
             "text": "Accesorios personales",
@@ -255,7 +255,7 @@
     "usos": [
         {
             "text": "Mostrar todo",
-            "value": "mostrar todo"
+            "value": "all"
         },
         {
             "text": "Nuevo",
@@ -282,27 +282,27 @@
     "ordenar": [
         {
             "text": "Fecha de publicación (Mas reciente primero)",
-            "value": "fecha de publicación (mas reciente primero)"
+            "value": "date:asc"
         },
         {
             "text": "Fecha de publicación (Mas antiguo primero)",
-            "value": "fecha de publicación (mas antiguo primero)"
+            "value": "date_desc"
         },
         {
             "text": "Alfabéticamente (A-Z)",
-            "value": "alfabéticamente (a-z)"
+            "value": "alf:asc"
         },
         {
             "text": "Alfabéticamente (Z-A)",
-            "value": "alfabéticamente (z-a)"
+            "value": "alf:desc"
         },
         {
             "text": "Precio (Mas barato primero)",
-            "value": "precio (mas barato primero)"
+            "value": "price:asc"
         },
         {
             "text": "Precio (Mas caro primero)",
-            "value": "precio (mas caro primero)"
+            "value": "price:desc"
         }
     ]
     

@@ -4,16 +4,15 @@ import { Link } from 'react-router-dom'
 import Logo from '../Components/Logo';
 
 import ItemNavbar from '../Components/ItemNavbar';
-
 import SearchNavbar from '../Components/SearchNavbar';
+import HistoryNavbar from './HistoryNavbar';
+
 import sellSvg from '../Assets/Icons/sell.svg'
 import loginSvg from '../Assets/Icons/login.svg'
 import categorySvg from '../Assets/Icons/category.svg'
 import createAccountSvg from '../Assets/Icons/create_account.svg'
 import reportSvg from '../Assets/Icons/report.svg'
 import helpSvg from '../Assets/Icons/help.svg'
-import HistoryNavbar from './HistoryNavbar';
-
 
 const Navbar = () => {
     const [ isMenuOpen, setIsMenuOpen ] = useState(false);
@@ -23,8 +22,14 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const handleSubmit = (e) => {
+        //e.preventDefault();
+
+        console.log('Wasap');
+    }
+
     return (
-        <>
+        <form action='/buscar'>
             <HistoryNavbar 
                 visible={showHistory}
                 handleClose={() => setShowHostory(false)}
@@ -37,6 +42,7 @@ const Navbar = () => {
 
                 <SearchNavbar
                     onFocus={() => setShowHostory(true)}
+                    onSubmit={handleSubmit}
                 />
 
                 <ul className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
@@ -111,7 +117,7 @@ const Navbar = () => {
                 </div>
 
             </nav>
-        </>
+        </form>
     );
 };
 

@@ -6,8 +6,12 @@ import { Link } from 'react-router-dom'
 
 const ItemHistory = ({ children }) => {
 
+    const handleRedirect = () => {
+        window.location.href = `/buscar?nombre=${children}`;
+    }
+
     return (
-        <Link className='item-history' to={`/search?busqueda=${children}`} title={`Buscar "${children}"`}>
+        <Link className='item-history' onClick={handleRedirect} title={`Buscar "${children}"`}>
             <img className='icon-item-history' src={historySvg} alt='Hist'/>
             <p>{ children }</p>
         </Link>

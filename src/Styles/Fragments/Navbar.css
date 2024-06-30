@@ -29,7 +29,6 @@
     display: flex;
     list-style: none;
     height: 100%;
-    gap: 15px;
 }
   
 .navbar-links li:last-child {
@@ -70,7 +69,6 @@
 
 @media (max-width: 870px) {
     .navbar-links {
-        /* display: none; */
         display: flex;
         flex-direction: column;
         position: absolute;
@@ -95,8 +93,6 @@
   
     .navbar-links li {
         margin-right: 0;
-        margin-bottom: 7.5px;
-        margin-top: 7.5pxx;
     }
   
     .navbar-toggle {

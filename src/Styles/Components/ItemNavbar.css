@@ -1,7 +1,7 @@
 @import url(../../index.css);
 
 .item-navbar {
-    height: 75px;
+    height: max(75px, fit-content);
 }
 
 .link-item-navbar {
@@ -11,10 +11,12 @@
     height: 100%;
 
     font-size: 12px;
+    padding: 7.5px;
 }
 
 .link-item-navbar:hover {
     text-decoration: underline;
+    background-color: var(--mint);
 }
 
 .icon-item-navbar {
@@ -25,4 +27,15 @@
 
 .horizontal-item-navbar {
     flex-direction: column;
+}
+
+@media (max-width: 870px){
+    .link-item-navbar {
+        font-size: 16px;
+        width: 100%;
+        height: 100%;
+        margin-left: 0px;
+
+        padding: 2em;
+    }
 }
