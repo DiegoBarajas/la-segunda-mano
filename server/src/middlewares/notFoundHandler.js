@@ -1,5 +1,4 @@
 const colors = require('colors/safe');
-const moment = require('moment-timezone');
 
 module.exports = (req, res, next) => {
     console.log(colors.yellow(`[ RUTA NO ENCONTRADA ] [ ${req.method} ] ${req.originalUrl}`));

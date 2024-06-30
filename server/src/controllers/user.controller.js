@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 
 const UncompleteFieldsError = require('../errors/UncompleteFieldsError');
 const CustomError = require('../errors/CustomError');
+const mailer = require('../mailer');
 
 require('dotenv').config();
 
