@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom'
 import PageLayout from '../Layouts/PageLayout'
 import ContentLayout from '../Layouts/ContentLayout'
 import Title from '../Components/Title'
-import Button from '../Components/Button'
 
 const useQuery = () => {
     const query = new URLSearchParams(useLocation().search)
@@ -28,11 +27,8 @@ const Search = () => {
             <ContentLayout>
                 <Title>Hola Mundo</Title>
 
-                <Button
-                    onClick={() => {
-                        console.log(query);
-                    }}
-                >Get Query</Button>
+                
+
             </ContentLayout>
         </PageLayout>
     )

@@ -2,8 +2,6 @@ import React from 'react'
 
 import PageLayout from '../Layouts/PageLayout'
 import ContententLayout from '../Layouts/ContentLayout.js'
-import Title from '../Components/Title'
-
 
 const Index = () => {
     return (

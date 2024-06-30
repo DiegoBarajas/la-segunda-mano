@@ -9,9 +9,12 @@ import Title from '../Components/Title'
 import Logo from '../Components/Logo'
 import { Link } from 'react-router-dom'
 import Modals from '../Modals.js'
+import axios from 'axios'
 
 import EmailSvg from '../Assets/Icons/email.svg'
 import PasswordSvg from '../Assets/Icons/password.svg'
+
+import constants from '../constants.json';
 
 const Login = () => {
     const [ redirect, setRedirect ] = useState(null);
@@ -20,7 +23,7 @@ const Login = () => {
     const [ password, setPassword ] = useState('');
     const [ disabled, setDisabled ] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         if(disabled) return;
 
@@ -29,6 +32,30 @@ const Login = () => {
         }
 
         setDisabled(true);
+
+        try{
+            const response = await axios.post(`${constants.backend}/api/login`, { correo: email, contraseña: password });
+            
+            localStorage.setItem('token', response.data.token);
+            setRedirect('/');
+        }catch(err){
+            setDisabled(false);
+
+            if (err.response) {
+                // El servidor respondió con un código de estado fuera del rango 2xx
+                console.error('Código de estado HTTP:', err.response.status, '\n', 'Error de respuesta:', err.response.data);
+                Modals.alert("Ups", `${err.response.data}`, 'error');
+                //Modals.alert("Ups", `<b>[${err.response.status}]</b> ${err.response.data}`, 'error');
+            } else if (err.request) {
+                // La solicitud fue hecha pero no se recibió respuesta
+                console.error('No se recibió respuesta del servidor:', err.request);
+                Modals.alert("Ha ocurrido un error", `No se recibió respuesta del servidor`, 'error');
+            } else {
+                // Ocurrió un error antes de enviar la solicitud
+                console.error('Error al enviar la solicitud:', err.message);
+                Modals.alert("Ha ocurrido un error", `<b>Error al enviar la solicitud</b> ${err.message}`, 'error');
+            }
+        }
     }
 
     return (
@@ -63,7 +90,7 @@ const Login = () => {
                         required
                         minLength="8"
                         icon={PasswordSvg}
-                        mb='5px'
+                        mb='10px'
 
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -79,6 +106,8 @@ const Login = () => {
                         mb='10px'
                         disabled={disabled}
                         title="Inicia sesión"
+                        type='submit'
+
                     >Iniciar sesión</Button>
                 </form>
 

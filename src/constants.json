@@ -304,6 +304,7 @@
             "text": "Precio (Mas caro primero)",
             "value": "price:desc"
         }
-    ]
+    ],
+    "backend": "http://192.168.100.86:4000"
     
 }
