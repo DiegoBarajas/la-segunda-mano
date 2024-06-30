@@ -5,11 +5,9 @@ const userSchema = new Schema({
     apellido: { type: String, required: true },
     correo: { type: String, required: true, unique: true },
     contraseña: { type: String, required: true },
-
-    estado: { type: String, default: null, required: false },
-    foto: { type: Buffer, default: null, required: false },
+    code: { type: String, required: true, expires: 3600 },
 },{
     timestapms: true
 });
 
-module.exports = model('User', userSchema);
+module.exports = model('PreUser', userSchema);
