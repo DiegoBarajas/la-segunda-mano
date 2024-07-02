@@ -144,7 +144,6 @@ const SigninLastSteps = () => {
 
                 <Button
                     title="No agregar foto ni estado predeterminado"
-                    disabled={disabled}
                     width="75%"
                     color='red'
                     mb='10px'
