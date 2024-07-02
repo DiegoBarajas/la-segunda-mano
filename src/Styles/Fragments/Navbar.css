@@ -67,6 +67,36 @@
     transform: translateY(-12px);
 }
 
+.list-items-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 250px;
+    background-color: var(--mint);
+    position: absolute;
+    right: 0;
+    top: 75px;
+}
+
+.item-navbar-account-menu {
+    width: 100%;
+}
+
+.item-navbar-account-menu:last-child{
+    margin-top: 30px;
+}
+
+.item-navbar-account-menu .link-item-navbar{
+    font-size: 15px;
+    justify-content: start;
+}
+
+.item-navbar-account-menu .link-item-navbar:hover {
+    background-color: var(--blue);
+}
+
+
 @media (max-width: 870px) {
     .navbar-links {
         display: flex;

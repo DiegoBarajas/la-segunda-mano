@@ -36,7 +36,10 @@ const Login = () => {
         try{
             const response = await axios.post(`${constants.backend}/api/login`, { correo: email, contraseña: password });
             
+            Modals.toast('Iniciaste sesión!', 'success');
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem('user', JSON.stringify(response.data.user));    
+
             setRedirect('/');
         }catch(err){
             setDisabled(false);
@@ -98,7 +101,7 @@ const Login = () => {
                     <Link 
                         className='link-forgot-password' 
                         title='¿No recuerdas tú contraseña? Recuperala ahora'
-                        to='/' 
+                        to={email === '' ? '/forgot' : `/forgot?email=${email}`} 
                     >¿Olvidaste tu contraseña?</Link>
 
                     <Button

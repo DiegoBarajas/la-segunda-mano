@@ -31,7 +31,7 @@ const announcementSchema = new Schema({
         required: true 
     },
     imagenes: {
-        type: [Buffer],
+        type: [String],
         validate: [5, '{PATH} excede el liminte de 5'],
         required: true
     },

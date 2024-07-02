@@ -1,0 +1,51 @@
+@import url(../../index.css);
+
+.cut-img-container {
+    width: 100vw;
+    height: 100vh;
+    z-index: 30;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--blue);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.cut-img-container h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.cropper {
+    margin-top: 25px;
+    width: min(400px, 100vw);
+    height: min(400px, 100vw);
+}
+
+.cut-img-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    margin-top: 50px;
+}
+
+.cut-img-button {
+    width: 45% !important;
+}
+
+@media (max-width: 870px){
+    .cut-img-buttons{
+        flex-direction: column;
+        width: 70%;
+    }
+
+    .cut-img-button {
+        width: 100% !important;
+    }
+}

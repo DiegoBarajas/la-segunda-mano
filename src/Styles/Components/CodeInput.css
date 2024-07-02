@@ -1,0 +1,37 @@
+@import url(../../index.css);
+
+.code-input-container {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+
+.code-input-label {
+    margin-bottom: 5px;
+}
+
+.code-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 7.5px;
+}
+
+.code-input { 
+    font-size: 20px;
+    height: 2em;
+    width: 1.5em;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.code-input:focus{
+    border: 3.5px solid black;
+}

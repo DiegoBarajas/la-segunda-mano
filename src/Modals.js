@@ -26,6 +26,25 @@ class Modals{
 
     }
 
+    async toast(text, icon='success', time=1.5){
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-right',
+            iconColor: 'white',
+            customClass: {
+              popup: 'colored-toast',
+            },
+            showConfirmButton: false,
+            timer: time*1000,
+            timerProgressBar: true,
+        });
+
+        Toast.fire({
+            icon: icon,
+            title: text
+        })
+    }
+
     #getIconColor(icon){
         switch(icon){
             case 'warning': return "#ffd900";

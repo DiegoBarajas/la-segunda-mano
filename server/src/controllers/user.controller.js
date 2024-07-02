@@ -1,15 +1,37 @@
 const UserModel = require('../models/user.model');
 const PreUserModel = require('../models/preUser.model');
 
+const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const cloudinary = require('cloudinary').v2;
 
 const UncompleteFieldsError = require('../errors/UncompleteFieldsError');
 const CustomError = require('../errors/CustomError');
 const mailer = require('../mailer');
+const preUserModel = require('../models/preUser.model');
 
 require('dotenv').config();
 const controller = {};
+
+/* Obtener informacion del usuario desde el token */
+controller.getUser = async(req, res, next) => {
+    try{
+//      Obtener el user desde el AuthMiddleware
+        const user = req.user;
+
+//      Retornar la data importante
+        res.json({
+            nombre: user.nombre,
+            apellido: user.apellido,
+            correo: user.correo,
+            estado: user.estado,
+            foto: user.foto
+        });
+    }catch(err){
+        next(err);
+    }
+}
 
 /* Iniciar sesion */
 controller.login = async(req, res, next) => {
@@ -30,8 +52,17 @@ controller.login = async(req, res, next) => {
 //      Generate JWT
         const token = jwt.sign({user}, process.env.JWT_SECRET, { expiresIn: '1y' });
 
+//      Formatear usuario para la respuesta
+        const respUser = {
+            nombre: user.nombre,
+            apellido: user.apellido,
+            correo: user.correo,
+            estado: user.estado,
+            foto: user.foto
+        }
+
 //      Enviar respuesta
-        res.send({token});
+        res.send({token, user: respUser});
     }catch(err){
         next(err);
     }
@@ -85,7 +116,7 @@ controller.siginCode = async(req, res, next) => {
         if(!preUser) return res.status(400).send("Correo electronico no registrado o caducado");
 
 //      Comprobar si el codigo coincide
-        if(preUser.code !== codigo) return res.status(400).send("Codigo incorrecto");
+        if(preUser.code !== codigo) return res.status(400).send("El código ingresado es incorrecto");
 
 //      Crear usuario
         const newUser = await new UserModel({
@@ -99,10 +130,126 @@ controller.siginCode = async(req, res, next) => {
         await PreUserModel.findByIdAndDelete(preUser._id);
         
 //      Generar JWT
-        const token = jwt.sign({newUser}, process.env.JWT_SECRET, { expiresIn: '1y' });
+        const token = jwt.sign({user: newUser}, process.env.JWT_SECRET, { expiresIn: '1y' });
+
+//      Formatear usuario para la respuesta
+        const respUser = {
+            nombre: newUser.nombre,
+            apellido: newUser.apellido,
+            correo: newUser.correo,
+            estado: newUser.estado,
+            foto: newUser.foto
+        }
 
 //      Enviar respuesta
-        res.send({token});
+        res.send({token, user: respUser});
+    }catch(err){
+        next(err);
+    }
+}
+
+/* Crear cuenta - Reenviar código */
+controller.signinResend = async(req, res, next) => {
+    try{
+//      Obtener los params del body        
+        const { correo } = req.body;
+        if(!correo) throw new UncompleteFieldsError(["correo"]);
+        
+//      Obtener el preUser para adquirir el codigo
+        const user = await preUserModel.findOne({correo});
+        if(!user) return res.status(400).send("Correo no valido, código caducado. Vuelve a iniciar el proceso de crear cuenta por favor.");
+        
+//      Enviar email
+        await mailer.sendMail(correo, "Crear cuenta", `Tu código para crear tu cuenta es [ ${user.code} ]. NOTA: El codigo es valido por una hora`);
+
+//      Enviar respuesta
+        res.send('Exito!')
+        
+    }catch(err){
+        next(err);
+    }
+}
+
+/* Crear cuenta - Subir foto o estado predeterminado */
+controller.signinLastSteps = async(req, res, next) => {
+    try{
+//      Obtener el user desde el AuthMiddleware
+        let user = req.user;
+
+//      Obtener la informacion y la imagen de la peticion
+        const { estado } = req.body;
+        const files = req.files;
+
+//      Si no hay información relevante, ignorar y enviar respuesta
+        if( !estado && !files ){ 
+//          Obtener el usuario actualizado
+            const User = await UserModel.findByIdAndUpdate(user._id);
+
+//          Generar JWT
+            const token = jwt.sign({user: User}, process.env.JWT_SECRET, { expiresIn: '1y' });
+        
+//          Formatear usuario para la respuesta
+            const respUser = {
+                nombre: User.nombre,
+                apellido: User.apellido,
+                correo: User.correo,
+                estado: User.estado,
+                foto: User.foto
+            }
+            
+//          Enviar respuesta
+            return res.send({token, user: respUser});
+        }
+
+//      Si se envio "estado" actualizarlo
+        if(estado){
+            await UserModel.findByIdAndUpdate(user._id, { estado });
+        }
+
+//      Si se envio imagen
+        if(files){
+//          Obtener el key "foto" en las imagenes                
+            const { foto } = files;
+
+//          Si encuentra la foto
+            if(foto){
+//              Almacenarla con cloudinary en la carpeta "users"
+                const result = await cloudinary.uploader.upload(foto.tempFilePath, {
+                    folder: 'Users',
+                    resource_type: 'auto',
+                    public_id: user._id,
+                    overwrite: true,
+                    width: 250,
+                    height: 250,
+                    crop: 'thumb'
+                });
+
+//              Eliminar el archivo temporal
+                fs.rmSync(foto.tempFilePath);
+
+//              Actualizar el usuario con la imagen
+                await UserModel.findByIdAndUpdate(user._id, { 
+                    foto: result.secure_url
+                });
+            }
+        }
+//      Obtener el usuario actualizado
+        const updatedUser = await UserModel.findByIdAndUpdate(user._id);
+
+//      Generar JWT
+        const token = jwt.sign({user: updatedUser}, process.env.JWT_SECRET, { expiresIn: '1y' });
+        
+//      Formatear usuario para la respuesta
+        const respUser = {
+            nombre: updatedUser.nombre,
+            apellido: updatedUser.apellido,
+            correo: updatedUser.correo,
+            estado: updatedUser.estado,
+            foto: updatedUser.foto
+        }
+    
+//      Enviar respuesta
+        res.send({token, user: respUser});
     }catch(err){
         next(err);
     }
@@ -137,6 +284,7 @@ controller.forgot = async(req, res, next) => {
 //      Enviar email
         await mailer.sendMail(correo, "Recuperar cuenta", `Tu código para recuperar tu cuenta es [ ${randCode} ]. NOTA: El codigo es valido por una hora`);
 
+//      Enviar respuesta
         res.send('Exito!')
         
     }catch(err){
@@ -144,6 +292,7 @@ controller.forgot = async(req, res, next) => {
     }
 }
 
+/* Recuperar contraseña - Obtener codigo */
 controller.forgotCode = async(req, res, next) => {
     try{
 //      Obtener los params del body        
@@ -171,10 +320,42 @@ controller.forgotCode = async(req, res, next) => {
         const updatedUser = await UserModel.findById(user._id);
 
 //      Generar JWT
-        const token = jwt.sign({updatedUser}, process.env.JWT_SECRET, { expiresIn: '1y' });
+        const token = jwt.sign({user: updatedUser}, process.env.JWT_SECRET, { expiresIn: '1y' });
+
+//      Formatear usuario para la respuesta
+        const respUser = {
+            nombre: updatedUser.nombre,
+            apellido: updatedUser.apellido,
+            correo: updatedUser.correo,
+            estado: updatedUser.estado,
+            foto: updatedUser.foto
+        }
 
 //      Enviar respuesta
-        res.send({token});
+        res.send({token, user: respUser});
+    }catch(err){
+        next(err);
+    }
+}
+
+/* Recuperar contraseña - Reenviar código */
+controller.forgotResend = async(req, res, next) => {
+    try{
+//      Obtener los params del body        
+        const { correo } = req.body;
+        if(!correo) throw new UncompleteFieldsError(["correo"]);
+
+//      Obtener el preUser para adquirir el codigo
+        const user = await preUserModel.findOne({correo});
+        if(!user) return res.status(400).send("Correo no valido, puede que no haya una cuenta asociada con el correo electronico");
+
+
+//      Enviar email
+    await mailer.sendMail(correo, "Recuperar cuenta", `Tu código para recuperar tu cuenta es [ ${user.code} ]. NOTA: El codigo es valido por una hora`);
+
+//      Enviar respuesta
+    res.send('Exito!')
+
     }catch(err){
         next(err);
     }

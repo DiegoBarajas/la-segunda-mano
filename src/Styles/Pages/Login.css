@@ -24,6 +24,26 @@
     filter: brightness(0.85);
 }
 
+.link-signin-code {
+    margin-top: 10px;
+}
+
+.link-disabled {
+    filter: brightness(0.5);
+    cursor: not-allowed;
+}
+
+.link-disabled:hover {
+    filter: brightness(0.5);
+}
+
+.p-description-code {
+    text-align: justify;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    width: 75%;
+}
+
 @media (max-width: 870px){
     .logo-login {
         width: 50%;

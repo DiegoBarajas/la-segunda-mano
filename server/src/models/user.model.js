@@ -7,7 +7,7 @@ const userSchema = new Schema({
     contraseña: { type: String, required: true },
 
     estado: { type: String, default: null, required: false },
-    foto: { type: Buffer, default: null, required: false },
+    foto: { type: String, default: null, required: false },
 },{
     timestapms: true
 });

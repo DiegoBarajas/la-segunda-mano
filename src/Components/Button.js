@@ -1,12 +1,12 @@
 import React from 'react';
 import '../Styles/Components/Button.css';
 
-const Button = ({children, title, type='button', width='auto', horizontal=false, icon=null, color='mint', iconSize='30px', mb='5px', disabled=false, onClick }) => {
+const Button = ({children, className, title, type='button', width='auto', horizontal=false, icon=null, color='mint', iconSize='30px', mb='5px', disabled=false, onClick }) => {
     return (
         <button
             title={title}
             style={{ width: width, marginBottom: mb }}
-            className={`button ${color} ${horizontal ? 'horizontal' : ''} ${disabled ? 'btn-disabled' : ''}`}
+            className={`button ${color} ${horizontal ? 'horizontal' : ''} ${disabled ? 'btn-disabled' : ''} ${className}`}
             type={type}
             onClick={
                 disabled 

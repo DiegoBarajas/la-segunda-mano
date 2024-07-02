@@ -1,0 +1,11 @@
+@import url(../../index.css);
+
+.h1-page-not-found {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.link-page-not-found {
+    margin-top: 20px;
+    text-decoration: none;
+}
