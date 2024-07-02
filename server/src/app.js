@@ -1,6 +1,5 @@
 const express = require('express');
 const cloudinary = require('cloudinary').v2;
-const path = require('path');
 const cors = require('cors');
 const app = express();
 require('dotenv').config();
@@ -28,19 +27,14 @@ app.use(expressFileUpload(
 );
 app.use(petitionHandler);
 
-// Servir los archivos estáticos de la carpeta build de React
-app.use(express.static(path.join(__dirname, '../../build')));
 
 // Routing
-app.get('/api', (req, res) => res.send('Hola Mundo') );
+app.get('/', (req, res) => res.send('Hola Mundo') );
 
 app.use('/api/login', require('./routes/login.route'));
 app.use('/api/user', require('./routes/user.route'));
 
-// app.use('*', notFoundhandler);
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../build', 'index.html'));
-});
+app.use('*', notFoundhandler);
 
 // Middleware para manejo de errores
 app.use(errorHandler);

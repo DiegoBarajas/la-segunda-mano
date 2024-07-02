@@ -14,7 +14,7 @@ import Input from '../Components/Input'
 import PasswordSvg from '../Assets/Icons/password.svg'
 import RepeatSvg from '../Assets/Icons/repeat.svg'
 
-import constants from '../constants.json'
+import backend from '../backend';
 import '../Styles/Pages/Login.css'
 
 const useEmail = () => {
@@ -91,7 +91,7 @@ const ForgotCode = () => {
         setDisabled(true);
 
         try{
-            const response = await axios.patch(`${constants.backend}/api/login/forgot`, {
+            const response = await axios.patch(`${backend}/api/login/forgot`, {
                 correo: email,
                 codigo: code,
                 contraseña: contraseña
@@ -127,7 +127,7 @@ const ForgotCode = () => {
         if(!isActive) return;
 
         try{
-            const response = await axios.post(`${constants.backend}/api/login/forgot/resend`, {
+            const response = await axios.post(`${backend}/api/login/forgot/resend`, {
                 correo: email
             });
 

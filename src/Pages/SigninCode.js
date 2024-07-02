@@ -11,7 +11,7 @@ import Modals from '../Modals';
 import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
 
-import constants from '../constants.json'
+import backend from '../backend';
 
 const useEmail = () => {
     const query = new URLSearchParams(useLocation().search)
@@ -71,7 +71,7 @@ const SigninCode = () => {
         setDisabled(true);
 
         try{
-            const response = await axios.patch(`${constants.backend}/api/login/signin`, {
+            const response = await axios.patch(`${backend}/api/login/signin`, {
                 correo: email,
                 codigo: code
             });
@@ -107,7 +107,7 @@ const SigninCode = () => {
 
         startCountdown();
         try{
-            const response = await axios.post(`${constants.backend}/api/login/signin/resend`, {
+            const response = await axios.post(`${backend}/api/login/signin/resend`, {
                 correo: email
             });
 

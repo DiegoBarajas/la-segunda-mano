@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import constants from '../constants.json';
 import modals from '../Modals';
 import LoadingPage from '../Pages/LoadingPage';
+
+import backend from '../backend';
 
 
 const LoggedRoute = ({ children }) => {
@@ -19,7 +20,7 @@ const LoggedRoute = ({ children }) => {
 
             try {
 
-                const response = await axios.get(`${constants.backend}/api/user`, {
+                const response = await axios.get(`${backend}/api/user`, {
                     headers: {
                       Authorization: token
                     }

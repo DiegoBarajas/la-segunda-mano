@@ -11,7 +11,7 @@ import Input from '../Components/Input'
 import modals from '../Modals'
 import axios from 'axios'
 
-import constants from '../constants.json'
+import backend from '../backend';
 
 const useEmail = () => {
     const query = new URLSearchParams(useLocation().search)
@@ -33,7 +33,7 @@ const Forgot = () => {
 
         setDisabled(true);
         try{
-            const response = await axios.post(`${constants.backend}/api/login/forgot`, {correo: email});
+            await axios.post(`${backend}/api/login/forgot`, {correo: email});
             
             //localStorage.setItem('token', response.data.token);
             setRedirect(`/forgot/code?email=${email}`);

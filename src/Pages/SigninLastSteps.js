@@ -10,11 +10,13 @@ import InputFile from '../Components/InputFile'
 import imageSvg from '../Assets/Icons/image.svg'
 import stateSvg from '../Assets/Icons/state.svg'
 
-import constants from '../constants.json'
 import '../Styles/Pages/Login.css'
 import CutImage from '../Components/CutImage'
 import axios from 'axios'
 import modals from '../Modals'
+
+import constants from '../constants.json'
+import backend from '../backend';
 
 const SigninLastSteps = () => {
     const token = localStorage.getItem('token');
@@ -43,7 +45,7 @@ const SigninLastSteps = () => {
         try {
             setDisabled(true);
 
-            const response = await axios.patch(`${constants.backend}/api/login/signin/last`, formData, {
+            const response = await axios.patch(`${backend}/api/login/signin/last`, formData, {
                 headers: {
                   Authorization: token
                 }

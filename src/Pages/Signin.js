@@ -16,7 +16,7 @@ import EmailSvg from '../Assets/Icons/email.svg'
 import PasswordSvg from '../Assets/Icons/password.svg'
 import RepeatSvg from '../Assets/Icons/repeat.svg'
 
-import constants from '../constants.json'
+import backend from '../backend';
 
 const Signin = () => {
     const [ redirect, setRedirect ] = useState(null);
@@ -40,7 +40,7 @@ const Signin = () => {
         
         setDisabled(true);
         try{
-            const response = await axios.post(`${constants.backend}/api/login/signin`, formData);
+            const response = await axios.post(`${backend}/api/login/signin`, formData);
             
             //localStorage.setItem('token', response.data.token);
             setRedirect(`/signin/code?email=${formData.correo}`);

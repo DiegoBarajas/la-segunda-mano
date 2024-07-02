@@ -14,7 +14,7 @@ import axios from 'axios'
 import EmailSvg from '../Assets/Icons/email.svg'
 import PasswordSvg from '../Assets/Icons/password.svg'
 
-import constants from '../constants.json';
+import backend from '../backend';
 
 const Login = () => {
     const [ redirect, setRedirect ] = useState(null);
@@ -34,7 +34,7 @@ const Login = () => {
         setDisabled(true);
 
         try{
-            const response = await axios.post(`${constants.backend}/api/login`, { correo: email, contraseña: password });
+            const response = await axios.post(`${backend}/api/login`, { correo: email, contraseña: password });
             
             Modals.toast('Iniciaste sesión!', 'success');
             localStorage.setItem('token', response.data.token);
