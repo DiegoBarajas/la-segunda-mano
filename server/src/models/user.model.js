@@ -8,6 +8,8 @@ const userSchema = new Schema({
 
     estado: { type: String, default: null, required: false },
     foto: { type: String, default: null, required: false },
+    
+    active: { type: Boolean, default: true, required: true }
 },{
     timestapms: true
 });

@@ -288,7 +288,6 @@ controller.forgot = async(req, res, next) => {
 
 //      Enviar respuesta
         res.send('Exito!')
-        
     }catch(err){
         next(err);
     }
@@ -351,13 +350,11 @@ controller.forgotResend = async(req, res, next) => {
         const user = await preUserModel.findOne({correo});
         if(!user) return res.status(400).send("Correo no valido, puede que no haya una cuenta asociada con el correo electronico");
 
-
 //      Enviar email
         await mailer.sendMailTemplate(correo, "Recuperar cuenta", 'forgot', { codigo: user.code });
 
 //      Enviar respuesta
-    res.send('Exito!')
-
+        res.send('Exito!')
     }catch(err){
         next(err);
     }

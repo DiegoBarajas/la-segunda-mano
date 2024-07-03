@@ -73,9 +73,13 @@ class Mailer{
 module.exports = new Mailer();
 
 function useTemplate(template, json){
-    const content = fs.readFileSync(`${__dirname}/templates/${template}.html`, 'utf8');
+    try {
+        const content = fs.readFileSync(`${__dirname}/templates/${template}.html`, 'utf8');
 
-    return content.replace(/%\{\s*(\w+)\s*}%/g, (match, variable) => {
-        return json[variable] || match;
-    });
+        return content.replace(/%\{\s*(\w+)\s*}%/g, (match, variable) => {
+            return json[variable] || match;
+        });
+    }catch(err){
+        return new MailerError(`Plantilla "${template}" no encontrada.`);
+    }
 }
