@@ -95,7 +95,8 @@ controller.signin = async(req, res, next) => {
         await PreUserModel.findOneAndReplace({ correo }, newUser, { new: true, upsert: true });
 
 //      Enviar email
-        await mailer.sendMail(correo, "Crear cuenta", `Tu código para crear tu cuenta es [ ${randCode} ]. NOTA: El codigo es valido por una hora`);
+        await mailer.sendMailTemplate(correo, "Crear cuenta", 'sign', { codigo: randCode });
+        
         
 //      Enviar respuesta
         res.send('Exito!');
@@ -160,7 +161,7 @@ controller.signinResend = async(req, res, next) => {
         if(!user) return res.status(400).send("Correo no valido, código caducado. Vuelve a iniciar el proceso de crear cuenta por favor.");
         
 //      Enviar email
-        await mailer.sendMail(correo, "Crear cuenta", `Tu código para crear tu cuenta es [ ${user.code} ]. NOTA: El codigo es valido por una hora`);
+        await mailer.sendMailTemplate(correo, "Crear cuenta", 'sign', { codigo: user.code });
 
 //      Enviar respuesta
         res.send('Exito!')
@@ -282,7 +283,8 @@ controller.forgot = async(req, res, next) => {
         await PreUserModel.findOneAndReplace({ correo }, newPreUser, { new: true, upsert: true });
 
 //      Enviar email
-        await mailer.sendMail(correo, "Recuperar cuenta", `Tu código para recuperar tu cuenta es [ ${randCode} ]. NOTA: El codigo es valido por una hora`);
+        await mailer.sendMailTemplate(correo, "Recuperar cuenta", 'forgot', { codigo: randCode });
+
 
 //      Enviar respuesta
         res.send('Exito!')
@@ -351,7 +353,7 @@ controller.forgotResend = async(req, res, next) => {
 
 
 //      Enviar email
-    await mailer.sendMail(correo, "Recuperar cuenta", `Tu código para recuperar tu cuenta es [ ${user.code} ]. NOTA: El codigo es valido por una hora`);
+        await mailer.sendMailTemplate(correo, "Recuperar cuenta", 'forgot', { codigo: user.code });
 
 //      Enviar respuesta
     res.send('Exito!')

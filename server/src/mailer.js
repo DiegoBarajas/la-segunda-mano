@@ -2,6 +2,7 @@ const MailerError = require('./errors/MailerError');
 const nodemailer = require('nodemailer');
 const moment = require('moment-timezone');
 const colors = require('colors/safe');
+const fs = require('fs');
 require('dotenv').config();
 
 class Mailer{
@@ -42,6 +43,39 @@ class Mailer{
             throw new MailerError('Error al enviar el correo');
         }
     }
+
+    async sendMailTemplate(to, subject, template, data){
+        try{
+            let requestTime = moment().tz('America/Mexico_City').format('DD-MM-YYYY HH:mm:ss');
+            console.log(colors.blue(`${requestTime}    [ EMAIL ] Enviando correo electronico`));
+
+            const info = await this.#transporter.sendMail({
+                from:`No-Contestar <${process.env.USER_EMAIL}>`,
+                to,
+                subject,
+                html: useTemplate(template, data),
+            });
+
+            requestTime = moment().tz('America/Mexico_City').format('DD-MM-YYYY HH:mm:ss');
+            console.log(colors.blue(`${requestTime}    [ EMAIL ] Correo electronico enviado exitosamente`));
+            return info;
+
+        }catch(err){
+            const requestTime = moment().tz('America/Mexico_City').format('DD-MM-YYYY HH:mm:ss');
+            console.log(colors.red(`${requestTime}    [ EMAIL ] Error al enviar el correo:`));
+            console.error(colors.red(err));
+            
+            throw new MailerError('Error al enviar el correo');
+        }
+    }
 }
 
 module.exports = new Mailer();
+
+function useTemplate(template, json){
+    const content = fs.readFileSync(`${__dirname}/templates/${template}.html`, 'utf8');
+
+    return content.replace(/%\{\s*(\w+)\s*}%/g, (match, variable) => {
+        return json[variable] || match;
+    });
+}
