@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PageLayout from '../Layouts/PageLayout'
 import Logo from '../Components/Logo'
 import ContentLayout from '../Layouts/ContentLayout'
@@ -36,6 +36,8 @@ const SigninLastSteps = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
+        if(disabled) return;
+
         const estadoSelect = document.querySelector('#estado-select');
 
         const formData = new FormData();

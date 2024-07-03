@@ -7,5 +7,4 @@ const { getUser } = require('../controllers/user.controller');
 router.route('/')
     .get(authHandler, getUser)
 
-
 module.exports = router;

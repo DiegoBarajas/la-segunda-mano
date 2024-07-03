@@ -60,6 +60,15 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    gap: 5px;
+}
+
+.label-input-file p {
+    width: 95%;
+    display: block;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
 .icon-input-file{
