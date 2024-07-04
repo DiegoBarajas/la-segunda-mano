@@ -15,6 +15,8 @@ import PageNotFound from './Pages/PageNotFound';
 import SigninLastSteps from './Pages/SigninLastSteps';
 import Forgot from './Pages/Forgot';
 import ForgotCode from './Pages/ForgotCode';
+import CreateAnnouncement1 from './Pages/CreateAnnouncement1';
+import ShouldLogin from './Components/ShouldLogin';
 
 const App = () => {
     return (
@@ -25,12 +27,11 @@ const App = () => {
 				<Route path='/forgot' element={<UnloggedRoute> <Forgot/> </UnloggedRoute>} />
 				<Route path='/forgot/code' element={<UnloggedRoute> <ForgotCode/> </UnloggedRoute>} />
 
-
 				<Route path='/signin' element={<UnloggedRoute> <Signin/> </UnloggedRoute>} />
 				<Route path='/signin/code' element={<UnloggedRoute> <SigninCode/> </UnloggedRoute>} />
 
 				<Route path='/signin/last' element={<LoggedRoute> <SigninLastSteps/> </LoggedRoute>} />
-
+				<Route path='/vender' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement1/> </LoggedRoute>} />
 
 				<Route path='/logout' element={ <Logout/> } />
 				<Route path='/perfil' element={ <LoggedRoute> <Profile/> </LoggedRoute> } />

@@ -1,5 +1,6 @@
 const express = require('express');
 const cloudinary = require('cloudinary').v2;
+const helmet = require('helmet');
 const cors = require('cors');
 const app = express();
 require('dotenv').config();
@@ -21,6 +22,7 @@ cloudinary.config({
 
 // Middlewares
 app.use(express.json());
+app.use(helmet())
 app.use(cors());
 app.use(expressFileUpload(
     { useTempFiles: true, limits: {fileSize: 50 * 2024 * 1024} })

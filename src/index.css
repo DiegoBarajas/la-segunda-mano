@@ -26,6 +26,19 @@ body {
     background-color: var(--backgound);
 }
 
+a {
+    color: var(--mint);
+    cursor: pointer;
+    transition: all 0s ease;
+}
+
+a:visited {
+    color: var(--mint);
+}
+
+a:hover {
+    filter: brightness(0.9);
+}
 
 /* Generics */
 .none {

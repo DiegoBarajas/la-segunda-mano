@@ -304,5 +304,6 @@
             "text": "Precio (Mas caro primero)",
             "value": "price:desc"
         }
-    ]    
+    ],
+    "pasosCrearAnuncio": ["Tipo", "Datos generales", "Caracteristicas", "Contacto y entrega"]
 }

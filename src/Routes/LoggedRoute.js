@@ -7,7 +7,7 @@ import LoadingPage from '../Pages/LoadingPage';
 import backend from '../backend';
 
 
-const LoggedRoute = ({ children }) => {
+const LoggedRoute = ({ children,  to='/', notLoggedElement=null }) => {
     const token = localStorage.getItem('token');
 
     const [ response, setResponse ] = useState(null);
@@ -16,7 +16,7 @@ const LoggedRoute = ({ children }) => {
     useEffect(() => {
         const getUser = async() => {
 
-            if(!token) return setRedirect('/');
+            if(!token) return setRedirect(to);
 
             try {
 
@@ -53,7 +53,9 @@ const LoggedRoute = ({ children }) => {
     }, [])
 
     return redirect 
-        ? <Navigate to={redirect}/> 
+        ? notLoggedElement ?
+            notLoggedElement
+            : <Navigate to={redirect}/> 
         : response
             ? children
             : <LoadingPage>Validando sesión, espere un momento...</LoadingPage>

@@ -92,7 +92,7 @@ const Navbar = () => {
                                 >Mis favoritos</ItemNavbar>
 
                                 <ItemNavbar 
-                                    to='/'
+                                    to='/vender'
                                     icon={sellSvg} 
                                     title='Quiero publicar producto, servicio, vehiculo o inmueble'
                                         direction={isMenuOpen ? 'vertical' : 'horizontal'}
@@ -128,7 +128,7 @@ const Navbar = () => {
                             >Categorias</ItemNavbar>      
 
                             <ItemNavbar 
-                                to='/'
+                                to='/vender'
                                 icon={sellSvg} 
                                 title='Quiero publicar producto, servicio, vehiculo o inmueble'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
@@ -151,7 +151,7 @@ const Navbar = () => {
                         
                         : <>
                             <ItemNavbar 
-                                to='/'
+                                to='/vender'
                                 icon={sellSvg} 
                                 title='Quiero publicar producto, servicio, vehiculo o inmueble'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
@@ -222,7 +222,7 @@ const Navbar = () => {
                             >Mis favoritos</ItemNavbar>
 
                             <ItemNavbar 
-                                to='/'
+                                to='/vender'
                                 icon={sellSvg} 
                                 title='Quiero publicar producto, servicio, vehiculo o inmueble'
                                 direction={'vertical'}

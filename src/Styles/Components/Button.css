@@ -77,3 +77,31 @@
 .horizontal {
     flex-direction: row;
 }
+
+/* TextButton */
+.text-button {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 16px;
+    color: var(--mint);
+    cursor: pointer;
+
+    transition: all 0s ease;
+}
+
+.text-button:hover {
+    filter: brightness(0.90);
+}
+
+.text-button-disabled {
+    cursor: not-allowed;
+    filter: brightness(40%);
+}
+
+.text-button-disabled:hover {
+    filter: brightness(40%);
+}
