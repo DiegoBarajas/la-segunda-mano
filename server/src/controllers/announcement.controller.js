@@ -33,8 +33,11 @@ controller.createAnnouncement = async(req, res, next) => {
 
 //      Obtener el campo de las imagenes de los files
         const imagenesFiles = files['imagenes'];
-//      Recorrer con un map para almacenar en cloudinary todas las imagenes 
-        const imagenesPromises = imagenesFiles.map(async(img) => {
+
+//      Si es array se hara un map
+        if(Array.isArray(imagenesFiles)){
+//          Recorrer con un map para almacenar en cloudinary todas las imagenes 
+            const imagenesPromises = imagenesFiles.map(async(img) => {
             const result = await cloudinary.uploader.upload(img.tempFilePath, {
                 folder: newAnnouncement._id,
                 resource_type: 'auto',
@@ -45,12 +48,27 @@ controller.createAnnouncement = async(req, res, next) => {
                 crop: 'thumb'
             });
 
+            fs.unlinkSync(img.tempFilePath);
             return(result.secure_url);
         })
 
-//      Obtener la respuesta post-promesa de el map anterior
-        const imagenes = await Promise.all(imagenesPromises);
-        newAnnouncement.imagenes = imagenes; // Almacenar ese array en el modelo
+//          Obtener la respuesta post-promesa de el map anterior
+            const imagenes = await Promise.all(imagenesPromises);
+            newAnnouncement.imagenes = imagenes; // Almacenar ese array en el modelo
+        }else{
+            const result = await cloudinary.uploader.upload(imagenesFiles.tempFilePath, {
+                folder: newAnnouncement._id,
+                resource_type: 'auto',
+                public_id: imagenesFiles.name,
+                overwrite: true,
+                width: 500,
+                height: 500,
+                crop: 'thumb'
+            });
+
+            fs.unlinkSync(imagenesFiles.tempFilePath);
+            newAnnouncement.imagenes = [ result.secure_url ];
+        }
 
 //      Guardar el modelo en la db
         await newAnnouncement.save();

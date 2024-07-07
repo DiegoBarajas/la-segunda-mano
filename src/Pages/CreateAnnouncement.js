@@ -20,6 +20,13 @@ import '../Styles/Pages/CreateAnnouncement.css';
 const CreateAnnouncement = () => {
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [true]);
+
+    useEffect(() => {
         return localStorage.setItem('popupWarnActive', true);
     }, [true]);
 

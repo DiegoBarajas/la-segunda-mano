@@ -168,6 +168,7 @@ const GeneralProducto = ({callBack, formData, setFormData}) => {
                     auxText="Descripción breve de tu artuculo"
                     mb='40px'
                     textArea
+                    required
                 />
                 
                 <section className='buttons-create-ann'>

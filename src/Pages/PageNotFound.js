@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PageLayout from '../Layouts/PageLayout'
 import ContentLayout from '../Layouts/ContentLayout'
 import { Link } from 'react-router-dom'
@@ -7,6 +7,14 @@ import Button from '../Components/Button'
 import '../Styles/Pages/PageNotFound.css'
 
 const PageNotFound = () => {
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [true]);
+
     return (
         <PageLayout>
             <ContentLayout horizontalAlign='center'>
