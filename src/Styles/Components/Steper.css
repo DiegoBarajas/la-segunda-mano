@@ -47,7 +47,7 @@
     line-height: 11.5px;
 
     position: absolute;
-    margin-top: 100%;
+    margin-top: calc(100% + 5px);
 }
 
 .current-step-item .step-number{

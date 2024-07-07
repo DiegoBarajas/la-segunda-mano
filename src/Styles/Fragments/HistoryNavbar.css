@@ -41,7 +41,7 @@
     gap: 3px;
     padding: 10px 7.5px;
     text-decoration: none;
-    color: black;
+    color: black !important;
 
     cursor: pointer;
 }

@@ -24,6 +24,38 @@
     width: min(1600px, 87%);
 }
 
+.accordion-content-layout {
+    padding: 30px 40px !important;
+}
+
+.accordion-content-layout-closed {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.accordion-content-layout-open {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+
+    cursor: pointer;
+}
+
+.image-arrow-accordion {
+    transition: all .2s ease-out;
+}
+
+.icon-rotated {
+    transform: rotate(180deg);
+}
+
+
 @media (max-width: 870px){
     .content-layout {
         width: min(1250px, 92%);

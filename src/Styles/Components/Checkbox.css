@@ -1,0 +1,27 @@
+@import url(../../index.css);
+
+.checkbox {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 12px;
+}
+
+.input-checkbox {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    cursor: pointer;
+}
+
+.checkbox label {
+    cursor: pointer;
+}
+
+.input-checkbox:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}

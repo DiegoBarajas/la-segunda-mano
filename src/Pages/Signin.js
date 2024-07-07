@@ -40,8 +40,10 @@ const Signin = () => {
         
         setDisabled(true);
         try{
+            const modal = Modals.petitionAlert("Enviando código", "Espere un momento...", 'info');
             const response = await axios.post(`${backend}/api/login/signin`, formData);
             
+            modal.close();
             //localStorage.setItem('token', response.data.token);
             setRedirect(`/signin/code?email=${formData.correo}`);
         }catch(err){

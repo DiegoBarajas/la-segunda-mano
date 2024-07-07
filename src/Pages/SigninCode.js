@@ -71,10 +71,13 @@ const SigninCode = () => {
         setDisabled(true);
 
         try{
+            const modal = Modals.petitionAlert("Creando cuenta", "Espere un momento...", 'info');
             const response = await axios.patch(`${backend}/api/login/signin`, {
                 correo: email,
                 codigo: code
             });
+
+            modal.close();
 
             Modals.toast('Cuenta creada con exito!');
             

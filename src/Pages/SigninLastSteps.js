@@ -46,12 +46,13 @@ const SigninLastSteps = () => {
 
         try {
             setDisabled(true);
-
+            const modal = modals.petitionAlert("Actualizando información", "Espere un momento...", 'info');
             const response = await axios.patch(`${backend}/api/login/signin/last`, formData, {
                 headers: {
                   Authorization: token
                 }
             });
+            modal.close();
 
             modals.toast('Información actualizada con exito!');
             

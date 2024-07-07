@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import PopupWarningCreateAnn from '../Fragments/PopupWarningCreateAnn';
 import PopupSaberTipoAnn from '../Fragments/PopupSaberTipoAnn';
 import HeadCreateAnn from '../Fragments/HeadCreateAnn';
 import ContentLayout from '../Layouts/ContentLayout'
@@ -15,14 +16,16 @@ import gratisSvg from '../Assets/Icons/gratis.svg'
 import carSvg from '../Assets/Icons/car.svg'
 
 import '../Styles/Pages/CreateAnnouncement.css';
-import PopupWarningCreateAnn from '../Fragments/PopupWarningCreateAnn';
 
-const CreateAnnouncement1 = () => {
+const CreateAnnouncement = () => {
+
+    useEffect(() => {
+        return localStorage.setItem('popupWarnActive', true);
+    }, [true]);
 
     const [ redirect, setRedirect ] = useState(null);
-    const [ popupWarnActive, setPopupWarnActive ] = useState(true);
+    const [ popupWarnActive, setPopupWarnActive ] = useState(!localStorage.getItem('popupWarnActive'));
     const [ popupActive, setPopupActive ] = useState(false);
-
 
     return (
         <PageLayout footer={false}>
@@ -88,4 +91,4 @@ const CreateAnnouncement1 = () => {
     )
 }
 
-export default CreateAnnouncement1
+export default CreateAnnouncement

@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import '../Styles/Components/Input.css'
 import Button from './Button'
 
 import removeFileSvg from '../Assets/Icons/removeFile.svg'
 
-const InputFile = ({ children, id, className, title, name, accept, width, mb, label, icon, selectedFile=null, multiple=false, required=false, onChange, onQuitFile }) => {
+const InputFile = ({ children, id, className, title, name, accept, width, mb, label, icon, selectedFile=null, auxText, multiple=false, required=false, onChange, onQuitFile }) => {
+    
+    const afterTextElement = useRef(null);
+
     return selectedFile
         ? (
             <section className={`input-container ${className}`} style={{ width: width, marginBottom: mb }} title={title}>
                 <label htmlFor={id}><b>{label}{required ? <span className='required'>*</span> : ""}</b></label>
                 <label htmlFor={id} className='label-input-file label-input-file-vertical'>
                     <p>{children}</p>
-
                     {
                         <img className='image-input-file' src={ URL.createObjectURL(selectedFile) } alt='Imagen'/>
                     }
@@ -26,7 +28,9 @@ const InputFile = ({ children, id, className, title, name, accept, width, mb, la
                     className='none'
                     onChange={onChange}
                 />
-                <Button icon={removeFileSvg} horizontal className='btn-quit-file' color='red' onClick={onQuitFile}>Quitar archivo</Button>
+                <p ref={afterTextElement} className='input-aux-text'>{auxText}</p>
+
+                { multiple ? <></> : <Button icon={removeFileSvg} horizontal className='btn-quit-file' color='red' onClick={onQuitFile}>Quitar imagen</Button> }
             </section>
         )
         : (
@@ -48,6 +52,7 @@ const InputFile = ({ children, id, className, title, name, accept, width, mb, la
                     className='none'
                     onChange={onChange}
                 />
+                <p ref={afterTextElement} className='input-aux-text'>{auxText}</p>
             </section>
         )
 }

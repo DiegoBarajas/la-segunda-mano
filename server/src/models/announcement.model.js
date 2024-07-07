@@ -2,102 +2,98 @@ const { Schema, model } = require('mongoose');
 
 const announcementSchema = new Schema({
     
-    userId: { 
+    userId: { //
         type: Schema.Types.ObjectId, 
         rel: "User", 
         required: true 
     }, 
-    titulo: { 
+    titulo: { //
         type: String, 
         required: true 
     },
-    precio: { 
+    precio: { //
         type: Number, 
         min: [1, "El precio debe de ser entero"] ,
         required: true
     }, 
-    descripcion: { 
+    descripcion: { //
         type: String, 
         required: true 
     }, 
-    tipoAnuncio: { 
+    tipoAnuncio: { //
         type: String, 
         required: true,
         enum: ["producto", "vehiculo", "inmueble"], 
     }, 
-    categoria: { 
+    categoria: { //
         type: String, 
-        enum: [], 
         required: true 
     },
-    imagenes: {
+    imagenes: { //
         type: [String],
-        validate: [5, '{PATH} excede el liminte de 5'],
         required: true
     },
 
 
     caracteristicas: { 
         // Principales
-        uso: { type: String, required: true },
-        ciudad: { type: String, required: true },
-        estado: { type: String, required: true },
-        cantidad: { 
+        uso: { type: String, required: true },//
+        ciudad: { type: String, required: true },//
+        estado: { type: String, required: true },//
+        cantidad: { //
             type: Number, 
             min: [1, "La cantidad debe ser mayor a 1"], 
             default: 1, 
             required: true
         },
-        marca: { type: String, default: null, required: false },
-        modelo: { type: String, default: null, required: false },
-        color: { type: String, default: null, required: false },
-        tipo: { type: String, default: null, required: false },
+        marca: { type: String, default: null, required: false },//
+        modelo: { type: String, default: null, required: false },//
+        color: { type: String, default: null, required: false },//
+        tipo: { type: String, default: null, required: false },//
 
         // Alimentos y bebidas
-        fechaCaducidad: { type: String, default: null, required: false },
-        ingredientes: { type: String, default: null, required: false },
+        fechaCaducidad: { type: String, default: null, required: false },//
+        ingredientes: { type: String, default: null, required: false },//
 
         // Autopartes
-        vehiculo: { type: String, default: null, required: false },
+        vehiculo: { type: String, default: null, required: false },//
 
         // Computación y telefonía
-        cpu: { type: String, default: null, required: false },
-        ram: { type: String, default: null, required: false },
-        almacenamiento: { type: String, default: null, required: false },
-        bateria: { type: String, default: null, required: false },
-        sistemaOperativo: { type: String, default: null, required: false },
-        conectividad: { type: String, default: null, required: false },
-        tamañoPantalla: { type: String, default: null, required: false },
+        cpu: { type: String, default: null, required: false },//
+        ram: { type: String, default: null, required: false },//
+        almacenamiento: { type: String, default: null, required: false },//
+        bateria: { type: String, default: null, required: false },//
+        sistemaOperativo: { type: String, default: null, required: false },//
+        conectividad: { type: String, default: null, required: false },//
+        tamañoPantalla: { type: String, default: null, required: false },//
 
         // Libros, películas y música
-        autor: { type: String, default: null, required: false },
-        editorial: { type: String, default: null, required: false },
-        director: { type: String, default: null, required: false },
-        artista: { type: String, default: null, required: false },
-        genero: { type: String, default: null, required: false },
-        idioma: { type: String, default: null, required: false },
-        duracion: { type: String, default: null, required: false },
+        autor: { type: String, default: null, required: false },//
+        editorial: { type: String, default: null, required: false },//
+        director: { type: String, default: null, required: false },//
+        artista: { type: String, default: null, required: false },//
+        genero: { type: String, default: null, required: false },//
+        idioma: { type: String, default: null, required: false },//
+        duracion: { type: String, default: null, required: false },//
 
         // Ropa y calzado
-        talla: { type: String, default: null, required: false },
-        sexo: { type: String, default: null, required: false },
-        material: { type: String, default: null, required: false },
-        tipoPrenda: { type: String, default: null, required: false },
+        talla: { type: String, default: null, required: false },//
+        sexo: { type: String, default: null, required: false },//
+        material: { type: String, default: null, required: false },//
 
         // TV y pantallas
-        resolucion: { type: String, default: null, required: false },
-        tamañoPulgadas: { type: String, default: null, required: false },
-        tipoPantalla: { type: String, default: null, required: false },
-        smartTV: { type: Boolean, default: null, required: false },
-        conectividad: { type: String, default: null, required: false },
+        resolucion: { type: String, default: null, required: false },//
+        tamañoPulgadas: { type: String, default: null, required: false },//
+        smartTV: { type: Boolean, default: null, required: false },//
+        conectividad: { type: String, default: null, required: false },//
 
         // Vehiculo
-        año: { type: Number, required: true },
+        año: { type: Number, required: false },
         kilometraje: { type: Number, default: null, required: false },
         deudas: { type: Boolean, default: null, required: false },
 
         // Inmuebles
-        rentaOVenta: { type: String, enum: ['renta', 'venta'], required: true },
+        rentaOVenta: { type: String, enum: ['renta', 'venta'], required: false },
         superficie: { type: Number, default: null, required: false },
         colonia: { type: String, default: null, required: false },
         cp: { type: Number, default: null, required: false },
@@ -129,8 +125,8 @@ const announcementSchema = new Schema({
     },
 
     // Fechas
-    fechaCreacion: { type: Date, required: true },
-    fechaExpiracion: { type: Date, required: true },
+    fechaCreacion: { type: String, required: true },
+    fechaExpiracion: { type: String, required: true },
 },{
     timestapms: true
 });

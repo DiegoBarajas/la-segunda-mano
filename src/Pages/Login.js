@@ -34,7 +34,10 @@ const Login = () => {
         setDisabled(true);
 
         try{
+            const modal = Modals.petitionAlert("Iniciando sesión", "Espere un momento...", 'info');
             const response = await axios.post(`${backend}/api/login`, { correo: email, contraseña: password });
+
+            modal.close();
             
             Modals.toast('Iniciaste sesión!', 'success');
             localStorage.setItem('token', response.data.token);

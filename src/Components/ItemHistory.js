@@ -1,8 +1,9 @@
 import React from 'react'
-import '../Styles/Fragments/HistoryNavbar.css'
+import { Link } from 'react-router-dom'
 
 import historySvg from '../Assets/Icons/history.svg'
-import { Link } from 'react-router-dom'
+
+import '../Styles/Fragments/HistoryNavbar.css'
 
 const ItemHistory = ({ children }) => {
 

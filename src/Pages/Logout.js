@@ -7,6 +7,7 @@ const Logout = () => {
 
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    localStorage.removeItem('popupWarnActive')
 
     useEffect(() => {
         if(!salio){

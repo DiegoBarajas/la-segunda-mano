@@ -1,8 +1,8 @@
 import React from 'react'
-import '../Styles/Layouts/ContentLayout.css'
 import { Navigate } from 'react-router-dom'
+import '../Styles/Layouts/ContentLayout.css'
 
-const ContentLayout = ({children, id, className, complete=false, size="regular", verticalAlign='start', horizontalAlign='start', redirect=null, onSubmit}) => {    
+const ContentLayout = ({children, id, className, complete=false, size="regular", verticalAlign='start', horizontalAlign='start', redirect=null}) => {    
       return (
             <section 
                 id={id}

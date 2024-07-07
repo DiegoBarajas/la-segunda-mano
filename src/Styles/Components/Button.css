@@ -13,6 +13,10 @@
     color: white !important;
 }
 
+.transparent {
+    background-color: transparent;
+}
+
 /* ICON BUTTON */
 
 .icon-button {

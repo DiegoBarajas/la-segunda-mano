@@ -15,8 +15,9 @@ import PageNotFound from './Pages/PageNotFound';
 import SigninLastSteps from './Pages/SigninLastSteps';
 import Forgot from './Pages/Forgot';
 import ForgotCode from './Pages/ForgotCode';
-import CreateAnnouncement1 from './Pages/CreateAnnouncement1';
+import CreateAnnouncement from './Pages/CreateAnnouncement';
 import ShouldLogin from './Components/ShouldLogin';
+import CreateProducto from './Pages/CreateProducto';
 
 const App = () => {
     return (
@@ -31,7 +32,14 @@ const App = () => {
 				<Route path='/signin/code' element={<UnloggedRoute> <SigninCode/> </UnloggedRoute>} />
 
 				<Route path='/signin/last' element={<LoggedRoute> <SigninLastSteps/> </LoggedRoute>} />
-				<Route path='/vender' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement1/> </LoggedRoute>} />
+
+				<Route path='/vender' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
+				<Route path='/vender/producto' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateProducto/> </LoggedRoute>} />
+				<Route path='/vender/servicio' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
+				<Route path='/vender/gratis' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
+				<Route path='/vender/vehiculo' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
+				<Route path='/vender/inmueble' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
+
 
 				<Route path='/logout' element={ <Logout/> } />
 				<Route path='/perfil' element={ <LoggedRoute> <Profile/> </LoggedRoute> } />

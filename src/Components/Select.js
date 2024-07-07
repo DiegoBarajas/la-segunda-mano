@@ -20,6 +20,7 @@ const Select = ({ label, id, name, className, auxText, title, value=null, option
                     value={value}
                     className={`input select ${icon ? 'input-with-icon' : ''} `}
                     onChange={onChange}
+                    required={required}
                 >
                     {
                         options.map((opt, index) => 

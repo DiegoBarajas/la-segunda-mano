@@ -33,6 +33,12 @@
     margin-bottom: 15px;
 }
 
+.head-create-ann-descr{
+    width: 100%;
+    text-align: justify;
+    margin-top: 30px;
+}
+
 .head-popup-warn-create-ann img {
     width: 35px;
 }
@@ -79,6 +85,87 @@
     text-align: justify;
 }
 
+
+.form-create-ann {
+    width: min(75%, 700px);
+}
+
+.p-nota-create-ann {
+    width: 100%;
+    text-align: justify;
+    margin-bottom: 25px;
+}
+
+.p-nota-create-ann span {
+    color: var(--red);
+}
+
+.buttons-create-ann {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons-create-ann button{
+    width: 40% !important;
+}
+
+.section-imagenes-article {
+    width: 100%;
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+    gap: 10px;
+}
+
+.section-imagen-article {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+}
+
+.button-close-imagenes-article {
+    filter: opacity(50%);
+    position: absolute;
+    margin-right: -20px;
+    margin-top: -20px;
+}
+
+.button-close-imagenes-article:hover {
+    filter: opacity(100%);
+}
+
+.section-imagenes-article img {
+    width: 100%;
+}
+
+.section-double-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.section-double-input-item {
+    width: 48% !important;
+}
+
+.section-button-add-contact {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.button-quit-contact {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 5px;
+}
+
 @media (max-width: 870px){
     .button-body-create-ann{
         width: 85% !important;
@@ -87,5 +174,40 @@
 
     .button-body-create-ann img {
         width: 50px !important;
+    }
+
+    .form-create-ann {
+        width: 95%;
+    }
+
+    .buttons-create-ann {
+        flex-direction: column;
+    }
+    
+    .buttons-create-ann button{
+        width: 100% !important;
+    }
+
+    .section-imagenes-article {
+        width: 100%;
+        display: grid; 
+        grid-auto-columns: 1fr; 
+        grid-template-columns: 1fr 1fr 1fr; 
+        grid-template-rows: 1fr 1fr; 
+        gap: 10px 10px; 
+        grid-template-areas: 
+            ". . ."
+            ". . ."; 
+    }
+
+    .section-double-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .section-double-input-item {
+        width: 100% !important;
     }
 }

@@ -26,6 +26,22 @@ class Modals{
 
     }
 
+    petitionAlert(title, content, icon=null){
+        return  Swal.fire({
+            title: title,
+            html: content,
+            icon: icon,
+            timerProgressBar: true,
+            showConfirmButton: false, // Oculta el botón de confirmación si lo deseas
+            didOpen: () => {
+                Swal.showLoading();
+            },
+            allowOutsideClick: false, // Evita que se cierre haciendo clic fuera de la alerta
+            allowEscapeKey: false, // Evita que se cierre con la tecla de escape
+            allowEnterKey: false, // Evita que se cierre con la tecla Enter
+        });
+    }
+
     async toast(text, icon='success', time=1.5){
         const Toast = Swal.mixin({
             toast: true,
