@@ -49,7 +49,7 @@ jobs.deleteAnnouncementsCaduced = async() => {
             console.log(colors.magenta(`\n${requestTime}    [   CRON   ] Tarea "Eliminar los anuncios caducados" Elemento "${ann._id}" eliminado.`));            }
         });
 
-        mailer.sendMail('desaubv@gmail.com', "cron prueba", 'prueba con cron', 'prueba con Cron');
+        mailer.sendMail('desaubv@gmail.com', "cron prueba", `${contador} registros eliminados.`, `${contador} registros eliminados.`);
     
         return `${contador} registros eliminados.`;
     }catch(err){
