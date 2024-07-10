@@ -17,7 +17,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import constants from '../constants.json'
 import '../Styles/Pages/CreateAnnouncement.css';
 
-const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
+const GeneralServicio = ({callBack, setFormData, setCurrentFormData}) => {
     
     useEffect(() => {
         window.scrollTo({
@@ -80,7 +80,8 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
 
         const newFormData = new FormData(formRef.current);
         fotos.forEach(foto => newFormData.append('imagenes', foto));
-        newFormData.append('tipoAnuncio', 'producto');
+        newFormData.append('tipoAnuncio', 'servicio');
+        newFormData.append('categoria', 'servicio');
 
         setCurrentFormData(newFormData);
         setFormData(newFormData);
@@ -96,8 +97,8 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
                     id='titulo'
                     name='titulo'
                     width='100%'
-                    label="Nombre del articulo"
-                    placeholder='Ej. Cartera de cuero'
+                    label="Titulo de la publicación"
+                    placeholder='Ej. Herrero en Guadalajara Jalisco'
                     auxText="Este es el titulo de tu publicación"
                     mb='15px'
                     required
@@ -106,26 +107,13 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
                 <Input
                     id='precio'
                     name='precio'
-                    type='number'
                     icon={moneySvg}
                     width='100%'
-                    label="Precio del articulo"
-                    placeholder='Ej. 250'
-                    auxText="El precio debe ser real, de lo contrario infringes nuestras condiciones de uso y habrá una sanción."
+                    label="Precio del servicio"
+                    placeholder='Ej. Desde $250 pesos'
+                    auxText="Puedes poner un precio base, rango de precios o precio estatico de tu servicio."
                     mb='15px'
                     min={1}
-                    required
-                />
-
-                <Select
-                    id='categoria'
-                    name='categoria'
-                    label='Categoria'
-                    width='100%'
-                    auxText="Selecciona la categoria mas acorde a tu articulo"
-                    options={categories}
-                    mb='15px'
-                    required
                 />
 
                 <InputFile
@@ -133,7 +121,7 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
                     icon={fotosSvg}
                     width='100%'
                     label={<>Imagenes ({fotos.length}/5)<span className='required'>*</span></> }
-                    auxText="Maximo 5 imagenes de 1MB"
+                    auxText={<>Agrega imagenes alusivas al servicio que ofrezcas, ya sea de tus trabajos o representativos.<br/>Maximo 5 imagenes de 1MB</>}
                     accept=".png,.jpg,.jpeg,.tiff,.tif,.webp"
                     mb='15px'
                     onChange={handleSelectFiles}
@@ -169,9 +157,9 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
                     id='descripcion'
                     name='descripcion'
                     width='100%'
-                    label="Descripción del articulo"
-                    placeholder='Escribe una descripción breve de tu producto o articulo que publicas...'
-                    auxText="Descripción breve de tu articulo"
+                    label="Descripción del servicio"
+                    placeholder='Agrega una descripción de tu servicio, puedes detallar tanto como desees...'
+                    auxText="Descripción de tu servicio"
                     mb='40px'
                     textArea
                     required
@@ -201,4 +189,4 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
     )
 }
 
-export default GeneralProducto
+export default GeneralServicio

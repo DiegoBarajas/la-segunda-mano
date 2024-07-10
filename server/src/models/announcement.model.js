@@ -12,8 +12,8 @@ const announcementSchema = new Schema({
         required: true 
     },
     precio: { //
-        type: Number, 
-        min: [1, "El precio debe de ser entero"] ,
+        type: String, 
+        default: null,
         required: true
     }, 
     descripcion: { //
@@ -23,7 +23,7 @@ const announcementSchema = new Schema({
     tipoAnuncio: { //
         type: String, 
         required: true,
-        enum: ["producto", "vehiculo", "inmueble"], 
+        enum: ["producto", "vehiculo", "inmueble", "gratis", "servicio"], 
     }, 
     categoria: { //
         type: String, 
@@ -37,7 +37,7 @@ const announcementSchema = new Schema({
 
     caracteristicas: { 
         // Principales
-        uso: { type: String, required: true },//
+        uso: { type: String, default: null, required: false },//
         ciudad: { type: String, required: true },//
         estado: { type: String, required: true },//
         cantidad: { //
@@ -85,26 +85,27 @@ const announcementSchema = new Schema({
         resolucion: { type: String, default: null, required: false },//
         tamañoPulgadas: { type: String, default: null, required: false },//
         smartTV: { type: Boolean, default: null, required: false },//
-        conectividad: { type: String, default: null, required: false },//
+        conectividadTV: { type: String, default: null, required: false },//
 
         // Vehiculo
-        año: { type: Number, required: false },
-        kilometraje: { type: Number, default: null, required: false },
-        deudas: { type: Boolean, default: null, required: false },
+        año: { type: Number, required: false }, //
+        kilometraje: { type: Number, default: null, required: false }, //
+        deudas: { type: Boolean, default: null, required: false }, //
+        cilindros: { type: Number, default: null, required: false }, //
 
         // Inmuebles
-        rentaOVenta: { type: String, enum: ['renta', 'venta'], required: false },
-        superficie: { type: Number, default: null, required: false },
+        rentaOVenta: { type: String, enum: ['renta', 'venta'], required: false }, //
+        superficie: { type: Number, default: null, required: false }, //
         colonia: { type: String, default: null, required: false },
-        cp: { type: Number, default: null, required: false },
-        baños: { type: Number, default: null, required: false },
-        habitaciones: { type: Number, default: null, required: false },
+        cp: { type: Number, default: null, required: false }, //
+        baños: { type: Number, default: null, required: false }, //
+        habitaciones: { type: Number, default: null, required: false }, //
     },
 
     // Contacto
     contacto: {
         type: [{
-            tipo: { type: String, enum: ['telefono', 'email', 'whatsapp'], required: true},
+            tipo: { type: String, enum: ['phone', 'email', 'whatsapp'], required: true},
             contenido: { type: String, required: true },
         }],
         validate: {
@@ -121,7 +122,9 @@ const announcementSchema = new Schema({
         type: [{
             forma: { type: String, required: true },
             detalles: { type: String, default: null, required: false },
-        }]
+        }],
+        default: null,
+        required: false
     },
 
     // Fechas

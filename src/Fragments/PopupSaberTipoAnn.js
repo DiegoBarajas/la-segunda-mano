@@ -43,6 +43,7 @@ const PopupSaberTipoAnn = ({setPopupActive}) => {
                                 <li>Fontaneria,</li> 
                                 <li>electricidad,</li> 
                                 <li>albañileria,</li> 
+                                <li>herreria,</li>
                                 <li>carpinteria.</li>
                             </ul>
                         </p>

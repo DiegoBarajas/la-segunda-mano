@@ -14,10 +14,9 @@ import addSvg from '../Assets/Icons/add.svg'
 
 import backend from '../backend';
 import modals from '../Modals';
-import constants from '../constants.json'
 import '../Styles/Pages/CreateAnnouncement.css';
 
-const ContactoProducto = ({handleBack, formData}) => {
+const ContactoInmueble = ({handleBack, formData}) => {
 
     useEffect(() => {
         window.scrollTo({
@@ -26,15 +25,12 @@ const ContactoProducto = ({handleBack, formData}) => {
         });
     }, [true]);
 
-    
-
     const formRef = useRef(null);
     const user = JSON.parse( localStorage.getItem('user') );
 
     const [ redirect, setRedirect ] = useState(null)
     const [ disabled, setDisabled ] = useState(true);
 
-    const [ formasEntrega, setFormasEntrega ] = useState([]);
     const [ contact, setContact ] = useState([
         {
             tipo: 'email',
@@ -60,7 +56,7 @@ const ContactoProducto = ({handleBack, formData}) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        if(disabled || formasEntrega.length === 0) return;
+        if(disabled) return;
 
         const newFormData = new FormData(formRef.current);
 
@@ -69,7 +65,6 @@ const ContactoProducto = ({handleBack, formData}) => {
         });
 
         newFormData.append('contacto', JSON.stringify(contact));
-        newFormData.append('formasEntrega', JSON.stringify(formasEntrega));
 
         try{
             const modal = modals.petitionAlert("Creando anuncio", "Espere un momento...", 'info');
@@ -205,55 +200,6 @@ const ContactoProducto = ({handleBack, formData}) => {
         }
     }
 
-    const renderCheckBox = () => {
-        const entregas = constants.entregasProductos;
-        const checkBoxes = [];
-        for(let i=0;i<entregas.length; i+=2){
-            let j = i+1;
-
-            checkBoxes.push(
-                <section className='section-double-checkbox'>
-
-                    { renderCB(entregas[i]) }
-                    { renderCB(entregas[j]) }
-
-                </section>
-            )
-        }
-
-        return checkBoxes;
-
-        function renderCB(object){
-            if(!object) return null;
-            return object.input
-                ? <section style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                    <Checkbox
-                        id={object.text}
-                        label={object.required ? <>{object.text}<span className='required'>*</span></> : object.text}
-                        value={object.text}
-                        onChange={handleCheck}
-                    />
-                    {
-                        formasEntrega.findIndex(item => item['forma'] === object.text) > -1
-                            ? <Input
-                                    label={object.label}
-                                    placeholder={object.placeholder}
-                                    id={`${object.text}-input`}
-                                    onChange={handleChangeInputEntrega}
-                                    required
-                            />
-                            : null
-                    }
-                </section>
-                : <Checkbox
-                    id={object.text}
-                    label={object.required ? <>{object.text}<span className='required'>*</span></> : object.text}
-                    value={object.text}
-                    onChange={handleCheck}
-                />
-        }
-    }
-
     const addContact = () => {
         Swal.fire({
             title: "¿Qué medio de contacto deseas agregar?",
@@ -267,7 +213,7 @@ const ContactoProducto = ({handleBack, formData}) => {
 
             cancelButtonText: "WhatsApp",
             cancelButtonColor: "#08BE3E"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 setContact([...contact, { tipo: 'email', contenido: '' }])
             } else if (result.isDenied) {
@@ -275,36 +221,7 @@ const ContactoProducto = ({handleBack, formData}) => {
             } else{
                 setContact([...contact, { tipo: 'whatsapp', contenido: '' }])
             }
-          });          
-    }
-
-    const handleCheck = (e) => {
-        const { checked, value } = e.target;
-        const formasEntregaCopy = [...formasEntrega];
-
-        if(checked){
-            formasEntregaCopy.push({
-                forma: value,
-                detalles: null
-            });
-        }else{
-            const index = formasEntregaCopy.findIndex(item => item['forma'] === value);
-            formasEntregaCopy.splice(index, 1);
-        }
-
-        setFormasEntrega(formasEntregaCopy);
-    }
-
-    const handleChangeInputEntrega = (e) => {
-        const { value, id } = e.target;
-        const text = id.split('-input')[0];
-        
-        const formasEntregaCopy = [...formasEntrega];
-        const index = formasEntregaCopy.findIndex(item => item['forma'] === text);
-
-        formasEntregaCopy[index]['detalles'] = value;
-
-        setFormasEntrega(formasEntregaCopy);
+        });          
     }
 
     return (
@@ -334,18 +251,6 @@ const ContactoProducto = ({handleBack, formData}) => {
 
             <ContentLayout horizontalAlign='center'>
                 <div className='form-create-ann'>
-                    <h2>Formas de entrega</h2>
-                    <p className='p-nota-create-ann'>Selecciona las formas de entrega para el artículo, puedes seleccionar mas de uno y <b>mínimo 1</b>.</p>    
-
-                    {
-                        renderCheckBox().map(element => element)
-                    }
-
-                </div>        
-            </ContentLayout>
-
-            <ContentLayout horizontalAlign='center'>
-                <div className='form-create-ann'>
                     <h2>Condiciones de uso</h2>
                     <p className='p-nota-create-ann'>Para publicar es necesario que aceptes las condiciones de uso de nuestra plataforma.</p>    
                 </div>
@@ -365,9 +270,9 @@ const ContactoProducto = ({handleBack, formData}) => {
                     >Volver atras</Button>
 
                 <Button
-                    disabled={(disabled || formasEntrega.length === 0)}
+                    disabled={disabled}
                     type='submit'
-                    title={ disabled ? "Para continuar acepta las Condiciones de uso" : formasEntrega.length === 0 ? "Agrega una Forma de Entrega" :"Crear publicación" }
+                    title={ disabled ? "Para continuar acepta las Condiciones de uso" : "Crear publicación" }
                 >Crear publicación</Button>
             </section>
 
@@ -376,4 +281,4 @@ const ContactoProducto = ({handleBack, formData}) => {
     )
 }
 
-export default ContactoProducto
+export default ContactoInmueble

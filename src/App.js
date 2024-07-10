@@ -18,6 +18,10 @@ import ForgotCode from './Pages/ForgotCode';
 import CreateAnnouncement from './Pages/CreateAnnouncement';
 import ShouldLogin from './Components/ShouldLogin';
 import CreateProducto from './Pages/CreateProducto';
+import CreateService from './Pages/CreateService';
+import CreateVehicle from './Pages/CreateVehicle';
+import CreateGratis from './Pages/CreateGratis';
+import CreateInmueble from './Pages/CreateInmueble';
 
 const App = () => {
     return (
@@ -35,10 +39,10 @@ const App = () => {
 
 				<Route path='/vender' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
 				<Route path='/vender/producto' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateProducto/> </LoggedRoute>} />
-				<Route path='/vender/servicio' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
-				<Route path='/vender/gratis' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
-				<Route path='/vender/vehiculo' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
-				<Route path='/vender/inmueble' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
+				<Route path='/vender/servicio' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateService/> </LoggedRoute>} />
+				<Route path='/vender/gratis' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateGratis/> </LoggedRoute>} />
+				<Route path='/vender/vehiculo' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateVehicle/> </LoggedRoute>} />
+				<Route path='/vender/inmueble' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateInmueble/> </LoggedRoute>} />
 
 
 				<Route path='/logout' element={ <Logout/> } />

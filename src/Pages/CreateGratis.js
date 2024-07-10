@@ -1,30 +1,30 @@
 import React, { useState } from 'react'
-import HeadCreateAnn from '../Fragments/HeadCreateAnn';
-import PageLayout from '../Layouts/PageLayout';
-import GeneralProducto from '../Fragments/GeneralProducto';
-import CaracteristicasProducto from '../Fragments/CaracteristicasProducto';
+import CaracteristicasGratis from '../Fragments/CaracteristicasGratis';
 import ContactoProducto from '../Fragments/ContactoProducto';
+import HeadCreateAnn from '../Fragments/HeadCreateAnn';
+import GeneralGratis from '../Fragments/GeneralGratis';
+import PageLayout from '../Layouts/PageLayout';
 
 import '../Styles/Pages/CreateAnnouncement.css';
 
-const CreateProducto = () => {
+const CreateGratis = () => {
     
     const [ currentStep, setCurrentStep ] = useState(1);
     const [ formData, setFormData ] = useState(new FormData());
 
     const [ formDataGeneral, setFormDataGeneral ] = useState(null);
-    
+
     const renderForm = () => {
         switch(currentStep){
             case 1: return (
-                    <GeneralProducto 
-                        setFormData={setFormData}
+                    <GeneralGratis 
+                        setFormData={setFormData} 
                         setCurrentFormData={setFormDataGeneral}
                         callBack={() => setCurrentStep(2)} 
                     />
                 )
             case 2: return (
-                    <CaracteristicasProducto 
+                    <CaracteristicasGratis 
                         formData={formData} 
                         setFormData={setFormData} 
                         callBack={() => setCurrentStep(3)} 
@@ -44,8 +44,8 @@ const CreateProducto = () => {
                     />
                 )
             default: return (
-                    <GeneralProducto 
-                        setFormData={setFormData}
+                    <GeneralGratis 
+                        setFormData={setFormData} 
                         setCurrentFormData={setFormDataGeneral}
                         callBack={() => setCurrentStep(2)} 
                     />
@@ -56,16 +56,20 @@ const CreateProducto = () => {
     const getDescription = () => {
         switch(currentStep){
             case 1: return ""
-            case 2: return "Agrega las características especificas de tu articulo, no es necesario agregar todas, solo las que se ajusten a tu articulo. Por ejemplo “Talla” para una camisa."
+            case 2: return "Agrega las características especificas de tu articulo, no es necesario agregar todas, solo las que se ajusten a tu articulo. Por ejemplo “Procesador” para una laptop."
             case 3: return ""
         }
+    }
+
+    const handleSubmit = async(e) => {
+        e.preventDefault();
     }
 
     return (
         <PageLayout footer={false}>
 
             <HeadCreateAnn
-                type='Producto'
+                type='Gratis'
                 currentStep={currentStep}
                 description={getDescription()}
             />
@@ -76,4 +80,4 @@ const CreateProducto = () => {
     )
 }
 
-export default CreateProducto
+export default CreateGratis

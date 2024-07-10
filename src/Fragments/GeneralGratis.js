@@ -8,7 +8,6 @@ import Input from '../Components/Input';
 import modals from '../Modals';
 
 import IconButton from '../Components/IconButton';
-import moneySvg from '../Assets/Icons/money.svg'
 import fotosSvg from '../Assets/Icons/images.svg'
 import cancelRedSvg from '../Assets/Icons/cancelRed.svg'
 
@@ -17,7 +16,7 @@ import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import constants from '../constants.json'
 import '../Styles/Pages/CreateAnnouncement.css';
 
-const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
+const GeneralGratis = ({callBack, setFormData, setCurrentFormData}) => {
     
     useEffect(() => {
         window.scrollTo({
@@ -28,7 +27,7 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
 
     const formRef = useRef(null);
     
-    const categories = [...constants.categoriasProductos];
+    const categories = [...constants.categoriasGratis];
     const [ redirect, setRedirect ] = useState(null);
 
     const [ files, setFiles ] = useState([]);
@@ -80,7 +79,8 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
 
         const newFormData = new FormData(formRef.current);
         fotos.forEach(foto => newFormData.append('imagenes', foto));
-        newFormData.append('tipoAnuncio', 'producto');
+        newFormData.append('tipoAnuncio', 'gratis');
+        newFormData.append('precio', '0');
 
         setCurrentFormData(newFormData);
         setFormData(newFormData);
@@ -100,20 +100,6 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
                     placeholder='Ej. Cartera de cuero'
                     auxText="Este es el titulo de tu publicación"
                     mb='15px'
-                    required
-                />
-
-                <Input
-                    id='precio'
-                    name='precio'
-                    type='number'
-                    icon={moneySvg}
-                    width='100%'
-                    label="Precio del articulo"
-                    placeholder='Ej. 250'
-                    auxText="El precio debe ser real, de lo contrario infringes nuestras condiciones de uso y habrá una sanción."
-                    mb='15px'
-                    min={1}
                     required
                 />
 
@@ -171,7 +157,7 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
                     width='100%'
                     label="Descripción del articulo"
                     placeholder='Escribe una descripción breve de tu producto o articulo que publicas...'
-                    auxText="Descripción breve de tu articulo"
+                    auxText="Descripción breve de tu artuculo"
                     mb='40px'
                     textArea
                     required
@@ -201,4 +187,4 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
     )
 }
 
-export default GeneralProducto
+export default GeneralGratis

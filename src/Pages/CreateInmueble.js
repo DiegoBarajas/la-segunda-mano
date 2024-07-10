@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import HeadCreateAnn from '../Fragments/HeadCreateAnn';
 import PageLayout from '../Layouts/PageLayout';
-import GeneralProducto from '../Fragments/GeneralProducto';
-import CaracteristicasProducto from '../Fragments/CaracteristicasProducto';
-import ContactoProducto from '../Fragments/ContactoProducto';
+import GeneralInmueble from '../Fragments/GeneralInmueble';
+import CaracteristicasInmueble from '../Fragments/CaracteristicasInmueble';
 
 import '../Styles/Pages/CreateAnnouncement.css';
+import ContactoInmueble from '../Fragments/ContactoInmueble';
 
-const CreateProducto = () => {
+const CreateInmueble = () => {
     
     const [ currentStep, setCurrentStep ] = useState(1);
     const [ formData, setFormData ] = useState(new FormData());
@@ -17,14 +17,14 @@ const CreateProducto = () => {
     const renderForm = () => {
         switch(currentStep){
             case 1: return (
-                    <GeneralProducto 
+                    <GeneralInmueble 
                         setFormData={setFormData}
                         setCurrentFormData={setFormDataGeneral}
                         callBack={() => setCurrentStep(2)} 
                     />
                 )
             case 2: return (
-                    <CaracteristicasProducto 
+                    <CaracteristicasInmueble 
                         formData={formData} 
                         setFormData={setFormData} 
                         callBack={() => setCurrentStep(3)} 
@@ -35,7 +35,7 @@ const CreateProducto = () => {
                     />
                 )
             case 3: return (
-                    <ContactoProducto 
+                    <ContactoInmueble
                         formData={formData} 
                         handleBack={() => {
                             setFormData(formDataGeneral);
@@ -44,7 +44,7 @@ const CreateProducto = () => {
                     />
                 )
             default: return (
-                    <GeneralProducto 
+                    <GeneralInmueble 
                         setFormData={setFormData}
                         setCurrentFormData={setFormDataGeneral}
                         callBack={() => setCurrentStep(2)} 
@@ -56,7 +56,7 @@ const CreateProducto = () => {
     const getDescription = () => {
         switch(currentStep){
             case 1: return ""
-            case 2: return "Agrega las características especificas de tu articulo, no es necesario agregar todas, solo las que se ajusten a tu articulo. Por ejemplo “Talla” para una camisa."
+            case 2: return "Agrega las características especificas de tu inmueble, no es necesario agregar todas, solo las que se desee compartir."
             case 3: return ""
         }
     }
@@ -65,7 +65,7 @@ const CreateProducto = () => {
         <PageLayout footer={false}>
 
             <HeadCreateAnn
-                type='Producto'
+                type='Inmueble'
                 currentStep={currentStep}
                 description={getDescription()}
             />
@@ -76,4 +76,4 @@ const CreateProducto = () => {
     )
 }
 
-export default CreateProducto
+export default CreateInmueble

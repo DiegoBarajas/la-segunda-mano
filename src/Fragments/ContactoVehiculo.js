@@ -17,7 +17,7 @@ import modals from '../Modals';
 import constants from '../constants.json'
 import '../Styles/Pages/CreateAnnouncement.css';
 
-const ContactoProducto = ({handleBack, formData}) => {
+const ContactoVehiculo = ({handleBack, formData}) => {
 
     useEffect(() => {
         window.scrollTo({
@@ -25,8 +25,6 @@ const ContactoProducto = ({handleBack, formData}) => {
             behavior: 'smooth'
         });
     }, [true]);
-
-    
 
     const formRef = useRef(null);
     const user = JSON.parse( localStorage.getItem('user') );
@@ -192,12 +190,12 @@ const ContactoProducto = ({handleBack, formData}) => {
                 id={`contacto-${index}`}
                 label="WhatsApp"
                 placeholder="Ej. +52 3325875689"
-                pattern="^\+\d{1,3}\s\d{6,14}$"                            
-                auxText="Requiere el formato +52 1234567890"
                 type='tel'
                 icon={whatsappSvg}
                 value={element.contenido}
                 onChange={(e) => handleChange(e, index)}
+                pattern="^\+\d{1,3}\s\d{6,14}$"                            
+                auxText="Requiere el formato +52 1234567890"
                 required
 
                 mb='12px'
@@ -206,7 +204,7 @@ const ContactoProducto = ({handleBack, formData}) => {
     }
 
     const renderCheckBox = () => {
-        const entregas = constants.entregasProductos;
+        const entregas = constants.entregasVehiculos;
         const checkBoxes = [];
         for(let i=0;i<entregas.length; i+=2){
             let j = i+1;
@@ -376,4 +374,4 @@ const ContactoProducto = ({handleBack, formData}) => {
     )
 }
 
-export default ContactoProducto
+export default ContactoVehiculo

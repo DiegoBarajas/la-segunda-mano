@@ -4,7 +4,7 @@ import Button from './Button'
 
 import removeFileSvg from '../Assets/Icons/removeFile.svg'
 
-const InputFile = ({ children, id, className, title, name, accept, width, mb, label, icon, selectedFile=null, auxText, multiple=false, required=false, onChange, onQuitFile }) => {
+const InputFile = ({ children, id, className, title, name, accept, width, mb, label, icon, selectedFile=null, auxText, multiple=false, required=false, disabled, onChange, onQuitFile }) => {
     
     const afterTextElement = useRef(null);
 
@@ -12,7 +12,7 @@ const InputFile = ({ children, id, className, title, name, accept, width, mb, la
         ? (
             <section className={`input-container ${className}`} style={{ width: width, marginBottom: mb }} title={title}>
                 <label htmlFor={id}><b>{label}{required ? <span className='required'>*</span> : ""}</b></label>
-                <label htmlFor={id} className='label-input-file label-input-file-vertical'>
+                <label htmlFor={id} className={`label-input-file label-input-file-vertical ${disabled ? 'label-input-file-disabled' : ''}`}>
                     <p>{children}</p>
                     {
                         <img className='image-input-file' src={ URL.createObjectURL(selectedFile) } alt='Imagen'/>
@@ -27,6 +27,7 @@ const InputFile = ({ children, id, className, title, name, accept, width, mb, la
                     required={required}
                     className='none'
                     onChange={onChange}
+                    disabled={disabled}
                 />
                 <p ref={afterTextElement} className='input-aux-text'>{auxText}</p>
 
@@ -36,9 +37,9 @@ const InputFile = ({ children, id, className, title, name, accept, width, mb, la
         : (
             <section className={`input-container ${className}`} style={{ width: width, marginBottom: mb }} title={title}>
                 <label htmlFor={id}><b>{label}{required ? <span className='required'>*</span> : ""}</b></label>
-                <label htmlFor={id} className='label-input-file'>
-                {children}
-                {
+                <label htmlFor={id} className={`label-input-file ${disabled ? 'label-input-file-disabled' : ''}`}>
+                    {children}
+                    {
                         icon ? <img className='icon-input-file' src={icon} alt='Imagen'/> : <></>
                     }
                 </label>
@@ -51,6 +52,7 @@ const InputFile = ({ children, id, className, title, name, accept, width, mb, la
                     required={required}
                     className='none'
                     onChange={onChange}
+                    disabled={disabled}
                 />
                 <p ref={afterTextElement} className='input-aux-text'>{auxText}</p>
             </section>

@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import HeadCreateAnn from '../Fragments/HeadCreateAnn';
 import PageLayout from '../Layouts/PageLayout';
-import GeneralProducto from '../Fragments/GeneralProducto';
-import CaracteristicasProducto from '../Fragments/CaracteristicasProducto';
-import ContactoProducto from '../Fragments/ContactoProducto';
-
+import GeneralVehiculo from '../Fragments/GeneralVehiculo';
+import CaracteristicasVehiculo from '../Fragments/CaracteristicasVehiculo';
+import ContactoVehiculo from '../Fragments/ContactoVehiculo';
 import '../Styles/Pages/CreateAnnouncement.css';
 
-const CreateProducto = () => {
+
+const CreateVehicle = () => {
     
     const [ currentStep, setCurrentStep ] = useState(1);
     const [ formData, setFormData ] = useState(new FormData());
@@ -17,35 +17,35 @@ const CreateProducto = () => {
     const renderForm = () => {
         switch(currentStep){
             case 1: return (
-                    <GeneralProducto 
-                        setFormData={setFormData}
+                    <GeneralVehiculo 
+                        setFormData={setFormData} 
                         setCurrentFormData={setFormDataGeneral}
                         callBack={() => setCurrentStep(2)} 
                     />
                 )
             case 2: return (
-                    <CaracteristicasProducto 
+                    <CaracteristicasVehiculo 
                         formData={formData} 
                         setFormData={setFormData} 
                         callBack={() => setCurrentStep(3)} 
                         handleBack={() => {
                             setFormData(new FormData());
                             setCurrentStep(1);
-                        }} 
+                        }}                     
                     />
                 )
             case 3: return (
-                    <ContactoProducto 
+                    <ContactoVehiculo
                         formData={formData} 
                         handleBack={() => {
                             setFormData(formDataGeneral);
                             setCurrentStep(2);
-                        }} 
+                        }}
                     />
                 )
             default: return (
-                    <GeneralProducto 
-                        setFormData={setFormData}
+                    <GeneralVehiculo 
+                        setFormData={setFormData} 
                         setCurrentFormData={setFormDataGeneral}
                         callBack={() => setCurrentStep(2)} 
                     />
@@ -56,7 +56,7 @@ const CreateProducto = () => {
     const getDescription = () => {
         switch(currentStep){
             case 1: return ""
-            case 2: return "Agrega las características especificas de tu articulo, no es necesario agregar todas, solo las que se ajusten a tu articulo. Por ejemplo “Talla” para una camisa."
+            case 2: return "Agrega las características especificas de tu vehiculo, no es necesario agregar todas, solo las que se ajusten a tu vehiculo."
             case 3: return ""
         }
     }
@@ -65,7 +65,7 @@ const CreateProducto = () => {
         <PageLayout footer={false}>
 
             <HeadCreateAnn
-                type='Producto'
+                type="Vehiculo"
                 currentStep={currentStep}
                 description={getDescription()}
             />
@@ -76,4 +76,4 @@ const CreateProducto = () => {
     )
 }
 
-export default CreateProducto
+export default CreateVehicle

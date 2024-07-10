@@ -13,7 +13,7 @@ controller.createAnnouncement = async(req, res, next) => {
 //      Obtener y parsear a JSON campos del body
         const caracteristicas = JSON.parse(body.caracteristicas);
         const contacto = JSON.parse(body.contacto);
-        const formasEntrega = JSON.parse(body.formasEntrega);
+        const formasEntrega = body.formasEntrega ? JSON.parse(body.formasEntrega) : null;
 
 //      Obtener la fecha actual de la ciudad de Mexico, y clonar otra con 7 dias adicionales
         const fechaCreacion = moment().tz('America/Mexico_City');

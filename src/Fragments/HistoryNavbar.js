@@ -112,7 +112,7 @@ const HistoryNavbar = ({visible, handleClose}) => {
                     showApplyBtn
                     ? <section className='filters-apply-button-section'>
                         <Button
-                            title="Aplicar y buscar"
+                            title="Borrar filtros"
                             icon={clearSvg}
                             color='red'
                             width='49.5%'

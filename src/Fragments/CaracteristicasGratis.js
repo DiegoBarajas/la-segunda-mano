@@ -8,7 +8,7 @@ import Input from '../Components/Input';
 import constants from '../constants.json'
 import '../Styles/Pages/CreateAnnouncement.css';
 
-const CaracteristicasProducto = ({callBack, handleBack, formData, setFormData}) => {
+const CaracteristicasGratis = ({callBack, handleBack, formData, setFormData}) => {
 
     useEffect(() => {
         window.scrollTo({
@@ -46,7 +46,7 @@ const CaracteristicasProducto = ({callBack, handleBack, formData, setFormData}) 
         formData.forEach((value, key) => {
             newFormData.append(key, value);
         });
-    
+                  
         setFormData(newFormData);
         callBack();
     }
@@ -174,15 +174,60 @@ const CaracteristicasProducto = ({callBack, handleBack, formData, setFormData}) 
                 </div>
             </AccordionContentLayout>
 
-            <AccordionContentLayout titulo='Autopartes' horizontalAlign='center'>
+            <AccordionContentLayout titulo='Autopartes y vehiculos' horizontalAlign='center'>
                 <div className='form-create-ann'>
+
+                    <section className='section-double-input'>
+                        <Select
+                            className='section-double-input-item'
+                            id='deudas'
+                            name='deudas'
+                            label="Tiene deudas?"
+                            mb='15px'
+                            required
+                            options={[{ text: 'No', value: 'false' }, { text: 'Si', value: 'true' }]}
+                        />
+
+                        <Input
+                            className='section-double-input-item'
+                            id='km'
+                            name='km'
+                            label="Kilometraje"
+                            placeholder='Ej. 480'
+                            type='number'
+                            min={1}
+                            mb='15px'
+                        />
+                    </section>
 
                     <section className='section-double-input'>
                         <Input
                             className='section-double-input-item'
+                            id='año'
+                            name='año'
+                            label="Año"
+                            placeholder='Ej. 2008'
+                            mb='15px'
+                        />
+                        <Input
+                            className='section-double-input-item'
+                            id='cilindros'
+                            name='cilindros'
+                            label="Número de cilindros"
+                            placeholder='Ej. 8'
+                            type='number'
+                            min={8}
+                            mb='15px'
+                        />
+                    </section>
+
+                    <section className='section-double-input'>
+
+                        <Input
+                            className='section-double-input-item'
                             id='vehiculo'
                             name='vehiculo'
-                            label="Vehiculo(s) compatible"
+                            label="Vehiculo(s) compatible (En caso de autopartes)"
                             placeholder='Ej. Honda Civic 2018'
                             mb='15px'
                         />
@@ -436,4 +481,4 @@ const CaracteristicasProducto = ({callBack, handleBack, formData, setFormData}) 
     )
 }
 
-export default CaracteristicasProducto
+export default CaracteristicasGratis

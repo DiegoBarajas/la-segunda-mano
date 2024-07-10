@@ -117,6 +117,7 @@
     grid-auto-columns: 1fr; 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
     gap: 10px;
+    margin-bottom: 15px;
 }
 
 .section-imagen-article {
@@ -146,6 +147,12 @@
     display: flex;
     justify-content: space-between;
     align-items: end;
+}
+
+.section-double-checkbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
 }
 
 .section-double-input-item {

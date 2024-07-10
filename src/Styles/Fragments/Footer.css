@@ -15,7 +15,7 @@
 
 .link-footer {
     text-decoration: underline;
-    color: black;
+    color: black !important;
     transition: all 2ms ease-in;
     font-weight: 700;
 }

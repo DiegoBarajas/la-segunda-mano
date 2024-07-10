@@ -5,7 +5,7 @@ const userSchema = new Schema({
     apellido: { type: String, required: true },
     correo: { type: String, required: true, unique: true },
     contraseña: { type: String, required: true },
-    code: { type: String, required: true, expires: 3600 },
+    code: { type: String, expires: '1h' },
 },{
     timestapms: true
 });

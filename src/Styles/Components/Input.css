@@ -50,6 +50,7 @@
     font-size: 0.8em;
 }
 
+
 .label-input-file {
     width: 100%;
     border-radius: 5px;
@@ -63,12 +64,26 @@
     gap: 5px;
 }
 
+.label-input-file-disabled {
+    cursor: not-allowed;
+    background-color: #efefef;
+    border: 2px solid rgb(70, 70, 70);
+}
+
 .label-input-file p {
     width: 95%;
     display: block;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis; 
+}
+
+.label-input-file-disabled p{
+    filter: opacity(50%)
+}
+
+.label-input-file-disabled img{
+    filter: opacity(50%)
 }
 
 .icon-input-file{

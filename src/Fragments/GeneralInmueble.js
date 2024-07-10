@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import ContentLayout from '../Layouts/ContentLayout';
 import InputFile from '../Components/InputFile';
 import CutImage from '../Components/CutImage';
@@ -12,12 +13,9 @@ import moneySvg from '../Assets/Icons/money.svg'
 import fotosSvg from '../Assets/Icons/images.svg'
 import cancelRedSvg from '../Assets/Icons/cancelRed.svg'
 
-import { PhotoProvider, PhotoView } from 'react-image-previewer';
-
-import constants from '../constants.json'
 import '../Styles/Pages/CreateAnnouncement.css';
 
-const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
+const GeneralInmueble = ({callBack, setFormData, setCurrentFormData}) => {
     
     useEffect(() => {
         window.scrollTo({
@@ -28,7 +26,6 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
 
     const formRef = useRef(null);
     
-    const categories = [...constants.categoriasProductos];
     const [ redirect, setRedirect ] = useState(null);
 
     const [ files, setFiles ] = useState([]);
@@ -80,7 +77,8 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
 
         const newFormData = new FormData(formRef.current);
         fotos.forEach(foto => newFormData.append('imagenes', foto));
-        newFormData.append('tipoAnuncio', 'producto');
+        newFormData.append('tipoAnuncio', 'inmueble');
+        newFormData.append('categoria', 'inmuebles')
 
         setCurrentFormData(newFormData);
         setFormData(newFormData);
@@ -96,8 +94,8 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
                     id='titulo'
                     name='titulo'
                     width='100%'
-                    label="Nombre del articulo"
-                    placeholder='Ej. Cartera de cuero'
+                    label="Titulo del anuncio"
+                    placeholder='Ej. Renta de casa duplex por el centro'
                     auxText="Este es el titulo de tu publicación"
                     mb='15px'
                     required
@@ -109,22 +107,11 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
                     type='number'
                     icon={moneySvg}
                     width='100%'
-                    label="Precio del articulo"
-                    placeholder='Ej. 250'
-                    auxText="El precio debe ser real, de lo contrario infringes nuestras condiciones de uso y habrá una sanción."
+                    label="Costo del inmueble o renta"
+                    placeholder='Ej. 5500'
+                    auxText="El costo debe ser real, de lo contrario infringes nuestras condiciones de uso y habrá una sanción."
                     mb='15px'
                     min={1}
-                    required
-                />
-
-                <Select
-                    id='categoria'
-                    name='categoria'
-                    label='Categoria'
-                    width='100%'
-                    auxText="Selecciona la categoria mas acorde a tu articulo"
-                    options={categories}
-                    mb='15px'
                     required
                 />
 
@@ -132,15 +119,15 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
                     id='fotos-input'
                     icon={fotosSvg}
                     width='100%'
-                    label={<>Imagenes ({fotos.length}/5)<span className='required'>*</span></> }
-                    auxText="Maximo 5 imagenes de 1MB"
+                    label={<>Fotos ({fotos.length}/5)<span className='required'>*</span></> }
+                    auxText="Maximo 5 Fotos de 1MB"
                     accept=".png,.jpg,.jpeg,.tiff,.tif,.webp"
                     mb='15px'
                     onChange={handleSelectFiles}
                     selectedFile={null}
                     multiple
                     disabled={fotos.length >= 5}
-                >{ fotos.length >= 5 ? "Limite de imagenes alcanzado 5/5" : "Selecciona las imagenes" }</InputFile>
+                >{ fotos.length >= 5 ? "Limite de Fotos alcanzado 5/5" : "Selecciona las Fotos" }</InputFile>
 
                 <section className='section-imagenes-article'>
                     {
@@ -169,9 +156,9 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
                     id='descripcion'
                     name='descripcion'
                     width='100%'
-                    label="Descripción del articulo"
-                    placeholder='Escribe una descripción breve de tu producto o articulo que publicas...'
-                    auxText="Descripción breve de tu articulo"
+                    label="Descripción de tu publicación"
+                    placeholder='Puedes escribir información adicional como su ubicacion, detalles de la casa, remodelaciones, que incluye, etc...'
+                    auxText="Descripción breve de tu artuculo"
                     mb='40px'
                     textArea
                     required
@@ -201,4 +188,4 @@ const GeneralProducto = ({callBack, setFormData, setCurrentFormData}) => {
     )
 }
 
-export default GeneralProducto
+export default GeneralInmueble

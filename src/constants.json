@@ -2,7 +2,7 @@
     "estados": [
         {
             "text": "Toda la república",
-            "value": null
+            "value": "*"
         },
         {
             "text": "Aguascalientes",
@@ -132,8 +132,9 @@
             "text": "Zacatecas",
             "value": "zacatecas"
         }
-    ]
-    ,
+    ],
+
+
     "categorias": [
         {
             "text": "Mostrar todo",
@@ -244,6 +245,210 @@
             "value": "televisiones y pantallas"
         },
         {
+            "text": "Vehículos",
+            "value": "vehículos"
+        }
+    ],
+    "categoriasProductos": [
+        {
+            "text": "Accesorios personales",
+            "value": "Accesorios Personales"
+        },
+        {
+            "text": "Alimentos y bebidas",
+            "value": "Alimentos Y Bebidas"
+        },
+        {
+            "text": "Antigüedades y coleccionables",
+            "value": "Antigüedades Y Coleccionables"
+        },
+        {
+            "text": "Arte, manualidades y papelería",
+            "value": "Arte, Manualidades Y Papelería"
+        },
+        {
+            "text": "Artículos para oficina",
+            "value": "Artículos Para Oficina"
+        },
+        {
+            "text": "Autopartes",
+            "value": "Autopartes"
+        },
+        {
+            "text": "Bebés",
+            "value": "Bebés"
+        },
+        {
+            "text": "Belleza y cuidado personal",
+            "value": "Belleza Y Cuidado Personal"
+        },
+        {
+            "text": "Computación y telefonía",
+            "value": "Computación Y Telefonía"
+        },
+        {
+            "text": "Deportes",
+            "value": "Deportes"
+        },
+        {
+            "text": "Electrodomésticos",
+            "value": "Electrodomésticos"
+        },
+        {
+            "text": "Electrónica",
+            "value": "Electrónica"
+        },
+        {
+            "text": "Herramientas",
+            "value": "Herramientas"
+        },
+        {
+            "text": "Hogar y jardín",
+            "value": "Hogar Y Jardín"
+        },
+        {
+            "text": "Inmuebles",
+            "value": "Inmuebles"
+        },
+        {
+            "text": "Instrumentos musicales",
+            "value": "Instrumentos Musicales"
+        },
+        {
+            "text": "Joyas y relojes",
+            "value": "Joyas Y Relojes"
+        },
+        {
+            "text": "Juguetes y juegos",
+            "value": "Juguetes Y Juegos"
+        },
+        {
+            "text": "Libros, películas y música",
+            "value": "Libros, Películas Y Música"
+        },
+        {
+            "text": "Maquinaria",
+            "value": "Maquinaria"
+        },
+        {
+            "text": "Mascotas",
+            "value": "Mascotas"
+        },
+        {
+            "text": "Muebles",
+            "value": "Muebles"
+        },
+        {
+            "text": "Ropa y calzado",
+            "value": "Ropa Y Calzado"
+        },
+        {
+            "text": "Televisiones y pantallas",
+            "value": "Televisiones Y Pantallas"
+        }
+    ],
+    "categoriasGratis": [
+        {
+            "text": "Accesorios personales",
+            "value": "accesorios personales"
+        },
+        {
+            "text": "Alimentos y bebidas",
+            "value": "alimentos y bebidas"
+        },
+        {
+            "text": "Antigüedades y coleccionables",
+            "value": "antigüedades y coleccionables"
+        },
+        {
+            "text": "Arte, manualidades y papelería",
+            "value": "arte, manualidades y papelería"
+        },
+        {
+            "text": "Artículos para oficina",
+            "value": "artículos para oficina"
+        },
+        {
+            "text": "Autopartes",
+            "value": "autopartes"
+        },
+        {
+            "text": "Bebés",
+            "value": "bebés"
+        },
+        {
+            "text": "Belleza y cuidado personal",
+            "value": "belleza y cuidado personal"
+        },
+        {
+            "text": "Computación y telefonía",
+            "value": "computación y telefonía"
+        },
+        {
+            "text": "Deportes",
+            "value": "deportes"
+        },
+        {
+            "text": "Electrodomésticos",
+            "value": "electrodomésticos"
+        },
+        {
+            "text": "Electrónica",
+            "value": "electrónica"
+        },
+        {
+            "text": "Herramientas",
+            "value": "herramientas"
+        },
+        {
+            "text": "Hogar y jardín",
+            "value": "hogar y jardín"
+        },
+        {
+            "text": "Inmuebles",
+            "value": "inmuebles"
+        },
+        {
+            "text": "Instrumentos musicales",
+            "value": "instrumentos musicales"
+        },
+        {
+            "text": "Joyas y relojes",
+            "value": "joyas y relojes"
+        },
+        {
+            "text": "Juguetes y juegos",
+            "value": "juguetes y juegos"
+        },
+        {
+            "text": "Libros, películas y música",
+            "value": "libros, películas y música"
+        },
+        {
+            "text": "Maquinaria",
+            "value": "maquinaria"
+        },
+        {
+            "text": "Mascotas",
+            "value": "mascotas"
+        },
+        {
+            "text": "Muebles",
+            "value": "muebles"
+        },
+        {
+            "text": "Ropa y calzado",
+            "value": "ropa y calzado"
+        },
+        {
+            "text": "Servicios",
+            "value": "servicios"
+        },
+        {
+            "text": "Televisiones y pantallas",
+            "value": "televisiones y pantallas"
+        },
+        {
             "text": "Terrenos",
             "value": "terrenos"
         },
@@ -252,40 +457,36 @@
             "value": "vehículos"
         }
     ],
+
+
     "usos": [
         {
             "text": "Mostrar todo",
-            "value": null
+            "value": "*"
         },
         {
             "text": "Nuevo",
             "value": "nuevo"
         },
         {
-            "text": "Usado (como nuevo)",
-            "value": "usado (como nuevo)"
-        },
-        {
-            "text": "Usado (desgastado)",
-            "value": "usado (desgastado)"
-        },
-        {
-            "text": "Requiere arreglo",
-            "value": "requiere arreglo"
+            "text": "Usado",
+            "value": "usado"
         },
         {
             "text": "Para piezas",
             "value": "para piezas"
         }
-    ]
-    ,
+        
+    ],
+
+
     "ordenar": [
         {
-            "text": "Fecha de publicación (Mas reciente primero)",
+            "text": "Mas reciente primero",
             "value": "date:asc"
         },
         {
-            "text": "Fecha de publicación (Mas antiguo primero)",
+            "text": "Mas antiguo primero",
             "value": "date_desc"
         },
         {
@@ -297,13 +498,79 @@
             "value": "alf:desc"
         },
         {
-            "text": "Precio (Mas barato primero)",
+            "text": "Mas barato primero",
             "value": "price:asc"
         },
         {
-            "text": "Precio (Mas caro primero)",
+            "text": "Mas caro primero",
             "value": "price:desc"
         }
     ],
+
+    
+    "entregasProductos": [
+        {
+            "text": "Encuentro en punto medio"        
+        },
+        {
+            "text": "Recoger en mi casa"
+        },
+        {
+            "text": "Llevar a la casa del comprador"
+        },
+        {
+            "text": "Llevar a la casa del comprador (+ Cargo adicional)"
+        },
+        {
+            "text": "Envío por paquetería"
+        },
+        {
+            "text": "Envío por paquetería (+ Cargo adicional)"
+        },
+        {
+            "text": "Entrega en puntos especificos",
+            "input": true,
+            "required": true,
+            "label": "¿Cuales son los puntos especificos?",
+            "placeholder": "Ej. Centros comerciales, estaciones del metro, centro..."
+        }
+    ],
+    "entregasVehiculos": [
+        {
+            "text": "Encuentro en punto medio"
+        },
+        {
+            "text": "Encuentro en mi casa"
+        },
+        {
+            "text": "Encuentro en la casa del comprador"
+        },
+        {
+            "text": "Encuentro la casa del comprador (+ Cargo adicional)"
+        },
+        {
+            "text": "Encuentro en puntos especificos",
+            "input": true,
+            "required": true,
+            "label": "¿Cuales son los puntos especificos?",
+            "placeholder": "Ej. Centros comerciales, estacionamientos..."
+        }
+    ],
+    "entregasServicios": [
+        {
+            "text": "A domicilio"
+        },
+        {
+            "text": "En mi local"
+        },
+        {
+            "text": "Otro",
+            "input": true,
+            "required": true,
+            "label": "Especifica",
+            "placeholder": "Ej. Centros comerciales, estacionamientos..."
+        }
+    ],
+
     "pasosCrearAnuncio": ["Tipo", "Datos generales", "Caracteristicas", "Contacto y entrega"]
 }

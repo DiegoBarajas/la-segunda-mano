@@ -17,7 +17,7 @@ import modals from '../Modals';
 import constants from '../constants.json'
 import '../Styles/Pages/CreateAnnouncement.css';
 
-const ContactoProducto = ({handleBack, formData}) => {
+const ContactoServicio = ({handleBack, formData}) => {
 
     useEffect(() => {
         window.scrollTo({
@@ -25,8 +25,6 @@ const ContactoProducto = ({handleBack, formData}) => {
             behavior: 'smooth'
         });
     }, [true]);
-
-    
 
     const formRef = useRef(null);
     const user = JSON.parse( localStorage.getItem('user') );
@@ -69,7 +67,6 @@ const ContactoProducto = ({handleBack, formData}) => {
         });
 
         newFormData.append('contacto', JSON.stringify(contact));
-        newFormData.append('formasEntrega', JSON.stringify(formasEntrega));
 
         try{
             const modal = modals.petitionAlert("Creando anuncio", "Espere un momento...", 'info');
@@ -147,7 +144,7 @@ const ContactoProducto = ({handleBack, formData}) => {
                             type='tel'
                             icon={whatsappSvg}
                             pattern="^\+\d{1,3}\s\d{6,14}$"                            
-                            value={element.contenido}
+                            value={element.coundefinedntenido}
                             onChange={(e) => handleChange(e, index)}
                             auxText="Requiere el formato +52 1234567890"
                             required
@@ -206,7 +203,7 @@ const ContactoProducto = ({handleBack, formData}) => {
     }
 
     const renderCheckBox = () => {
-        const entregas = constants.entregasProductos;
+        const entregas = constants.entregasServicios;
         const checkBoxes = [];
         for(let i=0;i<entregas.length; i+=2){
             let j = i+1;
@@ -376,4 +373,4 @@ const ContactoProducto = ({handleBack, formData}) => {
     )
 }
 
-export default ContactoProducto
+export default ContactoServicio

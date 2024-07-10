@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import HeadCreateAnn from '../Fragments/HeadCreateAnn';
 import PageLayout from '../Layouts/PageLayout';
-import GeneralProducto from '../Fragments/GeneralProducto';
-import CaracteristicasProducto from '../Fragments/CaracteristicasProducto';
+import GeneralServicio from '../Fragments/GeneralServicio';
+import CaracteristicasServicio from '../Fragments/CaracteristicasServicio';
 import ContactoProducto from '../Fragments/ContactoProducto';
 
 import '../Styles/Pages/CreateAnnouncement.css';
+import ContactoServicio from '../Fragments/ContactoServicio';
 
-const CreateProducto = () => {
+const CreateService = () => {
     
     const [ currentStep, setCurrentStep ] = useState(1);
     const [ formData, setFormData ] = useState(new FormData());
@@ -17,14 +18,14 @@ const CreateProducto = () => {
     const renderForm = () => {
         switch(currentStep){
             case 1: return (
-                    <GeneralProducto 
+                    <GeneralServicio 
                         setFormData={setFormData}
                         setCurrentFormData={setFormDataGeneral}
                         callBack={() => setCurrentStep(2)} 
                     />
                 )
             case 2: return (
-                    <CaracteristicasProducto 
+                    <CaracteristicasServicio 
                         formData={formData} 
                         setFormData={setFormData} 
                         callBack={() => setCurrentStep(3)} 
@@ -35,7 +36,7 @@ const CreateProducto = () => {
                     />
                 )
             case 3: return (
-                    <ContactoProducto 
+                    <ContactoServicio 
                         formData={formData} 
                         handleBack={() => {
                             setFormData(formDataGeneral);
@@ -44,7 +45,7 @@ const CreateProducto = () => {
                     />
                 )
             default: return (
-                    <GeneralProducto 
+                    <GeneralServicio 
                         setFormData={setFormData}
                         setCurrentFormData={setFormDataGeneral}
                         callBack={() => setCurrentStep(2)} 
@@ -56,7 +57,7 @@ const CreateProducto = () => {
     const getDescription = () => {
         switch(currentStep){
             case 1: return ""
-            case 2: return "Agrega las características especificas de tu articulo, no es necesario agregar todas, solo las que se ajusten a tu articulo. Por ejemplo “Talla” para una camisa."
+            case 2: return ""
             case 3: return ""
         }
     }
@@ -65,7 +66,7 @@ const CreateProducto = () => {
         <PageLayout footer={false}>
 
             <HeadCreateAnn
-                type='Producto'
+                type='Servicio'
                 currentStep={currentStep}
                 description={getDescription()}
             />
@@ -76,4 +77,4 @@ const CreateProducto = () => {
     )
 }
 
-export default CreateProducto
+export default CreateService

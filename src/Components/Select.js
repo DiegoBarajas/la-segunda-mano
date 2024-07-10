@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import '../Styles/Components/Select.css'
 
-const Select = ({ label, id, name, className, auxText, title, value=null, options=[], width='100%', mb='5px', required=false, icon=null, onChange }) => {
+const Select = ({ label, id, name, className, auxText, title, value=null, options=[], width='100%', mb='5px', required=false, icon=null, selectedOption,  onChange }) => {
 
     const afterTextElement = useRef(null);
 
@@ -21,6 +21,7 @@ const Select = ({ label, id, name, className, auxText, title, value=null, option
                     className={`input select ${icon ? 'input-with-icon' : ''} `}
                     onChange={onChange}
                     required={required}
+                    defaultChecked='Jalisco'
                 >
                     {
                         options.map((opt, index) => 
@@ -28,6 +29,7 @@ const Select = ({ label, id, name, className, auxText, title, value=null, option
                                 className='option' 
                                 key={'option-'+index}
                                 value={opt.value}
+                                selected={ ( selectedOption === opt.value ) || (selectedOption === opt.text) }
                             >{opt.text}</option>
                         )
                     }

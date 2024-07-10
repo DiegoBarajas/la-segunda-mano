@@ -102,7 +102,7 @@ const SigninLastSteps = () => {
 
             <ContentLayout complete size='small' horizontalAlign='center' className='login-content-layout' redirect={redirect}>
                 <Title>Crear Cuenta</Title>
-                <h3>Confirmar correo electronico</h3>
+                <h3>Termina de personalizar tu cuenta</h3>
 
                 <p className='p-description-code'>Estamos por finalizar, agrega una foto de perfil y/o el estado donde resides. Este paso es opcional.</p>
 
