@@ -9,7 +9,7 @@ function cronStart(){
     const requestTime = moment().tz('America/Mexico_City').format('DD-MM-YYYY HH:mm:ss');
     console.log(colors.green(`${requestTime}    [   CRON   ] Servicio iniciado`));
 
-    cron.schedule(`0 0 * * *`, () => asyncCronCallback(jobs.deleteAnnouncementsCaduced));
+    cron.schedule(`30 1 * * *`, () => asyncCronCallback(jobs.deleteAnnouncementsCaduced));
 }
 
 // Funcion de cron con el status

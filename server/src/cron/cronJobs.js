@@ -2,6 +2,7 @@ const announcementModel = require('../models/announcement.model');
 const cloudinary = require('cloudinary').v2;
 const moment = require('moment-timezone');
 const colors = require('colors/safe');
+const mailer = require('../mailer');
 
 // Objeto que almacenará las tareas
 const jobs = {};
@@ -47,6 +48,8 @@ jobs.deleteAnnouncementsCaduced = async() => {
             const requestTime = moment().tz('America/Mexico_City').format('DD-MM-YYYY HH:mm:ss');             
             console.log(colors.magenta(`\n${requestTime}    [   CRON   ] Tarea "Eliminar los anuncios caducados" Elemento "${ann._id}" eliminado.`));            }
         });
+
+        mailer.sendMail('desaubv@gmail.com', "cron prueba", 'prueba con cron', 'prueba con Cron');
     
         return `${contador} registros eliminados.`;
     }catch(err){
