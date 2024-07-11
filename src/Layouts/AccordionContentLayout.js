@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import ContentLayout from './ContentLayout'
 
-import upArrowSvg from '../Assets/Icons/upArrow.svg'
 import downArrowSvg from '../Assets/Icons/downArrow.svg'
 
 import '../Styles/Layouts/ContentLayout.css'

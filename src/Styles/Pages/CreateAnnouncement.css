@@ -217,4 +217,8 @@
     .section-double-input-item {
         width: 100% !important;
     }
+
+    .section-double-checkbox {
+        flex-direction: column;
+    }
 }

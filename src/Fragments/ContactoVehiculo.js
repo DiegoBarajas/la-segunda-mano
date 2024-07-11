@@ -79,7 +79,7 @@ const ContactoVehiculo = ({handleBack, formData}) => {
 
             modal.close();
             modals.toast('Anuncio creado con exito!', 'success');
-            setRedirect('/'+response.data);
+            setRedirect('/anuncio/'+response.data);
         }catch(err){
             setDisabled(false);
 

@@ -19,7 +19,6 @@ import favoriteSvg from '../Assets/Icons/favorite.svg'
 import notificationSvg from '../Assets/Icons/notification.svg'
 import logoutSvg from '../Assets/Icons/logout.svg'
 
-
 const useSearchValue = () => {
     const query = new URLSearchParams(useLocation().search)
     const searchValue = query.get('nombre');

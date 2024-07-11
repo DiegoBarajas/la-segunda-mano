@@ -1,8 +1,9 @@
-const { log } = require('console');
 const AnnouncementModel = require('../models/announcement.model');
 const cloudinary = require('cloudinary').v2;
 const moment = require('moment-timezone');
 const fs = require('fs');
+const CustomError = require('../errors/CustomError');
+const userModel = require('../models/user.model');
 const controller = {};
 
 controller.createAnnouncement = async(req, res, next) => {
@@ -76,6 +77,28 @@ controller.createAnnouncement = async(req, res, next) => {
 //      Enviar respuesta el ID de la publicación
         res.send(newAnnouncement._id);
 
+    }catch(err){
+        next(err);
+    }
+}
+
+// Obtener registro de anuncio
+controller.getAnnouncement = async(req, res, next) => {
+    try {
+//      Obtener el id de la petición
+        const { id } = req.params;
+
+//      Obtener el anuncio de la base de datos
+        const announcement = await AnnouncementModel.findById(id);
+
+//      Si no existe enviar respuesta
+        if(!announcement) {throw new CustomError('El anuncio no existe. Puede que el anuncio haya caducado')};
+
+//      Obtener el usuario que lo publico
+        const author = await userModel.findById(announcement.userId);
+
+//      Enviar respuesta con el anuncio
+        res.send({announcement, author});
     }catch(err){
         next(err);
     }

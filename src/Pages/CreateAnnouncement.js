@@ -81,7 +81,7 @@ const CreateAnnouncement = () => {
                     className='button-body-create-ann'
 
                     onClick={() => setRedirect('/vender/inmueble')}
-                >Compra o venta de inmueble</Button>
+                >Inmueble</Button>
 
                 <TextButton className='text-button-create-ann' icon={helpMintSvg} onClick={() => setPopupActive(true)}>¿Comó puedo saber que tipo estoy vendiendo?</TextButton>
             </ContentLayout>

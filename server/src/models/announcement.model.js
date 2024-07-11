@@ -23,7 +23,7 @@ const announcementSchema = new Schema({
     tipoAnuncio: { //
         type: String, 
         required: true,
-        enum: ["producto", "vehiculo", "inmueble", "gratis", "servicio"], 
+        enum: [ "producto", "vehiculo", "inmueble", "gratis", "servicio" ], 
     }, 
     categoria: { //
         type: String, 
@@ -130,6 +130,14 @@ const announcementSchema = new Schema({
     // Fechas
     fechaCreacion: { type: String, required: true },
     fechaExpiracion: { type: String, required: true },
+
+    // Tier del anuncio
+    nivel: {
+        type: String,
+        enum: [ "estandar", "impulsado", "premium" ],
+        default: 'estandar',
+        required: true
+    }
 },{
     timestapms: true
 });

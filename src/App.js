@@ -22,6 +22,7 @@ import CreateService from './Pages/CreateService';
 import CreateVehicle from './Pages/CreateVehicle';
 import CreateGratis from './Pages/CreateGratis';
 import CreateInmueble from './Pages/CreateInmueble';
+import ShowPublicacion from './Pages/ShowAnnouncement';
 
 const App = () => {
     return (
@@ -34,8 +35,9 @@ const App = () => {
 
 				<Route path='/signin' element={<UnloggedRoute> <Signin/> </UnloggedRoute>} />
 				<Route path='/signin/code' element={<UnloggedRoute> <SigninCode/> </UnloggedRoute>} />
-
 				<Route path='/signin/last' element={<LoggedRoute> <SigninLastSteps/> </LoggedRoute>} />
+
+				<Route path='/anuncio/:id' Component={ShowPublicacion} />
 
 				<Route path='/vender' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
 				<Route path='/vender/producto' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateProducto/> </LoggedRoute>} />
