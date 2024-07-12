@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const userSchema = new Schema({
     userId: { 
         type: Schema.Types.ObjectId, 
-        rel: "User", 
+        ref: "user", 
         required: true 
     },
 
@@ -11,12 +11,12 @@ const userSchema = new Schema({
 
     reportedUserId: { 
         type: Schema.Types.ObjectId, 
-        rel: "User", 
+        ref: "user", 
         required: true 
     },
     reportedAnnouncementId: { 
         type: Schema.Types.ObjectId, 
-        rel: "Announcement", 
+        ref: "Announcement", 
         default: null,
         required: false 
     },
@@ -30,4 +30,4 @@ const userSchema = new Schema({
     timestapms: true
 });
 
-module.exports = model('Report', userSchema);
+module.exports = model('report', userSchema);

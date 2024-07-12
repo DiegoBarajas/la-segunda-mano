@@ -42,6 +42,32 @@ class Modals{
         });
     }
 
+    async confirm(title, content, icon=null, onConfirm=()=>{}, onDeny=()=>{},confirmText="Aceptar", denyText="Denegar", showCancelButton=false, cancelText="Cancelar"){
+        await Swal.fire({
+            title,
+            html: content,
+            icon: icon,
+
+            showDenyButton: true,
+            showCancelButton: showCancelButton,
+            confirmButtonText: confirmText,
+            confirmButtonColor: this.#colors.mint,
+
+            denyButtonText: denyText,
+            denyButtonColor: this.#colors.red,
+
+            cancelButtonText: cancelText,
+            cancelButtonColor: this.#colors.gray,
+
+          }).then((result) => {
+            if (result.isConfirmed) {
+                onConfirm()
+            } else if (result.isDenied) {
+                onDeny()
+            }
+          });          
+    }
+
     async toast(text, icon='success', time=1.5){
         const Toast = Swal.mixin({
             toast: true,

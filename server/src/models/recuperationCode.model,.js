@@ -1,9 +1,9 @@
 const { Schema, model } = require('mongoose');
 
-const userSchema = new Schema({
+const recuperationCodeSchema = new Schema({
     userId: { 
         type: Schema.Types.ObjectId, 
-        rel: "User", 
+        ref: "user", 
         required: true,
         unique: true
     },
@@ -12,4 +12,4 @@ const userSchema = new Schema({
     timestapms: true
 });
 
-module.exports = model('User', userSchema);
+module.exports = model('recuperation_code', recuperationCodeSchema);

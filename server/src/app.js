@@ -36,6 +36,7 @@ app.get('/', (req, res) => res.send('Hola Mundo') );
 app.use('/api/login', require('./routes/login.route'));
 app.use('/api/user', require('./routes/user.route'));
 app.use('/api/announcement', require('./routes/announcement.route'));
+app.use('/api/review', require('./routes/review.route'));
 
 
 app.use('*', notFoundhandler);

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import '../Styles/Components/Input.css';
 
-const Input = ({ label, id, name, className, placeholder, auxText, min, value=null, type='text', title, minLength, width='100%', mb='5px', pattern, required=false, icon=null, textArea=false, onChange }) => {
+const Input = ({ label, id, name, className, placeholder, auxText, min, value=null, type='text', title, minLength, width='100%', minHeight='100px', mb='5px', pattern, required=false, icon=null, textArea=false, onChange }) => {
 
     const afterTextElement = useRef(null);
 
@@ -26,8 +26,10 @@ const Input = ({ label, id, name, className, placeholder, auxText, min, value=nu
                                 onChange={onChange}
                                 value={value}
                                 style={{ 
-                                    minHeight: '100px',
-                                    minWidth: width
+                                    minHeight: minHeight,
+                                    height: minHeight,
+                                    minWidth: width,
+                                    maxWidth: width
                                 }}
                                 required={required}
                             >

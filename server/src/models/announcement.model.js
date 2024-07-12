@@ -4,7 +4,7 @@ const announcementSchema = new Schema({
     
     userId: { //
         type: Schema.Types.ObjectId, 
-        rel: "User", 
+        ref: "user", 
         required: true 
     }, 
     titulo: { //
@@ -142,4 +142,4 @@ const announcementSchema = new Schema({
     timestapms: true
 });
 
-module.exports = model('Announcement', announcementSchema);
+module.exports = model('announcement', announcementSchema);

@@ -1,22 +1,21 @@
 const { Schema, model } = require('mongoose');
 
-const commentSchema = new Schema({
-    userId: { 
+const reviewSchema = new Schema({
+    authorId: { 
         type: Schema.Types.ObjectId, 
-        rel: "User", 
+        ref: "user", 
         required: true 
     },
     commentedUserId: { 
         type: Schema.Types.ObjectId, 
-        rel: "User", 
+        ref: "user", 
         required: true 
     },
 
+    calificacion: { type: Number, required: true, min: 1 },
     contenido: { type: String, required: true },
-    fechaCreacion: { type: Date, required: true },
+    fechaCreacion: { type: String, required: true },
     importancia: { type: Number, default: 0, required: true }
-}, {
-    timestamps: true
 });
 
-module.exports = model('Comment', commentSchema);
+module.exports = model('reviews', reviewSchema);

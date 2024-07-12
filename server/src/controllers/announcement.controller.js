@@ -1,9 +1,10 @@
 const AnnouncementModel = require('../models/announcement.model');
+const ReviewModel = require('../models/review.model');
+const userModel = require('../models/user.model');
+const CustomError = require('../errors/CustomError');
 const cloudinary = require('cloudinary').v2;
 const moment = require('moment-timezone');
 const fs = require('fs');
-const CustomError = require('../errors/CustomError');
-const userModel = require('../models/user.model');
 const controller = {};
 
 controller.createAnnouncement = async(req, res, next) => {
@@ -87,6 +88,7 @@ controller.getAnnouncement = async(req, res, next) => {
     try {
 //      Obtener el id de la petición
         const { id } = req.params;
+        const { user } = req;
 
 //      Obtener el anuncio de la base de datos
         const announcement = await AnnouncementModel.findById(id);
@@ -94,11 +96,60 @@ controller.getAnnouncement = async(req, res, next) => {
 //      Si no existe enviar respuesta
         if(!announcement) {throw new CustomError('El anuncio no existe. Puede que el anuncio haya caducado')};
 
-//      Obtener el usuario que lo publico
-        const author = await userModel.findById(announcement.userId);
+//      Obtener el usuario que lo publico y acomodar el objeto de retorno
+        let author = await userModel.findById(announcement.userId)
+            .select('nombre apellido foto sellerId');
+
+//      Convertir el resultado a JSON
+        author = author.toJSON();
+
+//      Obtener las reviews del usuario
+        const reviewsDoc = await ReviewModel.find({ commentedUserId: author._id})
+            .sort({ importancia: -1 })
+            .limit(10)
+            .populate('authorId', 'nombre apellido foto')
+            .exec();
+    
+//      Constante que almacena las reviews procesadas y que almacena si ya se hizo una reseña a ese usuario
+        const reviews = [];
+        let canMakeReview = true;
+
+//      Filtrar las reviews
+        reviewsDoc.forEach((rev) => {
+            if(!user) return reviews.push(rev);
+
+            if(rev.authorId.id == user._id) {
+                const currentReview = rev.toJSON();
+                currentReview.mio = true;
+                canMakeReview = false;
+
+                return reviews.unshift( currentReview );
+            }
+            reviews.push(rev);
+        });
+        
+//      Obtener cantidad y calificacion del autor
+        const result = await ReviewModel.aggregate([
+            {
+                $match: { commentedUserId: author._id } // Filtro por commentedUserId
+            },{
+                $group: {
+                    _id: null,
+                    calificacion: { $sum: "$calificacion" },
+                    evaluadores: { $sum: 1 },
+                }
+            }
+        ]);
+        
+//      Agregar campos al autor
+        author.calificacion = (result[0].calificacion / result[0].evaluadores).toFixed(1);
+        author.evaluadores = result[0].evaluadores;
+
+//      Eliminar id del author
+        delete author._id;
 
 //      Enviar respuesta con el anuncio
-        res.send({announcement, author});
+        res.send({announcement, author, reviews, canMakeReview});
     }catch(err){
         next(err);
     }

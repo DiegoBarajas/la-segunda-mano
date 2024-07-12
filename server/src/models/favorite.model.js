@@ -3,12 +3,12 @@ const { Schema, model } = require('mongoose');
 const favoriteSchema = new Schema({
     userId: { 
         type: Schema.Types.ObjectId, 
-        rel: "User", 
+        ref: "user", 
         required: true 
     }, 
     announcementId: { 
         type: Schema.Types.ObjectId, 
-        rel: "Announcement", 
+        ref: "announcement", 
         default: null,
         required: false 
     },
@@ -18,4 +18,4 @@ const favoriteSchema = new Schema({
     timestapms: true
 });
 
-module.exports = model('Favorite', favoriteSchema);
+module.exports = model('favorite', favoriteSchema);

@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const notificationSchema = new Schema({
     userId: { 
         type: Schema.Types.ObjectId, 
-        rel: "User", 
+        ref: "user", 
         required: true 
     },
     contenido: { type: String, required: true },
@@ -14,4 +14,4 @@ const notificationSchema = new Schema({
     timestapms: true
 });
 
-module.exports = model('Notification', notificationSchema);
+module.exports = model('notification', notificationSchema);

@@ -124,7 +124,8 @@ controller.siginCode = async(req, res, next) => {
             nombre: preUser.nombre,
             apellido: preUser.apellido,
             correo: preUser.correo,
-            contraseña: preUser.contraseña
+            contraseña: preUser.contraseña,
+            sellerId: generateSellerId()
         }).save();
 
 //      Eliminar otro preUsuario
@@ -381,4 +382,11 @@ function generateCode(){
     }
     
     return code;
+}
+
+// Genera un codigo de vendedor unico
+function generateSellerId(){
+    const date = Date.now();
+
+    return date+generateCode();
 }
