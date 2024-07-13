@@ -132,24 +132,44 @@ const ShowAnnouncement = () => {
         }
     }
 
-    const handleRecommend = async(e) => {
+    const handleRecommend = async(e, id) => {
         const { target } = e;
         const prevDisplay = hideElement(target);
 
+        try{
+            const response = await axios.patch(`${backend}/api/review/${id}`, {}, {
+                headers: {
+                    Authorization: token
+                }
+            });
+            
+        }catch(err){
+            showElement(target, prevDisplay);
 
-
+            if (err.response) {
+                // El servidor respondió con un código de estado fuera del rango 2xx
+                console.error('Código de estado HTTP:', err.response.status, '\n', 'Error de respuesta:', err.response.data);
+                modals.alert("Ups", `${err.response.data}`, 'error');
+            } else if (err.request) {
+                // La solicitud fue hecha pero no se recibió respuesta
+                console.error('No se recibió respuesta del servidor:', err.request);
+                modals.alert("Ha ocurrido un error", `No se recibió respuesta del servidor`, 'error');
+            } else {
+                // Ocurrió un error antes de enviar la solicitud
+                console.error('Error al enviar la solicitud:', err.message);
+                modals.alert("Ha ocurrido un error", `<b>Error al enviar la solicitud</b> ${err.message}`, 'error');
+            }
+        }
     }
     
-    const handleReport = async(e) => {
+    const handleReport = async(e, id) => {
         const { target } = e;
         const prevDisplay = hideElement(target);
     }
 
     const handleDelete = async(e, id) => {
         const { target } = e;
-
-        modals.confirm("Atencion", "¿Deseas borrar la reseña?", 'warning', onConfirm)
-
+        modals.confirm("Atencion", "¿Deseas borrar la reseña?", 'warning', onConfirm);
 
         async function onConfirm(){
             const prevDisplay = hideElement(target);
@@ -161,8 +181,9 @@ const ShowAnnouncement = () => {
                     }
                 });
                 
-                setReviews(reviews.slice(1));
                 modals.toast(response.data, 'success');
+                setReviews(reviews.slice(1));
+                setCanMakeReview(true);
             }catch(err){
                 showElement(target, prevDisplay);
 
@@ -402,7 +423,7 @@ const ShowAnnouncement = () => {
                                                     />
                                             ))
                                         }
-                                        <p>{calificacion}/5 Estrellas</p>
+                                        <p style={{ fontSize: '13px' }}>{calificacion}/5 Estrellas</p>
                                     </div>
                                     <Button type='submit' horizontal>Enviar</Button>
                                 </section>
@@ -421,7 +442,7 @@ const ShowAnnouncement = () => {
                                     <img className='section-show-review-profile-pic' src={ r.authorId.foto ? r.authorId.foto : userSvg} alt='Foto de perfil' />
                                     
                                     <section className='section-show-review-info'>
-                                        <p><b>{r.authorId.nombre} {r.authorId.apellido} {r.mio ? '(YO)' : ''}</b></p>
+                                        <p><b>{r.authorId.nombre} {r.authorId.apellido} {r.mio ? '(YO)' : ''}</b> <span style={{ fontSize: '11px' }}>{parseDate(r.fechaCreacion)}</span></p>
 
                                         <div className='puntuation'>
                                             {
@@ -444,8 +465,8 @@ const ShowAnnouncement = () => {
                                                     <IconButton className='section-show-review-button' color='transparent' icon={ deleteSvg } title='Eliminar mi reseña' onClick={(e) => handleDelete(e, r._id)}/>
                                                 </div>
                                                 : <div className='section-show-review-buttons'>
-                                                    <IconButton className='section-show-review-button' color='transparent' icon={ recomendSvg } title='Me resulto util' onClick={handleRecommend}/>
-                                                    <IconButton className='section-show-review-button' color='transparent' icon={ reportBlackSvg } title='Reportar comentario' onClick={handleReport}/>
+                                                    <IconButton className='section-show-review-button' color='transparent' icon={ recomendSvg } title='Me resulto util' onClick={(e) => handleRecommend(e, r._id)}/>
+                                                    <IconButton className='section-show-review-button' color='transparent' icon={ reportBlackSvg } title='Reportar comentario' onClick={(e) => handleReport(e, r._id)}/>
                                                 </div>
                                             : null
                                         

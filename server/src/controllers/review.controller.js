@@ -49,4 +49,23 @@ controller.deleteReview = async(req, res, next) => {
     }
 }
 
+// Recomendar reseña
+controller.recomendReview = async(req, res, next) => {
+    try{
+        const { id } = req.params;
+        const { user } = req;
+
+        const review = await ReviewModel.findById(id);
+        if(!review) throw new CustomError("No se encontró la reseña");
+
+        await ReviewModel.findByIdAndUpdate(id,{
+            importancia: review.calificacion+1
+        });
+        
+        res.send("Exito!")
+    }catch(err){
+        next(err);
+    }
+}
+
 module.exports = controller;
