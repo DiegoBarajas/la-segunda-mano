@@ -45,6 +45,10 @@ a:hover {
     display: none;
 }
 
+.progress {
+    cursor: progress !important;
+}
+
 /* Swal */
 .swal {
     font-family: "Lexend Deca", sans-serif;

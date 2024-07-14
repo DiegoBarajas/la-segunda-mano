@@ -8,15 +8,22 @@ const controller = {}
 // Crear review
 controller.createReview = async(req, res, next) => {
     try{
+//      Obtener el body y el usuario del req
         const { user, body } = req;
 
-        const commentedUser = await UserModel.findOne({ sellerId: body.commentedUser });
-        console.log(commentedUser);
+//      Comprobar si el usuario y el commented user son la misma persona
+        if(user.sellerId == body.commentedUser) throw new CustomError("No puedes reseñarte a ti mismo");
 
+//      Encontrar al usuario comentado y comprobar si existe
+        const commentedUser = await UserModel.findOne({ sellerId: body.commentedUser });
+        if(!commentedUser) throw new CustomError("No se encontró al usuario que se desea reseñar");
+
+//      Comprobar que el usuario obtenido de req no haya emitido una reseña
         const myReviews = await ReviewModel.find({ authorId: user._id });
         if(myReviews.length > 0) throw new CustomError("Ya emitiste una reseña a este usuario, si deseas modificarla eliminala y creala nuevamente");
 
-        await new ReviewModel({
+//      Crear y almacenar reseña
+        const newReview = await new ReviewModel({
             authorId: user._id,
             commentedUserId: commentedUser._id,
             calificacion: body.calificacion,
@@ -24,7 +31,17 @@ controller.createReview = async(req, res, next) => {
             fechaCreacion: moment().tz('America/Mexico_City').format('DD-MM-YYYY')
         }).save();
 
-        res.send("Exito!")
+//      Formatear el objeto de retorno juntando la reseña con mi informacion
+        const newReviewJson = newReview.toJSON();
+        newReviewJson.mio = true;
+        newReviewJson.authorId = {
+            nombre: user.nombre,
+            apellido: user.apellido,
+            foto: user.foto
+        }
+        
+//      Enviar respuesta
+        res.send(newReviewJson)
     }catch(err){
         next(err);
     }

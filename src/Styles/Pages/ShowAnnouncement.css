@@ -293,6 +293,40 @@
     filter: opacity(100%);
 }
 
+.loading-image {
+    filter: opacity(25%);
+    cursor: progress;
+    animation: loading-image 1.5s linear infinite ;
+}
+
+.div-loading-content {
+    width: 100%;
+    background-color: black;
+    min-height: 22px;
+    animation: loading-image 2s linear infinite ;
+    cursor: progress;
+    margin-bottom: 12px;
+}
+
+.div-loading-content-small {
+    width: 90%;
+    background-color: black;
+    min-height: 10px;
+    animation: loading-image 2s linear infinite ;
+    cursor: progress;
+    margin-bottom: 7px;
+}
+
+@keyframes loading-image {
+    0% {
+        filter: opacity(38%);
+    }50% {
+        filter: opacity(25%);
+    }100% {
+        filter: opacity(38%);
+    }
+}
+
 @media (max-width: 870px) {
     .show-announcement-main {
         flex-direction: column;
