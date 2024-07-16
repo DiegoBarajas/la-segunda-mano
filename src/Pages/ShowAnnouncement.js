@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react' 
 import SellerShowAnn from '../Fragments/SellerShowAnn';
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import MainShowAnn from '../Fragments/MainShowAnn';
+import ShowPricing from '../Fragments/ShowPricing';
 import InfoShowAnn from '../Fragments/InfoShowAnn';
 import PageLayout from '../Layouts/PageLayout'
+import ReviewsShowAnn from './ReviewsShowAnn';
 
 import modals from '../Modals';
 import axios from 'axios';
 import backend from '../backend';
 import '../Styles/Pages/ShowAnnouncement.css';
-import ReviewsShowAnn from './ReviewsShowAnn';
 
 const ShowAnnouncement = () => {
-
-    
     const token = localStorage.getItem('token');
+    const location = useLocation();
 
     const { id } = useParams();
 
@@ -63,6 +63,10 @@ const ShowAnnouncement = () => {
                     modals.alert("Ha ocurrido un error", `<b>Error al enviar la solicitud</b> ${err.message}`, 'error');
                 }
             }
+        }
+
+        if(location.search){
+            modals.popup(ShowPricing, "swal-show-pricing")
         }
 
         getAnnouncement();

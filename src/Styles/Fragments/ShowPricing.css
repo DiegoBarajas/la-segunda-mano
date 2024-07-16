@@ -1,0 +1,104 @@
+@import url(../../index.css);
+
+.swal-show-pricing {
+    width: min(75%, 1000px);
+}
+
+.show-pricing {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.show-pricing h2 {
+    color: black;
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 2.5px solid black;
+    font-size: 16px;
+    color: black;
+}
+
+.th-icon {
+    width: 100%;
+    min-width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 10px;
+}
+
+.th-icon h3 {
+    color: black;
+    font-size: 20px;
+}
+
+.a-tooltip-element {
+    color: black;
+    font-weight: 700;
+    font-family: "Lexend Deca", sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.td-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.p-mint {
+    color: var(--mint) !important;
+}
+
+.p-gold {
+    color: var(--gold) !important;
+}
+
+.yes-no-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.a-td-button {
+    font-weight: 700;
+    color: var(--mint);
+    text-decoration: underline;
+}
+
+.table-show-pricing-mobile {
+    display: none;
+}
+
+@media (max-width: 870px){
+    .swal-show-pricing {
+        width: 95%;
+    }
+
+    .table-show-pricing {
+        display: none;
+    }
+
+    .table-show-pricing-mobile {
+        display: table;
+        margin-bottom: 10px;
+    }
+
+    .th-icon h3 {
+        font-size: 16px;
+    }
+}

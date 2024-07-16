@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import imageSvg from '../Assets/Icons/imageNotFilled.svg'
-import premiumSvg from '../Assets/Icons/premium.svg'
 import impulsedSvg from '../Assets/Icons/impulsed.svg'
 import calendarSvg from '../Assets/Icons/calendar.svg'
 import locationSvg from '../Assets/Icons/location.svg'
+import premiumSvg from '../Assets/Icons/premium.svg'
 
 import '../Styles/Pages/MyAnnoucements.css'
 import ColumnLayout from '../Layouts/ColumnLayout'

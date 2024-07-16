@@ -1,4 +1,6 @@
 import Swal from "sweetalert2";
+import ReactDOM from 'react-dom';
+import React from 'react';
 
 class Modals{
     #colors = {
@@ -85,6 +87,23 @@ class Modals{
             icon: icon,
             title: text
         })
+    }
+
+    popup(ReactComponent, className) {
+        Swal.fire({
+            html: '<div id="react-swal"></div>',
+            customClass: className,
+            confirmButtonText: "Cerrar",
+            showCloseButton: true,
+            confirmButtonColor: this.#colors.red,
+            
+            didOpen: () => {
+                ReactDOM.render(<ReactComponent />, document.getElementById('react-swal'));
+            },
+            willClose: () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById('react-swal'));
+            }
+        });
     }
 
     #getIconColor(icon){
