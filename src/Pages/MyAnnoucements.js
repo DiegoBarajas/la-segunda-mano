@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AnnoucementMyAnn from '../Fragments/AnnoucementMyAnn'
 import ColumnLayout from '../Layouts/ColumnLayout'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import PageLayout from '../Layouts/PageLayout'
 import Filter from '../Fragments/Filter'
 
@@ -57,7 +57,6 @@ const MyAnnoucements = () => {
 
     return (
         <PageLayout>
-
             <section className='content-with-aside'>
                 <Filter/>
 
@@ -72,7 +71,7 @@ const MyAnnoucements = () => {
                                 {
                                     announcements.length === 0
                                         ? location.search.length === 0
-                                            ? <p style={{ marginTop: '50px' }}>No se encontrarón registros.</p>
+                                            ? <p style={{ marginTop: '50px' }}>No tienes anuncios activos. <Link to='/'>Crear un anuncio</Link></p>
                                             : <p style={{ marginTop: '50px' }}>No se encontrarón coincidencias.</p>
                                         : null
                                 }
@@ -89,7 +88,6 @@ const MyAnnoucements = () => {
                         )
                 }
             </section>
-
         </PageLayout>
     )
 }

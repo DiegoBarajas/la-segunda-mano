@@ -3,10 +3,11 @@ const authHandlerNoExtrict = require('../middlewares/authHandlerNoExtrict')
 const { Router } = require('express');
 const router = Router();
 
-const { createAnnouncement, getAnnouncement, getAnnouncementByToken } = require('../controllers/announcement.controller');
+const { createAnnouncement, getAnnouncement, getAnnouncementByToken, getAnnouncementBySearch } = require('../controllers/announcement.controller');
 
 router.route('/')
     .post(authHandler, createAnnouncement)
+    .get(getAnnouncementBySearch)
 
 router.route('/:id')
     .get(authHandlerNoExtrict, getAnnouncement)

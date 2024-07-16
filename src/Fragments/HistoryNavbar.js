@@ -12,7 +12,6 @@ import categorySvg from '../Assets/Icons/category_black.svg'
 import applySvg from '../Assets/Icons/apply.svg'
 import clearSvg from '../Assets/Icons/clear.svg'
 
-
 import constants from '../constants.json'
 
 const HistoryNavbar = ({visible, handleClose}) => {

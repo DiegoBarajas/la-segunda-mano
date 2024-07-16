@@ -195,6 +195,50 @@ controller.getAnnouncementByToken = async(req, res, next) => {
     }
 }
 
+// Obtener resgistros por busqueda
+controller.getAnnouncementBySearch = async(req, res, next) => {
+    try{
+        const { query } = req;
+        const filter = {}
+        let sort = { createdAt: -1 }
+
+        for(let key in query){
+            if(query[key] == ignoreValues[key]) continue;
+
+            if(key === 'estado') filter['caracteristicas.estado'] = query[key];
+            if(key === 'uso') filter['caracteristicas.uso'] = query[key];
+            if(key === 'categoria') filter['categoria'] = query[key];
+            if(key === 'ordenar') sort = order[query[key]];
+            if(key === 'nombre'){ 
+                const regex = new RegExp(query[key], 'i'); 
+                filter['titulo'] = regex;
+            }
+            if(key === 'ciudad'){ 
+                const regex = new RegExp(query[key], 'i'); 
+                filter['caracteristicas.ciudad'] = regex;
+            }
+        }
+        
+        const annoucements = await AnnouncementModel.find(filter).sort(sort);
+
+        if('precio' in sort){
+            return res.send(
+                annoucements.sort((a, b) => {
+                    const precioA = parseFloat(a.precio);
+                    const precioB = parseFloat(b.precio);
+            
+                    return sort.precio > 0 ? precioA - precioB : precioB - precioA;
+                })
+            )
+        }
+
+        res.send(annoucements);
+
+    }catch(err){
+        next(err);
+    }
+}
+
 module.exports = controller;
 
 // Objeto para comprobar los keys del query 

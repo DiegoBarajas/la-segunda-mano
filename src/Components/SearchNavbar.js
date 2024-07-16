@@ -4,7 +4,6 @@ import IconButton from './IconButton'
 
 import searchSvg from '../Assets/Icons/search.svg'
 
-
 const SearchNavbar = ({onFocus, onBlur, value, onChange}) => {
 
     return (
@@ -17,7 +16,6 @@ const SearchNavbar = ({onFocus, onBlur, value, onChange}) => {
                 name='nombre'
                 value={value}
                 onChange={onChange}
-                required
 
                 onFocus={onFocus}
                 onBlur={onBlur}
@@ -26,6 +24,7 @@ const SearchNavbar = ({onFocus, onBlur, value, onChange}) => {
                 icon={searchSvg} 
                 alt="Buscar" 
                 title="Buscar" 
+                type='submit'
                 style={{ width: '43px', height: '43px', position: 'absolute', right: '-30px' }}
             />
         </section>

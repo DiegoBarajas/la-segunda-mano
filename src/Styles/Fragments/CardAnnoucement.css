@@ -1,0 +1,51 @@
+@import url(../../index.css);
+
+.card-annoucement {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    padding: 13px 0 13px 0;
+    border-radius: 10px;
+
+    color: black;
+    text-decoration: none;
+}
+
+.img-card-annoucement {
+    width: 100%;
+}
+
+.title-card-annoucement {
+    padding: 0px 7px 0px 7px;
+    margin-top: 10px;
+    font-weight: 700;
+    color: var(--blue);
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    -webkit-line-clamp: 2;
+}
+
+.price-card-annoucement {
+    padding: 0px 7px 0px 7px;
+    margin-top: 15px;
+    font-weight: 500;
+    color: black;
+}
+
+.location-card-annoucement {
+    padding: 0px 7px 0px 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.location-card-annoucement img {
+    width: 20px;
+}

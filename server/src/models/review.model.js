@@ -16,6 +16,8 @@ const reviewSchema = new Schema({
     contenido: { type: String, required: true },
     fechaCreacion: { type: String, required: true },
     importancia: { type: Number, default: 0, required: true }
+},{
+    timestamps: true
 });
 
 module.exports = model('reviews', reviewSchema);
