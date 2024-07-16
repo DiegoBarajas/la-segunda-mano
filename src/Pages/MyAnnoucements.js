@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AnnoucementMyAnn from '../Fragments/AnnoucementMyAnn'
 import ColumnLayout from '../Layouts/ColumnLayout'
+import { useLocation } from 'react-router-dom'
 import PageLayout from '../Layouts/PageLayout'
 import Filter from '../Fragments/Filter'
 
@@ -12,12 +13,16 @@ import '../Styles/Pages/MyAnnoucements.css'
 
 const MyAnnoucements = () => {
 
+    const location = useLocation();
     const [ announcements, setAnnouncements ] = useState(null);
 
     useEffect(() => {
         const getMyAnnucements = async() => {
+
+            console.log(location.search);
+
             try{
-                const response = await axios.get(`${backend}/api/announcement/user/token`, {
+                const response = await axios.get(`${backend}/api/announcement/user/token/${location.search}`, {
                     headers: {
                         Authorization: localStorage.getItem('token')
                     }
@@ -60,15 +65,22 @@ const MyAnnoucements = () => {
                     announcements
                         ? (
                             <ColumnLayout className='column-content'>
-                                <h2 className='h2-title-my-ann'>Mis anuncios { announcements ? `(${announcements.length})` : null }</h2>
+                                <h2 className='h2-title-my-ann'>Mis anuncios { announcements ? `(${announcements.length} resultados)` : null }</h2>
                                 {
                                     announcements.map(ann => <AnnoucementMyAnn ann={ann}/>)
+                                }
+                                {
+                                    announcements.length === 0
+                                        ? location.search.length === 0
+                                            ? <p style={{ marginTop: '50px' }}>No se encontrarón registros.</p>
+                                            : <p style={{ marginTop: '50px' }}>No se encontrarón coincidencias.</p>
+                                        : null
                                 }
                             </ColumnLayout>
                         ) : (
                             <ColumnLayout className='column-content'>
                                 <h2 className='h2-title-my-ann'>Mis anuncios { announcements ? `(${announcements.length})` : null }</h2>
-                                
+
                                 <AnnoucementMyAnn/>
                                 <AnnoucementMyAnn/>
                                 <AnnoucementMyAnn/>

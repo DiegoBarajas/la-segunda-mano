@@ -238,7 +238,7 @@
         },
         {
             "text": "Servicios",
-            "value": "servicios"
+            "value": "servicio"
         },
         {
             "text": "Televisiones y pantallas",
@@ -246,7 +246,7 @@
         },
         {
             "text": "Vehículos",
-            "value": "vehículos"
+            "value": "vehiculo"
         }
     ],
     "categoriasProductos": [
@@ -482,12 +482,12 @@
 
     "ordenar": [
         {
-            "text": "Mas reciente primero",
-            "value": "date:asc"
+            "text": "Mas antiguo primero",
+            "value": "date:desc"
         },
         {
-            "text": "Mas antiguo primero",
-            "value": "date_desc"
+            "text": "Mas reciente primero",
+            "value": "date:asc"
         },
         {
             "text": "Alfabéticamente (A-Z)",

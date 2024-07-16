@@ -30,6 +30,7 @@ const Filter = () => {
 
     const [ showButton, setShowButton ] = useState(false);
     const [ isMenuOpen, setIsMenuOpen ] = useState(false);
+    const [ ciudad, setCiudad ] = useState( query && query.ciudad ? query.ciudad : '' );
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -51,46 +52,41 @@ const Filter = () => {
                                     label="Estado"
                                     name='estado'
                                     options={constants.estados}
-                                    onChange={() => setShowButton(true)}
+                                    selectedOption={ query && query.estado ? query.estado : null }
                                 />
 
                                 <Input
                                     label="Ciudad/municipio"
                                     placeholder="Ingrese la ciudad o municipio"
                                     name='ciudad'
-                                    onChange={() => setShowButton(true)}
+                                    onChange={(e) =>setCiudad(e.target.value)}
+                                    value={ciudad}
                                 />
 
                                 <Select
                                     label="Categoria"
                                     name='categoria'
                                     options={constants.categorias}
-                                    onChange={() => setShowButton(true)}
+                                    selectedOption={ query && query.categoria ? query.categoria : null }
                                 />
 
                                 <Select
                                     label="Uso"
                                     name='uso'
                                     options={constants.usos}
-                                    onChange={() => setShowButton(true)}
+                                    selectedOption={ query && query.uso ? query.uso : null }
                                 />
 
                                 <Select
                                     label="Ordenar"
                                     name='ordenar'
                                     options={constants.ordenar}
-                                    onChange={() => setShowButton(true)}
+                                    selectedOption={ query && query.ordenar ? query.ordenar : null }
                                     mb='15px'
                                 />
-
-                                {
-                                    showButton
-                                        ? <>
-                                            <Button type='submit' width='100%'>Aplicar</Button>
-                                            <Button color='red' type='reset' width='100%' onClick={() => setShowButton(false)}>Limpiar filtros</Button>
-                                        </>
-                                        : null
-                                }
+                                
+                                <Button type='submit' width='100%'>Aplicar</Button>
+                                <Button color='red' type='reset' width='100%' onClick={() => setCiudad('')} >Limpiar filtros</Button>
                             </form>
                         </section>
                         : null
@@ -106,46 +102,42 @@ const Filter = () => {
                         label="Estado"
                         name='estado'
                         options={constants.estados}
-                        onChange={() => setShowButton(true)}
+                        selectedOption={ query && query.estado ? query.estado : null }
                     />
 
                     <Input
                         label="Ciudad/municipio"
                         placeholder="Ingrese la ciudad o municipio"
                         name='ciudad'
-                        onChange={() => setShowButton(true)}
+                        onChange={(e) =>setCiudad(e.target.value)}
+                        value={ciudad}
                     />
 
                     <Select
                         label="Categoria"
                         name='categoria'
                         options={constants.categorias}
-                        onChange={() => setShowButton(true)}
+                        selectedOption={ query && query.categoria ? query.categoria : null }
                     />
 
                     <Select
                         label="Uso"
                         name='uso'
                         options={constants.usos}
-                        onChange={() => setShowButton(true)}
+                        selectedOption={ query && query.uso ? query.uso : null }
                     />
 
                     <Select
                         label="Ordenar"
                         name='ordenar'
                         options={constants.ordenar}
-                        onChange={() => setShowButton(true)}
+                        selectedOption={ query && query.ordenar ? query.ordenar : null }
                         mb='15px'
                     />
-
-                    {
-                        showButton
-                            ? <>
-                                <Button type='submit' width='100%'>Aplicar</Button>
-                                <Button color='red' type='reset' width='100%' onClick={() => setShowButton(false)}>Limpiar filtros</Button>
-                            </>
-                            : null
-                    }
+                    
+                    <Button type='submit' width='100%'>Aplicar</Button>
+                    <Button color='red' type='reset' width='100%' onClick={() => setCiudad('')} >Limpiar filtros</Button>
+                           
                 </form> 
             </ColumnLayout>
         </>
@@ -164,13 +156,13 @@ function parseTextFilter(query) {
     if (ciudad && (ciudad !== '')) elements.push({ bold: 'Ciudad', value: ciudad });
     if (categoria && (categoria !== 'Mostrar todo')) elements.push({ bold: 'Categoria', value: categoria });
     if (uso && (uso !== '*')) elements.push({ bold: 'Uso', value: uso });
-    if (ordenar && (ordenar !== 'date:asc')) elements.push({ bold: 'Ordenar', value: getTextByValue(ordenar) });
+    if (ordenar && (ordenar !== 'date:desc')) elements.push({ bold: 'Ordenar', value: getTextByValue(ordenar) });
 
     return elements.length > 0 ? (
         <React.Fragment>
             {elements.map((element, index) => (
                 index+1 === elements.length
-                    ? <React.Fragment key={`filter-text-${index}`}><b>{element.bold}:</b> {element.value}.</React.Fragment>
+                    ? <React.Fragment key={`filter-text-${index}`}><b>{element.bold}:</b> {element.value}</React.Fragment>
                     : <React.Fragment key={`filter-text-${index}`}><b>{element.bold}:</b> {element.value}, </React.Fragment>
             ))}
         </React.Fragment>
@@ -185,7 +177,6 @@ function getTextByValue(value) {
 
     for (let i = 0; i < ordenar.length; i++) {
         if (ordenar[i].value === value) {
-            console.log(ordenar[i].text);
             return ordenar[i].text;
         }
     }

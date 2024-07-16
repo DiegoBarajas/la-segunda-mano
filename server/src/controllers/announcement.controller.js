@@ -158,9 +158,35 @@ controller.getAnnouncement = async(req, res, next) => {
 // Obtener registro por usuario (Token)
 controller.getAnnouncementByToken = async(req, res, next) => {
     try{
-        const { user } = req;
+        const { user, query } = req;
+        const filter = { userId: user._id }
+        let sort = { createdAt: 1 }
 
-        const annoucements = await AnnouncementModel.find({ userId: user._id });
+        for(let key in query){
+            if(query[key].toUpperCase() == ignoreValues[key].toUpperCase()) continue;
+
+            if(key === 'estado') filter['caracteristicas.estado'] = query[key];
+            if(key === 'uso') filter['caracteristicas.uso'] = query[key];
+            if(key === 'categoria') filter['categoria'] = query[key];
+            if(key === 'ordenar') sort = order[query[key]];
+            if(key === 'ciudad'){ 
+                const regex = new RegExp(query[key], 'i'); 
+                filter['caracteristicas.ciudad'] = regex;
+            }
+        }
+        
+        const annoucements = await AnnouncementModel.find(filter).sort(sort);
+
+        if('precio' in sort){
+            return res.send(
+                annoucements.sort((a, b) => {
+                    const precioA = parseFloat(a.precio);
+                    const precioB = parseFloat(b.precio);
+            
+                    return sort.precio > 0 ? precioA - precioB : precioB - precioA;
+                })
+            )
+        }
 
         res.send(annoucements);
 
@@ -170,3 +196,22 @@ controller.getAnnouncementByToken = async(req, res, next) => {
 }
 
 module.exports = controller;
+
+// Objeto para comprobar los keys del query 
+const ignoreValues = {
+    estado: '*',
+    ciudad: '',
+    categoria: 'Mostrar todo',
+    uso: '*',
+    ordenar: 'date:desc'
+}
+
+// Manera de filtrado segun codigo
+const order = {
+    "date:desc": { createdAt: 1 },
+    "date:asc": { createdAt: -1 },
+    "alf:asc": { titulo: 1 },
+    "alf:desc": { titulo: -1 },
+    "price:asc": { precio: 1 },
+    "price:desc": { precio: -1 }
+}
