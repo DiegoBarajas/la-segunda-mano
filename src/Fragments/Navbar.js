@@ -70,7 +70,7 @@ const Navbar = () => {
                                 >Mi Perfil</ItemNavbar>
 
                                 <ItemNavbar 
-                                        to='/' 
+                                        to='/perfil/anuncios' 
                                         icon={announcementSvg} 
                                         title='Ver mis anuncios publicados'
                                         direction={isMenuOpen ? 'vertical' : 'horizontal'}
@@ -197,7 +197,7 @@ const Navbar = () => {
                             >Ver mi Perfil</ItemNavbar>
 
                             <ItemNavbar 
-                                    to='/' 
+                                    to='/perfil/anuncios' 
                                     icon={announcementSvg} 
                                     title='Ver mis anuncios publicados'
                                     direction={'vertical'}

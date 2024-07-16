@@ -23,6 +23,7 @@ import CreateVehicle from './Pages/CreateVehicle';
 import CreateGratis from './Pages/CreateGratis';
 import CreateInmueble from './Pages/CreateInmueble';
 import ShowPublicacion from './Pages/ShowAnnouncement';
+import MyAnnoucements from './Pages/MyAnnoucements';
 
 const App = () => {
     return (
@@ -49,6 +50,7 @@ const App = () => {
 
 				<Route path='/logout' element={ <Logout/> } />
 				<Route path='/perfil' element={ <LoggedRoute> <Profile/> </LoggedRoute> } />
+				<Route path='/perfil/anuncios' element={ <LoggedRoute> <MyAnnoucements/> </LoggedRoute> } />				
 
 				<Route path='/buscar' Component={Search} />
 

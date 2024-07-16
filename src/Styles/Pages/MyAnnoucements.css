@@ -1,0 +1,135 @@
+@import url(../../index.css);
+
+.content-with-aside {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+}
+
+.column-content {
+    width: min(700px, 50%);
+}
+
+.annoucement-item-my {
+    width: 100%;
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    padding: 7.5px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.annoucement-item-my-main{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+}
+
+.annoucement-item-my-main-pub {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    color: black;
+    gap: 4px;
+}
+
+.annoucement-item-my-main-exp {
+    font-size: 13px;
+    margin-left: 25px;
+    margin-top: -4px;
+}
+
+.annoucement-item-my-main-desc {
+    margin-top: 10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    -webkit-line-clamp: 2;
+    font-size: 12px;
+}
+
+.annoucement-item-my-main-icon {
+    width: 20px !important;
+}
+
+.annoucement-item-my-main img {
+    width: 150px;
+}
+
+.annoucement-item-my-main .column {
+    width: calc(100% - 130px);
+    color: black;
+}
+
+.annoucement-item-my-main .column h2{
+    font-weight: 500;
+    font-size: 22px;
+    margin-top: 5px;
+}
+
+.annoucement-item-my-main .column h3{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    color: var(--blue);
+    font-size: 18px;
+}
+
+.annoucement-item-my-sec{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 7px;
+    font-size: 20px;
+}
+
+.p-mint {
+    color: var(--mint);
+}
+
+.p-gold {
+    color: var(--gold);
+}
+
+.p-nivel-ann {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+.h2-title-my-ann {
+    margin-bottom: 20px;
+    text-align: start;
+    width: 100%;
+}
+
+@media (max-width: 1000px){
+    .column-content{
+        width: 100%;
+    }
+
+    .content-with-aside {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .annoucement-item-my {
+        width: 95%;
+    }
+
+    .h2-title-my-ann {
+        text-align: center;
+    }
+}

@@ -155,5 +155,18 @@ controller.getAnnouncement = async(req, res, next) => {
     }
 }
 
+// Obtener registro por usuario (Token)
+controller.getAnnouncementByToken = async(req, res, next) => {
+    try{
+        const { user } = req;
+
+        const annoucements = await AnnouncementModel.find({ userId: user._id });
+
+        res.send(annoucements);
+
+    }catch(err){
+        next(err);
+    }
+}
 
 module.exports = controller;
