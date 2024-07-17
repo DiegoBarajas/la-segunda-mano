@@ -12,7 +12,7 @@ const CardAnnoucement = ({ann}) => {
         <Link to={`/anuncio/${ann._id}`} className='card-annoucement'>
             <img src={ann.imagenes[0]} alt="Imagen" className='img-card-annoucement'/>
             <p className='title-card-annoucement'>{ann.titulo}</p>
-            <h3 className='price-card-annoucement'>${ann.precio} MXN</h3>
+            <h3 className='price-card-annoucement'>{showPrice(ann.precio)}</h3>
             <p className='location-card-annoucement'><img src={locationSvg} alt="Ubicacion"/>{ann.caracteristicas.ciudad}, {ann.caracteristicas.estado}.</p>
             
         </Link>
@@ -29,3 +29,14 @@ const CardAnnoucement = ({ann}) => {
 }
 
 export default CardAnnoucement
+
+function showPrice(price){
+    if(price == 0) return "GRATIS"
+    try{
+        const number = parseFloat(price);
+        if( isNaN(number) ) throw Error("SI");
+        return `$${number.toLocaleString()} MXN`
+    }catch(err){
+        return price;
+    }
+}

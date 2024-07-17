@@ -163,10 +163,11 @@ controller.getAnnouncementByToken = async(req, res, next) => {
     try{
         const { user, query } = req;
         const filter = { userId: user._id }
-        let sort = { createdAt: 1 }
+        let sort = { createdAt: -1 }
 
         for(let key in query){
-            if(query[key].toUpperCase() == ignoreValues[key].toUpperCase()) continue;
+            if(query[key] == ignoreValues[key]) continue;
+
 
             if(key === 'estado') filter['caracteristicas.estado'] = query[key];
             if(key === 'uso') filter['caracteristicas.uso'] = query[key];
@@ -213,7 +214,7 @@ controller.getAnnouncementBySearch = async(req, res, next) => {
             if(key === 'categoria') filter['categoria'] = query[key];
             if(key === 'ordenar') sort = order[query[key]];
             if(key === 'nombre'){ 
-                const regex = new RegExp(query[key], 'i'); 
+                const regex = new RegExp(query[key].trim(), 'i'); 
                 filter['titulo'] = regex;
             }
             if(key === 'ciudad'){ 
@@ -249,14 +250,13 @@ const ignoreValues = {
     estado: '*',
     ciudad: '',
     categoria: 'Mostrar todo',
-    uso: '*',
-    ordenar: 'date:desc'
+    uso: '*' 
 }
 
 // Manera de filtrado segun codigo
 const order = {
-    "date:desc": { createdAt: 1 },
     "date:asc": { createdAt: -1 },
+    "date:desc": { createdAt: 1 },
     "alf:asc": { titulo: 1 },
     "alf:desc": { titulo: -1 },
     "price:asc": { precio: 1 },

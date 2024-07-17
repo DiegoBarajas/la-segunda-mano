@@ -350,7 +350,7 @@ const ContactoVehiculo = ({handleBack, formData}) => {
 
                 <Checkbox
                     id='accept-terms'
-                    label={ <p>Acepto las <Link to='/condiciones'>Condiciones de uso</Link> y deseo continuar.</p> }
+                    label={ <p>Acepto las <Link to='/condiciones' target="_blank">Condiciones de uso</Link> y deseo continuar.</p> }
                     width='auto'
                     onChange={(e) => { setDisabled(!e.target.checked) }}
                 />

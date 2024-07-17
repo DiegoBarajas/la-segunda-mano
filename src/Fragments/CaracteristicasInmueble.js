@@ -123,6 +123,7 @@ const CaracteristicasInmueble = ({callBack, handleBack, formData, setFormData, s
                             name='cp'
                             label="Código postal"
                             placeholder='Ej. 44850'
+                            type='number'
                             mb='15px'
                         />
                     </section>
@@ -134,12 +135,14 @@ const CaracteristicasInmueble = ({callBack, handleBack, formData, setFormData, s
                             name='baños'
                             label="Cantidad de baños"
                             placeholder='Ej. 2.5'
+                            type='number'
                             mb='15px'
                         />
 
                         <Input
                             className='section-double-input-item'
                             id='habitaciones'
+                            type='number'
                             name='habitaciones'
                             label="Cantidad de habitaciones"
                             placeholder='Ej. Guadalajara'
@@ -154,6 +157,7 @@ const CaracteristicasInmueble = ({callBack, handleBack, formData, setFormData, s
                             name='superficie'
                             label={<>Superficie (m<sup>2</sup>)</>}
                             placeholder='Ej. 50'
+                            type='number'
                             mb='15px'
                         />
                     </section>

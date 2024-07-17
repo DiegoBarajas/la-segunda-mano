@@ -18,7 +18,7 @@ const AnnoucementMyAnn = ({ann}) => {
 
                 <ColumnLayout verticalAlign='start'>
                     <h3>{ann.titulo}</h3>
-                    <h2>${ann.precio} MXN</h2>
+                    <h2>{showPrice(ann.precio)}</h2>
 
                     <p className='annoucement-item-my-main-pub'><img src={calendarSvg} alt='Calendario' className='annoucement-item-my-main-icon'/><b>Publicado el:</b> {ann.fechaCreacion}</p>
                     <p className='annoucement-item-my-main-exp'><b>Expira el:</b> {ann.fechaExpiracion}</p>
@@ -76,5 +76,16 @@ function capitalizeFirstLetter(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }catch(err){
         return str;
+    }
+}
+
+function showPrice(price){
+    if(price == 0) return "GRATIS"
+    try{
+        const number = parseFloat(price);
+        if( isNaN(number) ) throw Error("SI");
+        return `$${number.toLocaleString()} MXN`
+    }catch(err){
+        return price;
     }
 }

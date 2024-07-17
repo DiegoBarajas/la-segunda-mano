@@ -189,10 +189,6 @@
             "value": "electrónica"
         },
         {
-            "text": "Gratis",
-            "value": "gratis"
-        },
-        {
             "text": "Herramientas",
             "value": "herramientas"
         },
@@ -482,12 +478,12 @@
 
     "ordenar": [
         {
-            "text": "Mas antiguo primero",
-            "value": "date:desc"
-        },
-        {
             "text": "Mas reciente primero",
             "value": "date:asc"
+        },
+        {
+            "text": "Mas antiguo primero",
+            "value": "date:desc"
         },
         {
             "text": "Alfabéticamente (A-Z)",

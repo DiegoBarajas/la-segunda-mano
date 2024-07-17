@@ -100,7 +100,11 @@ function getNameCaracteristica(key){
         smartTV: "¿Es SmartTV?",
         deudas: "¿Tiene deudas?",
         cilindros: "Cantidad de cilindros",
-
+        cp: "Código Postal",
+        rentaOVenta: "¿Es Renta o venta?",
+        superficie: "Superficie m2",
+        "baños": "Cantidad de baños",
+        habitaciones: "Cantidad de habitaciones"
     }
 
     return alias[key] ? alias[key] : capitalizeFirstLetter(key);

@@ -75,7 +75,7 @@ const MainShowAnn = ({announcement, mio}) => {
                         }
                         <h1>{announcement.titulo}</h1>
                         <h2>
-                            { announcement.tipoAnuncio === 'servicio' ? announcement.precio : <>${announcement.precio} MXN</> }
+                            { showPrice(announcement.precio) }
                         </h2>
 
                         <ul>
@@ -214,5 +214,16 @@ function selectTypeIcon(type){
         case "vehiculo": return carSvg;
 
         default: return productSvg;
+    }
+}
+
+function showPrice(price){
+    if(price == 0) return "GRATIS"
+    try{
+        const number = parseFloat(price);
+        if( isNaN(number) ) throw Error("SI");
+        return `$${number.toLocaleString()} MXN`
+    }catch(err){
+        return price;
     }
 }
