@@ -1,6 +1,4 @@
 import React from 'react'
-import ContentLayout from '../Layouts/ContentLayout'
-import Button from '../Components/Button'
 
 import inmuebleSvg from '../Assets/Icons/inmueble.svg'
 import productSvg from '../Assets/Icons/product.svg'
@@ -8,99 +6,275 @@ import serviceSvg from '../Assets/Icons/service.svg'
 import gratisSvg from '../Assets/Icons/gratis.svg'
 import carSvg from '../Assets/Icons/car.svg'
 
-import '../Styles/Pages/CreateAnnouncement.css';
+import '../Styles/Fragments/PopupSaberTipoAnn.css';
 
-const PopupSaberTipoAnn = ({setPopupActive}) => {
+const PopupSaberTipoAnn = () => {
+
     return (
-        <ContentLayout size='small' horizontalAlign='center' className='layout-poput-saber-tipo'>
-            <h2 className='h2-poput-saber-tipo'>¿Que tipo es lo que estoy vendiendo?</h2>
+        <div className='popup-saber-tipo-body'>
+            <h2>¿Que tipo es lo que estoy vendiendo?</h2>
+            <table className='table-saber-tipo'>
+                <thead>
+                    <tr>
+                        <th className='th-saber-tipo th-tipo'>Tipo</th>
+                        <th className='th-saber-tipo th-desc'>Descripción</th>
+                        <th className='th-saber-tipo th-ejem'>Ejemplos</th>
+                    </tr>
+                </thead>
 
-                <section className='item-poput-saber-tipo item-poput-saber-tipo-line'>
-                    <img src={productSvg} alt='Producto'/>
-                    <p><h3>Producto</h3>
+                <tbody>
+                    <tr>
+                        <td><section className='td-saber-tipo-icon'> 
+                            <img src={productSvg} alt="Producto"/>
+                            Producto
+                        </section></td>
+                        <td className='td-saber-tipo'><p>
+                            En esta categoría puedes vender artículos físicos como electrónica, ropa, juguetes, muebles y mucho más. Si tienes un objeto tangible que quieres vender, este es el lugar adecuado.
+                        </p></td>
+                        <td>
+                            <section className='td-saber-tipo-list'>
+                                <ul>
+                                    <li>Celulares.</li> 
+                                    <li>Electrodomesticos.</li> 
+                                    <li>Ropa.</li> 
+                                    <li>Alimentos. </li>
+                                    <li>Calzado. </li>
+                                    <li>muebles.</li>
+                                </ul>
+                            </section>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><section className='td-saber-tipo-icon'> 
+                            <img src={serviceSvg} alt="Servicio"/>
+                            Servicio
+                        </section></td>
+                        <td className='td-saber-tipo'><p>
+                            Aquí puedes ofrecer una variedad de servicios profesionales y personales. Si tienes habilidades o conocimientos que puedes poner a disposición de otros, publica tu oferta en esta sección.
+                        </p></td>
+                        <td>
+                            <section className='td-saber-tipo-list'>
+                                <ul>
+                                    <li>Fontaneria.</li> 
+                                    <li>Electricidad.</li> 
+                                    <li>Albañileria.</li> 
+                                    <li>Herreria.</li>
+                                    <li>Carpinteria.</li>
+                                </ul>
+                            </section>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><section className='td-saber-tipo-icon'> 
+                            <img src={gratisSvg} alt="Gratis"/>
+                            Gratis
+                        </section></td>
+                        <td className='td-saber-tipo'><p>
+                            Aquí puedes ofrecer artículos gratuitos. Esta categoría es ideal si quieres donar productos, ofrecer artículos para piezas, o promocionar tus servicios de forma gratuita, como profesionales que están comenzando.
+                        </p></td>
+                        <td>
+                            <section className='td-saber-tipo-list'>
+                                <ul>
+                                    <li>Partes de computadoras para reciclar.</li> 
+                                    <li>Servicios de peluquería gratuitos para promocionarte.</li> 
+                                    <li>Un televisor antiguo que ya no usas.</li>
+                                </ul>
+                            </section>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><section className='td-saber-tipo-icon'> 
+                            <img src={carSvg} alt="Vehiculo"/>
+                            Vehiculo
+                        </section></td>
+                        <td className='td-saber-tipo'><p>
+                            Esta categoría está destinada a la compra y venta de vehículos motorizados y no motorizados. Si deseas vender tu coche, motocicleta, bicicleta o incluso un bote, este es el lugar indicado.
+                        </p></td>
+                        <td>
+                            <section className='td-saber-tipo-list'>
+                                <ul>
+                                    <li>Automoviles.</li> 
+                                    <li>Motocicletas.</li> 
+                                    <li>Lanchas. </li>
+                                    <li>Cuatrimotos.</li>
+                                </ul>
+                            </section>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><section className='td-saber-tipo-icon'> 
+                            <img src={inmuebleSvg} alt="Inmueble"/>
+                            Inmueble
+                        </section></td>
+                        <td className='td-saber-tipo'><p>
+                            En esta sección puedes publicar propiedades inmobiliarias. Ya sea que quieras vender tu casa o terreno, alquilar un departamento o encontrar una oficina, puedes hacerlo aquí.
+                        </p></td>
+                        <td>
+                            <section className='td-saber-tipo-list'>
+                                <ul>
+                                    <li>Venta o renta de casas.</li> 
+                                    <li>Oficinas. </li>
+                                    <li>Departamentos. </li>
+                                    <li>Terrenos.</li>
+                                </ul>
+                            </section>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+
+
+
+            <table className='table-saber-tipo-mobile'>
+                <tr>
+                    <th>
+                        <section className='td-saber-tipo-icon'> 
+                            <img src={productSvg} alt="Producto"/>
+                            Producto
+                        </section>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td className='td-saber-tipo'><p>
                         En esta categoría puedes vender artículos físicos como electrónica, ropa, juguetes, muebles y mucho más. Si tienes un objeto tangible que quieres vender, este es el lugar adecuado.
-                        <br/><br/>
-                        <p style={{ textAlign: 'start' }}><b>Ejemplo:</b> 
-                            <ul style={{ marginLeft: '20px' }}>
-                                <li>Celulares,</li> 
-                                <li>electrodomesticos,</li> 
-                                <li>ropa,</li> 
-                                <li>alimentos, </li>
-                                <li>calzado, </li>
-                                <li>muebles.</li>
-                            </ul>
-                        </p>
-                    </p>
-                </section>
-                
-                <section className='item-poput-saber-tipo item-poput-saber-tipo-line'>
-                    <img src={serviceSvg} alt='Servicio'/>
-                    <p><h3>Servicio</h3>
+                    </p></td>
+                </tr>
+
+                <tr>
+                    <td><section className='td-saber-tipo-list'>
+                        <ul>
+                            <li>Celulares.</li> 
+                            <li>Electrodomesticos.</li> 
+                            <li>Ropa.</li> 
+                            <li>Alimentos. </li>
+                            <li>Calzado. </li>
+                            <li>muebles.</li>
+                        </ul>
+                    </section></td>
+                </tr>
+            </table>
+
+            <table className='table-saber-tipo-mobile'>
+                <tr>
+                    <th>
+                        <section className='td-saber-tipo-icon'> 
+                            <img src={serviceSvg} alt="Servicio"/>
+                            Servicio
+                        </section>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td className='td-saber-tipo'><p>
                         Aquí puedes ofrecer una variedad de servicios profesionales y personales. Si tienes habilidades o conocimientos que puedes poner a disposición de otros, publica tu oferta en esta sección.
-                        <br/><br/>
-                        <p style={{ textAlign: 'start' }}><b>Ejemplo:</b> 
-                            <ul style={{ marginLeft: '20px' }}>
-                                <li>Fontaneria,</li> 
-                                <li>electricidad,</li> 
-                                <li>albañileria,</li> 
-                                <li>herreria,</li>
-                                <li>carpinteria.</li>
-                            </ul>
-                        </p>
-                    </p>
-                </section>
+                    </p></td>
+                </tr>
 
-                <section className='item-poput-saber-tipo item-poput-saber-tipo-line'>
-                    <img src={gratisSvg} alt='Gratis'/>
-                    <p><h3>Gratis</h3>
-                        Aquí puedes ofrecer artículos gratuitos. Esta categoría es ideal si quieres donar productos, ofrecer artículos para piezas, o promocionar tus servicios de forma gratuita, como profesionales que están comenzando.
-                        <br/><br/>
-                        <p style={{ textAlign: 'start' }}><b>Ejemplo:</b> 
-                            <ul style={{ marginLeft: '20px' }}>
-                                <li>Partes de computadoras para reciclar,</li> 
-                                <li>servicios de peluquería gratuitos para promocionarte,</li> 
-                                <li>un televisor antiguo que ya no usas.</li>
-                            </ul>
-                        </p>
-                    </p>
-                </section>
+                <tr>
+                    <td><section className='td-saber-tipo-list'>
+                        <ul>
+                            <li>Fontaneria.</li> 
+                            <li>Electricidad.</li> 
+                            <li>Albañileria.</li> 
+                            <li>Herreria.</li>
+                            <li>Carpinteria.</li>
+                        </ul>
+                    </section></td>
+                </tr>
+            </table>
 
-                <section className='item-poput-saber-tipo item-poput-saber-tipo-line'>
-                    <img src={carSvg} alt='Vehiculo'/>
-                    <p><h3>Vehiculo</h3>
-                        Esta categoría está destinada a la compra y venta de vehículos motorizados y no motorizados. Si deseas vender tu coche, motocicleta, bicicleta o incluso un bote, este es el lugar indicado.
-                        <br/><br/>
+            <table className='table-saber-tipo-mobile'>
+                <tr>
+                    <th>
+                        <section className='td-saber-tipo-icon'> 
+                            <img src={gratisSvg} alt="Gratis"/>
+                            Gratis
+                        </section>
+                    </th>
+                </tr>
 
-                        <p style={{ textAlign: 'start' }}><b>Ejemplo:</b> 
-                            <ul style={{ marginLeft: '20px' }}>
-                                <li>Automoviles,</li> 
-                                <li>motocicletas,</li> 
-                                <li>lanchas, </li>
-                                <li>cuatrimotos.</li>
-                            </ul>
-                        </p>
-                    </p>
-                </section>
+                <tr>
+                    <td className='td-saber-tipo'><p>
+                    Aquí puedes ofrecer artículos gratuitos. Esta categoría es ideal si quieres donar productos, ofrecer artículos para piezas, o promocionar tus servicios de forma gratuita, como profesionales que están comenzando.
+                    </p></td>
+                </tr>
 
-                <section className='item-poput-saber-tipo'>
-                    <img src={inmuebleSvg} alt='Inmueble'/>
-                    <p><h3>Inmueble</h3>
+                <tr>
+                    <td><section className='td-saber-tipo-list'>
+                        <ul>
+                            <li>Partes de computadoras para reciclar.</li>
+                            <li>Servicios de peluquería gratuitos para promocionarte.</li>
+                            <li>Un televisor antiguo que ya no usas.</li>
+                        </ul>
+                    </section></td>
+                </tr>
+            </table>
+
+            <table className='table-saber-tipo-mobile'>
+                <tr>
+                    <th>
+                        <section className='td-saber-tipo-icon'> 
+                            <img src={carSvg} alt="Vehiculo"/>
+                            Vehiculo
+                        </section>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td className='td-saber-tipo'><p>
+                    Esta categoría está destinada a la compra y venta de vehículos motorizados y no motorizados. Si deseas vender tu coche, motocicleta, bicicleta o incluso un bote, este es el lugar indicado.
+                    </p></td>
+                </tr>
+
+                <tr>
+                    <td><section className='td-saber-tipo-list'>
+                        <ul>
+                            <li>Automoviles.</li>
+                            <li>Motocicletas.</li>
+                            <li>Lanchas.</li>
+                            <li>Cuatrimotos.</li>
+                        </ul>
+                    </section></td>
+                </tr>
+            </table>
+
+            <table className='table-saber-tipo-mobile'>
+                <tr>
+                    <th>
+                        <section className='td-saber-tipo-icon'> 
+                            <img src={inmuebleSvg} alt="Inmueble"/>
+                            Inmueble
+                        </section>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td className='td-saber-tipo'><p>
                         En esta sección puedes publicar propiedades inmobiliarias. Ya sea que quieras vender tu casa o terreno, alquilar un departamento o encontrar una oficina, puedes hacerlo aquí.
-                        <br/><br/>
-                        <p style={{ textAlign: 'start' }}><b>Ejemplo:</b> 
-                            <ul style={{ marginLeft: '20px' }}>
-                                <li>Venta, </li>
-                                <li>renta de casas,</li> 
-                                <li>oficinas, </li>
-                                <li>departamentos, </li>
-                                <li>terrenos.</li>
-                            </ul>
-                        </p>
-                    </p>
-                </section>
+                    </p></td>
+                </tr>
 
-            <Button color='red' width='100%' onClick={() => setPopupActive(false)}>Cerrar ventana</Button>
-        </ContentLayout>
+                <tr>
+                    <td><section className='td-saber-tipo-list'>
+                        <ul>
+                            <li>Venta o renta de casas.</li> 
+                            <li>Oficinas. </li>
+                            <li>Departamentos. </li>
+                            <li>Terrenos.</li>
+                        </ul>
+                    </section></td>
+                </tr>
+            </table>
+
+        </div>
     )
 }
 

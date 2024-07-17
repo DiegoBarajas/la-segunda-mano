@@ -9,13 +9,13 @@ import reportSvg from '../Assets/Icons/report.svg'
 
 import '../Styles/Pages/ShowAnnouncement.css';
 
-const SellerShowAnn = ({author}) => {
+const SellerShowAnn = ({author, mio}) => {
 
     const [ redirect, setRedirect ] = useState(null);
 
     return author ? (
         <ContentLayout redirect={redirect}>
-            <h2 className='h2-information-annoucement'>Vendido por</h2>
+            <h2 className='h2-information-annoucement'>{mio ? 'Vendido por mi' : 'Vendido por'}</h2>
             <section className='ann-seller-section'>
                 <section className='ann-seller-section-img'>
                     <img src={author.foto ? author.foto : userSvg} alt='Foto del vendedor'/>
@@ -31,21 +31,36 @@ const SellerShowAnn = ({author}) => {
                             
                 </section>
 
-                <section className='ann-seller-section-btns'>
-                    <Button 
-                        color='red' 
-                        icon={reportSvg}
-                        width='49.5%'
-                        className='ann-seller-section-btn'
-                    >Reportar vendedor</Button>
+                {
+                    mio
+                        ? (
+                            <section className='ann-seller-section-btns'>
 
-                    <Button 
-                        icon={allAnnoucementsSvg}
-                        width='49.5%'
-                        className='ann-seller-section-btn'
-                        onClick={() => setRedirect(`/vendedor/${author.sellerId}`)}
-                    >Mostrar todos los anuncios del vendedor</Button>                            
-                </section>
+                                <Button 
+                                    icon={allAnnoucementsSvg}
+                                    width='100%'
+                                    className='ann-seller-section-btn'
+                                    onClick={() => setRedirect(`/perfil/anuncios`)}
+                                >Ver todos mis anuncios</Button>                            
+                            </section>
+                        ) : (
+                            <section className='ann-seller-section-btns'>
+                                <Button 
+                                    color='red' 
+                                    icon={reportSvg}
+                                    width='49.5%'
+                                    className='ann-seller-section-btn'
+                                >Reportar vendedor</Button>
+
+                                <Button 
+                                    icon={allAnnoucementsSvg}
+                                    width='49.5%'
+                                    className='ann-seller-section-btn'
+                                    onClick={() => setRedirect(`/vendedor/${author.sellerId}`)}
+                                >Mostrar todos los anuncios del vendedor</Button>                            
+                            </section>
+                        )
+                }
             </section>
         </ContentLayout>
     ) : (

@@ -139,7 +139,7 @@ const announcementSchema = new Schema({
         required: true
     }
 },{
-    timestapms: true
+    timestamps: true
 });
 
 module.exports = model('announcement', announcementSchema);

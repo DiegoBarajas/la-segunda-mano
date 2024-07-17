@@ -96,6 +96,9 @@ controller.getAnnouncement = async(req, res, next) => {
 //      Si no existe enviar respuesta
         if(!announcement) {throw new CustomError('El anuncio no existe. Puede que el anuncio haya caducado')};
 
+//      Comprobar si el anuncio es del usuario
+        const mio = ((user) && (user._id.toString() == announcement.userId.toString())) ? true : false;
+
 //      Obtener el usuario que lo publico y acomodar el objeto de retorno
         let author = await userModel.findById(announcement.userId)
             .select('nombre apellido foto sellerId');
@@ -149,7 +152,7 @@ controller.getAnnouncement = async(req, res, next) => {
         delete author._id;
 
 //      Enviar respuesta con el anuncio
-        res.send({announcement, author, reviews, canMakeReview});
+        res.send({announcement, author, reviews, canMakeReview, mio});
     }catch(err){
         next(err);
     }

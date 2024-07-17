@@ -16,6 +16,7 @@ import gratisSvg from '../Assets/Icons/gratis.svg'
 import carSvg from '../Assets/Icons/car.svg'
 
 import '../Styles/Pages/CreateAnnouncement.css';
+import modals from '../Modals';
 
 const CreateAnnouncement = () => {
 
@@ -33,6 +34,10 @@ const CreateAnnouncement = () => {
     const [ redirect, setRedirect ] = useState(null);
     const [ popupWarnActive, setPopupWarnActive ] = useState(!localStorage.getItem('popupWarnActive'));
     const [ popupActive, setPopupActive ] = useState(false);
+
+    const showPoputHow = () => {
+        modals.popup(PopupSaberTipoAnn, 'popup-saber-tipo')
+    }
 
     return (
         <PageLayout footer={false}>
@@ -83,7 +88,7 @@ const CreateAnnouncement = () => {
                     onClick={() => setRedirect('/vender/inmueble')}
                 >Inmueble</Button>
 
-                <TextButton className='text-button-create-ann' icon={helpMintSvg} onClick={() => setPopupActive(true)}>¿Comó puedo saber que tipo estoy vendiendo?</TextButton>
+                <TextButton className='text-button-create-ann' icon={helpMintSvg} onClick={showPoputHow}>¿Comó puedo saber que tipo estoy vendiendo?</TextButton>
             </ContentLayout>
 
             <Popup active={popupActive}>

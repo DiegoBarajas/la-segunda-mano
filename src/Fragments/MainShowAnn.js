@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ContentLayout from '../Layouts/ContentLayout'
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import { SlideToolbar, CloseButton } from 'react-image-previewer/ui';
@@ -7,6 +7,7 @@ import Button from '../Components/Button';
 
 import imageNotFilled from '../Assets/Icons/imageNotFilled.svg'
 import FavoriteSvg from '../Assets/Icons/favoriteUnfilled.svg'
+import deleteWhiteSvg from '../Assets/Icons/deleteWhite.svg'
 import categorySvg from '../Assets/Icons/categoryBlack.svg'
 import locationSvg from '../Assets/Icons/location.svg'
 import calendarSvg from '../Assets/Icons/calendar.svg'
@@ -15,19 +16,25 @@ import contactSvg from '../Assets/Icons/contact.svg'
 import productSvg from '../Assets/Icons/product.svg'
 import serviceSvg from '../Assets/Icons/service.svg'
 import gratisSvg from '../Assets/Icons/gratis.svg'
+import editSvg from '../Assets/Icons/edit.svg'
 import reportSvg from '../Assets/Icons/report.svg'
+import selledSvg from '../Assets/Icons/selled.svg'
 
 import stockSvg from '../Assets/Icons/stock.svg'
 import carSvg from '../Assets/Icons/car.svg'
 
 import '../Styles/Pages/ShowAnnouncement.css';
+import { useParams } from 'react-router-dom';
 
-const MainShowAnn = ({announcement}) => {
+const MainShowAnn = ({announcement, mio}) => {
     const token = localStorage.getItem('token');
+    const { id } = useParams();
+
+    const [ redirect, setRedirect ] = useState(null);
 
     return announcement
     ? (
-        <ContentLayout horizontalAlign='center'>
+        <ContentLayout horizontalAlign='center' redirect={redirect}>
             <main className='show-announcement-main'>
                 
                 <section className='show-announcement-imgs'>
@@ -61,7 +68,9 @@ const MainShowAnn = ({announcement}) => {
                     <section className='show-annoucement-general'>
                         {
                             token 
-                                ? <div className='div-fav-btn'> <IconButton color='transparent' icon={FavoriteSvg} title='Añadir a favoritos'/> </div>
+                                ? !mio
+                                    ? <div className='div-fav-btn'> <IconButton color='transparent' icon={FavoriteSvg} title='Añadir a favoritos'/> </div>
+                                    : null
                                 : null
                         }
                         <h1>{announcement.titulo}</h1>
@@ -100,20 +109,47 @@ const MainShowAnn = ({announcement}) => {
                         </ul>
                     </section>
 
-                    <section className='show-announcement-buttons'>
-                        <Button 
-                            width='100%' 
-                            title='Contactar con el vendedor'
-                            icon={ contactSvg }
-                        >Contactar con el vendedor</Button>
+                    {
+                        mio ? (
+                                <section className='show-announcement-buttons'>
 
-                        <Button 
-                            width='100%' 
-                            icon={ reportSvg }
-                            title='Reportar este anuncio'
-                            color='red' 
-                        >Reportar publicación</Button>
-                    </section>
+                                    <Button 
+                                        width='100%' 
+                                        title='Editar anuncio'
+                                        icon={ editSvg }
+                                        onClick={() => setRedirect(`/anuncio/${id}/editar`)}
+                                    >Editar</Button>
+
+                                    <Button 
+                                        width='100%' 
+                                        title='Marcar como que ya vendiste este anuncio'
+                                        icon={ selledSvg }
+                                    >Marcar como vendido</Button>
+
+                                    <Button 
+                                        width='100%' 
+                                        icon={ deleteWhiteSvg }
+                                        title='Eliminar anuncio'
+                                        color='red' 
+                                    >Eliminar publicación</Button>
+                                </section>
+                            ) : (
+                                <section className='show-announcement-buttons'>
+                                    <Button 
+                                        width='100%' 
+                                        title='Contactar con el vendedor'
+                                        icon={ contactSvg }
+                                    >Contactar con el vendedor</Button>
+
+                                    <Button 
+                                        width='100%' 
+                                        icon={ reportSvg }
+                                        title='Reportar este anuncio'
+                                        color='red' 
+                                    >Reportar publicación</Button>
+                                </section>
+                        )
+                    }
                 </section>
                     
             </main>

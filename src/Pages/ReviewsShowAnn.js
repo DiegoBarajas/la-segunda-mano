@@ -17,7 +17,7 @@ import axios from 'axios';
 import backend from '../backend';
 import '../Styles/Pages/ShowAnnouncement.css';
 
-const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMakeReview }) => {
+const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMakeReview, mio }) => {
 
     const token = localStorage.getItem('token');
     const formRef = useRef(null);
@@ -140,53 +140,55 @@ const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMake
 
     return ( reviews && author ) ? (
         <ContentLayout>
-            <h2 className='h2-information-annoucement'>Reseñas del vendedor</h2>
+            <h2 className='h2-information-annoucement'>{mio ? 'Mis reseñas' : 'Reseñas del vendedor'}</h2>
 
             {
                 token 
                     ? canMakeReview
-                        ? <form className='form-review' onSubmit={handleSubmitReview} ref={formRef}>
-                            <Input
-                                id="contenido"
-                                name="contenido"
-                                placeholder="Introduzca su reseña..."
-                                label="Reseña"
-                                width='100%'
-                                minHeight='45px'
-                                textArea
-                                required
-                            />
-                            <input type='hidden' name='commentedUser' value={author.sellerId}/>
-            
-                            <section className='section-form-review'>
-                                <div className='puntuation'>
-                                    {
-                                        Array.from({ length: 5 }, (_, index) => (
-                                            index < calificacion
-                                                ? <IconButton
-                                                    color='transparent' 
-                                                    icon={puntuationSvg} 
-                                                    alt="★" 
-                                                    key={'start-icon-'+index} 
-                                                    title={`Puntuar con ${index+1} estrellas`} 
-                                                    onClick={() => setCalificacion(index+1)}
-                                                />
-                                                : <IconButton 
-                                                    color='transparent' 
-                                                    icon={voidPuntuationSvg} 
-                                                    alt="☆" 
-                                                    key={'start-icon-'+index} 
-                                                    title={`Puntuar con ${index+1} estrellas`} 
-                                                    onClick={() => setCalificacion(index+1)}
-                                                />
-                                        ))
-                                    }
-                                    <p style={{ fontSize: '13px' }}>{calificacion}/5 Estrellas</p>
-                                </div>
-                                <Button type='submit' horizontal>Enviar</Button>
-                            </section>
-            
-                        </form>
+                        ? !mio
+                            ? <form className='form-review' onSubmit={handleSubmitReview} ref={formRef}>
+                                <Input
+                                    id="contenido"
+                                    name="contenido"
+                                    placeholder="Introduzca su reseña..."
+                                    label="Reseña"
+                                    width='100%'
+                                    minHeight='45px'
+                                    textArea
+                                    required
+                                />
+                                <input type='hidden' name='commentedUser' value={author.sellerId}/>
+                
+                                <section className='section-form-review'>
+                                    <div className='puntuation'>
+                                        {
+                                            Array.from({ length: 5 }, (_, index) => (
+                                                index < calificacion
+                                                    ? <IconButton
+                                                        color='transparent' 
+                                                        icon={puntuationSvg} 
+                                                        alt="★" 
+                                                        key={'start-icon-'+index} 
+                                                        title={`Puntuar con ${index+1} estrellas`} 
+                                                        onClick={() => setCalificacion(index+1)}
+                                                    />
+                                                    : <IconButton 
+                                                        color='transparent' 
+                                                        icon={voidPuntuationSvg} 
+                                                        alt="☆" 
+                                                        key={'start-icon-'+index} 
+                                                        title={`Puntuar con ${index+1} estrellas`} 
+                                                        onClick={() => setCalificacion(index+1)}
+                                                    />
+                                            ))
+                                        }
+                                        <p style={{ fontSize: '13px' }}>{calificacion}/5 Estrellas</p>
+                                    </div>
+                                    <Button type='submit' horizontal>Enviar</Button>
+                                </section>
+                
+                            </form>
+                            : null
                         : <p style={{ textAlign: 'center', width: '100%' }}>Ya has escrito una reseña, si deseas modificarla eliminala y crea una nueva.</p>
 
                     : <p><b>Para escribir una reseña necesitas una cuenta.</b> <Link to='/login'>Iniciar sesión</Link></p>

@@ -22,6 +22,7 @@ const ShowAnnouncement = () => {
     const [ author, setAuthor ] = useState(null);
     const [ reviews, setReviews ] = useState(null);
     const [ canMakeReview, setCanMakeReview ] = useState(false);
+    const [ mio, setMio ] = useState(false);
 
     useEffect(() => {
         window.scrollTo({
@@ -41,6 +42,7 @@ const ShowAnnouncement = () => {
                 setAuthor(response.data.author);
                 setReviews(response.data.reviews);
                 setCanMakeReview(response.data.canMakeReview);
+                setMio(response.data.mio);
 
             }catch(err){
 
@@ -77,6 +79,7 @@ const ShowAnnouncement = () => {
         <PageLayout>
 
             <MainShowAnn
+                mio={mio}
                 announcement={announcement}
             />
             
@@ -85,10 +88,12 @@ const ShowAnnouncement = () => {
             />
 
             <SellerShowAnn
+                mio={mio}
                 author={author}
             />
             
             <ReviewsShowAnn
+                mio={mio}
                 author={author}
                 reviews={reviews}
                 setReviews={ setReviews }

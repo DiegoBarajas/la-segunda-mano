@@ -13,6 +13,7 @@ const Profile = () => {
         <PageLayout>
             <ContentLayout horizontalAlign='center'>
                 <Title>Mi Perfil</Title>
+                
             </ContentLayout>
         </PageLayout>    
     )

@@ -71,7 +71,7 @@ const MyAnnoucements = () => {
                                 {
                                     announcements.length === 0
                                         ? location.search.length === 0
-                                            ? <p style={{ marginTop: '50px' }}>No tienes anuncios activos. <Link to='/'>Crear un anuncio</Link></p>
+                                            ? <p style={{ marginTop: '50px' }}>No tienes anuncios activos. <Link to='/vender'>Crear un anuncio</Link></p>
                                             : <p style={{ marginTop: '50px' }}>No se encontrarón coincidencias.</p>
                                         : null
                                 }
