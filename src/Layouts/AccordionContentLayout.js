@@ -5,9 +5,9 @@ import downArrowSvg from '../Assets/Icons/downArrow.svg'
 
 import '../Styles/Layouts/ContentLayout.css'
 
-const AccordionContentLayout = ({children, id, className, complete=false, size="regular", verticalAlign='start', horizontalAlign='start', redirect=null, titulo}) => {
+const AccordionContentLayout = ({children, id, className, complete=false, size="regular", verticalAlign='start', horizontalAlign='start', redirect=null, titulo, defaultOpened=false}) => {
     
-    const [ opened, setOpened ] = useState(false);
+    const [ opened, setOpened ] = useState(defaultOpened);
 
     return (
         <ContentLayout 
