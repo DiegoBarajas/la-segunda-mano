@@ -172,7 +172,6 @@ const CaracteristicasVehiculo = ({callBack, handleBack, formData, setFormData}) 
                             label="Número de cilindros"
                             placeholder='Ej. 8'
                             type='number'
-                            min={8}
                             mb='15px'
                         />
                     </section>

@@ -22,12 +22,12 @@ const InfoShowAnn = ({announcement}) => {
             <section className='caracteristicas-annoucement'>
                 {
                     Object.keys(announcement.caracteristicas).map(key => {
-                        return (announcement.caracteristicas[key] !== '') && (announcement.caracteristicas[key]) && !['ciudad', 'cantidad', 'estado'].includes(key)
+                        return (announcement.caracteristicas[key] !== '') && (announcement.caracteristicas[key] !== null) && !['ciudad', 'cantidad', 'estado'].includes(key)
                             ? <section className='caracteristica-annoucement' key={'caracteristicas-'+key}>
                                 <h3>{getNameCaracteristica(key)}</h3>
                                 <div className='caracteristica-annoucement-content'>
                                     <img src={selectIcon(key)} alt={key} />
-                                        <p>{announcement.caracteristicas[key] === true ? 'Si' : capitalizeFirstLetter(announcement.caracteristicas[key])}</p>
+                                        <p>{announcement.caracteristicas[key] === true ? 'Si' : announcement.caracteristicas[key] === false ? 'No' : capitalizeFirstLetter(announcement.caracteristicas[key])}</p>
                                     </div>
                                 </section>
                                 : null
@@ -80,8 +80,12 @@ const InfoShowAnn = ({announcement}) => {
 export default InfoShowAnn
 
 function capitalizeFirstLetter(str) {
-    if (str.length === 0) return str;
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    try{
+        if (str.length === 0) return str;
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }catch(err){
+        return str;
+    }
 }
 
 function getNameCaracteristica(key){
@@ -93,7 +97,10 @@ function getNameCaracteristica(key){
         "tamañoPantalla": "Tamaño de la pantalla",
         "tamañoPulgadas": "Tamaño en pulgadas",
         conectividadTV: "Conectividad para TV",
-        smartTV: "¿Es SmartTV?"
+        smartTV: "¿Es SmartTV?",
+        deudas: "¿Tiene deudas?",
+        cilindros: "Cantidad de cilindros",
+
     }
 
     return alias[key] ? alias[key] : capitalizeFirstLetter(key);
