@@ -143,10 +143,18 @@ controller.getAnnouncement = async(req, res, next) => {
                 }
             }
         ]);
-        
-//      Agregar campos al autor
-        author.calificacion = (result[0].calificacion / result[0].evaluadores).toFixed(1);
-        author.evaluadores = result[0].evaluadores;
+
+        console.log(result);
+//      Comprobar si tiene evaluaciones
+        if(result.length > 0){
+//          Agregar campos al autor
+            author.calificacion = (result[0].calificacion / result[0].evaluadores).toFixed(1);
+            author.evaluadores = result[0].evaluadores;
+        }else{
+//          Agregar campos al autor
+            author.calificacion = 0;
+            author.evaluadores = 0;
+        }
 
 //      Eliminar id del author
         delete author._id;
