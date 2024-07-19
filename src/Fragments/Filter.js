@@ -5,8 +5,11 @@ import Select from '../Components/Select'
 import Button from '../Components/Button'
 import Input from '../Components/Input'
 
-import filterSvg from '../Assets/Icons/filter.svg'
 import quitFilterSvg from '../Assets/Icons/quitFilter.svg'
+import priceSortSvg from '../Assets/Icons/priceSort.svg'
+import dateSortSvg from '../Assets/Icons/dateSort.svg'
+import alfSortSvg from '../Assets/Icons/alfSort.svg'
+import filterSvg from '../Assets/Icons/filter.svg'
 
 import constants from '../constants.json'
 import '../Styles/Fragments/Filter.css'
@@ -42,6 +45,10 @@ const Filter = () => {
                 <section className='filter-mobile-menu'>
                     <p className={isMenuOpen ? 'p-show-all-filters' : "p-not-show-all-filters"}>{parseTextFilter(query)}</p>
                     <Button horizontal icon={isMenuOpen ? quitFilterSvg : filterSvg} onClick={toggleMenu}>{isMenuOpen ? 'Ocultar' : "Filtros"}</Button>
+                </section>
+                
+                <section className='show-order-by'>
+                    <p><b>Ordenar:</b> {parseTextOrder(query)}</p>
                 </section>
 
                 {
@@ -96,7 +103,10 @@ const Filter = () => {
             <ColumnLayout className='filter' verticalAlign='start'>
                 <form>
                     <h2>Filtros</h2>
-                    <p className='mb-25'>{parseTextFilter(query)}</p>
+                    <p>{parseTextFilter(query)}</p>
+                    <section className='show-order-by'>
+                        <p><b>Ordenar:</b> {parseTextOrder(query)}</p>
+                    </section>
 
                     <Select
                         label="Estado"
@@ -149,14 +159,13 @@ export default Filter
 function parseTextFilter(query) {
     if (!query) return "(Ningún filtro aplicado)";
     
-    const { estado, ciudad, categoria, uso, ordenar } = query;
+    const { estado, ciudad, categoria, uso } = query;
     let elements = [];
 
     if (estado && (estado !== '*')) elements.push({ bold: 'Estado', value: estado });
     if (ciudad && (ciudad !== '')) elements.push({ bold: 'Ciudad', value: ciudad });
     if (categoria && (categoria !== 'Mostrar todo')) elements.push({ bold: 'Categoria', value: categoria });
     if (uso && (uso !== '*')) elements.push({ bold: 'Uso', value: uso });
-    if (ordenar && (ordenar !== 'date:desc')) elements.push({ bold: 'Ordenar', value: getTextByValue(ordenar) });
 
     return elements.length > 0 ? (
         <React.Fragment>
@@ -171,6 +180,16 @@ function parseTextFilter(query) {
     );
 }
 
+function parseTextOrder(query){
+    if (!query) return "Mas reciente primero";
+
+    const {ordenar} = query;
+    if( ordenar ) {
+        return getTextByValue(ordenar);
+    }
+
+    return "Mas reciente primero"
+}
 
 function getTextByValue(value) {
     const ordenar = constants.ordenar;

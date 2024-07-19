@@ -98,7 +98,7 @@ class Modals{
             confirmButtonColor: this.#colors.red,
             
             didOpen: () => {
-                ReactDOM.render(<ReactComponent />, document.getElementById('react-swal'));
+                ReactDOM.render(ReactComponent, document.getElementById('react-swal'));
             },
             willClose: () => {
                 ReactDOM.unmountComponentAtNode(document.getElementById('react-swal'));

@@ -14,6 +14,14 @@
     display: none;
 }
 
+.show-order-by {
+    display: flex;
+    align-items: start;
+    margin-top: 5px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
 @media (max-width: 1000px){
     .filter {
         display: none;
@@ -61,5 +69,13 @@
 
     .p-show-all-filters {
         -webkit-line-clamp: 100;
+    }
+
+    .show-order-by {
+        display: flex;
+        width: 100%;
+        align-items: end;
+        margin-top: -5px;
+        margin-bottom: 10px;
     }
 }

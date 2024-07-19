@@ -77,7 +77,7 @@ const Politicas = () => {
 
             <ContentLayout size="small" complete>
                 <p><b>Contacto</b></p>
-                <p>Si tiene alguna pregunta sobre estas Políticas de Privacidad, puede contactarnos a través del correo electrónico: <a href='mailto:contacto@lasegundamano.mx'>contacto@lasegundamano.mx</a></p>
+                <p>Si tiene alguna pregunta sobre estas Políticas de Privacidad, puede contactarnos a través del correo electrónico: <a href='mailto:contacto@lasegundamano.com.mx'>contacto@lasegundamano.com.mx</a></p>
                 <br/><br/>
                 <p><b>Fecha de Última Actualización</b></p>
                 <p>17 de julio de 2024</p>

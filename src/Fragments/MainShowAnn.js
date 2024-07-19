@@ -9,6 +9,7 @@ import imageNotFilled from '../Assets/Icons/imageNotFilled.svg'
 import FavoriteSvg from '../Assets/Icons/favoriteUnfilled.svg'
 import deleteWhiteSvg from '../Assets/Icons/deleteWhite.svg'
 import categorySvg from '../Assets/Icons/categoryBlack.svg'
+import ContactSelllerPopup from './ContactSelllerPopup';
 import locationSvg from '../Assets/Icons/location.svg'
 import calendarSvg from '../Assets/Icons/calendar.svg'
 import inmuebleSvg from '../Assets/Icons/inmueble.svg'
@@ -25,12 +26,17 @@ import carSvg from '../Assets/Icons/car.svg'
 
 import '../Styles/Pages/ShowAnnouncement.css';
 import { useParams } from 'react-router-dom';
+import modals from '../Modals';
 
 const MainShowAnn = ({announcement, mio}) => {
     const token = localStorage.getItem('token');
     const { id } = useParams();
 
     const [ redirect, setRedirect ] = useState(null);
+
+    const showContactSeller = () => {
+        modals.popup(<ContactSelllerPopup contacto={announcement.contacto}/>, 'swal-contact-seller-popup');
+    }
 
     return announcement
     ? (
@@ -139,6 +145,8 @@ const MainShowAnn = ({announcement, mio}) => {
                                         width='100%' 
                                         title='Contactar con el vendedor'
                                         icon={ contactSvg }
+
+                                        onClick={showContactSeller}
                                     >Contactar con el vendedor</Button>
 
                                     <Button 
