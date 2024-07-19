@@ -14,6 +14,8 @@ import axios from 'axios'
 import backend from '../backend';
 
 const useEmail = () => {
+    document.title = 'La Segunda Mano - Recuperar contraseña';
+
     const query = new URLSearchParams(useLocation().search)
     const searchValue = query.get('email');
 

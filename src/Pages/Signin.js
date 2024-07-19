@@ -19,6 +19,8 @@ import RepeatSvg from '../Assets/Icons/repeat.svg'
 import backend from '../backend';
 
 const Signin = () => {
+    document.title = 'La Segunda Mano - Crear cuenta';
+
     const [ redirect, setRedirect ] = useState(null);
     const [ disabled, setDisabled ] = useState(false);
 

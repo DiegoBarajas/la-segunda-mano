@@ -6,6 +6,8 @@ import PageLayout from '../Layouts/PageLayout'
 import '../Styles/Pages/PoliticasCondiciones.css'
 
 const Condiciones = () => {
+    document.title = "La Segunda Mano - Condiciones de uso";
+
     useEffect(() => {
         window.scrollTo({
             top: 0,

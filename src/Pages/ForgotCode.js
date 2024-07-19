@@ -18,6 +18,7 @@ import backend from '../backend';
 import '../Styles/Pages/Login.css'
 
 const useEmail = () => {
+    document.title = 'La Segunda Mano - Recuperar contraseña';
     const query = new URLSearchParams(useLocation().search)
     const searchValue = query.get('email');
 

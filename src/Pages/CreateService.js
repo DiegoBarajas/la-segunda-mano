@@ -9,6 +9,7 @@ import '../Styles/Pages/CreateAnnouncement.css';
 import ContactoServicio from '../Fragments/ContactoServicio';
 
 const CreateService = () => {
+    document.title = 'La Segunda Mano - Crear anuncio (Servicio)';
     
     const [ currentStep, setCurrentStep ] = useState(1);
     const [ formData, setFormData ] = useState(new FormData());

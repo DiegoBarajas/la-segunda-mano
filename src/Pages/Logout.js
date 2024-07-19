@@ -4,6 +4,7 @@ import modals from '../Modals';
 let salio = false;
 
 const Logout = () => {
+    document.title = 'La Segunda Mano - Cerrando sesión...';
 
     localStorage.removeItem('user');
     localStorage.removeItem('token');

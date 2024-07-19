@@ -9,6 +9,7 @@ import createAccountSvg from '../Assets/Icons/create_account.svg'
 
 
 const ShouldLogin = () => {
+    document.title = 'La Segunda Mano';
 
     const [ redirect, setRedirect ] = useState(null);
 

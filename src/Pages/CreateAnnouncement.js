@@ -19,6 +19,7 @@ import '../Styles/Pages/CreateAnnouncement.css';
 import modals from '../Modals';
 
 const CreateAnnouncement = () => {
+    document.title = "La Segunda Mano - Crear anuncio";
 
     useEffect(() => {
         window.scrollTo({

@@ -19,6 +19,7 @@ import constants from '../constants.json'
 import backend from '../backend';
 
 const SigninLastSteps = () => {
+    document.title = 'La Segunda Mano - Crear cuenta';
     const token = localStorage.getItem('token');
 
     const [ disabled, setDisabled ] = useState(true);

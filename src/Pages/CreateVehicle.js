@@ -6,8 +6,8 @@ import CaracteristicasVehiculo from '../Fragments/CaracteristicasVehiculo';
 import ContactoVehiculo from '../Fragments/ContactoVehiculo';
 import '../Styles/Pages/CreateAnnouncement.css';
 
-
 const CreateVehicle = () => {
+    document.title = 'La Segunda Mano - Crear anuncio (Vehiculo)';
     
     const [ currentStep, setCurrentStep ] = useState(1);
     const [ formData, setFormData ] = useState(new FormData());

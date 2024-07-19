@@ -6,6 +6,7 @@ import PageLayout from '../Layouts/PageLayout'
 import '../Styles/Pages/PoliticasCondiciones.css'
 
 const Politicas = () => {
+    document.title = 'La Segunda Mano - Politicas de privacidad';
     useEffect(() => {
         window.scrollTo({
             top: 0,

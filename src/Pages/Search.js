@@ -11,6 +11,7 @@ import axios from 'axios'
 import '../Styles/Pages/MyAnnoucements.css'
 
 const useQuery = () => {
+    document.title = 'La Segunda Mano - Buscar';
     const query = new URLSearchParams(useLocation().search)
     const queryObject = {}
 

@@ -5,7 +5,7 @@ import MainShowAnn from '../Fragments/MainShowAnn';
 import ShowPricing from '../Fragments/ShowPricing';
 import InfoShowAnn from '../Fragments/InfoShowAnn';
 import PageLayout from '../Layouts/PageLayout'
-import ReviewsShowAnn from './ReviewsShowAnn';
+import ReviewsShowAnn from '../Fragments/ReviewsShowAnn';
 
 import modals from '../Modals';
 import axios from 'axios';
@@ -13,6 +13,8 @@ import backend from '../backend';
 import '../Styles/Pages/ShowAnnouncement.css';
 
 const ShowAnnouncement = () => {
+    document.title = 'La Segunda Mano - Anuncio';
+
     const token = localStorage.getItem('token');
     const location = useLocation();
 
@@ -43,6 +45,9 @@ const ShowAnnouncement = () => {
                 setReviews(response.data.reviews);
                 setCanMakeReview(response.data.canMakeReview);
                 setMio(response.data.mio);
+
+                document.title = `La Segunda Mano - Anuncio ${response.data.announcement.titulo}`;
+
 
             }catch(err){
 

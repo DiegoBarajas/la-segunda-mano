@@ -6,6 +6,7 @@ import Loader from '../Components/Loader'
 import '../Styles/Pages/LoadingPage.css'
 
 const LoadingPage = ({ children='Cargando...' }) => {
+    document.title = 'La Segunda Mano - Cargando...';
     return (
         <PageLayout navbar={false} footer={false}>
 

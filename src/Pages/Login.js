@@ -17,6 +17,7 @@ import PasswordSvg from '../Assets/Icons/password.svg'
 import backend from '../backend';
 
 const Login = () => {
+    document.title = 'La Segunda Mano - Iniciar sesión';
     const [ redirect, setRedirect ] = useState(null);
 
     const [ email, setEmail ] = useState('');

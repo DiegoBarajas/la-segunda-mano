@@ -8,6 +8,7 @@ import ContactoProducto from '../Fragments/ContactoProducto';
 import '../Styles/Pages/CreateAnnouncement.css';
 
 const CreateProducto = () => {
+    document.title = 'La Segunda Mano - Crear anuncio (Producto)';
     
     const [ currentStep, setCurrentStep ] = useState(1);
     const [ formData, setFormData ] = useState(new FormData());

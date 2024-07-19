@@ -21,6 +21,7 @@ const useEmail = () => {
 }
 
 const SigninCode = () => {
+    document.title = 'La Segunda Mano - Crear cuenta';
     const email = useEmail();
     
     const [ code, setCode ] = useState('');

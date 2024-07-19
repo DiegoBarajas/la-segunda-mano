@@ -4,6 +4,7 @@ import PageLayout from '../Layouts/PageLayout'
 import ContententLayout from '../Layouts/ContentLayout.js'
 
 const Index = () => {
+    document.title = 'La Segunda Mano - Inicio';
 
     useEffect(() => {
         window.scrollTo({

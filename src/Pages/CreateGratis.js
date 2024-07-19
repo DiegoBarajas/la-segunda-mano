@@ -8,6 +8,7 @@ import PageLayout from '../Layouts/PageLayout';
 import '../Styles/Pages/CreateAnnouncement.css';
 
 const CreateGratis = () => {
+    document.title = 'La Segunda Mano - Crear anuncio (Gratis)';
     
     const [ currentStep, setCurrentStep ] = useState(1);
     const [ formData, setFormData ] = useState(new FormData());

@@ -12,6 +12,7 @@ import axios from 'axios'
 import '../Styles/Pages/MyAnnoucements.css'
 
 const MyAnnoucements = () => {
+    document.title = 'La Segunda Mano - Mis anuncios';
 
     const location = useLocation();
     const [ announcements, setAnnouncements ] = useState(null);

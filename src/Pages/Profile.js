@@ -7,6 +7,7 @@ import Title from '../Components/Title'
 import '../Styles/Pages/Profile.css';
 
 const Profile = () => {
+    document.title = 'La Segunda Mano - Mi perfil';
     const user = JSON.parse(localStorage.getItem('user'));
 
     return (

@@ -8,6 +8,7 @@ import '../Styles/Pages/CreateAnnouncement.css';
 import ContactoInmueble from '../Fragments/ContactoInmueble';
 
 const CreateInmueble = () => {
+    document.title = 'La Segunda Mano - Crear anuncio (Inmueble)';
     
     const [ currentStep, setCurrentStep ] = useState(1);
     const [ formData, setFormData ] = useState(new FormData());

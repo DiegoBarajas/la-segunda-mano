@@ -7,6 +7,7 @@ import Button from '../Components/Button'
 import '../Styles/Pages/PageNotFound.css'
 
 const PageNotFound = () => {
+    document.title = 'La Segunda Mano - Página no encontrada';
 
     useEffect(() => {
         window.scrollTo({
