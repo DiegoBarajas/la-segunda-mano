@@ -13,7 +13,7 @@ const CardAnnoucement = ({ann}) => {
             <img src={ann.imagenes[0]} alt="Imagen" className='img-card-annoucement'/>
             <p className='title-card-annoucement'>{ann.titulo}</p>
             <h3 className='price-card-annoucement'>{showPrice(ann.precio)}</h3>
-            <p className='location-card-annoucement'><img src={locationSvg} alt="Ubicacion"/>{capitalizeFirstLetter(ann.caracteristicas.ciudad)}, {capitalizeFirstLetter(ann.caracteristicas.estado)}.</p>
+            <p className='location-card-annoucement'><img src={locationSvg} alt="Ubicacion"/>{capitalizeFirstLetter(ann.caracteristicas.ciudad).trim()}, {capitalizeFirstLetter(ann.caracteristicas.estado)}.</p>
             
         </Link>
     ) : (

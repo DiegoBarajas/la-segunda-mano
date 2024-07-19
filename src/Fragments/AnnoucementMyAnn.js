@@ -25,17 +25,17 @@ const AnnoucementMyAnn = ({ann}) => {
 
                     <p className='annoucement-item-my-main-desc'>{ann.descripcion}</p>
                 </ColumnLayout>
-
             </section>
 
             <section className='annoucement-item-my-sec'>
-                <p className='annoucement-item-my-main-pub'><img src={locationSvg} className='annoucement-item-my-main-icon' alt='Ubicacion'/><b>{capitalizeFirstLetter(ann.caracteristicas.ciudad)}, {capitalizeFirstLetter(ann.caracteristicas.estado)}</b></p>
-                { ann.nivel !== 'estandar' 
-                    ? ann.nivel === 'impulsado'
-                        ? <p className='p-nivel-ann p-mint'><img src={impulsedSvg}/>Impulsado</p>
-                        : <p className='p-nivel-ann p-gold'><img src={premiumSvg}/>Premium</p>
-                    : null
-                 }
+                <p className='annoucement-item-my-main-pub'><img src={locationSvg} className='annoucement-item-my-main-icon' alt='Ubicacion'/><b>{capitalizeFirstLetter(ann.caracteristicas.ciudad).trim()}, {capitalizeFirstLetter(ann.caracteristicas.estado)}</b></p>
+                { 
+                    ann.nivel !== 'estandar' 
+                        ? ann.nivel === 'impulsado'
+                            ? <p className='p-nivel-ann p-mint'><img src={impulsedSvg}/>Impulsado</p>
+                            : <p className='p-nivel-ann p-gold'><img src={premiumSvg}/>Premium</p>
+                        : null
+                }
             </section>
         </Link>
     ) : (
