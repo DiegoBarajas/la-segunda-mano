@@ -126,7 +126,7 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
 
                             <li>
                                 <img src={locationSvg} alt='Ubicación'/>
-                                <p><b>Ubicación:</b> <Link to={`/buscar?ciudad=${announcement.caracteristicas.ciudad.toLowerCase()}`}>{announcement.caracteristicas.ciudad}</Link>, <Link to={`/buscar?estado=${announcement.caracteristicas.estado}`}>{capitalizeFirstLetter(announcement.caracteristicas.estado)}</Link></p>
+                                <p><b>Ubicación:</b> <Link to={`/buscar?ciudad=${announcement.caracteristicas.ciudad.trim().toLowerCase()}`}>{announcement.caracteristicas.ciudad.trim()}</Link>, <Link to={`/buscar?estado=${announcement.caracteristicas.estado}`}>{capitalizeFirstLetter(announcement.caracteristicas.estado)}</Link></p>
                             </li>
                             {
                                 announcement.caracteristicas.cantidad > 1 
