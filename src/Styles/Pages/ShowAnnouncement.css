@@ -403,6 +403,14 @@
     }
 }
 
+.icon-button-create-ann {
+    filter: opacity(70%) !important;
+}
+
+.icon-button-create-ann:hover {
+    filter: opacity(100%) !important;
+}
+
 @media (max-width: 870px) {
     .show-announcement-main {
         flex-direction: column;
@@ -428,6 +436,18 @@
 
     .div-fav-btn::before {
         content: 'Añadir a favoritos';
+        font-size: 12px;
+        color: black;
+        font-weight: 700;
+        font-family: "Lexend Deca", sans-serif;
+    }
+
+    .quit-from-favs::before {
+        content: 'Quitar de   favoritos';
+    }
+
+    .watch-as-a-client::before {
+        content: 'Ver como comprador';
         font-size: 12px;
         color: black;
         font-weight: 700;

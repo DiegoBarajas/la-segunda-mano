@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
-import ContentLayout from '../Layouts/ContentLayout'
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import { SlideToolbar, CloseButton } from 'react-image-previewer/ui';
+import ContactSelllerPopup from './ContactSelllerPopup';
+import ContentLayout from '../Layouts/ContentLayout'
 import IconButton from '../Components/IconButton';
+import { useParams } from 'react-router-dom';
 import Button from '../Components/Button';
 
 import imageNotFilled from '../Assets/Icons/imageNotFilled.svg'
-import FavoriteSvg from '../Assets/Icons/favoriteUnfilled.svg'
+import favoriteSvg from '../Assets/Icons/favoriteUnfilled.svg'
+import favoriteFilledSvg from '../Assets/Icons/favoriteFilled.svg'
 import deleteWhiteSvg from '../Assets/Icons/deleteWhite.svg'
 import categorySvg from '../Assets/Icons/categoryBlack.svg'
-import ContactSelllerPopup from './ContactSelllerPopup';
 import locationSvg from '../Assets/Icons/location.svg'
 import calendarSvg from '../Assets/Icons/calendar.svg'
 import inmuebleSvg from '../Assets/Icons/inmueble.svg'
@@ -17,18 +19,19 @@ import contactSvg from '../Assets/Icons/contact.svg'
 import productSvg from '../Assets/Icons/product.svg'
 import serviceSvg from '../Assets/Icons/service.svg'
 import gratisSvg from '../Assets/Icons/gratis.svg'
-import editSvg from '../Assets/Icons/edit.svg'
 import reportSvg from '../Assets/Icons/report.svg'
 import selledSvg from '../Assets/Icons/selled.svg'
-
 import stockSvg from '../Assets/Icons/stock.svg'
+import editSvg from '../Assets/Icons/edit.svg'
 import carSvg from '../Assets/Icons/car.svg'
+import eyeSvg from '../Assets/Icons/eye.svg'
 
 import '../Styles/Pages/ShowAnnouncement.css';
-import { useParams } from 'react-router-dom';
 import modals from '../Modals';
+import axios from 'axios';
+import backend from '../backend';
 
-const MainShowAnn = ({announcement, mio}) => {
+const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
     const token = localStorage.getItem('token');
     const { id } = useParams();
 
@@ -36,6 +39,36 @@ const MainShowAnn = ({announcement, mio}) => {
 
     const showContactSeller = () => {
         modals.popup(<ContactSelllerPopup contacto={announcement.contacto}/>, 'swal-contact-seller-popup');
+    }
+
+    const handleAddFavorite = async() => {
+        try{
+            setIsFavorite(!isFavorite);
+            const response = await axios.post(`${backend}/api/favorite`, { announcementId: id }, {
+                headers: {
+                    Authorization: token
+                }
+            });
+
+            modals.toast(response.data.message, 'info');
+            setIsFavorite(response.data.isOn);
+        }catch(err){
+            setIsFavorite(!isFavorite);
+
+            if (err.response) {
+                // El servidor respondió con un código de estado fuera del rango 2xx
+                console.error('Código de estado HTTP:', err.response.status, '\n', 'Error de respuesta:', err.response.data);
+                modals.alert("Ups", `${err.response.data}`, 'error');
+            } else if (err.request) {
+                // La solicitud fue hecha pero no se recibió respuesta
+                console.error('No se recibió respuesta del servidor:', err.request);
+                modals.alert("Ha ocurrido un error", `No se recibió respuesta del servidor`, 'error');
+            } else {
+                // Ocurrió un error antes de enviar la solicitud
+                console.error('Error al enviar la solicitud:', err.message);
+                modals.alert("Ha ocurrido un error", `<b>Error al enviar la solicitud</b> ${err.message}`, 'error');
+            }
+        }
     }
 
     return announcement
@@ -75,8 +108,8 @@ const MainShowAnn = ({announcement, mio}) => {
                         {
                             token 
                                 ? !mio
-                                    ? <div className='div-fav-btn'> <IconButton color='transparent' icon={FavoriteSvg} title='Añadir a favoritos'/> </div>
-                                    : null
+                                    ? <div className={`div-fav-btn ${isFavorite ? 'quit-from-favs' : ''}`}> <IconButton className='icon-button-create-ann' color='transparent' icon={ isFavorite ? favoriteFilledSvg : favoriteSvg } title={isFavorite ? "Quitar de favoritos" : 'Añadir a favoritos'} onClick={handleAddFavorite}/> </div>
+                                    : <div className='div-fav-btn watch-as-a-client'> <IconButton className='icon-button-create-ann' color='transparent' icon={eyeSvg} title='Ver como comprador' onClick={() => window.location.href = `/anuncio/${id}?client=true`}/> </div>
                                 : null
                         }
                         <h1>{announcement.titulo}</h1>

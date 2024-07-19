@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from 'react' 
-import SellerShowAnn from '../Fragments/SellerShowAnn';
 import { useLocation, useParams } from 'react-router-dom'
+import ReviewsShowAnn from '../Fragments/ReviewsShowAnn';
+import SellerShowAnn from '../Fragments/SellerShowAnn';
 import MainShowAnn from '../Fragments/MainShowAnn';
 import ShowPricing from '../Fragments/ShowPricing';
 import InfoShowAnn from '../Fragments/InfoShowAnn';
 import PageLayout from '../Layouts/PageLayout'
-import ReviewsShowAnn from '../Fragments/ReviewsShowAnn';
 
+import '../Styles/Pages/ShowAnnouncement.css';
+import backend from '../backend';
 import modals from '../Modals';
 import axios from 'axios';
-import backend from '../backend';
-import '../Styles/Pages/ShowAnnouncement.css';
 
 const ShowAnnouncement = () => {
-    document.title = 'La Segunda Mano - Anuncio';
-
     const token = localStorage.getItem('token');
     const location = useLocation();
 
     const { id } = useParams();
 
-    const [ announcement, setAnnouncement ] = useState(null);
-    const [ author, setAuthor ] = useState(null);
-    const [ reviews, setReviews ] = useState(null);
     const [ canMakeReview, setCanMakeReview ] = useState(false);
+    const [ announcement, setAnnouncement ] = useState(null);
+    const [ reviews, setReviews ] = useState(null);
+    const [ author, setAuthor ] = useState(null);
+    const [ isFavorite, setIsFavorite ] = useState(false);
     const [ mio, setMio ] = useState(false);
 
     useEffect(() => {
@@ -34,20 +33,26 @@ const ShowAnnouncement = () => {
 
         const getAnnouncement = async() => {
             try{
+                document.title = 'La Segunda Mano - Anuncio';
+
                 const response = await axios.get(`${backend}/api/announcement/${id}`, {
                     headers: {
                         Authorization: token
                     }
                 });
 
-                setAnnouncement(response.data.announcement);
-                setAuthor(response.data.author);
-                setReviews(response.data.reviews);
+                document.title = `La Segunda Mano - ${response.data.announcement.titulo}`;
+
                 setCanMakeReview(response.data.canMakeReview);
+                setAnnouncement(response.data.announcement);
+                setIsFavorite(response.data.isFavorite)
+                setReviews(response.data.reviews);
+                setAuthor(response.data.author);
                 setMio(response.data.mio);
 
-                document.title = `La Segunda Mano - Anuncio ${response.data.announcement.titulo}`;
-
+                if(location.search === '?client=true'){
+                    setMio(false);
+                }
 
             }catch(err){
 
@@ -72,8 +77,8 @@ const ShowAnnouncement = () => {
             }
         }
 
-        if(location.search){
-            modals.popup(ShowPricing, "swal-show-pricing")
+        if(location.search === '?modal=true'){
+            modals.popup(<ShowPricing/>, "swal-show-pricing")
         }
 
         getAnnouncement();
@@ -85,6 +90,8 @@ const ShowAnnouncement = () => {
 
             <MainShowAnn
                 mio={mio}
+                isFavorite={isFavorite}
+                setIsFavorite={setIsFavorite}
                 announcement={announcement}
             />
             

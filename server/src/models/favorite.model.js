@@ -11,11 +11,9 @@ const favoriteSchema = new Schema({
         ref: "announcement", 
         default: null,
         required: false 
-    },
-    expiro: { type: Boolean, default: false },
-    mensaje: { type: String, required: true },
+    }
 },{
-    timestapms: true
+    timestamps: true
 });
 
 module.exports = model('favorite', favoriteSchema);

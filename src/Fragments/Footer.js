@@ -15,7 +15,7 @@ const Footer = () => {
             </section>
 
             <section className='info-footer'>
-                <p className='p-info-footer'>La segunda mano ( 2024 ) • Version: {packageJSON.version}</p>
+                <p className='p-info-footer'>La segunda mano 2024 • Version: {packageJSON.version}</p>
             </section>
         </footer>
     )

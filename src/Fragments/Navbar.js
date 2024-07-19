@@ -62,46 +62,53 @@ const Navbar = () => {
                         ? user
                             ? <>
                                 <ItemNavbar 
-                                        to='/perfil' 
-                                        icon={user.foto ? user.foto : accountSvg} 
-                                        title='Abrir mi perfil y su configuración'
-                                        direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                                        round
+                                    to='/perfil' 
+                                    icon={user.foto ? user.foto : accountSvg} 
+                                    title='Abrir mi perfil y su configuración'
+                                    direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                                    round
                                 >Mi Perfil</ItemNavbar>
 
                                 <ItemNavbar 
-                                        to='/perfil/anuncios' 
-                                        icon={announcementSvg} 
-                                        title='Ver mis anuncios publicados'
-                                        direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                                    to='/perfil/anuncios' 
+                                    icon={announcementSvg} 
+                                    title='Ver mis anuncios publicados'
+                                    direction={isMenuOpen ? 'vertical' : 'horizontal'}
                                 >Mis anuncios</ItemNavbar>
 
                                 <ItemNavbar 
-                                        to='/' 
-                                        icon={notificationSvg} 
-                                        title='ver mis notificaciones'
-                                        direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                                    to='/' 
+                                    icon={notificationSvg} 
+                                    title='ver mis notificaciones'
+                                    direction={isMenuOpen ? 'vertical' : 'horizontal'}
                                 >Notificaciones</ItemNavbar>
 
                                 <ItemNavbar 
-                                        to='/' 
-                                        icon={favoriteSvg} 
-                                        title='Ver las publicaciones guardadas en favoritos'
-                                        direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                                    to='/favoritos' 
+                                    icon={favoriteSvg} 
+                                    title='Ver las publicaciones guardadas en favoritos'
+                                    direction={isMenuOpen ? 'vertical' : 'horizontal'}
                                 >Mis favoritos</ItemNavbar>
 
                                 <ItemNavbar 
                                     to='/vender'
                                     icon={sellSvg} 
                                     title='Quiero publicar producto, servicio, vehiculo o inmueble'
-                                        direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                                    direction={isMenuOpen ? 'vertical' : 'horizontal'}
                                 >Vender</ItemNavbar>
 
                                 <ItemNavbar 
-                                        to='/logout' 
-                                        icon={logoutSvg} 
-                                        title='Cerrar mi sesión'
-                                        direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                                    to='/categorias'
+                                    icon={categorySvg} 
+                                    title='Ver todas las categorias'
+                                    direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                                >Todas las categorias</ItemNavbar>
+
+                                <ItemNavbar 
+                                    to='/logout' 
+                                    icon={logoutSvg} 
+                                    title='Cerrar mi sesión'
+                                    direction={isMenuOpen ? 'vertical' : 'horizontal'}
                                 >Cerrar sesión</ItemNavbar>
                             </>
                             : <>
@@ -213,7 +220,7 @@ const Navbar = () => {
                             >Notificaciones</ItemNavbar>
 
                             <ItemNavbar 
-                                    to='/' 
+                                    to='/favoritos' 
                                     icon={favoriteSvg} 
                                     title='Ver las publicaciones guardadas en favoritos'
                                     direction={'vertical'}
@@ -227,6 +234,14 @@ const Navbar = () => {
                                 direction={'vertical'}
                                 className='item-navbar-account-menu'
                             >Vender</ItemNavbar>
+
+                            <ItemNavbar 
+                                to='/categorias'
+                                icon={categorySvg} 
+                                title='Ver todas las categorias'
+                                direction={'vertical'}
+                                className='item-navbar-account-menu'
+                            >Todas las categorias</ItemNavbar>
 
                             <ItemNavbar 
                                     to='/logout' 

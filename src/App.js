@@ -26,6 +26,8 @@ import ShowPublicacion from './Pages/ShowAnnouncement';
 import MyAnnoucements from './Pages/MyAnnoucements';
 import Politicas from './Pages/Politicas';
 import Condiciones from './Pages/Condiciones';
+import Favoritos from './Pages/Favoritos';
+import Categorias from './Pages/Categorias';
 
 const App = () => {
     return (
@@ -52,9 +54,11 @@ const App = () => {
 
 				<Route path='/logout' element={ <Logout/> } />
 				<Route path='/perfil' element={ <LoggedRoute> <Profile/> </LoggedRoute> } />
+				<Route path='/favoritos' element={ <LoggedRoute> <Favoritos/> </LoggedRoute> } />
 				<Route path='/perfil/anuncios' element={ <LoggedRoute> <MyAnnoucements/> </LoggedRoute> } />				
 
 				<Route path='/buscar' Component={Search} />
+				<Route path='/categorias' Component={Categorias} />
 
 				<Route path='/politicas' Component={Politicas} />
 				<Route path='/condiciones' Component={Condiciones} />

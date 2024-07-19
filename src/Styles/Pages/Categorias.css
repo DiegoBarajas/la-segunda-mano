@@ -1,0 +1,38 @@
+@import url(../../index.css);
+
+.column-categories {
+    width: min(60%, 1000px);
+}
+
+.categorias {
+    margin-top: 25px;
+    width: 100%;
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px 10px; 
+}
+
+.btn-categorias {
+    width: 100% !important;
+    height: 45px;
+    justify-content: start;
+    text-align: start;
+}
+
+@media (max-width: 870px) {
+    .column-categories {
+        width: min(85%, 850px);
+    }
+
+    .categorias {
+        grid-template-columns: 1fr 1fr; 
+    }
+
+    .btn-categorias {
+        width: 100% !important;
+        height: 65px;
+        justify-content: start;
+        text-align: start;
+    }
+}

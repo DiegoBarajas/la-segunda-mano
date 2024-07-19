@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import AnnoucementMyAnn from '../Fragments/AnnoucementMyAnn'
 import ColumnLayout from '../Layouts/ColumnLayout'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import PageLayout from '../Layouts/PageLayout'
-import Filter from '../Fragments/Filter'
 
 import backend from '../backend'
 import modals from '../Modals'
@@ -11,8 +10,8 @@ import axios from 'axios'
 
 import '../Styles/Pages/MyAnnoucements.css'
 
-const MyAnnoucements = () => {
-    document.title = 'La Segunda Mano - Mis anuncios';
+const Favoritos = () => {
+    document.title = 'La Segunda Mano - Mis Favoritos';
 
     const location = useLocation();
     const [ announcements, setAnnouncements ] = useState(null);
@@ -21,7 +20,7 @@ const MyAnnoucements = () => {
         const getMyAnnucements = async() => {
 
             try{
-                const response = await axios.get(`${backend}/api/announcement/user/token/${location.search}`, {
+                const response = await axios.get(`${backend}/api/favorite`, {
                     headers: {
                         Authorization: localStorage.getItem('token')
                     }
@@ -57,27 +56,24 @@ const MyAnnoucements = () => {
     return (
         <PageLayout>
             <section className='content-with-aside'>
-                <Filter/>
 
                 {
                     announcements
                         ? (
                             <ColumnLayout className='column-content'>
-                                <h2 className='h2-title-my-ann'>Mis anuncios { announcements ? `(${announcements.length} resultados)` : null }</h2>
+                                <h2 className='h2-title-my-ann' style={{ textAlign: 'center' }}>Mis Favoritos { announcements ? `(${announcements.length} resultados)` : null }</h2>
                                 {
                                     announcements.map(ann => <AnnoucementMyAnn ann={ann}/>)
                                 }
                                 {
                                     announcements.length === 0
-                                        ? location.search.length === 0
-                                            ? <p style={{ marginTop: '50px' }}>No tienes anuncios activos. <Link to='/vender'>Crear un anuncio</Link></p>
-                                            : <p style={{ marginTop: '50px' }}>No se encontrarón coincidencias.</p>
+                                        ? <p style={{ marginTop: '50px', textAlign: 'center' }}>No se tienes anuncios en favoritos. Para agregar uno selecciona un anuncio y haz click en el boton del corazón.</p>
                                         : null
                                 }
                             </ColumnLayout>
                         ) : (
                             <ColumnLayout className='column-content'>
-                                <h2 className='h2-title-my-ann'>Mis anuncios { announcements ? `(${announcements.length})` : null }</h2>
+                                <h2 className='h2-title-my-ann'>Mis Favoritos { announcements ? `(${announcements.length})` : null }</h2>
 
                                 <AnnoucementMyAnn/>
                                 <AnnoucementMyAnn/>
@@ -91,4 +87,4 @@ const MyAnnoucements = () => {
     )
 }
 
-export default MyAnnoucements
+export default Favoritos
