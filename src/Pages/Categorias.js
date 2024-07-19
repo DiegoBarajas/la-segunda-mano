@@ -7,6 +7,9 @@ import '../Styles/Pages/Categorias.css'
 import constants from '../constants.json'
 const Categorias = () => {
 
+    const listCategories = [...constants.categorias].slice(1);
+    console.log(listCategories);
+
     return (
         <PageLayout>
             <ColumnLayout className='column-categories'>
@@ -14,7 +17,7 @@ const Categorias = () => {
 
                 <section className='categorias'>
                     {
-                        constants.categorias.map((c, index) => 
+                        listCategories.map((c, index) => 
                             <Button icon={getSrc(c.text)} className="btn-categorias" horizontal onClick={() => window.location.href = `/buscar?categoria=${c.value}`}>{c.text}</Button>
                         )
                     }

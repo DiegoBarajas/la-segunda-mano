@@ -29,7 +29,7 @@ const AnnoucementMyAnn = ({ann}) => {
             </section>
 
             <section className='annoucement-item-my-sec'>
-                <p className='annoucement-item-my-main-pub'><img src={locationSvg} className='annoucement-item-my-main-icon' alt='Ubicacion'/><b>{ann.caracteristicas.ciudad}, {capitalizeFirstLetter(ann.caracteristicas.estado)}</b></p>
+                <p className='annoucement-item-my-main-pub'><img src={locationSvg} className='annoucement-item-my-main-icon' alt='Ubicacion'/><b>{capitalizeFirstLetter(ann.caracteristicas.ciudad)}, {capitalizeFirstLetter(ann.caracteristicas.estado)}</b></p>
                 { ann.nivel !== 'estandar' 
                     ? ann.nivel === 'impulsado'
                         ? <p className='p-nivel-ann p-mint'><img src={impulsedSvg}/>Impulsado</p>

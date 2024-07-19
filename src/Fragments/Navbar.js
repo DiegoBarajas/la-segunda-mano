@@ -100,7 +100,7 @@ const Navbar = () => {
                                 <ItemNavbar 
                                     to='/categorias'
                                     icon={categorySvg} 
-                                    title='Ver todas las categorias'
+                                    title='Ver un listado de todas las categorias'
                                     direction={isMenuOpen ? 'vertical' : 'horizontal'}
                                 >Todas las categorias</ItemNavbar>
 
@@ -131,7 +131,7 @@ const Navbar = () => {
                                 icon={categorySvg} 
                                 title='Ver un listado de todas las categorias'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                            >Categorias</ItemNavbar>      
+                            >Todas las categorias</ItemNavbar>      
 
                             <ItemNavbar 
                                 to='/vender'
@@ -238,7 +238,7 @@ const Navbar = () => {
                             <ItemNavbar 
                                 to='/categorias'
                                 icon={categorySvg} 
-                                title='Ver todas las categorias'
+                                title='Ver un listado de todas las categorias'
                                 direction={'vertical'}
                                 className='item-navbar-account-menu'
                             >Todas las categorias</ItemNavbar>

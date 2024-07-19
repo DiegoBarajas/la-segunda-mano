@@ -13,7 +13,7 @@ const CardAnnoucement = ({ann}) => {
             <img src={ann.imagenes[0]} alt="Imagen" className='img-card-annoucement'/>
             <p className='title-card-annoucement'>{ann.titulo}</p>
             <h3 className='price-card-annoucement'>{showPrice(ann.precio)}</h3>
-            <p className='location-card-annoucement'><img src={locationSvg} alt="Ubicacion"/>{ann.caracteristicas.ciudad}, {ann.caracteristicas.estado}.</p>
+            <p className='location-card-annoucement'><img src={locationSvg} alt="Ubicacion"/>{capitalizeFirstLetter(ann.caracteristicas.ciudad)}, {capitalizeFirstLetter(ann.caracteristicas.estado)}.</p>
             
         </Link>
     ) : (
@@ -38,5 +38,14 @@ function showPrice(price){
         return `$${number.toLocaleString()} MXN`
     }catch(err){
         return price;
+    }
+}
+
+function capitalizeFirstLetter(str) {
+    try{
+        if (str.length === 0) return str;
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }catch(err){
+        return str;
     }
 }

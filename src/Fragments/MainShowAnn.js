@@ -4,7 +4,7 @@ import { SlideToolbar, CloseButton } from 'react-image-previewer/ui';
 import ContactSelllerPopup from './ContactSelllerPopup';
 import ContentLayout from '../Layouts/ContentLayout'
 import IconButton from '../Components/IconButton';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Button from '../Components/Button';
 
 import imageNotFilled from '../Assets/Icons/imageNotFilled.svg'
@@ -118,19 +118,15 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
                         </h2>
 
                         <ul>
-                            <li>
-                                <img style={{ filter: 'invert(100%)' }} src={selectTypeIcon(announcement.tipoAnuncio)} alt='Categoria'/>
-                                <p><b>Tipo de anuncio:</b> { capitalizeFirstLetter(announcement.tipoAnuncio) }</p>
-                            </li>
 
                             <li>
                                 <img src={categorySvg} alt='Categoria'/>
-                                <p><b>Categoria:</b> { announcement.categoria }</p>
+                                <p><b>Categoria:</b> <Link to={`/buscar?categoria=${announcement.categoria}`}> { capitalizeFirstLetter(announcement.categoria) } </Link></p>
                             </li>
 
                             <li>
                                 <img src={locationSvg} alt='Ubicación'/>
-                                <p><b>Ubicación:</b> {announcement.caracteristicas.ciudad}, {capitalizeFirstLetter(announcement.caracteristicas.estado)}</p>
+                                <p><b>Ubicación:</b> <Link to={`/buscar?ciudad=${announcement.caracteristicas.ciudad.toLowerCase()}`}>{announcement.caracteristicas.ciudad}</Link>, <Link to={`/buscar?estado=${announcement.caracteristicas.estado}`}>{capitalizeFirstLetter(announcement.caracteristicas.estado)}</Link></p>
                             </li>
                             {
                                 announcement.caracteristicas.cantidad > 1 
@@ -244,18 +240,6 @@ function parseDate(date){
     const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 
     return `${dia} de ${meses[parseInt(mes)-1]} del ${año}`;
-}
-
-function selectTypeIcon(type){
-    switch(type){
-        case "inmueble": return inmuebleSvg;
-        case "producto": return productSvg;
-        case "servicio": return serviceSvg;
-        case "gratis": return gratisSvg;
-        case "vehiculo": return carSvg;
-
-        default: return productSvg;
-    }
 }
 
 function showPrice(price){
