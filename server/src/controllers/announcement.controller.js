@@ -258,11 +258,66 @@ controller.getAnnouncementBySearch = async(req, res, next) => {
     }
 }
 
+// Eliminar anuncio 
+controller.deleteMyAnnoucement = async(req, res, next) => {
+    try{
+        const { user } = req;
+        const { id } = req.params;
+
+        const announcement = await AnnouncementModel.findById(id);
+        if(announcement.userId.toString() !=  user._id.toString()) throw new CustomError("Acceso denegado");
+
+        const success = await controller.deleteAnnoucement(id);
+
+        res.send(success);
+    }catch(err){
+        next(err);
+    }
+}
+
+// Marcar anuncio como vendido
+controller.iHadSelledMyAnnoucement = async(req, res, next) => {
+    try{
+        const { user } = req;
+        const { id } = req.params;
+
+        const announcement = await AnnouncementModel.findById(id);
+        if(announcement.userId.toString() !=  user._id.toString()) throw new CustomError("Acceso denegado");
+
+        const success = await controller.deleteAnnoucement(id);
+
+        res.send(success);
+    }catch(err){
+        next(err);
+    }
+}
+
 // Metodo generico para eliminar un anuncio
 controller.deleteAnnoucement = async(id) => {
     try{
+        const ann = await AnnouncementModel.findById(id);
+        if(!ann) throw new CustomError("Registro no encontrado");
+
         await FavoriteModel.deleteMany({ announcementId: id });
-        await AnnouncementModel.findByIdAndDelete(id);
+
+//      Obtener los recursos dentro de la carpeta
+        const result = await cloudinary.search
+            .expression(`folder:${ann._id}`)
+            .execute();
+
+//      Obtener los public ID de las recursos
+        const publicIds = result.resources.map((resource) => resource.public_id);
+
+//      Eliminar los recursos en la carpeta
+        for (const publicId of publicIds) {
+            await cloudinary.uploader.destroy(publicId);
+        }
+
+//      Eliminar la carpeta
+        await cloudinary.api.delete_folder(ann._id);
+
+//      Eliminar el anuncio de la db
+        await AnnouncementModel.findByIdAndDelete(ann._id);  
 
         return true;
     }catch(err){

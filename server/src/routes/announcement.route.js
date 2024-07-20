@@ -3,7 +3,7 @@ const authHandlerNoExtrict = require('../middlewares/authHandlerNoExtrict')
 const { Router } = require('express');
 const router = Router();
 
-const { createAnnouncement, getAnnouncement, getAnnouncementByToken, getAnnouncementBySearch } = require('../controllers/announcement.controller');
+const { createAnnouncement, getAnnouncement, getAnnouncementByToken, getAnnouncementBySearch, deleteMyAnnoucement, iHadSelledMyAnnoucement } = require('../controllers/announcement.controller');
 
 router.route('/')
     .post(authHandler, createAnnouncement)
@@ -11,6 +11,11 @@ router.route('/')
 
 router.route('/:id')
     .get(authHandlerNoExtrict, getAnnouncement)
+    .delete(authHandler, deleteMyAnnoucement)
+
+
+router.route('/selled/:id')
+    .delete(authHandler, iHadSelledMyAnnoucement)
 
 router.route('/user/token')
     .get(authHandler, getAnnouncementByToken)

@@ -71,6 +71,92 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
         }
     }
 
+    const handleDelete = () => {
+
+        modals.confirm("¿Seguro que deseas eliminar el anuncio?", "Al aceptar se eliminara el anuncio de forma permanente. ¿Deseas proceder?", 'warning', handleConfirm);
+        
+        function handleConfirm(){
+            if(announcement.nivel !== 'estandar'){
+                return modals.confirm(`Tu anuncio tiene un nivel de pago ${capitalizeFirstLetter(announcement.nivel)}`, `Tu anuncio tiene un nivel de pago, este caduca el día <b>${parseDate(announcement.fechaExpiracion)}</b>. Al proceder se <b>ELIMINARÁ</b> y <b>PERDERÁ</b> y no se reembolsará lo invertido. ¿Deseas continuar?`, 'warning', deleteAnn);
+            }
+
+            deleteAnn();
+        }
+
+        async function deleteAnn(){
+            try{
+                const modal = modals.petitionAlert("Borrando anuncio", "Espere un momento...", 'info');
+
+                const response = await axios.delete(`${backend}/api/announcement/${id}`, {
+                    headers: {
+                        Authorization: token
+                    }
+                });
+
+                modal.close();
+                modals.toast("Anuncio eliminado")
+                setRedirect('/perfil/anuncios')
+            }catch(err){
+                if (err.response) {
+                    // El servidor respondió con un código de estado fuera del rango 2xx
+                    console.error('Código de estado HTTP:', err.response.status, '\n', 'Error de respuesta:', err.response.data);
+                    modals.alert("Ups", `${err.response.data}`, 'error');
+                } else if (err.request) {
+                    // La solicitud fue hecha pero no se recibió respuesta
+                    console.error('No se recibió respuesta del servidor:', err.request);
+                    modals.alert("Ha ocurrido un error", `No se recibió respuesta del servidor`, 'error');
+                } else {
+                    // Ocurrió un error antes de enviar la solicitud
+                    console.error('Error al enviar la solicitud:', err.message);
+                    modals.alert("Ha ocurrido un error", `<b>Error al enviar la solicitud</b> ${err.message}`, 'error');
+                }
+            }
+        }
+    }
+
+    const handleSelled = () => {
+
+        modals.confirm("¿Seguro que deseas marcar como vendido el anuncio?", "Al aceptar se eliminara el anuncio de forma permanente, si deseas marcar que vendiste solo una(s) pieza(s) puedes editar el anuncio. ¿Deseas proceder?", 'warning', handleConfirm);
+
+        function handleConfirm(){
+            if(announcement.nivel !== 'estandar'){
+                return modals.confirm(`Tu anuncio tiene un nivel de pago ${capitalizeFirstLetter(announcement.nivel)}`, `Tu anuncio tiene un nivel de pago, este caduca el día <b>${parseDate(announcement.fechaExpiracion)}</b>. Al proceder se <b>ELIMINARÁ</b> y <b>PERDERÁ</b> y no se reembolsará lo invertido. ¿Deseas continuar?`, 'warning', deleteAnn);
+            }
+
+            deleteAnn();
+        }
+
+        async function deleteAnn(){
+            try{
+                const modal = modals.petitionAlert("Marcando como vendido y eliminando", "Espere un momento...", 'info');
+
+                const response = await axios.delete(`${backend}/api/announcement/selled/${id}`, {
+                    headers: {
+                        Authorization: token
+                    }
+                });
+
+                modal.close();
+                modals.toast("El anuncio se suprimio y marcó como vendido")
+                setRedirect('/perfil/anuncios')
+            }catch(err){
+                if (err.response) {
+                    // El servidor respondió con un código de estado fuera del rango 2xx
+                    console.error('Código de estado HTTP:', err.response.status, '\n', 'Error de respuesta:', err.response.data);
+                    modals.alert("Ups", `${err.response.data}`, 'error');
+                } else if (err.request) {
+                    // La solicitud fue hecha pero no se recibió respuesta
+                    console.error('No se recibió respuesta del servidor:', err.request);
+                    modals.alert("Ha ocurrido un error", `No se recibió respuesta del servidor`, 'error');
+                } else {
+                    // Ocurrió un error antes de enviar la solicitud
+                    console.error('Error al enviar la solicitud:', err.message);
+                    modals.alert("Ha ocurrido un error", `<b>Error al enviar la solicitud</b> ${err.message}`, 'error');
+                }
+            }
+        }
+    }
+
     return announcement
     ? (
         <ContentLayout horizontalAlign='center' redirect={redirect}>
@@ -159,6 +245,8 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
                                         width='100%' 
                                         title='Marcar como que ya vendiste este anuncio'
                                         icon={ selledSvg }
+
+                                        onClick={handleSelled}
                                     >Marcar como vendido</Button>
 
                                     <Button 
@@ -166,6 +254,8 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
                                         icon={ deleteWhiteSvg }
                                         title='Eliminar anuncio'
                                         color='red' 
+
+                                        onClick={handleDelete}
                                     >Eliminar publicación</Button>
                                 </section>
                             ) : (
