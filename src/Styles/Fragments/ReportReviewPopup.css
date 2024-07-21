@@ -1,0 +1,72 @@
+@import url(../../index.css);
+
+.report-review-popup {
+    width: min(750px, 70%);
+    color: black;
+}
+
+.report-review-popup-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.report-review-popup-container p {
+    color: black;
+}
+
+.report-review-popup-container h2 {
+    color: var(--mint);
+    margin-top: 20px;
+}
+
+.reasons {
+    width: 85%;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.reasons:last-child{
+    border-bottom: 2px solid black;
+}
+
+.reason-button {
+    cursor: pointer;
+    width: 100%;
+    border: 2px solid black;
+    border-bottom: 1px solid black;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reason-button:hover {
+    background-color: rgb(228, 228, 228);
+}
+
+.reason-button img {
+    rotate: -90deg;
+}
+
+.form-report {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: column;
+}
+
+@media (max-width: 870px) {
+    .report-review-popup {
+        width: 95%;
+    }
+    .reasons {
+        width: 100%;
+    }
+}

@@ -120,6 +120,21 @@
     gap: 15px 15px;   
 }
 
+.h2-seller {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.pic-seller {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background-color: var(--blue);
+    padding: 2.5px;
+}
+
 @media (max-width: 1000px){
     .column-content{
         width: 100%;

@@ -27,6 +27,7 @@ import '../Styles/Pages/ShowAnnouncement.css';
 import modals from '../Modals';
 import axios from 'axios';
 import backend from '../backend';
+import ReportReviewPopup from './ReportReviewPopup';
 
 const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
     const token = localStorage.getItem('token');
@@ -152,7 +153,15 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
                 }
             }
         }
-    }     
+    }    
+    
+    const handleReport = () => {
+        modals.popup(
+            <ReportReviewPopup id={id} type="publicacion" />, 
+            'report-review-popup',
+            "Cancelar",
+        );
+    }
 
     return announcement
     ? (
@@ -267,10 +276,12 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
                                     >Contactar con el vendedor</Button>
 
                                     <Button 
-                                        width='100%' 
-                                        icon={ reportSvg }
                                         title='Reportar este anuncio'
+                                        icon={ reportSvg }
+                                        width='100%' 
                                         color='red' 
+
+                                        onClick={handleReport}
                                     >Reportar publicación</Button>
                                 </section>
                         )

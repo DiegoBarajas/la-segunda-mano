@@ -89,11 +89,11 @@ class Modals{
         })
     }
 
-    popup(ReactComponent, className) {
+    popup(ReactComponent, className, confirmText="Cerrar") {
         Swal.fire({
             html: '<div id="react-swal"></div>',
             customClass: className,
-            confirmButtonText: "Cerrar",
+            confirmButtonText: confirmText,
             showCloseButton: true,
             confirmButtonColor: this.#colors.red,
             

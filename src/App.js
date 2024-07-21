@@ -29,6 +29,7 @@ import Condiciones from './Pages/Condiciones';
 import Favoritos from './Pages/Favoritos';
 import Categorias from './Pages/Categorias';
 import EditProfile from './Pages/EditProfile';
+import AnnoucementsBySeller from './Pages/AnnoucementsBySeller';
 
 const App = () => {
     return (
@@ -44,6 +45,7 @@ const App = () => {
 				<Route path='/signin/last' element={<LoggedRoute> <SigninLastSteps/> </LoggedRoute>} />
 
 				<Route path='/anuncio/:id' Component={ShowPublicacion} />
+				<Route path='/vendedor/:id' Component={AnnoucementsBySeller} />
 
 				<Route path='/vender' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />
 				<Route path='/vender/producto' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateProducto/> </LoggedRoute>} />

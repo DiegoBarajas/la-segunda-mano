@@ -36,6 +36,7 @@ app.get('/', (req, res) => res.send('Hola Mundo') );
 app.use('/api/announcement', require('./routes/announcement.route'));
 app.use('/api/favorite', require('./routes/favorite.route'));
 app.use('/api/review', require('./routes/review.route'));
+app.use('/api/report', require('./routes/report.route'));
 app.use('/api/login', require('./routes/login.route'));
 app.use('/api/user', require('./routes/user.route'));
 

@@ -1,6 +1,6 @@
 import React, {useRef, useState } from 'react'
 import ContentLayout from '../Layouts/ContentLayout'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import IconButton from '../Components/IconButton';
 import Button from '../Components/Button';
 import Input from '../Components/Input';
@@ -16,6 +16,7 @@ import modals from '../Modals';
 import axios from 'axios';
 import backend from '../backend';
 import '../Styles/Pages/ShowAnnouncement.css';
+import ReportReviewPopup from './ReportReviewPopup';
 
 const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMakeReview, mio }) => {
 
@@ -97,8 +98,11 @@ const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMake
     }
     
     const handleReport = async(e, id) => {
-        const { target } = e;
-        const prevDisplay = hideElement(target);
+        modals.popup(
+            <ReportReviewPopup id={id} type="reseña"/>, 
+            'report-review-popup',
+            "Cancelar"
+        );
     }
 
     const handleDelete = async(e, id) => {

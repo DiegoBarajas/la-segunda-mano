@@ -1,4 +1,5 @@
 import React, {useState } from 'react'
+import ReportReviewPopup from './ReportReviewPopup';
 import ContentLayout from '../Layouts/ContentLayout'
 import Button from '../Components/Button';
 
@@ -8,10 +9,19 @@ import userSvg from '../Assets/Icons/userBlack.svg'
 import reportSvg from '../Assets/Icons/report.svg'
 
 import '../Styles/Pages/ShowAnnouncement.css';
+import modals from '../Modals';
 
 const SellerShowAnn = ({author, mio}) => {
 
     const [ redirect, setRedirect ] = useState(null);
+
+    const handleReport = () => {
+        modals.popup(
+            <ReportReviewPopup id={author.sellerId} type="vendedor" masc />, 
+            'report-review-popup',
+            "Cancelar",
+        );
+    }
 
     return author ? (
         <ContentLayout redirect={redirect}>
@@ -50,6 +60,8 @@ const SellerShowAnn = ({author, mio}) => {
                                     icon={reportSvg}
                                     width='49.5%'
                                     className='ann-seller-section-btn'
+
+                                    onClick={handleReport}
                                 >Reportar vendedor</Button>
 
                                 <Button 

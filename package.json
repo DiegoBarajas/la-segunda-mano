@@ -1,6 +1,6 @@
 {
   "name": "la-segunda-mano",
-  "version": "indev 19.07.24",
+  "version": "indev 21.07.24",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

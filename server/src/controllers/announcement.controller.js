@@ -214,6 +214,28 @@ controller.getAnnouncementByToken = async(req, res, next) => {
     }
 }
 
+// Obtener registro por usuario (Seller ID)
+controller.getAnnouncementBySellerId = async(req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const seller = await userModel.findOne({ sellerId: id });
+        if(!seller) throw new CustomError("Vendedor no encontrado");
+
+        const annoucements = await AnnouncementModel.find({ userId: seller._id });
+
+        const sellerJson = {
+            nombre: seller.nombre,
+            apellido: seller.apellido,
+            foto: seller.foto
+        }
+
+        res.send({ annoucements, seller: sellerJson });
+    }catch(err){
+        next(err)
+    }
+}
+
 // Obtener resgistros por busqueda
 controller.getAnnouncementBySearch = async(req, res, next) => {
     try{
