@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../Components/Button'
 import Logo from '../Components/Logo'
 import PageLayout from '../Layouts/PageLayout'
@@ -15,6 +15,13 @@ import backend from '../backend';
 
 const useEmail = () => {
     document.title = 'La Segunda Mano - Recuperar contraseña';
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [true]);
 
     const query = new URLSearchParams(useLocation().search)
     const searchValue = query.get('email');

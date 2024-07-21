@@ -18,6 +18,13 @@ const MyAnnoucements = () => {
     const [ announcements, setAnnouncements ] = useState(null);
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [true]);
+
+    useEffect(() => {
         const getMyAnnucements = async() => {
 
             try{

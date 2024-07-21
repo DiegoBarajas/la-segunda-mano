@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PageLayout from '../Layouts/PageLayout'
 import ContentLayout from '../Layouts/ContentLayout'
 import Loader from '../Components/Loader'
@@ -6,7 +6,16 @@ import Loader from '../Components/Loader'
 import '../Styles/Pages/LoadingPage.css'
 
 const LoadingPage = ({ children='Cargando...' }) => {
+
     document.title = 'La Segunda Mano - Cargando...';
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [true]);
+
     return (
         <PageLayout navbar={false} footer={false}>
 

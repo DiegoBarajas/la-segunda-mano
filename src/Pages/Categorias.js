@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ColumnLayout from '../Layouts/ColumnLayout'
 import PageLayout from '../Layouts/PageLayout'
 import Button from '../Components/Button'
@@ -6,6 +6,13 @@ import Button from '../Components/Button'
 import '../Styles/Pages/Categorias.css'
 import constants from '../constants.json'
 const Categorias = () => {
+    
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [true]);
 
     const listCategories = [...constants.categorias].slice(1);
     console.log(listCategories);

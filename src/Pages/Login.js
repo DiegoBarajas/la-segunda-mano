@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Styles/Pages/Login.css'
 
 import PageLayout from '../Layouts/PageLayout'
@@ -23,6 +23,13 @@ const Login = () => {
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ disabled, setDisabled ] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [true]);
 
     const handleSubmit = async(e) => {
         e.preventDefault();

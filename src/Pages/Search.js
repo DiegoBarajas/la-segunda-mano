@@ -30,6 +30,13 @@ const Search = () => {
     const location = useLocation();
 
     const [ announcements, setAnnouncements ] = useState(null);
+    
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [true]);
 
     useEffect(() => {
         const getAnnucements = async() => {

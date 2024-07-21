@@ -32,6 +32,13 @@ const SigninCode = () => {
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [true]);
+
+    useEffect(() => {
         const changeDisabled = () => {
             if(code.length === 6) setDisabled(false)
             else setDisabled(true)

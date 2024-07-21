@@ -82,6 +82,13 @@ const ForgotCode = () => {
         changeDisabled();
     }, [code]);
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [true]);
+
     const handleSubmit = async(e) => {
         e.preventDefault();
 

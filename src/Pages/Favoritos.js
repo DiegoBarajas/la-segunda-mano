@@ -13,6 +13,13 @@ import '../Styles/Pages/MyAnnoucements.css'
 const Favoritos = () => {
     document.title = 'La Segunda Mano - Mis Favoritos';
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }, [true]);
+
     const location = useLocation();
     const [ announcements, setAnnouncements ] = useState(null);
 

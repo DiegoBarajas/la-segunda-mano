@@ -1,1 +1,42 @@
 @import url(../../index.css);
+
+.img-profile-pic {
+    background-color: var(--blue);
+    width: 200px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-radius: 100%;
+    padding: 5px;
+} 
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.p-with-icon {
+    gap: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.section-buttons-profile {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-profile {
+    width: 49.5% !important;
+}
+
+@media (max-width: 870px){
+    .section-buttons-profile {
+        flex-direction: column;
+    }
+
+    .btn-profile {
+        width: 100% !important;
+    }
+}
