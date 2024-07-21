@@ -68,6 +68,79 @@ controller.login = async(req, res, next) => {
     }
 }
 
+/* Actualizar datos */
+controller.updateUser = async(req, res, next) => {
+    try{
+//      Obtener la data del req (el body, usuario autenticado y archivos)
+        const { user, body } = req;
+        const { nombre, apellido, estado, password, eliminarFoto } = body;
+        const files = req.files;
+
+//      Crear el objeto a actualizar
+        const datos = { nombre, apellido }
+
+        datos.estado = estado == '*' ? null : estado;
+
+//      Si se mando a eliminar la imagen:
+        if(eliminarFoto === 'true'){
+            datos.foto = null;
+//          Eliminar la imagen con cloudinary
+            await cloudinary.uploader.destroy(user._id.toString());
+        }
+
+//      Si se mando una contraseña:
+        if(password){
+            datos.contraseña = bcrypt.hashSync(password, 8);
+        }
+
+//      Si se mando una imagen:
+        if(files){
+//          Obtener el key "foto" en las imagenes                
+            const { foto } = files;
+
+//          Si encuentra la foto
+            if(foto){
+//              Almacenarla con cloudinary en la carpeta "users"
+                const result = await cloudinary.uploader.upload(foto.tempFilePath, {
+                    folder: 'Users',
+                    resource_type: 'auto',
+                    public_id: user._id,
+                    overwrite: true,
+                    width: 250,
+                    height: 250,
+                    crop: 'thumb'
+                });
+
+//              Eliminar el archivo temporal
+                fs.rmSync(foto.tempFilePath);
+//              Actualizar el usuario con la imagen
+                datos.foto = result.secure_url;
+            }
+        }
+
+//      Actualizar el registro y obtenerlo
+        await UserModel.findByIdAndUpdate(user._id, datos);
+        const updatedUser = await UserModel.findById(user._id);
+
+//      Generar JWT
+        const token = jwt.sign({user: updatedUser}, process.env.JWT_SECRET, { expiresIn: '1y' });
+        
+//      Formatear usuario para la respuesta
+        const respUser = {
+            nombre: updatedUser.nombre,
+            apellido: updatedUser.apellido,
+            correo: updatedUser.correo,
+            estado: updatedUser.estado,
+            foto: updatedUser.foto
+        }
+                    
+//      Enviar respuesta
+        return res.send({token, user: respUser});
+    }catch(err){
+        next(err);
+    }
+}
+
 /* Crear cuenta - Enviar correo */
 controller.signin = async(req, res, next) => {
     try{

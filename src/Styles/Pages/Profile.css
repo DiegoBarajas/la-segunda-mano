@@ -13,17 +13,27 @@
     margin-top: 15px;
 }
 
+.mt-25 {
+    margin-top: 25px;
+}
+
 .p-with-icon {
     gap: 2px;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
+    width: 100%;
+}
+
+.p-with-icon-text {
+    text-align: center;
+    margin-top: -2px;
 }
 
 .section-buttons-profile {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 

@@ -35,16 +35,22 @@ const Profile = () => {
                 <h2>{user.nombre} {user.apellido}</h2>
                 
                 <section>
-                    <section className='p-with-icon mt-15'>
-                        <img src={emailSvg} alt='Correo'/>
-                        <p><b>Correo Electronico:</b> {user.correo}</p>
+                    <section>
+                        <section className='p-with-icon mt-15'>
+                            <img src={emailSvg} alt='Correo'/>
+                            <p><b>Correo Electronico:</b></p>
+                        </section>
+                        <p className='p-with-icon-text'>{user.correo}</p>
                     </section>
                     {
                             user.estado
                                 ? (
-                                    <section className='p-with-icon'>
-                                        <img src={stateSvg} alt='Estado' />
-                                        <p><b>Estado predeterminado:</b> { capitalizeFirstLetter(user.estado) }</p>
+                                    <section>
+                                        <section className='p-with-icon mt-15'>
+                                            <img src={stateSvg} alt='Correo'/>
+                                            <p><b>Estado predeterminado:</b></p>
+                                        </section>
+                                        <p className='p-with-icon-text'>{capitalizeFirstLetter(user.estado)}</p>
                                     </section>
                                 ) : null
                     }
@@ -55,7 +61,6 @@ const Profile = () => {
 
                 <section className='section-buttons-profile'>
                     <Button className='btn-profile' horizontal icon={editSvg} onClick={() => setRedirect("/perfil/editar")}>Editar información</Button>
-                    <Button className='btn-profile' color='red' horizontal icon={deleteWhiteSvg}>Eliminar Cuenta</Button>
                 </section>
 
             </ContentLayout>
