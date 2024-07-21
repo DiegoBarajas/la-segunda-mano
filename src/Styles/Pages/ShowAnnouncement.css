@@ -10,7 +10,7 @@
 .show-announcement-imgs {
     width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
     flex: 1; 
@@ -27,12 +27,12 @@
 }
 
 .show-announcement-imgs-list img {
-    cursor: pointer;
+    cursor: zoom-in;
 }
 
 .show-announcement-imgs img {
     width: 100%;
-    cursor: pointer;
+    cursor: zoom-in;
 }
 
 .show-announcement-info {
@@ -409,6 +409,11 @@
 
 .icon-button-create-ann:hover {
     filter: opacity(100%) !important;
+}
+
+.level-type-container {
+    display: flex;
+    gap: 2.5px;
 }
 
 @media (max-width: 870px) {

@@ -6,7 +6,6 @@ import ContentLayout from '../Layouts/ContentLayout'
 import TextButton from '../Components/TextButton';
 import PageLayout from '../Layouts/PageLayout'
 import Button from '../Components/Button';
-import Popup from '../Components/Popup';
 
 import inmuebleSvg from '../Assets/Icons/inmueble.svg'
 import helpMintSvg from '../Assets/Icons/helpMint.svg'
@@ -29,15 +28,17 @@ const CreateAnnouncement = () => {
     }, [true]);
 
     useEffect(() => {
-        return localStorage.setItem('popupWarnActive', true);
+        if(!localStorage.getItem('popupWarnActive')){
+            modals.popup(<PopupWarningCreateAnn/>, 'popup-warning')
+        }
+
+        localStorage.setItem('popupWarnActive', true);
     }, [true]);
 
     const [ redirect, setRedirect ] = useState(null);
-    const [ popupWarnActive, setPopupWarnActive ] = useState(!localStorage.getItem('popupWarnActive'));
-    const [ popupActive, setPopupActive ] = useState(false);
 
     const showPoputHow = () => {
-        modals.popup(PopupSaberTipoAnn, 'popup-saber-tipo')
+        modals.popup(<PopupSaberTipoAnn/>, 'popup-saber-tipo')
     }
 
     return (
@@ -91,14 +92,6 @@ const CreateAnnouncement = () => {
 
                 <TextButton className='text-button-create-ann' icon={helpMintSvg} onClick={showPoputHow}>¿Comó puedo saber que tipo estoy vendiendo?</TextButton>
             </ContentLayout>
-
-            <Popup active={popupActive}>
-                <PopupSaberTipoAnn setPopupActive={setPopupActive} />
-            </Popup>
-
-            <Popup active={popupWarnActive}>
-                <PopupWarningCreateAnn setPopupActive={setPopupWarnActive}/>
-            </Popup>
 
         </PageLayout>
     )

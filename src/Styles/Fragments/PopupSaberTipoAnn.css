@@ -4,6 +4,10 @@
     width: min(1000px, 75%);
 }
 
+.popup-warning {
+    width: min(750px, 60%);
+}
+
 .popup-saber-tipo-body h2 {
     color: var(--mint);
     margin-top: 20px;
@@ -79,6 +83,10 @@
     .popup-saber-tipo {
         width: 95%;
     }    
+
+    .popup-warning {
+        width: 95%;
+    }
 
     .table-saber-tipo {
         display: none;

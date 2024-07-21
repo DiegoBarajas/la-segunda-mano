@@ -12,18 +12,15 @@ import favoriteSvg from '../Assets/Icons/favoriteUnfilled.svg'
 import favoriteFilledSvg from '../Assets/Icons/favoriteFilled.svg'
 import deleteWhiteSvg from '../Assets/Icons/deleteWhite.svg'
 import categorySvg from '../Assets/Icons/categoryBlack.svg'
+import impulsedSvg from '../Assets/Icons/impulsed.svg'
 import locationSvg from '../Assets/Icons/location.svg'
 import calendarSvg from '../Assets/Icons/calendar.svg'
-import inmuebleSvg from '../Assets/Icons/inmueble.svg'
 import contactSvg from '../Assets/Icons/contact.svg'
-import productSvg from '../Assets/Icons/product.svg'
-import serviceSvg from '../Assets/Icons/service.svg'
-import gratisSvg from '../Assets/Icons/gratis.svg'
+import premiumSvg from '../Assets/Icons/premium.svg'
 import reportSvg from '../Assets/Icons/report.svg'
 import selledSvg from '../Assets/Icons/selled.svg'
 import stockSvg from '../Assets/Icons/stock.svg'
 import editSvg from '../Assets/Icons/edit.svg'
-import carSvg from '../Assets/Icons/car.svg'
 import eyeSvg from '../Assets/Icons/eye.svg'
 
 import '../Styles/Pages/ShowAnnouncement.css';
@@ -155,7 +152,7 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
                 }
             }
         }
-    }
+    }     
 
     return announcement
     ? (
@@ -199,6 +196,7 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
                                 : null
                         }
                         <h1>{announcement.titulo}</h1>
+                        <h3>{ renderLevel(announcement.nivel) }</h3>
                         <h2>
                             { showPrice(announcement.precio) }
                         </h2>
@@ -315,6 +313,24 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
 }
 
 export default MainShowAnn
+
+function renderLevel(nivel){
+    switch(nivel){
+        case "impulsado": return (
+            <section className='level-type-container'>
+                <img src={impulsedSvg} alt='Impulsado'/>
+                <h3 className='p-mint'>Anuncio Impulsado</h3>
+            </section>
+        )
+        case "premium": return (
+            <section className='level-type-container'>
+                <img src={premiumSvg} alt='Premium'/>
+                <h3 className='p-gold'>Anuncio Premium</h3>
+            </section>
+        )
+        default: return null
+    }
+}
 
 function capitalizeFirstLetter(str) {
     try{
