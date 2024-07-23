@@ -52,7 +52,7 @@ const Navbar = () => {
             }
         }
 
-        getNotificationsCounter();
+        if(localStorage.getItem('token')) getNotificationsCounter();
     }, []);
 
     const toggleMenu = () => {

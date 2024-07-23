@@ -7,7 +7,7 @@ async function main(){
     const PORT = app.get('PORT');
     require('./database');
     
-    app.listen(PORT, () => {
+    app.listen(PORT, async() => {
         const requestTime = moment().tz('America/Mexico_City').format('DD-MM-YYYY HH:mm:ss');
         
         console.clear();

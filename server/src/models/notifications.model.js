@@ -9,7 +9,7 @@ const notificationSchema = new Schema({
     
     titulo: { type: String, required: true },
     contenido: { type: String, required: true },
-    icono: { type: String, enum: ["default", "deleteNotification", "selledNotification"], default: 'default', required: true },
+    icono: { type: String, enum: ["default", "deleteNotification", "selledNotification", "annoucementDeleted", "annoucementCaduced"], default: 'default', required: true },
     visto: { type: Boolean, default: false },
     url: { type: String, default: '/notificaciones', required: true },
     fecha: { type: String, required: true },

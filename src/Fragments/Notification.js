@@ -3,6 +3,8 @@ import React from 'react'
 import placeholderSvg from '../Assets/Icons/notificationPlaceholder.svg'
 import deletedNotificationSvg from '../Assets/Icons/deletedNotification.svg'
 import selledNotificationSvg from '../Assets/Icons/selledNotification.svg'
+import annoucementDeletedSvg from '../Assets/Icons/annoucementDeleted.svg'
+import annoucementCaducedSvg from '../Assets/Icons/annoucementCaduced.svg'
 
 import '../Styles/Fragments/Notification.css'
 import { Link } from 'react-router-dom'
@@ -28,6 +30,8 @@ const renderIcon = (icon) => {
         case "default": return placeholderSvg;
         case "deleteNotification": return deletedNotificationSvg;
         case "selledNotification": return selledNotificationSvg;
+        case "annoucementDeleted": return annoucementDeletedSvg;
+        case "annoucementCaduced": return annoucementCaducedSvg;
         default: return placeholderSvg;
     }
 }

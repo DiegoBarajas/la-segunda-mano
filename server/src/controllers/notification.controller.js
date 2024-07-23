@@ -30,7 +30,7 @@ controller.getNotificationsCounter = async(req, res, next) => {
     }
 }
 
-controller.createNotification = async( userId, titulo, contenido, icono='default', url='/notificaciones' ) => {
+controller.createNotification = async( userId, titulo, contenido, icono='default', url='/notificaciones', sendMail=false ) => {
     try {
         const newNotification = await new notificationModel({
             userId, 
@@ -41,14 +41,15 @@ controller.createNotification = async( userId, titulo, contenido, icono='default
             fecha: moment().tz('America/Mexico_City').format('DD-MM-YYYY')
         }).save();
         
-        const user = await userModel.findById(userId);
+        if(!sendMail) return newNotification;
 
+        const user = await userModel.findById(userId);
         mailer.sendMailTemplate(user.correo, "Tienes una nueva notificación", 'notification', {
             nombre: user.nombre.split(' ')[0],
             titulo,
             contenido,
             url,
-        })
+        });
 
         return newNotification;
     }catch(err){
