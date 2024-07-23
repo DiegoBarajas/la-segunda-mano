@@ -242,9 +242,6 @@ controller.getAnnouncementBySellerId = async(req, res, next) => {
         const calificacion = reviews.length > 0
             ? (reviews[0].calificacion / evaluadores).toFixed(1)
             : 0;
-
-        console.log(reviews);
-
         
         const sellerJson = {
             nombre: seller.nombre,
