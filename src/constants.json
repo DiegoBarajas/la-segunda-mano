@@ -568,5 +568,32 @@
         }
     ],
 
+    "ordenarReviews": [
+        {
+            "text": "Mayor relevancia",
+            "value": "importance:desc"
+        },
+        {
+            "text": "Menor relevancia",
+            "value": "importance:asc"
+        },
+        {
+            "text": "Mas reciente primero",
+            "value": "date:desc"
+        },
+        {
+            "text": "Mas antiguo primero",
+            "value": "date:asc"
+        },
+        {
+            "text": "Mejor puntuado",
+            "value": "calf:desc"
+        },
+        {
+            "text": "Peor puntutado",
+            "value": "calf:asc"
+        }
+    ],
+
     "pasosCrearAnuncio": ["Tipo", "Datos generales", "Caracteristicas", "Contacto y entrega"]
 }

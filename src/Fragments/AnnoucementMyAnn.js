@@ -10,9 +10,9 @@ import premiumSvg from '../Assets/Icons/premium.svg'
 import '../Styles/Pages/MyAnnoucements.css'
 import ColumnLayout from '../Layouts/ColumnLayout'
 
-const AnnoucementMyAnn = ({ann}) => {
+const AnnoucementMyAnn = ({ann, className}) => {
     return ann ?(
-        <Link className='annoucement-item-my' to={`/anuncio/${ann._id}`}>
+        <Link className={'annoucement-item-my '+className} to={`/anuncio/${ann._id}`}>
             <section className='annoucement-item-my-main'>
                 <img src={ann.imagenes[0]} alt='Imagen'/>
 
@@ -39,7 +39,7 @@ const AnnoucementMyAnn = ({ann}) => {
             </section>
         </Link>
     ) : (
-        <section className='annoucement-item-my'>
+        <section className={'annoucement-item-my '+className}>
             <section className='annoucement-item-my-main'>
                 <img src={imageSvg} alt='Imagen' className='loading-image progress'/>
 

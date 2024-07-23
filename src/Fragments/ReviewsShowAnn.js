@@ -1,9 +1,10 @@
 import React, {useRef, useState } from 'react'
+import ReportReviewPopup from './ReportReviewPopup';
 import ContentLayout from '../Layouts/ContentLayout'
-import { Link, useParams } from 'react-router-dom'
 import IconButton from '../Components/IconButton';
 import Button from '../Components/Button';
 import Input from '../Components/Input';
+import { Link } from 'react-router-dom'
 
 import voidPuntuationSvg from '../Assets/Icons/voidPuntuation.svg'
 import reportBlackSvg from '../Assets/Icons/reportBlack.svg'
@@ -16,7 +17,6 @@ import modals from '../Modals';
 import axios from 'axios';
 import backend from '../backend';
 import '../Styles/Pages/ShowAnnouncement.css';
-import ReportReviewPopup from './ReportReviewPopup';
 
 const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMakeReview, mio }) => {
 
@@ -46,7 +46,7 @@ const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMake
             oldReviews.unshift(response.data);
 
             setReviews(oldReviews);
-                        
+            modals.toast("Nueva reseña creada!", 'success')
         }catch(err){
             setCanMakeReview(true);
 
@@ -233,7 +233,7 @@ const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMake
                                                 <IconButton className='section-show-review-button' color='transparent' icon={ reportBlackSvg } title='Reportar comentario' onClick={(e) => handleReport(e, r._id)}/>
                                             </div>
                                         : null
-                                    }
+                                }
                             </section>
                         )
                         : <p>Este usuario no tiene reseñas, ¡puedes publicar la primera!</p>
@@ -241,7 +241,7 @@ const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMake
             </section>
             {
                 author.evaluadores > 10
-                    ? <Link style={{ width: '100%', textAlign: 'center', marginTop: '15px' }} to={`/vendedor/reseñas/${author.selledId}`}>Ver todas las reseñas</Link>
+                    ? <Link style={{ width: '100%', textAlign: 'center', marginTop: '15px' }} to={`/vendedor/${author.sellerId}`}>Ver todas las reseñas</Link>
                     : null
             }
 

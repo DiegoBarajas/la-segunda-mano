@@ -223,11 +223,35 @@ controller.getAnnouncementBySellerId = async(req, res, next) => {
         if(!seller) throw new CustomError("Vendedor no encontrado");
 
         const annoucements = await AnnouncementModel.find({ userId: seller._id });
+        const reviews = await ReviewModel.aggregate([
+            {
+                $match: { commentedUserId: seller._id } // Filtro por commentedUserId
+            },{
+                $group: {
+                    _id: null,
+                    calificacion: { $sum: "$calificacion" },
+                    evaluadores: { $sum: 1 },
+                }
+            }
+        ]);
 
+        const evaluadores = reviews.length > 0
+            ? reviews[0].evaluadores
+            : 0;
+
+        const calificacion = reviews.length > 0
+            ? (reviews[0].calificacion / evaluadores).toFixed(1)
+            : 0;
+
+        console.log(reviews);
+
+        
         const sellerJson = {
             nombre: seller.nombre,
             apellido: seller.apellido,
-            foto: seller.foto
+            foto: seller.foto,
+            evaluadores: evaluadores,
+            calificacion: calificacion
         }
 
         res.send({ annoucements, seller: sellerJson });

@@ -1,5 +1,6 @@
 const CustomError = require('../errors/CustomError');
 const ReviewModel = require('../models/review.model');
+const userModel = require('../models/user.model');
 const UserModel = require('../models/user.model');
 const moment = require('moment-timezone');
 
@@ -47,6 +48,49 @@ controller.createReview = async(req, res, next) => {
     }
 }
 
+controller.getReviewsBySellerId = async(req, res, next) => {
+    try {
+        const { user, query } = req;
+        const { id } = req.params;
+
+        const seller = await userModel.findOne({ sellerId: id });
+        if(!seller) throw new CustomError("Vendedor no encontrado");
+
+        let sort = { importancia: -1 }
+        if(query.order) sort = orders[query.order];
+        
+        let skip = 0;
+        if(query.page) skip = 10 * query.page;
+
+        const reviews = await ReviewModel.find({ commentedUserId: seller._id })
+            .skip(skip)
+            .limit(10)
+            .populate('authorId', 'nombre apellido foto')
+            .sort( sort );
+
+        if(!user){
+            return res.send({ reviews });
+        }
+
+        const mio = user.sellerId == id;
+        const myReview = await ReviewModel.find({ authorId: user._id });
+        const canMakeReview = myReview.length > 0 ? false : true;
+
+        const response = reviews.map((r, index) => {
+            const review = r.toJSON();
+            const mio = review.authorId._id.toString() == user._id.toString();
+            review.mio = mio;
+
+            return review;
+        });
+
+        return res.send({ reviews: response, canMakeReview, mio });
+
+    }catch(err) {
+        next(err);
+    }
+}
+
 // Eliminar reseña
 controller.deleteReview = async(req, res, next) => {
     try{
@@ -86,3 +130,12 @@ controller.recomendReview = async(req, res, next) => {
 }
 
 module.exports = controller;
+
+const orders = {
+    "importance:desc": { importancia: -1 },
+    "importance:asc": { importancia: 1 },
+    "date:desc": { createdAt: -1 },
+    "date:asc": { createdAt: 1 },
+    "calf:desc": { calificacion: -1 },
+    "calf:asc": { calificacion: 1 }
+}

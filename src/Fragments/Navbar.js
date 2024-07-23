@@ -127,7 +127,7 @@ const Navbar = () => {
                             >Crear cuenta</ItemNavbar>
 
                             <ItemNavbar 
-                                to='/'
+                                to='/categorias'
                                 icon={categorySvg} 
                                 title='Ver un listado de todas las categorias'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}

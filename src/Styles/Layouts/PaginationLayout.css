@@ -1,0 +1,73 @@
+@import url(../../index.css);
+
+.pagination-layout {
+    width: min(1250px, 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pagination-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-buttons .button-pagination:first-child {
+    border-top-left-radius: 10px; /* Ajusta el valor según sea necesario */
+}
+
+.pagination-buttons .button-pagination:last-child {
+    border-top-right-radius: 10px; /* Ajusta el valor según sea necesario */
+}
+
+.button-pagination {
+    flex: 1;
+    padding: 15px 10px;
+    cursor: pointer;
+    border: none;
+
+    transition: all 0s;
+}
+
+.button-pagination:hover {
+    background-color: #dddfdfbe;
+    text-decoration: underline;
+    color: var(--mint);
+}
+
+.button-pagination-active {
+    background-color: white;
+    color: black;
+    font-weight: 700;
+}
+
+.button-pagination-active:hover {
+    background-color: white;
+    text-decoration: none;
+    color: black;
+}
+
+.content-pagination {
+    width: 100%;
+    background-color: white;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 30px 40px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+@media (max-width: 870px){
+    .pagination-layout {
+        width: 95%;
+    }
+
+    .content-pagination {
+        padding: 30px 10px 10px 10px;
+    }
+}
