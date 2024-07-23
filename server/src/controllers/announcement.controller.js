@@ -6,6 +6,10 @@ const CustomError = require('../errors/CustomError');
 const cloudinary = require('cloudinary').v2;
 const moment = require('moment-timezone');
 const fs = require('fs');
+
+const { createNotification } = require('./notification.controller');
+const favoriteModel = require('../models/favorite.model');
+
 const controller = {};
 
 controller.createAnnouncement = async(req, res, next) => {
@@ -310,8 +314,18 @@ controller.deleteMyAnnoucement = async(req, res, next) => {
         const announcement = await AnnouncementModel.findById(id);
         if(announcement.userId.toString() !=  user._id.toString()) throw new CustomError("Acceso denegado");
 
-        const success = await controller.deleteAnnoucement(id);
+        const favorites = await favoriteModel.find({ announcementId: id });
+        favorites.forEach((f) => {
+            createNotification(
+                f.userId, 
+                `El anuncio "${announcement.titulo}" fue eliminado.`,
+                `El vendedor del anuncio "${announcement.titulo}", que marcaste como "Favorito", ha eliminado el anuncio. Por lo tanto, se eliminará de tus favoritos.`,
+                'deleteNotification',
+                '/favoritos'
+            )
+        })
 
+        const success = await controller.deleteAnnoucement(id);
         res.send(success);
     }catch(err){
         next(err);
@@ -327,8 +341,18 @@ controller.iHadSelledMyAnnoucement = async(req, res, next) => {
         const announcement = await AnnouncementModel.findById(id);
         if(announcement.userId.toString() !=  user._id.toString()) throw new CustomError("Acceso denegado");
 
-        const success = await controller.deleteAnnoucement(id);
+        const favorites = await favoriteModel.find({ announcementId: id });
+        favorites.forEach((f) => {
+            createNotification(
+                f.userId, 
+                `El anuncio "${announcement.titulo}" ha sido vendido.`,
+                `El vendedor del anuncio "${announcement.titulo}", que marcaste como "Favorito", ha vendido el producto/servicio. Por lo tanto, se eliminará de tus favoritos.`,
+                'selledNotification',
+                '/favoritos'
+            )
+        })
 
+        const success = await controller.deleteAnnoucement(id);
         res.send(success);
     }catch(err){
         next(err);

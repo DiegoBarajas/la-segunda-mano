@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Styles/Fragments/Navbar.css'
 import { Link, useLocation } from 'react-router-dom'
 import Logo from '../Components/Logo';
@@ -18,6 +18,8 @@ import announcementSvg from '../Assets/Icons/announcement.svg'
 import favoriteSvg from '../Assets/Icons/favorite.svg'
 import notificationSvg from '../Assets/Icons/notification.svg'
 import logoutSvg from '../Assets/Icons/logout.svg'
+import axios from 'axios';
+import backend from '../backend';
 
 const useSearchValue = () => {
     const query = new URLSearchParams(useLocation().search)
@@ -33,6 +35,25 @@ const Navbar = () => {
     const [ showOptions, setShowOptions ] = useState(false);
     const [ showHistory, setShowHostory ] = useState(false);
     const [ searchValue, setSearchValue ] = useState(useSearchValue());
+    const [ notificationsCounter, setNotificationsCounter ] = useState(0);
+
+    useEffect(() => {
+        const getNotificationsCounter = async() => {
+            try{
+                const { data } = await axios.get(`${backend}/api/notification/counter`, {
+                    headers: {
+                        Authorization: localStorage.getItem('token')
+                    }
+                })
+
+                setNotificationsCounter(data.counter);
+            }catch(err){
+                console.error(err);
+            }
+        }
+
+        getNotificationsCounter();
+    }, []);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -70,6 +91,13 @@ const Navbar = () => {
                                 >Mi Perfil</ItemNavbar>
 
                                 <ItemNavbar 
+                                    to='/vender'
+                                    icon={sellSvg} 
+                                    title='Quiero publicar producto, servicio, vehiculo o inmueble'
+                                    direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                                >Vender</ItemNavbar>
+
+                                <ItemNavbar 
                                     to='/perfil/anuncios' 
                                     icon={announcementSvg} 
                                     title='Ver mis anuncios publicados'
@@ -77,11 +105,11 @@ const Navbar = () => {
                                 >Mis anuncios</ItemNavbar>
 
                                 <ItemNavbar 
-                                    to='/' 
+                                    to='/notificaciones' 
                                     icon={notificationSvg} 
-                                    title='ver mis notificaciones'
+                                    title={ notificationsCounter > 0 ? `Ver mis notificaciones (${notificationsCounter})` : 'Ver mis notificaciones' }
                                     direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                                >Notificaciones</ItemNavbar>
+                                >{ notificationsCounter > 0 ? `Notificaciones (${notificationsCounter})` : 'Notificaciones' }</ItemNavbar>
 
                                 <ItemNavbar 
                                     to='/favoritos' 
@@ -89,13 +117,6 @@ const Navbar = () => {
                                     title='Ver las publicaciones guardadas en favoritos'
                                     direction={isMenuOpen ? 'vertical' : 'horizontal'}
                                 >Mis favoritos</ItemNavbar>
-
-                                <ItemNavbar 
-                                    to='/vender'
-                                    icon={sellSvg} 
-                                    title='Quiero publicar producto, servicio, vehiculo o inmueble'
-                                    direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                                >Vender</ItemNavbar>
 
                                 <ItemNavbar 
                                     to='/categorias'
@@ -111,7 +132,15 @@ const Navbar = () => {
                                     direction={isMenuOpen ? 'vertical' : 'horizontal'}
                                 >Cerrar sesión</ItemNavbar>
                             </>
-                            : <>
+                            : <>   
+
+                            <ItemNavbar 
+                                to='/vender'
+                                icon={sellSvg} 
+                                title='Quiero publicar producto, servicio, vehiculo o inmueble'
+                                direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                            >Vender</ItemNavbar>
+                            
                             <ItemNavbar 
                                 to='/login' 
                                 icon={loginSvg} 
@@ -124,21 +153,14 @@ const Navbar = () => {
                                 icon={createAccountSvg} 
                                 title='Crear una cuenta'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                            >Crear cuenta</ItemNavbar>
+                            >Crear cuenta</ItemNavbar> 
 
                             <ItemNavbar 
                                 to='/categorias'
                                 icon={categorySvg} 
                                 title='Ver un listado de todas las categorias'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                            >Todas las categorias</ItemNavbar>      
-
-                            <ItemNavbar 
-                                to='/vender'
-                                icon={sellSvg} 
-                                title='Quiero publicar producto, servicio, vehiculo o inmueble'
-                                direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                            >Vender</ItemNavbar>
+                            >Todas las categorias</ItemNavbar>  
 
                             <ItemNavbar 
                                 to='/' 
@@ -204,6 +226,14 @@ const Navbar = () => {
                             >Ver mi Perfil</ItemNavbar>
 
                             <ItemNavbar 
+                                to='/vender'
+                                icon={sellSvg} 
+                                title='Quiero publicar producto, servicio, vehiculo o inmueble'
+                                direction={'vertical'}
+                                className='item-navbar-account-menu'
+                            >Vender</ItemNavbar>
+
+                            <ItemNavbar 
                                     to='/perfil/anuncios' 
                                     icon={announcementSvg} 
                                     title='Ver mis anuncios publicados'
@@ -212,12 +242,12 @@ const Navbar = () => {
                             >Mis anuncios</ItemNavbar>
 
                             <ItemNavbar 
-                                    to='/' 
+                                    to='/notificaciones' 
                                     icon={notificationSvg} 
-                                    title='Ver mis notificaciones'
+                                    title={ notificationsCounter > 0 ? `Ver mis notificaciones (${notificationsCounter})` : 'Ver mis notificaciones' }
                                     direction={'vertical'}
                                     className='item-navbar-account-menu'
-                            >Notificaciones</ItemNavbar>
+                            >{ notificationsCounter > 0 ? `Notificaciones (${notificationsCounter})` : 'Notificaciones' }</ItemNavbar>
 
                             <ItemNavbar 
                                     to='/favoritos' 
@@ -226,14 +256,6 @@ const Navbar = () => {
                                     direction={'vertical'}
                                     className='item-navbar-account-menu'
                             >Mis favoritos</ItemNavbar>
-
-                            <ItemNavbar 
-                                to='/vender'
-                                icon={sellSvg} 
-                                title='Quiero publicar producto, servicio, vehiculo o inmueble'
-                                direction={'vertical'}
-                                className='item-navbar-account-menu'
-                            >Vender</ItemNavbar>
 
                             <ItemNavbar 
                                 to='/categorias'

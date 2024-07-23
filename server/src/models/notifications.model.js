@@ -6,12 +6,15 @@ const notificationSchema = new Schema({
         ref: "user", 
         required: true 
     },
+    
+    titulo: { type: String, required: true },
     contenido: { type: String, required: true },
-    tipo: { type: String, enum: [], required: true },
+    icono: { type: String, enum: ["default", "deleteNotification", "selledNotification"], default: 'default', required: true },
     visto: { type: Boolean, default: false },
-    url: { type: String, default: null, required: false },
+    url: { type: String, default: '/notificaciones', required: true },
+    fecha: { type: String, required: true },
 },{
-    timestapms: true
+    timestamps: true
 });
 
 module.exports = model('notification', notificationSchema);

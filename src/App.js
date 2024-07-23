@@ -30,6 +30,7 @@ import Favoritos from './Pages/Favoritos';
 import Categorias from './Pages/Categorias';
 import EditProfile from './Pages/EditProfile';
 import AnnoucementsBySeller from './Pages/AnnoucementsBySeller';
+import MyNotifications from './Pages/MyNotifications';
 
 const App = () => {
     return (
@@ -59,7 +60,8 @@ const App = () => {
 				<Route path='/favoritos' element={ <LoggedRoute> <Favoritos/> </LoggedRoute> } />
 				<Route path='/perfil' element={ <LoggedRoute> <Profile/> </LoggedRoute> } />
 				<Route path='/perfil/editar' element={ <LoggedRoute> <EditProfile/> </LoggedRoute> } />
-				<Route path='/perfil/anuncios' element={ <LoggedRoute> <MyAnnoucements/> </LoggedRoute> } />				
+				<Route path='/perfil/anuncios' element={ <LoggedRoute> <MyAnnoucements/> </LoggedRoute> } />
+				<Route path='/notificaciones' element={ <LoggedRoute> <MyNotifications/> </LoggedRoute> } />			
 
 				<Route path='/buscar' Component={Search} />
 				<Route path='/categorias' Component={Categorias} />
