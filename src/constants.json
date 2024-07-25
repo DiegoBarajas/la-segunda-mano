@@ -248,99 +248,95 @@
     "categoriasProductos": [
         {
             "text": "Accesorios personales",
-            "value": "Accesorios Personales"
+            "value": "accesorios personales"
         },
         {
             "text": "Alimentos y bebidas",
-            "value": "Alimentos Y Bebidas"
+            "value": "alimentos y bebidas"
         },
         {
             "text": "Antigüedades y coleccionables",
-            "value": "Antigüedades Y Coleccionables"
+            "value": "antigüedades y coleccionables"
         },
         {
             "text": "Arte, manualidades y papelería",
-            "value": "Arte, Manualidades Y Papelería"
+            "value": "arte, manualidades y papelería"
         },
         {
             "text": "Artículos para oficina",
-            "value": "Artículos Para Oficina"
+            "value": "artículos para oficina"
         },
         {
             "text": "Autopartes",
-            "value": "Autopartes"
+            "value": "autopartes"
         },
         {
             "text": "Bebés",
-            "value": "Bebés"
+            "value": "bebés"
         },
         {
             "text": "Belleza y cuidado personal",
-            "value": "Belleza Y Cuidado Personal"
+            "value": "belleza y cuidado personal"
         },
         {
             "text": "Computación y telefonía",
-            "value": "Computación Y Telefonía"
+            "value": "computación y telefonía"
         },
         {
             "text": "Deportes",
-            "value": "Deportes"
+            "value": "deportes"
         },
         {
             "text": "Electrodomésticos",
-            "value": "Electrodomésticos"
+            "value": "electrodomésticos"
         },
         {
             "text": "Electrónica",
-            "value": "Electrónica"
+            "value": "electrónica"
         },
         {
             "text": "Herramientas",
-            "value": "Herramientas"
+            "value": "herramientas"
         },
         {
             "text": "Hogar y jardín",
-            "value": "Hogar Y Jardín"
-        },
-        {
-            "text": "Inmuebles",
-            "value": "Inmuebles"
+            "value": "hogar y jardín"
         },
         {
             "text": "Instrumentos musicales",
-            "value": "Instrumentos Musicales"
+            "value": "instrumentos musicales"
         },
         {
             "text": "Joyas y relojes",
-            "value": "Joyas Y Relojes"
+            "value": "joyas y relojes"
         },
         {
             "text": "Juguetes y juegos",
-            "value": "Juguetes Y Juegos"
+            "value": "juguetes y juegos"
         },
         {
             "text": "Libros, películas y música",
-            "value": "Libros, Películas Y Música"
+            "value": "libros, películas y música"
         },
         {
             "text": "Maquinaria",
-            "value": "Maquinaria"
+            "value": "maquinaria"
         },
         {
             "text": "Mascotas",
-            "value": "Mascotas"
+            "value": "mascotas"
         },
         {
             "text": "Muebles",
-            "value": "Muebles"
+            "value": "muebles"
         },
         {
             "text": "Ropa y calzado",
-            "value": "Ropa Y Calzado"
+            "value": "ropa y calzado"
         },
         {
             "text": "Televisiones y pantallas",
-            "value": "Televisiones Y Pantallas"
+            "value": "televisiones y pantallas"
         }
     ],
     "categoriasGratis": [
@@ -595,5 +591,36 @@
         }
     ],
 
-    "pasosCrearAnuncio": ["Tipo", "Datos generales", "Caracteristicas", "Contacto y entrega"]
+    "pasosCrearAnuncio": ["Tipo", "Datos generales", "Caracteristicas", "Contacto y entrega"],
+
+    "reporte": {
+        "vendedor": [
+            "Nombre o foto de perfil inadecuados", 
+            "Se hace pasar por otra persona", 
+            "Suplantación de identidad",
+            "Estafa o engaño", 
+            "Infringe terminos y condiciones", 
+            "Otra razón"
+        ],
+        "publicacion": [
+            "La fotografia no coincide con el anuncio", 
+            "Vende producto/servicio inapropiado", 
+            "Ofrece información engañosa",
+            "Irrelevante o sin sentido",
+            "Anuncio falso o engañoso", 
+            "El precio es engañoso",
+            "Infringe terminos y condiciones", 
+            "Otra razón"
+        ],
+        "reseña": [
+            "Irrelevante o sin sentido",
+            "Contenido inapropiado", 
+            "Reseña engañosa", 
+            "Incita al odio",
+            "Difamación", 
+            "Spam",
+            "Infringe terminos y condiciones", 
+            "Otra razón"
+        ]
+    }
 }

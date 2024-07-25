@@ -236,7 +236,9 @@ const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMake
                                 }
                             </section>
                         )
-                        : <p>Este usuario no tiene reseñas, ¡puedes publicar la primera!</p>
+                        : mio 
+                            ? <p>No tienes reseñas.</p>
+                            : <p>Este vendedor no tiene reseñas, ¡puedes publicar la primera!</p>
                 }
             </section>
             {

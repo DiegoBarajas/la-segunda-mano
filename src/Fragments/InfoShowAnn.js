@@ -19,7 +19,9 @@ const InfoShowAnn = ({announcement}) => {
                 </p>
             </section>
 
+            <h2 style={{ width: '100%', textAlign: 'start', marginTop: '20px' }}>Características del producto</h2>
             <section className='caracteristicas-annoucement'>
+
                 {
                     Object.keys(announcement.caracteristicas).map(key => {
                         return (announcement.caracteristicas[key] !== '') && (announcement.caracteristicas[key] !== null) && !['ciudad', 'cantidad', 'estado'].includes(key)
@@ -33,21 +35,21 @@ const InfoShowAnn = ({announcement}) => {
                                 : null
                         })
                 }
+                
+            </section>
+
+            <h2 style={{ width: '100%', textAlign: 'start', marginTop: '20px' }}>Formas de entrega</h2>
+            <section className='caracteristicas-annoucement'>
                 {
                     announcement.formasEntrega
-                        ? <section className='caracteristica-annoucement'>
-                            <h3>{"Formas de entrega"}</h3>
-                            <div className='caracteristica-annoucement-content'>
-                                <img src={formasEntregaSvg} alt={'Forma entrega'} />
-                                <ul style={{ listStyle: 'none' }}>
-                                {
-                                    announcement.formasEntrega.map((forma) => 
-                                        <li key={'formas-'+forma.forma}><p>-{forma.forma}{forma.detalles ? `: ${forma.detalles}` : null}.</p></li>             
-                                    )
-                                }
-                                </ul>
-                            </div>
-                        </section>
+                        ? announcement.formasEntrega.map((forma) => 
+                                <section className='caracteristica-annoucement'>
+                                    <div className='caracteristica-annoucement-content'>
+                                        <img src={formasEntregaSvg} alt={'Forma entrega'} />
+                                        <p key={'formas-'+forma.forma}>{forma.forma}{forma.detalles ? `: ${forma.detalles}` : null}.</p>             
+                                    </div>
+                                </section>
+                            )      
                         : null
                 }
             </section>

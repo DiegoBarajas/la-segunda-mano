@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
+import Button from '../Components/Button'
+import Input from '../Components/Input'
 
 import downArrowsvg from '../Assets/Icons/downArrow.svg'
 
-import '../Styles/Fragments/ReportReviewPopup.css'
-import Input from '../Components/Input'
-import Button from '../Components/Button'
-import backend from '../backend'
 import axios from 'axios'
 import modals from '../Modals'
-import { useParams } from 'react-router-dom'
+import backend from '../backend'
+import constants from '../constants.json'
+import '../Styles/Fragments/ReportReviewPopup.css'
+
+
 
 const ReasonButton = ({ children, setRazon }) => {
     return (
@@ -68,11 +70,11 @@ const ReportReviewPopup = ({ id, type, masc=false }) => {
                     <p>Selecciona la razón del reporte {masc ? 'del' : 'de la'} {type}:</p>
 
                     <section className='reasons'>
-                        <ReasonButton setRazon={setRazon}>Infinge terminos y condiciones</ReasonButton>
-                        <ReasonButton setRazon={setRazon}>Contenido inapropiado</ReasonButton>
-                        <ReasonButton setRazon={setRazon}>Contenido engañoso</ReasonButton>
-                        <ReasonButton setRazon={setRazon}>Spam</ReasonButton>
-                        <ReasonButton setRazon={setRazon}>Otra razón</ReasonButton>
+                        {
+                            constants.reporte[type].map((r, index) => 
+                                <ReasonButton key={r+index} setRazon={setRazon}>{r}</ReasonButton>
+                            )
+                        }
                     </section>
                 </div> 
                 

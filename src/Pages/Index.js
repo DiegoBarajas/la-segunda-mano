@@ -11,7 +11,7 @@ const Index = () => {
             top: 0,
             behavior: 'smooth'
         });
-    }, [true]);
+    }, []);
 
     return (
         <PageLayout>
@@ -19,9 +19,7 @@ const Index = () => {
             <ContententLayout horizontalAlign='center'>
                 <h1>Hola</h1>
             </ContententLayout>
-
-
-            
+        
         </PageLayout>
     )
 }

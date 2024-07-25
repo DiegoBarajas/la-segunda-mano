@@ -8,7 +8,7 @@ const ReportProblem = () => {
 
     const getHref = () => {
         const url = 'mailto:soporte@lasegundamano.com.mx'
-        const subjectEncoded = encodeURIComponent("Reportar problema en La Segunda Mano");
+        const subjectEncoded = encodeURIComponent('Reportar problema en "La Segunda Mano"');
         const bodyEncoded = encodeURIComponent(body);
         const query = `?subject=${subjectEncoded}&body=${bodyEncoded}`
 
