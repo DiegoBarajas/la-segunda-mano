@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 require('dotenv').config();
 
+// Middlewares
 const expressFileUpload = require('express-fileupload');
 const petitionHandler = require('./middlewares/petitionHandler');
 const notFoundhandler = require('./middlewares/notFoundHandler');

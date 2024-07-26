@@ -11,12 +11,40 @@ import modals from '../Modals'
 
 const ContactSelllerPopup = ({ contacto }) => {
 
-    const copyToClipboard = async(text) => {
+    const copyToClipboard = async (text) => {
         try {
-            await navigator.clipboard.writeText(text);
-            modals.toast("Copiado al portapapeles");
-        } catch (err) {}      
-    }
+            if (navigator.clipboard) {
+                await navigator.clipboard.writeText(text);
+                modals.toast("Copiado al portapapeles");
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "fixed";  // Evita que el textarea sea visible en la pantalla
+                textArea.style.top = "0";
+                textArea.style.left = "0";
+                textArea.style.width = "2em";
+                textArea.style.height = "2em";
+                textArea.style.padding = "0";
+                textArea.style.border = "none";
+                textArea.style.outline = "none";
+                textArea.style.boxShadow = "none";
+                textArea.style.background = "transparent";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    modals.toast("Copiado al portapapeles");
+                } catch (err) {
+                    modals.toast("Error al copiar al portapapeles", 'error');
+                    console.error(err);
+                }
+                document.body.removeChild(textArea);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     const getWhatsAppLink = (number) => {
         const textNumber = number.trim().split(' ').join('');

@@ -1,7 +1,7 @@
 @import url(../../index.css);
 
 .item-navbar {
-    height: max(75px, fit-content);
+    height: max(zpx, fit-content);
 }
 
 .link-item-navbar {
@@ -38,6 +38,6 @@
         height: 100%;
         margin-left: 0px;
 
-        padding: 2em;
+        padding: 1.5em;
     }
 }

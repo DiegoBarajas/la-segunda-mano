@@ -6,28 +6,37 @@ const errorHandler = require('../middlewares/errorHandler');
 const UserModel = require('../models/user.model');
 require('dotenv').config();
 
-module.exports = (req, res, next) => {
-    try{
+module.exports = async (req, res, next) => {
+    try {
         const token = req.headers['authorization'];
-    
-        if(!token){ 
+
+        if (!token) {
             console.error(colors.yellow(`[ NO AUTORIZADO ] Token no proporcionado`));
             throw new CustomError("Token no proporcionado", 407);
         }
-    
-        jwt.verify(token, process.env.JWT_SECRET, async(err, decoded) => {
-            if(err instanceof jwt.TokenExpiredError){
-                console.error(colors.yellow(`[ NO AUTORIZADO ] Token caducado`));
-                throw new CustomError("El token ha caducado", 401);
-            }else if(err){ 
-                console.error(colors.yellow(`[ NO AUTORIZADO ] Token no valido`));
-                throw new CustomError("No autorizado", 401);
+
+        jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
+            if (err) {
+                if (err instanceof jwt.TokenExpiredError) {
+                    console.error(colors.yellow(`[ NO AUTORIZADO ] Token caducado`));
+                    return next(new CustomError("El token ha caducado", 401));
+                } else {
+                    console.error(colors.yellow(`[ NO AUTORIZADO ] Token no valido`));
+                    return next(new CustomError("No autorizado", 401));
+                }
             }
-            
-            req.user = await UserModel.findById(decoded.user._id);
-            next();
+
+            try {
+                req.user = await UserModel.findById(decoded.user._id);
+                if (!req.user) {
+                    return next(new CustomError("Usuario no encontrado", 404));
+                }
+                next();
+            } catch (error) {
+                next(error);
+            }
         });
-    }catch(err){
-        errorHandler(err, req, res, next);
+    } catch (err) {
+        next(err);
     }
-}
+};

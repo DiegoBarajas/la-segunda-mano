@@ -53,11 +53,18 @@
     flex-direction: column;
 }
 
+.show-annoucement-general-btns {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    width: 100%;
+    gap: 0px;
+}
+
 .div-fav-btn {
     display: flex;
     justify-content: end;
     align-items: center;
-    width: 100%;
     margin-top: -10px;
 }
 
@@ -374,8 +381,35 @@
     background-color: var(--mint);
 }
 
+.fb-color {
+    background-color: #1875F9;
+}
 
-.a-show-contact img {
+.tw-color {
+    background-color: black;
+}
+
+.a-show-contact-button {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--mint);
+    color: white !important;
+    font-weight: 500;
+    border-radius: 5px;
+    width: 90%;
+    margin-top: 5px;
+    padding: 10px 30px;
+
+    cursor: pointer;
+}
+
+.a-show-contact-button:hover {
+    filter: brightness(0.9);
+}
+
+.a-show-contact img, .a-show-contact-button img {
     width: 25px;
     filter: invert(100%);
 }
@@ -403,11 +437,11 @@
     }
 }
 
-.icon-button-create-ann {
+.icon-button-create-ann, .div-fav-btn::before {
     filter: opacity(70%) !important;
 }
 
-.icon-button-create-ann:hover {
+.icon-button-create-ann:hover{
     filter: opacity(100%) !important;
 }
 
@@ -459,6 +493,14 @@
         font-family: "Lexend Deca", sans-serif;
     }
 
+    .share::before {
+        content: 'Compartir';
+        font-size: 12px;
+        color: black;
+        font-weight: 700;
+        font-family: "Lexend Deca", sans-serif;
+    }
+
     .caracteristicas-annoucement {
         grid-template-columns: 1fr 1fr; 
     }
@@ -503,6 +545,14 @@
     }
 
     .a-show-contact-container, .contact-seller-popup p {
+        width: 100%;
+    }
+
+    .show-annoucement-general-btns {
+        flex-direction: column-reverse;
+    }
+
+    .a-show-contact-button {
         width: 100%;
     }
 }

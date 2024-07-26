@@ -271,8 +271,6 @@ controller.getAnnouncementBySearch = async(req, res, next) => {
         const filter = {}
         let sort = { createdAt: -1 }
 
-        console.log(query);
-
         for(let key in query){
             if(query[key] == ignoreValues[key]) continue;
 

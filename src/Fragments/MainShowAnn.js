@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { PhotoProvider, PhotoView } from 'react-image-previewer';
 import { SlideToolbar, CloseButton } from 'react-image-previewer/ui';
 import ContactSelllerPopup from './ContactSelllerPopup';
-import ContentLayout from '../Layouts/ContentLayout'
+import ContentLayout from '../Layouts/ContentLayout';
+import ReportReviewPopup from './ReportReviewPopup';
+import ShareAnnPupup from './ShareAnnPupup';
 import IconButton from '../Components/IconButton';
 import { Link, useParams } from 'react-router-dom';
 import Button from '../Components/Button';
@@ -20,6 +22,7 @@ import premiumSvg from '../Assets/Icons/premium.svg'
 import reportSvg from '../Assets/Icons/report.svg'
 import selledSvg from '../Assets/Icons/selled.svg'
 import stockSvg from '../Assets/Icons/stock.svg'
+import shareSvg from '../Assets/Icons/share.svg'
 import editSvg from '../Assets/Icons/edit.svg'
 import eyeSvg from '../Assets/Icons/eye.svg'
 
@@ -27,7 +30,6 @@ import '../Styles/Pages/ShowAnnouncement.css';
 import modals from '../Modals';
 import axios from 'axios';
 import backend from '../backend';
-import ReportReviewPopup from './ReportReviewPopup';
 
 const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
     const token = localStorage.getItem('token');
@@ -37,6 +39,10 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
 
     const showContactSeller = () => {
         modals.popup(<ContactSelllerPopup contacto={announcement.contacto}/>, 'swal-contact-seller-popup');
+    }
+
+    const handleShare = () => {
+        modals.popup(<ShareAnnPupup annoucement={announcement}/>, 'swal-contact-seller-popup');
     }
 
     const handleAddFavorite = async() => {
@@ -197,13 +203,18 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
 
                 <section className='show-announcement-info'>
                     <section className='show-annoucement-general'>
-                        {
-                            token 
-                                ? !mio
-                                    ? <div className={`div-fav-btn ${isFavorite ? 'quit-from-favs' : ''}`}> <IconButton className='icon-button-create-ann' color='transparent' icon={ isFavorite ? favoriteFilledSvg : favoriteSvg } title={isFavorite ? "Quitar de favoritos" : 'Añadir a favoritos'} onClick={handleAddFavorite}/> </div>
-                                    : <div className='div-fav-btn watch-as-a-client'> <IconButton className='icon-button-create-ann' color='transparent' icon={eyeSvg} title='Ver como comprador' onClick={() => window.location.href = `/anuncio/${id}?client=true`}/> </div>
-                                : null
-                        }
+
+                        <div className='show-annoucement-general-btns'>
+                            <div className='div-fav-btn share'> <IconButton className='icon-button-create-ann' color='transparent' icon={shareSvg} title='Compartir' onClick={ handleShare }/> </div>
+                            {
+                                token 
+                                    ? !mio
+                                        ? <div className={`div-fav-btn ${isFavorite ? 'quit-from-favs' : ''}`}> <IconButton className='icon-button-create-ann' color='transparent' icon={ isFavorite ? favoriteFilledSvg : favoriteSvg } title={isFavorite ? "Quitar de favoritos" : 'Añadir a favoritos'} onClick={handleAddFavorite}/> </div>
+                                        : <div className='div-fav-btn watch-as-a-client'> <IconButton className='icon-button-create-ann' color='transparent' icon={eyeSvg} title='Ver como comprador' onClick={() => window.location.href = `/anuncio/${id}?client=true`}/> </div>
+                                    : null
+                            }
+                        </div>
+
                         <h1>{announcement.titulo}</h1>
                         <h3>{ renderLevel(announcement.nivel) }</h3>
                         <h2>
