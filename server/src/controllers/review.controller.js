@@ -3,6 +3,7 @@ const ReviewModel = require('../models/review.model');
 const userModel = require('../models/user.model');
 const UserModel = require('../models/user.model');
 const moment = require('moment-timezone');
+const { createNotification } = require('./notification.controller');
 
 const controller = {}
 
@@ -20,7 +21,7 @@ controller.createReview = async(req, res, next) => {
         if(!commentedUser) throw new CustomError("No se encontró al usuario que se desea reseñar");
 
 //      Comprobar que el usuario obtenido de req no haya emitido una reseña
-        const myReviews = await ReviewModel.find({ authorId: user._id });
+        const myReviews = await ReviewModel.find({ authorId: user._id, commentedUserId: commentedUser._id });
         if(myReviews.length > 0) throw new CustomError("Ya emitiste una reseña a este usuario, si deseas modificarla eliminala y creala nuevamente");
 
 //      Crear y almacenar reseña
@@ -40,6 +41,15 @@ controller.createReview = async(req, res, next) => {
             apellido: user.apellido,
             foto: user.foto
         }
+
+//      Notificar al usuario que le han escrito una reseña
+        createNotification(
+            commentedUser._id, 
+            "Tienes una nueva reseña", 
+            `El usuario "${user.nombre} ${user.apellido}" te ha escrito una nueva reseña!`, 
+            'newReview', 
+            '/vendedor/'+commentedUser.sellerId+'?reviews=true'
+        );
         
 //      Enviar respuesta
         res.send(newReviewJson)
@@ -73,7 +83,7 @@ controller.getReviewsBySellerId = async(req, res, next) => {
         }
 
         const mio = user.sellerId == id;
-        const myReview = await ReviewModel.find({ authorId: user._id });
+        const myReview = await ReviewModel.find({ authorId: user._id, commentedUserId: seller._id });
         const canMakeReview = myReview.length > 0 ? false : true;
 
         const response = reviews.map((r, index) => {

@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import AnnoucementMyAnn from '../Fragments/AnnoucementMyAnn'
 import ReportReviewPopup from '../Fragments/ReportReviewPopup';
 import PaginationLayout from '../Layouts/PaginationLayout'
-import ColumnLayout from '../Layouts/ColumnLayout'
+import { Link, useParams } from 'react-router-dom'
 import IconButton from '../Components/IconButton';
 import PageLayout from '../Layouts/PageLayout'
-import { Link, useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 import Button from '../Components/Button';
 import Select from '../Components/Select';
 import Input from '../Components/Input';
@@ -25,7 +25,13 @@ import axios from 'axios'
 
 import '../Styles/Pages/MyAnnoucements.css'
 
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}
+
 const AnnoucementsBySeller = () => {
+    const query = useQuery();
+
     const token = localStorage.getItem('token');
     const { id } = useParams();    
     const formRef = useRef(null);    
@@ -470,6 +476,7 @@ const AnnoucementsBySeller = () => {
             <PaginationLayout
                 titles={[ "Anuncios", "Reseñas" ]}
                 components={[ <AnnoucementsComponent/>, <ReviewsComponent/> ]}
+                defaultIndex={query.has('reviews') ? 1 : 0}
             />
 
         </PageLayout>

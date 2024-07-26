@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-import deleteWhiteSvg from '../Assets/Icons/deleteWhite.svg'
+import reviewsSvg from '../Assets/Icons/reviews.svg'
+import announcementSvg from '../Assets/Icons/announcement.svg'
 import accountSvg from '../Assets/Icons/account.svg'
 import emailSvg from '../Assets/Icons/email.svg'
 import editSvg from '../Assets/Icons/edit.svg'
@@ -61,6 +62,8 @@ const Profile = () => {
 
                 <section className='section-buttons-profile'>
                     <Button className='btn-profile' horizontal icon={editSvg} onClick={() => setRedirect("/perfil/editar")}>Editar información</Button>
+                    <Button className='btn-profile' horizontal icon={announcementSvg} onClick={() => setRedirect("/perfil/anuncios")}>Ver mis anuncios</Button>
+                    <Button color='red' className='btn-profile' horizontal icon={reviewsSvg} onClick={() => setRedirect(`/vendedor/${user.sellerId}?reviews=true`)}>Ver mis reseñas</Button>
                 </section>
 
             </ContentLayout>

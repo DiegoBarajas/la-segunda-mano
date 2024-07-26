@@ -26,7 +26,8 @@ controller.getUser = async(req, res, next) => {
             apellido: user.apellido,
             correo: user.correo,
             estado: user.estado,
-            foto: user.foto
+            foto: user.foto,
+            sellerId: user.sellerId
         });
     }catch(err){
         next(err);
@@ -58,7 +59,8 @@ controller.login = async(req, res, next) => {
             apellido: user.apellido,
             correo: user.correo,
             estado: user.estado,
-            foto: user.foto
+            foto: user.foto,
+            sellerId: user.sellerId
         }
 
 //      Enviar respuesta
@@ -131,7 +133,8 @@ controller.updateUser = async(req, res, next) => {
             apellido: updatedUser.apellido,
             correo: updatedUser.correo,
             estado: updatedUser.estado,
-            foto: updatedUser.foto
+            foto: updatedUser.foto,
+            sellerId: this.updateUser.sellerId
         }
                     
 //      Enviar respuesta
@@ -213,7 +216,8 @@ controller.siginCode = async(req, res, next) => {
             apellido: newUser.apellido,
             correo: newUser.correo,
             estado: newUser.estado,
-            foto: newUser.foto
+            foto: newUser.foto,
+            sellerId: newUser.sellerId
         }
 
 //      Enviar respuesta
@@ -269,7 +273,8 @@ controller.signinLastSteps = async(req, res, next) => {
                 apellido: User.apellido,
                 correo: User.correo,
                 estado: User.estado,
-                foto: User.foto
+                foto: User.foto,
+                sellerId: User.sellerId
             }
             
 //          Enviar respuesta
@@ -320,7 +325,8 @@ controller.signinLastSteps = async(req, res, next) => {
             apellido: updatedUser.apellido,
             correo: updatedUser.correo,
             estado: updatedUser.estado,
-            foto: updatedUser.foto
+            foto: updatedUser.foto,
+            sellerId: updatedUser.sellerId
         }
     
 //      Enviar respuesta
@@ -403,7 +409,8 @@ controller.forgotCode = async(req, res, next) => {
             apellido: updatedUser.apellido,
             correo: updatedUser.correo,
             estado: updatedUser.estado,
-            foto: updatedUser.foto
+            foto: updatedUser.foto,
+            sellerId: updatedUser.sellerId
         }
 
 //      Enviar respuesta

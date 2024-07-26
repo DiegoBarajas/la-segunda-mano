@@ -55,7 +55,6 @@ const App = () => {
 				<Route path='/vender/vehiculo' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateVehicle/> </LoggedRoute>} />
 				<Route path='/vender/inmueble' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateInmueble/> </LoggedRoute>} />
 
-
 				<Route path='/logout' element={ <Logout/> } />
 				<Route path='/favoritos' element={ <LoggedRoute> <Favoritos/> </LoggedRoute> } />
 				<Route path='/perfil' element={ <LoggedRoute> <Profile/> </LoggedRoute> } />

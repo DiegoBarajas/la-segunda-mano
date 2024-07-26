@@ -1,17 +1,18 @@
 import React from 'react'
 
-import placeholderSvg from '../Assets/Icons/notificationPlaceholder.svg'
 import deletedNotificationSvg from '../Assets/Icons/deletedNotification.svg'
 import selledNotificationSvg from '../Assets/Icons/selledNotification.svg'
 import annoucementDeletedSvg from '../Assets/Icons/annoucementDeleted.svg'
 import annoucementCaducedSvg from '../Assets/Icons/annoucementCaduced.svg'
+import placeholderSvg from '../Assets/Icons/notificationPlaceholder.svg'
+import newReviewSvg from '../Assets/Icons/newReview.svg'
 
 import '../Styles/Fragments/Notification.css'
 import { Link } from 'react-router-dom'
 
 const Notification = ({ notification }) => {
     return (
-        <Link className='notification' to={notification.link}>
+        <Link className='notification' to={notification.url}>
             <img src={renderIcon(notification.icono)} alt='Icono'/>
 
             <section className='content-notification'>
@@ -32,6 +33,7 @@ const renderIcon = (icon) => {
         case "selledNotification": return selledNotificationSvg;
         case "annoucementDeleted": return annoucementDeletedSvg;
         case "annoucementCaduced": return annoucementCaducedSvg;
+        case "newReview": return newReviewSvg;
         default: return placeholderSvg;
     }
 }
