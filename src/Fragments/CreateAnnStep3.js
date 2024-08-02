@@ -61,7 +61,7 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        if(disabled || (formasEntrega.length === 0) && (constants.entregas[type])) return;
+        if(disabled || ((formasEntrega.length === 0) && (constants.entregas[type]))) return;
 
         const newFormData = {...formData, contacto: contact, formasEntrega: formasEntrega};
         setFormData(newFormData);
@@ -168,6 +168,7 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
 
                 mb='12px'
             />
+            default: return null;
         }
     }
 
@@ -340,7 +341,7 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
                     >Volver atras</Button>
 
                 <Button
-                    disabled={(disabled || (formasEntrega.length === 0) && (constants.entregas[type]) )}
+                    disabled={(disabled || ((formasEntrega.length === 0) && (constants.entregas[type])) )}
                     type='submit'
                     title={ disabled ? "Para continuar acepta las Condiciones de uso" : ( (formasEntrega.length === 0) && (constants.entregas[type]) ) ? "Agrega una Forma de Entrega"  : "Crear publicación" }
                 >Crear publicación</Button>
