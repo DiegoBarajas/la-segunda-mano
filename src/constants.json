@@ -132,6 +132,135 @@
             "text": "Zacatecas",
             "value": "zacatecas"
         }
+    ], "estadosForm": [
+        {
+            "text": "Aguascalientes",
+            "value": "aguascalientes"
+        },
+        {
+            "text": "Baja California",
+            "value": "baja california"
+        },
+        {
+            "text": "Baja California Sur",
+            "value": "baja california sur"
+        },
+        {
+            "text": "Campeche",
+            "value": "campeche"
+        },
+        {
+            "text": "Chiapas",
+            "value": "chiapas"
+        },
+        {
+            "text": "Chihuahua",
+            "value": "chihuahua"
+        },
+        {
+            "text": "Ciudad de México",
+            "value": "ciudad de méxico"
+        },
+        {
+            "text": "Coahuila",
+            "value": "coahuila"
+        },
+        {
+            "text": "Colima",
+            "value": "colima"
+        },
+        {
+            "text": "Durango",
+            "value": "durango"
+        },
+        {
+            "text": "Estado de México",
+            "value": "estado de méxico"
+        },
+        {
+            "text": "Guanajuato",
+            "value": "guanajuato"
+        },
+        {
+            "text": "Guerrero",
+            "value": "guerrero"
+        },
+        {
+            "text": "Hidalgo",
+            "value": "hidalgo"
+        },
+        {
+            "text": "Jalisco",
+            "value": "jalisco"
+        },
+        {
+            "text": "Michoacán",
+            "value": "michoacán"
+        },
+        {
+            "text": "Morelos",
+            "value": "morelos"
+        },
+        {
+            "text": "Nayarit",
+            "value": "nayarit"
+        },
+        {
+            "text": "Nuevo León",
+            "value": "nuevo león"
+        },
+        {
+            "text": "Oaxaca",
+            "value": "oaxaca"
+        },
+        {
+            "text": "Puebla",
+            "value": "puebla"
+        },
+        {
+            "text": "Querétaro",
+            "value": "querétaro"
+        },
+        {
+            "text": "Quintana Roo",
+            "value": "quintana roo"
+        },
+        {
+            "text": "San Luis Potosí",
+            "value": "san luis potosí"
+        },
+        {
+            "text": "Sinaloa",
+            "value": "sinaloa"
+        },
+        {
+            "text": "Sonora",
+            "value": "sonora"
+        },
+        {
+            "text": "Tabasco",
+            "value": "tabasco"
+        },
+        {
+            "text": "Tamaulipas",
+            "value": "tamaulipas"
+        },
+        {
+            "text": "Tlaxcala",
+            "value": "tlaxcala"
+        },
+        {
+            "text": "Veracruz",
+            "value": "veracruz"
+        },
+        {
+            "text": "Yucatán",
+            "value": "yucatán"
+        },
+        {
+            "text": "Zacatecas",
+            "value": "zacatecas"
+        }
     ],
 
 
@@ -244,8 +373,7 @@
             "text": "Vehículos",
             "value": "vehiculo"
         }
-    ],
-    "categoriasProductos": [
+    ], "categoriasProductos": [
         {
             "text": "Accesorios personales",
             "value": "accesorios personales"
@@ -338,8 +466,7 @@
             "text": "Televisiones y pantallas",
             "value": "televisiones y pantallas"
         }
-    ],
-    "categoriasGratis": [
+    ], "categoriasGratis": [
         {
             "text": "Accesorios personales",
             "value": "accesorios personales"
@@ -469,6 +596,20 @@
             "value": "para piezas"
         }
         
+    ], "usosForm": [
+        {
+            "text": "Nuevo",
+            "value": "nuevo"
+        },
+        {
+            "text": "Usado",
+            "value": "usado"
+        },
+        {
+            "text": "Para piezas",
+            "value": "para piezas"
+        }
+        
     ],
 
 
@@ -499,8 +640,13 @@
         }
     ],
 
-    
-    "entregasProductos": [
+    "boolOptions": [
+        { "text": "No", "value": "false" }, 
+        { "text": "Si", "value": "true" }
+    ],
+
+    "entregas": {
+        "producto": [
         {
             "text": "Encuentro en punto medio"        
         },
@@ -526,43 +672,74 @@
             "label": "¿Cuales son los puntos especificos?",
             "placeholder": "Ej. Centros comerciales, estaciones del metro, centro..."
         }
-    ],
-    "entregasVehiculos": [
+        ],
+        "gratis": [
         {
-            "text": "Encuentro en punto medio"
+            "text": "Encuentro en punto medio"        
         },
         {
-            "text": "Encuentro en mi casa"
+            "text": "Recoger en mi casa"
         },
         {
-            "text": "Encuentro en la casa del comprador"
+            "text": "Llevar a la casa del comprador"
         },
         {
-            "text": "Encuentro la casa del comprador (+ Cargo adicional)"
+            "text": "Llevar a la casa del comprador (+ Cargo adicional)"
         },
         {
-            "text": "Encuentro en puntos especificos",
+            "text": "Envío por paquetería"
+        },
+        {
+            "text": "Envío por paquetería (+ Cargo adicional)"
+        },
+        {
+            "text": "Entrega en puntos especificos",
             "input": true,
             "required": true,
             "label": "¿Cuales son los puntos especificos?",
-            "placeholder": "Ej. Centros comerciales, estacionamientos..."
+            "placeholder": "Ej. Centros comerciales, estaciones del metro, centro..."
         }
-    ],
-    "entregasServicios": [
-        {
-            "text": "A domicilio"
-        },
-        {
-            "text": "En mi local"
-        },
-        {
-            "text": "Otro",
-            "input": true,
-            "required": true,
-            "label": "Especifica",
-            "placeholder": "Ej. Centros comerciales, estacionamientos..."
-        }
-    ],
+        ], 
+        "vehiculo": [
+            {
+                "text": "Encuentro en punto medio"
+            },
+            {
+                "text": "Encuentro en mi casa"
+            },
+            {
+                "text": "Encuentro en la casa del comprador"
+            },
+            {
+                "text": "Encuentro la casa del comprador (+ Cargo adicional)"
+            },
+            {
+                "text": "Encuentro en puntos especificos",
+                "input": true,
+                "required": true,
+                "label": "¿Cuales son los puntos especificos?",
+                "placeholder": "Ej. Centros comerciales, estacionamientos..."
+            }
+        ], 
+        "servicio": [
+            {
+                "text": "A domicilio"
+            },
+            {
+                "text": "En mi local"
+            },
+            {
+                "text": "Otro",
+                "input": true,
+                "required": true,
+                "label": "Especifica",
+                "placeholder": "Ej. Centros comerciales, estacionamientos..."
+            }
+        ],
+        "inmueble": null
+    },
+    
+    
 
     "ordenarReviews": [
         {
@@ -622,5 +799,874 @@
             "Infringe terminos y condiciones", 
             "Otra razón"
         ]
+    },
+
+    "tiposInmuebles": [
+        { "text": "Terreno", "value": "Terreno" },
+        { "text": "Casa", "value": "Casa" },
+        { "text": "Departamento", "value": "Departamento" },{ "text": "Oficina", "value": "Oficina" },
+        { "text": "Local", "value": "Local" },{ "text": "Edificio", "value": "Edificio" }
+    ],
+    "rentaOVenta": [{ "text": "Renta", "value": "renta" },{ "text": "Venta", "value": "venta" }],
+
+    "forms": {
+        "producto": {
+            "general": [
+                {
+                    "kind": "input",
+                    "name": "titulo",
+                    "label": "Nombre del articulo",
+                    "placeholder": "Ej. Cartera de cuero",
+                    "auxText": "Este es el titulo de tu publicación.",
+                    "required": true,
+                    "type": "text"
+                },{
+                    "kind": "input",
+                    "name": "precio",
+                    "label": "Precio del articulo",
+                    "placeholder": "Ej. 250",
+                    "auxText": "El precio debe ser real, de lo contrario infringes nuestras condiciones de uso y habrá una sanción.",
+                    "required": true,
+                    "type": "number"
+                },{
+                    "kind": "select",
+                    "name": "categoria",
+                    "label": "Categoria",
+                    "placeholder": "Categoria",
+                    "auxText": "Selecciona la categoria mas acorde a tu articulo",
+                    "required": true,
+                    "options": "categoriasProductos"
+                },{
+                    "kind": "inputFile"
+                },
+                {
+                    "kind": "input",
+                    "name": "descripcion",
+                    "label": "Descripción del articulo",
+                    "placeholder": "Escribe una descripción breve de tu producto o articulo que publicas...",
+                    "auxText": "Descripción breve de tu articulo",
+                    "required": true,
+                    "type": "text",
+                    "textArea": true
+                }
+            ],
+            "caracteristicas": [
+                {
+                    "contenedor": "content",
+                    "titulo": "Información básica",
+                    "data": [
+                        {
+                            "kind": "select",
+                            "name": "uso",
+                            "label": "Uso",
+                            "placeholder": "Uso",
+                            "required": true,
+                            "options": "usosForm"
+                        }, {
+                            "kind": "estado"
+                        }, {
+                            "kind": "input",
+                            "name": "cantidad",
+                            "label": "Cantidad",
+                            "placeholder": "Ej. 1",
+                            "min": 1,
+                            "required": true,
+                            "type": "number"
+                        }, {
+                            "kind": "input",
+                            "name": "ciudad",
+                            "label": "Ciudad",
+                            "placeholder": "Ej. Guadalajara",
+                            "required": true,
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "marca",
+                            "label": "Marca",
+                            "placeholder": "Ej. Lenovo",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "modelo",
+                            "label": "Modelo",
+                            "placeholder": "Ej. Thinkpad T470s",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "color",
+                            "label": "Color",
+                            "placeholder": "Ej. Rojo",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "tipo",
+                            "label": "Tipo de articulo",
+                            "placeholder": "Ej. Laptop",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "Alimentos y bebidas",
+                    "data": [
+                        {
+                            "kind": "input",
+                            "name": "fechaCaducidad",
+                            "label": "Fecha de caducidad",
+                            "placeholder": "Ej. Febrero 2025",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "ingredientes",
+                            "label": "Ingredientes",
+                            "placeholder": "Ej. Jitomate, sal yodada, agua",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "Autopartes y vehiculos",
+                    "data": [
+                        {
+                            "kind": "input",
+                            "name": "vehiculo",
+                            "label": "Vehiculo(s) compatible",
+                            "placeholder": "Ej. Honda Civic 2018",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "Computación y telefonia",
+                    "data": [
+                        {
+                            "kind": "input",
+                            "name": "cpu",
+                            "label": "Procedador (CPU)",
+                            "placeholder": "Ej. Intel I5 3800G",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "ram",
+                            "label": "Memoria RAM",
+                            "placeholder": "Ej. 16GB DDR4",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "almacenamiento",
+                            "label": "Almacenamiento",
+                            "placeholder": "Ej. 250GB SSD",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "bateria",
+                            "label": "Capacidad de la bateria",
+                            "placeholder": "Ej. 3000 mAh",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "sistemaOperativo",
+                            "label": "Sistema Operativo",
+                            "placeholder": "Ej. Windows 11",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "conectividad",
+                            "label": "Conectividad",
+                            "placeholder": "Ej. 5G, Bluethooth 3.0",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "tamañoPantalla",
+                            "label": "Tamaño de la pantalla",
+                            "placeholder": "Ej. 5 pulgadas",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "Libros, películas y música",
+                    "data": [
+                        {
+                            "kind": "input",
+                            "name": "autor",
+                            "label": "Autor",
+                            "placeholder": "Ej. Edgar Allan Poe",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "editorial",
+                            "label": "Editorial",
+                            "placeholder": "Ej. Panini Comics",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "director",
+                            "label": "Director",
+                            "placeholder": "Ej. Alfonso Cuarón",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "artista",
+                            "label": "Artista musical",
+                            "placeholder": "Ej. Freddie Mercury",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "genero",
+                            "label": "Genero (musical, cinematografico, liteario)",
+                            "placeholder": "Ej. Rock, terror, comedia, novela",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "idioma",
+                            "label": "Idioma(s)",
+                            "placeholder": "Ej. Español, inglés y francés",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "duracion",
+                            "label": "Duración estimada",
+                            "placeholder": "Ej. 95 min",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "Ropa y calzado",
+                    "data": [
+                        {
+                            "kind": "input",
+                            "name": "talla",
+                            "label": "Talla",
+                            "placeholder": "Ej. Mediano, grande, unitalla",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "sexo",
+                            "label": "Genero de la prenda",
+                            "placeholder": "Ej. Masculino, femenino, unisex",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "material",
+                            "label": "Material",
+                            "placeholder": "Ej. Poliester y algodón",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "TV y pantallas",
+                    "data": [
+                        {
+                            "kind": "input",
+                            "name": "resolucion",
+                            "label": "Resolución de la pantalla",
+                            "placeholder": "Ej. 4K",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "tamañoPulgadas",
+                            "label": "Tamaño en pulgadas",
+                            "placeholder": "Ej. 40 pulgadas",
+                            "type": "text"
+                        }, {
+                            "kind": "select",
+                            "name": "smartTV",
+                            "label": "¿Es SmartTV?",
+                            "placeholder": "Smart",
+                            "required": true,
+                            "options": "boolOptions"
+                        }, {
+                            "kind": "input",
+                            "name": "conectividadTV",
+                            "label": "Conectividad",
+                            "placeholder": "Ej. HDMI, A/V, VGA, Wifi, Bluetooth",
+                            "type": "text"
+                        }
+                    ]
+                }
+            ],
+            "contacto": [
+
+            ]
+        },
+
+        "gratis": {
+            "general": [
+                {
+                    "kind": "input",
+                    "name": "titulo",
+                    "label": "Nombre del articulo",
+                    "placeholder": "Ej. Cartera de cuero",
+                    "auxText": "Este es el titulo de tu publicación.",
+                    "required": true,
+                    "type": "text"
+                },{
+                    "kind": "select",
+                    "name": "categoria",
+                    "label": "Categoria",
+                    "placeholder": "Categoria",
+                    "auxText": "Selecciona la categoria mas acorde a tu articulo",
+                    "required": true,
+                    "options": "categoriasGratis"
+                },{
+                    "kind": "inputFile"
+                },
+                {
+                    "kind": "input",
+                    "name": "descripcion",
+                    "label": "Descripción del articulo",
+                    "placeholder": "Escribe una descripción breve de tu producto o articulo que publicas...",
+                    "auxText": "Descripción breve de tu articulo",
+                    "required": true,
+                    "type": "text",
+                    "textArea": true
+                }
+            ],
+            "caracteristicas": [
+                {
+                    "contenedor": "content",
+                    "titulo": "Información básica",
+                    "data": [
+                        {
+                            "kind": "select",
+                            "name": "uso",
+                            "label": "Uso",
+                            "placeholder": "Uso",
+                            "required": true,
+                            "options": "usosForm"
+                        }, {
+                            "kind": "estado"
+}, {
+                            "kind": "input",
+                            "name": "cantidad",
+                            "label": "Cantidad",
+                            "placeholder": "Ej. 1",
+                            "min": 1,
+                            "required": true,
+                            "type": "number"
+                        }, {
+                            "kind": "input",
+                            "name": "ciudad",
+                            "label": "Ciudad",
+                            "placeholder": "Ej. Guadalajara",
+                            "required": true,
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "marca",
+                            "label": "Marca",
+                            "placeholder": "Ej. Lenovo",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "modelo",
+                            "label": "Modelo",
+                            "placeholder": "Ej. Thinkpad T470s",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "color",
+                            "label": "Color",
+                            "placeholder": "Ej. Rojo",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "tipo",
+                            "label": "Tipo de articulo",
+                            "placeholder": "Ej. Laptop",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "Alimentos y bebidas",
+                    "data": [
+                        {
+                            "kind": "input",
+                            "name": "fechaCaducidad",
+                            "label": "Fecha de caducidad",
+                            "placeholder": "Ej. Febrero 2025",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "ingredientes",
+                            "label": "Ingredientes",
+                            "placeholder": "Ej. Jitomate, sal yodada, agua",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "Autopartes y vehiculos",
+                    "data": [
+                        {
+                            "kind": "select",
+                            "name": "deudas",
+                            "label": "¿Tiene deudas?",
+                            "placeholder": "Estado",
+                            "required": true,
+                            "options": "boolOptions"
+                        }, {
+                            "kind": "input",
+                            "name": "km",
+                            "label": "Kilometraje",
+                            "placeholder": "Kilometraje",
+                            "type": "number",
+                            "min": 1
+                        }, {
+                            "kind": "input",
+                            "name": "año",
+                            "label": "Año",
+                            "placeholder": "Ej. 2008",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "cilindros",
+                            "label": "Cilindros",
+                            "placeholder": "Ej. 8",
+                            "type": "number",
+                            "min": 1
+                        }, {
+                            "kind": "input",
+                            "name": "vehiculo",
+                            "label": "Vehiculo(s) compatible (En caso de autopartes)",
+                            "placeholder": "Ej. Honda Civic 2018",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "Computación y telefonia",
+                    "data": [
+                        {
+                            "kind": "input",
+                            "name": "cpu",
+                            "label": "Procedador (CPU)",
+                            "placeholder": "Ej. Intel I5 3800G",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "ram",
+                            "label": "Memoria RAM",
+                            "placeholder": "Ej. 16GB DDR4",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "almacenamiento",
+                            "label": "Almacenamiento",
+                            "placeholder": "Ej. 250GB SSD",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "bateria",
+                            "label": "Capacidad de la bateria",
+                            "placeholder": "Ej. 3000 mAh",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "sistemaOperativo",
+                            "label": "Sistema Operativo",
+                            "placeholder": "Ej. Windows 11",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "conectividad",
+                            "label": "Conectividad",
+                            "placeholder": "Ej. 5G, Bluethooth 3.0",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "tamañoPantalla",
+                            "label": "Tamaño de la pantalla",
+                            "placeholder": "Ej. 5 pulgadas",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "Libros, películas y música",
+                    "data": [
+                        {
+                            "kind": "input",
+                            "name": "autor",
+                            "label": "Autor",
+                            "placeholder": "Ej. Edgar Allan Poe",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "editorial",
+                            "label": "Editorial",
+                            "placeholder": "Ej. Panini Comics",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "director",
+                            "label": "Director",
+                            "placeholder": "Ej. Alfonso Cuarón",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "artista",
+                            "label": "Artista musical",
+                            "placeholder": "Ej. Freddie Mercury",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "genero",
+                            "label": "Genero (musical, cinematografico, liteario)",
+                            "placeholder": "Ej. Rock, terror, comedia, novela",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "idioma",
+                            "label": "Idioma(s)",
+                            "placeholder": "Ej. Español, inglés y francés",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "duracion",
+                            "label": "Duración estimada",
+                            "placeholder": "Ej. 95 min",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "Ropa y calzado",
+                    "data": [
+                        {
+                            "kind": "input",
+                            "name": "talla",
+                            "label": "Talla",
+                            "placeholder": "Ej. Mediano, grande, unitalla",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "sexo",
+                            "label": "Genero de la prenda",
+                            "placeholder": "Ej. Masculino, femenino, unisex",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "material",
+                            "label": "Material",
+                            "placeholder": "Ej. Poliester y algodón",
+                            "type": "text"
+                        }
+                    ]
+                },{
+                    "contenedor": "accordion",
+                    "titulo": "TV y pantallas",
+                    "data": [
+                        {
+                            "kind": "input",
+                            "name": "resolucion",
+                            "label": "Resolución de la pantalla",
+                            "placeholder": "Ej. 4K",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "tamañoPulgadas",
+                            "label": "Tamaño en pulgadas",
+                            "placeholder": "Ej. 40 pulgadas",
+                            "type": "text"
+                        }, {
+                            "kind": "select",
+                            "name": "smartTV",
+                            "label": "¿Es SmartTV?",
+                            "placeholder": "Smart",
+                            "required": true,
+                            "options": "boolOptions"
+                        }, {
+                            "kind": "input",
+                            "name": "conectividadTV",
+                            "label": "Conectividad",
+                            "placeholder": "Ej. HDMI, A/V, VGA, Wifi, Bluetooth",
+                            "type": "text"
+                        }
+                    ]
+                }
+            ],
+            "contacto": [
+
+            ]
+        },
+
+        "inmueble": {
+            "general": [
+                {
+                    "kind": "input",
+                    "name": "titulo",
+                    "label": "Titulo del anuncio",
+                    "placeholder": "Ej. Renta de casa duplex por el centro",
+                    "auxText": "Este es el titulo de tu publicación.",
+                    "required": true,
+                    "type": "text"
+                },{
+                    "kind": "input",
+                    "name": "precio",
+                    "label": "Costo del inmueble o renta",
+                    "placeholder": "Ej. 5,500",
+                    "auxText": "El costo debe ser real, de lo contrario infringes nuestras condiciones de uso y habrá una sanción.",
+                    "required": true,
+                    "type": "number"
+                },{
+                    "kind": "inputFile"
+                },
+                {
+                    "kind": "input",
+                    "name": "descripcion",
+                    "label": "Descripción del articulo",
+                    "placeholder": "Puedes escribir información adicional como su ubicacion, detalles de la casa, remodelaciones, que incluye, etc...",
+                    "auxText": "Descripción breve de tu anuncio",
+                    "required": true,
+                    "type": "text",
+                    "textArea": true
+                }
+            ],
+            "caracteristicas": [
+                {
+                    "contenedor": "content",
+                    "titulo": "Información básica",
+                    "data": [
+                        {
+                            "kind": "estado"
+}, {
+                            "kind": "input",
+                            "name": "ciudad",
+                            "label": "Ciudad",
+                            "placeholder": "Ej. Guadalajara",
+                            "required": true,
+                            "type": "text"
+                        },{
+                            "kind": "select",
+                            "name": "tipo",
+                            "label": "Tipo de inmueble",
+                            "placeholder": "Tipo de inmueble",
+                            "required": true,
+                            "options": "tiposInmuebles"
+                        }, {
+                            "kind": "select",
+                            "name": "rentaOVenta",
+                            "label": "¿Renta o venta?",
+                            "placeholder": "Renta o venta",
+                            "required": true,
+                            "options": "rentaOVenta"
+                        }, {
+                            "kind": "input",
+                            "name": "colonia",
+                            "label": "Colonia",
+                            "placeholder": "Ej. Americana",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "cp",
+                            "label": "Código postal",
+                            "placeholder": "Ej. 44850",
+                            "type": "number"
+                        }, {
+                            "kind": "input",
+                            "name": "baños",
+                            "label": "Cantidad de baños",
+                            "placeholder": "Ej. 2.5",
+                            "type": "number"
+                        }, {
+                            "kind": "input",
+                            "name": "habitaciones",
+                            "label": "Cantidad de habitaciones",
+                            "placeholder": "Ej. Guadalajara",
+                            "type": "number"
+                        }, {
+                            "kind": "input",
+                            "name": "superficie",
+                            "label": "Superficie en m2",
+                            "placeholder": "Ej. 50",
+                            "type": "number"
+                        }
+                    ]
+                }
+            ],
+            "contacto": [
+
+            ]
+        },
+
+        "vehiculo": {
+            "general": [
+                {
+                    "kind": "input",
+                    "name": "titulo",
+                    "label": "Titulo de la publicación",
+                    "placeholder": "Ej. Honda Civic 2006",
+                    "auxText": "Este es el titulo de tu publicación.",
+                    "required": true,
+                    "type": "text"
+                },{
+                    "kind": "input",
+                    "name": "precio",
+                    "label": "Precio del vehiculo",
+                    "placeholder": "Ej. 250",
+                    "auxText": "El precio debe ser real, de lo contrario infringes nuestras condiciones de uso y habrá una sanción.",
+                    "required": true,
+                    "type": "number"
+                },{
+                    "kind": "inputFile"
+                },
+                {
+                    "kind": "input",
+                    "name": "descripcion",
+                    "label": "Descripción del vehiculo",
+                    "placeholder": "Escribe una descripción breve de tu vehiculo, como detalles que tenda o más datos sobre el modelo...",
+                    "auxText": "Descripción breve de tu articulo",
+                    "required": true,
+                    "type": "text",
+                    "textArea": true
+                }
+            ],
+            "caracteristicas": [
+                {
+                    "contenedor": "content",
+                    "titulo": "Información básica",
+                    "data": [
+                        {
+                            "kind": "select",
+                            "name": "uso",
+                            "label": "Uso",
+                            "placeholder": "Uso",
+                            "required": true,
+                            "options": "usosForm"
+                        }, {
+                            "kind": "input",
+                            "name": "tipo",
+                            "label": "Tipo de vehiculo",
+                            "placeholder": "Ej. Automovil",
+                            "type": "text"
+                        }, {
+                            "kind": "estado"
+}, {
+                            "kind": "input",
+                            "name": "ciudad",
+                            "label": "Ciudad",
+                            "placeholder": "Ej. Guadalajara",
+                            "required": true,
+                            "type": "text"
+                        }, {
+                            "kind": "select",
+                            "name": "deudas",
+                            "label": "¿Tiene deudas?",
+                            "placeholder": "Estado",
+                            "required": true,
+                            "options": "boolOptions"
+                        }, {
+                            "kind": "input",
+                            "name": "km",
+                            "label": "Kilometraje",
+                            "placeholder": "Kilometraje",
+                            "type": "number",
+                            "min": 1
+                        }, {
+                            "kind": "input",
+                            "name": "año",
+                            "label": "Año",
+                            "placeholder": "Ej. 2008",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "marca",
+                            "label": "Marca",
+                            "placeholder": "Ej. Lenovo",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "modelo",
+                            "label": "Modelo",
+                            "placeholder": "Ej. Thinkpad T470s",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "color",
+                            "label": "Color",
+                            "placeholder": "Ej. Rojo",
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "cilindros",
+                            "label": "Cilindros",
+                            "placeholder": "Ej. 8",
+                            "type": "number",
+                            "min": 1
+                        }
+                    ]
+                }
+            ],
+            "contacto": [
+
+            ]
+        },
+
+        "servicio": {
+            "general": [
+                {
+                    "kind": "input",
+                    "name": "titulo",
+                    "label": "Titulo de la publicación",
+                    "placeholder": "Ej. Herrero en Guadalajara",
+                    "auxText": "Este es el titulo de tu publicación.",
+                    "required": true,
+                    "type": "text"
+                },{
+                    "kind": "input",
+                    "name": "precio",
+                    "label": "Precio del servicio",
+                    "placeholder": "Ej. 250",
+                    "auxText": "Puedes poner un precio base, rango de precios o precio estatico de tu servicio.",
+                    "required": true,
+                    "type": "text"
+                },{
+                    "kind": "inputFile"
+                },
+                {
+                    "kind": "input",
+                    "name": "descripcion",
+                    "label": "Descripción del servicio",
+                    "placeholder": "Agrega una descripción de tu servicio, puedes detallar tanto como desees...",
+                    "auxText": "Descripción de tu servicio",
+                    "required": true,
+                    "type": "text",
+                    "textArea": true
+                }
+            ],
+            "caracteristicas": [
+                {
+                    "contenedor": "content",
+                    "titulo": "Información básica",
+                    "data": [
+                        {
+                            "kind": "estado"
+}, {
+                            "kind": "input",
+                            "name": "ciudad",
+                            "label": "Ciudad",
+                            "placeholder": "Ej. Guadalajara",
+                            "required": true,
+                            "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "tipo",
+                            "label": "Tipo de servicio",
+                            "placeholder": "Ej. Herreria",
+                            "required": true,
+                            "type": "text"
+                        }
+                    ]
+                }
+            ],
+            "contacto": [
+
+            ]
+        }
     }
 }

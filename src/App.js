@@ -31,6 +31,7 @@ import Categorias from './Pages/Categorias';
 import EditProfile from './Pages/EditProfile';
 import AnnoucementsBySeller from './Pages/AnnoucementsBySeller';
 import MyNotifications from './Pages/MyNotifications';
+import EditAnnouncement from './Pages/EditAnnouncement';
 
 const App = () => {
     return (
@@ -46,6 +47,7 @@ const App = () => {
 				<Route path='/signin/last' element={<LoggedRoute> <SigninLastSteps/> </LoggedRoute>} />
 
 				<Route path='/anuncio/:id' Component={ShowPublicacion} />
+				<Route path='/anuncio/:id/editar' element={ <LoggedRoute> <EditAnnouncement/> </LoggedRoute> } />
 				<Route path='/vendedor/:id' Component={AnnoucementsBySeller} />
 
 				<Route path='/vender' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />

@@ -39,18 +39,25 @@ controller.getFavorits = async(req, res, next) => {
         const { user } = req;
 
 //      Obtener los favoritos si existe ya el registro
-        const favorites = await FavoriteModel.find({ userId: user._id }).sort({ createdAt: -1 }).populate('announcementId');
+        const favorites = await FavoriteModel.find({ userId: user._id })
+            .sort({ createdAt: -1 })
+            .populate('announcementId');
 
 //      Obtener la información de los favoritos
         const anns = favorites.map((f) => {
+            if(!f.announcementId) return null;
             const element = f.announcementId.toJSON();
             element.nivel = 'estandar';
 
             return element;
         })
 
+//      Parsear respuesta
+        const resp = anns.filter(element => element !== null);
+
+
 //      Enviar respuesta
-        return res.send(anns);
+        return res.send(resp);
     }catch(err){
         next(err);
     }

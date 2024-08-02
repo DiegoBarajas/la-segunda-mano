@@ -153,6 +153,7 @@ const EditProfile = () => {
                     }
 
                     <Input
+                        className='mt-15'
                         id='input-nombre'
                         name='nombre'
                         width='75%'
@@ -181,7 +182,6 @@ const EditProfile = () => {
                     <Select
                         id='estado-select'
                         name='estado'
-                        className='mt-15'
                         
                         selectedOption={user.estado}
                         options={constants.estados}

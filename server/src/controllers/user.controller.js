@@ -134,7 +134,7 @@ controller.updateUser = async(req, res, next) => {
             correo: updatedUser.correo,
             estado: updatedUser.estado,
             foto: updatedUser.foto,
-            sellerId: this.updateUser.sellerId
+            sellerId: updatedUser.sellerId
         }
                     
 //      Enviar respuesta

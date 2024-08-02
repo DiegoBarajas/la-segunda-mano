@@ -1,9 +1,17 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import '../Styles/Components/Input.css';
 
-const Input = ({ label, id, name, className, placeholder, auxText, min, value=null, type='text', title, minLength, width='100%', minHeight='100px', mb='5px', pattern, required=false, icon=null, textArea=false, onChange }) => {
+const Input = ({ label, id, name, className, placeholder, auxText, min, value=null, defaultValue='', type='text', title, minLength, width='100%', minHeight='100px', mb='5px', pattern, required=false, icon=null, textArea=false, onChange=()=>{} }) => {
 
     const afterTextElement = useRef(null);
+    const [ currentValue, setCurrentValue ] = useState(value ? value : defaultValue);
+
+    const handleChange = (e) => {
+        const { value } = e.target;
+
+        setCurrentValue(value);
+        onChange(e);
+    }
 
     return (
         <div className={`input-container ${className}`} style={{ width: width, marginBottom: mb }}>
@@ -23,8 +31,8 @@ const Input = ({ label, id, name, className, placeholder, auxText, min, value=nu
                                 placeholder={placeholder}
                                 minLength={minLength}
                                 type={type}
-                                onChange={onChange}
-                                value={value}
+                                onChange={handleChange}
+                                value={currentValue}
                                 style={{ 
                                     minHeight: minHeight,
                                     height: minHeight,
@@ -42,8 +50,8 @@ const Input = ({ label, id, name, className, placeholder, auxText, min, value=nu
                             placeholder={placeholder}
                             minLength={minLength}
                             type={type}
-                            onChange={onChange}
-                            value={value}
+                            onChange={handleChange}
+                            value={currentValue}
                             required={required}
                             min={min}
                             pattern={pattern}
