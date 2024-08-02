@@ -1434,7 +1434,7 @@
                     "data": [
                         {
                             "kind": "estado"
-}, {
+                        }, {
                             "kind": "input",
                             "name": "ciudad",
                             "label": "Ciudad",
@@ -1471,13 +1471,13 @@
                             "kind": "input",
                             "name": "baños",
                             "label": "Cantidad de baños",
-                            "placeholder": "Ej. 2.5",
+                            "placeholder": "Ej. 2",
                             "type": "number"
                         }, {
                             "kind": "input",
                             "name": "habitaciones",
                             "label": "Cantidad de habitaciones",
-                            "placeholder": "Ej. Guadalajara",
+                            "placeholder": "Ej. 3",
                             "type": "number"
                         }, {
                             "kind": "input",

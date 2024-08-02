@@ -40,7 +40,6 @@ const CreateInmueble = () => {
 
         data.append('tipoAnuncio', TYPE);
         data.append('categoria', 'inmuebles');
-        data.append('precio', 0);
 
         try{
             const modal = modals.petitionAlert("Creando anuncio", "Espere un momento...", 'info');

@@ -12,8 +12,6 @@ import phoneSvg from '../Assets/Icons/phone.svg'
 import whatsappSvg from '../Assets/Icons/whatsapp.svg'
 import addSvg from '../Assets/Icons/add.svg'
 
-import backend from '../backend';
-import modals from '../Modals';
 import constants from '../constants.json'
 import '../Styles/Pages/CreateAnnouncement.css';
 
@@ -27,6 +25,7 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
     }, [true]);
 
     const formRef = useRef(null);
+    const cbRef = useRef(null);
     const user = JSON.parse( localStorage.getItem('user') );
 
     const [ redirect, setRedirect ] = useState(false)
@@ -62,7 +61,7 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        if(disabled || formasEntrega.length === 0) return;
+        if(disabled || (formasEntrega.length === 0) && (constants.entregas[type])) return;
 
         const newFormData = {...formData, contacto: contact, formasEntrega: formasEntrega};
         setFormData(newFormData);
@@ -325,9 +324,11 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
                 </div>
 
                 <Checkbox
+                    ref={cbRef}
                     id='accept-terms'
                     label={ <p>Acepto las <Link to='/condiciones' target="_blank">Condiciones de uso</Link> y deseo continuar.</p> }
                     width='auto'
+                    checked={!disabled}
                     onChange={(e) => { setDisabled(!e.target.checked) }}
                 />
             </ContentLayout>
@@ -339,9 +340,9 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
                     >Volver atras</Button>
 
                 <Button
-                    disabled={(disabled || formasEntrega.length === 0)}
+                    disabled={(disabled || (formasEntrega.length === 0) && (constants.entregas[type]) )}
                     type='submit'
-                    title={ disabled ? "Para continuar acepta las Condiciones de uso" : formasEntrega.length === 0 ? "Agrega una Forma de Entrega" :"Crear publicación" }
+                    title={ disabled ? "Para continuar acepta las Condiciones de uso" : ( (formasEntrega.length === 0) && (constants.entregas[type]) ) ? "Agrega una Forma de Entrega"  : "Crear publicación" }
                 >Crear publicación</Button>
             </section>
 
