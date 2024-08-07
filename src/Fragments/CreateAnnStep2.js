@@ -157,7 +157,7 @@ function checkIsOpened(c, formData){
         const d = data[i];
 
         if(d.name in caracteristicas) {
-            return true;
+            if(caracteristicas[d.name] !== null && caracteristicas[d.name] !== '' && !caracteristicas[d.name]) return true;
         }
     }
 

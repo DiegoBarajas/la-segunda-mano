@@ -68,10 +68,6 @@ const EditAnnouncement = () => {
         if(!announcement) getAnnouncement();
     }, [id]);
 
-    useEffect(() => {
-        console.log(formData);
-    }, [formData]);
-
     const handleSubmit = async() => {
         const data = new FormData();
         for( let key in formData){
@@ -158,6 +154,7 @@ const EditAnnouncement = () => {
                         setFormData={setFormData} 
                         handleBack={() => setCurrentStep(3)} 
                         callBack={handleSubmit} 
+                        update
                     />
                 )
             default: return (

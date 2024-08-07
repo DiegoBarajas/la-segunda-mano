@@ -14,7 +14,7 @@ import addSvg from '../Assets/Icons/add.svg'
 import constants from '../constants.json'
 import '../Styles/Pages/CreateAnnouncement.css';
 
-const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => {
+const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack, update=false}) => {
 
     useEffect(() => {
         window.scrollTo({
@@ -30,8 +30,8 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
     const [ redirect, setRedirect ] = useState(0)
     const [ disabled, setDisabled ] = useState(true);
 
-    const [ formasEntrega, setFormasEntrega ] = useState([]);
-    const [ contact, setContact ] = useState([
+    const [ formasEntrega, setFormasEntrega ] = useState( formData.formasEntrega ? formData.formasEntrega :[] );
+    const [ contact, setContact ] = useState( formData.contacto ? formData.contacto : [
         {
             tipo: 'email',
             contenido: user.correo
@@ -191,7 +191,7 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
         return checkBoxes;
 
         function renderCB(object){
-            if(!object) return null;
+            if(!object) return null;            
             return object.input
                 ? <section style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                     <Checkbox
@@ -217,7 +217,16 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
                     label={object.required ? <>{object.text}<span className='required'>*</span></> : object.text}
                     value={object.text}
                     onChange={handleCheck}
+                    checked={isChecked(object)}
                 />
+
+            function isChecked(object){
+                for(let i in formasEntrega){                   
+                    if(formasEntrega[i].forma == object.text) return true;
+                }
+                
+                return false;
+            }
         }
     }
 
@@ -343,7 +352,7 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
                     disabled={(disabled || ((formasEntrega.length === 0) && (constants.entregas[type])) )}
                     type='submit'
                     title={ disabled ? "Para continuar acepta las Condiciones de uso" : ( (formasEntrega.length === 0) && (constants.entregas[type]) ) ? "Agrega una Forma de Entrega"  : "Crear publicación" }
-                >Crear publicación</Button>
+                >{update ? "Editar publicación" : "Crear publicación"}</Button>
             </section>
 
         </form>
