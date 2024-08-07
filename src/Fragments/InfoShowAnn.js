@@ -39,7 +39,7 @@ const InfoShowAnn = ({announcement}) => {
             </section>
 
             {
-                announcement.formasEntrega
+                announcement.formasEntrega.length > 0
                     ? (
                         <>
                             <h2 style={{ width: '100%', textAlign: 'start', marginTop: '20px' }}>Formas de entrega</h2>
