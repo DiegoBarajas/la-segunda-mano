@@ -38,21 +38,28 @@ const InfoShowAnn = ({announcement}) => {
                 
             </section>
 
-            <h2 style={{ width: '100%', textAlign: 'start', marginTop: '20px' }}>Formas de entrega</h2>
-            <section className='caracteristicas-annoucement'>
-                {
-                    announcement.formasEntrega
-                        ? announcement.formasEntrega.map((forma) => 
-                                <section className='caracteristica-annoucement'>
-                                    <div className='caracteristica-annoucement-content'>
-                                        <img src={formasEntregaSvg} alt={'Forma entrega'} />
-                                        <p key={'formas-'+forma.forma}>{forma.forma}{forma.detalles ? `: ${forma.detalles}` : null}.</p>             
-                                    </div>
-                                </section>
-                            )      
-                        : null
-                }
-            </section>
+            {
+                announcement.formasEntrega
+                    ? (
+                        <>
+                            <h2 style={{ width: '100%', textAlign: 'start', marginTop: '20px' }}>Formas de entrega</h2>
+                            <section className='caracteristicas-annoucement'>
+                                {
+                                    announcement.formasEntrega
+                                        ? announcement.formasEntrega.map((forma) => 
+                                                <section className='caracteristica-annoucement'>
+                                                    <div className='caracteristica-annoucement-content'>
+                                                        <img src={formasEntregaSvg} alt={'Forma entrega'} />
+                                                        <p key={'formas-'+forma.forma}>{forma.forma}{forma.detalles ? `: ${forma.detalles}` : null}.</p>             
+                                                    </div>
+                                                </section>
+                                            )      
+                                        : null
+                                }
+                            </section>
+                        </>
+                    ) : null
+            }
         </ContentLayout>
     ) : (
         <ContentLayout horizontalAlign='center'>

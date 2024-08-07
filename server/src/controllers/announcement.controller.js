@@ -5,13 +5,12 @@ const CustomError = require('../errors/CustomError');
 const userModel = require('../models/user.model');
 const cloudinary = require('cloudinary').v2;
 const moment = require('moment-timezone');
-const colors = require('colors/safe');
 const fs = require('fs');
 
 const { createNotification } = require('./notification.controller');
 const favoriteModel = require('../models/favorite.model');
-const { isErrored } = require('stream');
 const cloudinaryController = require('./cloudinary.controller');
+const announcementModel = require('../models/announcement.model');
 
 const controller = {};
 
@@ -48,19 +47,19 @@ controller.createAnnouncement = async(req, res, next) => {
         if(Array.isArray(imagenesFiles)){
 //          Recorrer con un map para almacenar en cloudinary todas las imagenes 
             const imagenesPromises = imagenesFiles.map(async(img) => {
-            const result = await cloudinary.uploader.upload(img.tempFilePath, {
-                folder: newAnnouncement._id,
-                resource_type: 'auto',
-                public_id: img.name,
-                overwrite: true,
-                width: 500,
-                height: 500,
-                crop: 'thumb'
-            });
+                const result = await cloudinary.uploader.upload(img.tempFilePath, {
+                    folder: newAnnouncement._id,
+                    resource_type: 'auto',
+                    public_id: img.name,
+                    overwrite: true,
+                    width: 500,
+                    height: 500,
+                    crop: 'thumb'
+                });
 
-            fs.unlinkSync(img.tempFilePath);
-            return(result.secure_url);
-        })
+                fs.unlinkSync(img.tempFilePath);
+                return(result.secure_url);
+            })
 
 //          Obtener la respuesta post-promesa de el map anterior
             const imagenes = await Promise.all(imagenesPromises);
@@ -175,6 +174,23 @@ controller.getAnnouncement = async(req, res, next) => {
 
 //      Enviar respuesta con el anuncio
         res.send({announcement, author, reviews, canMakeReview, mio, isFavorite});
+    }catch(err){
+        next(err);
+    }
+}
+
+// Obtener anuncio protegido
+controller.getAnnouncementProtected = async(req, res, next) => {
+    try{
+        const { params, user } = req;   
+        const { id } = params;
+
+        const announcement = await AnnouncementModel.findById(id);
+        if(!announcement) throw new CustomError('El anuncio no fue encontrado. Puede que el anuncio haya caducado');
+
+        if(announcement.userId.toString() != user._id.toString()) throw new CustomError('Acceso denegado.');
+
+        res.send(announcement);
     }catch(err){
         next(err);
     }
@@ -382,6 +398,80 @@ controller.deleteAnnoucement = async(id) => {
     }catch(err){
         console.log(err);
         throw err;
+    }
+}
+
+// Editar anuncio
+controller.editAnnouncement = async(req, res, next) => {
+    try{
+        const { params, body, user, files } = req;
+        const { id } = params;
+
+//      Obtener y parsear a JSON campos del body
+        const caracteristicas = JSON.parse(body.caracteristicas);
+        const contacto = JSON.parse(body.contacto);
+        const formasEntrega = body.formasEntrega ? JSON.parse(body.formasEntrega) : null;
+
+        const announcement = await AnnouncementModel.findById(id);
+        if(!announcement) throw new CustomError('El anuncio no fue encontrado. Puede que el anuncio haya caducado');
+
+        if(announcement.userId.toString() != user._id.toString()) throw new CustomError('Acceso denegado.');
+
+        const newImages = body.fotos ? body.fotos : [];
+        let newLinks = [];
+        if(files){
+//          Obtener el campo de las imagenes de los files
+            const imagenesFiles = files['fotos'];
+
+//          Si es array se hara un map
+            if(Array.isArray(imagenesFiles)){
+//              Recorrer con un map para almacenar en cloudinary todas las imagenes 
+                const imagenesPromises = imagenesFiles.map(async(img) => {
+                    const result = await cloudinary.uploader.upload(img.tempFilePath, {
+                        folder: id,
+                        resource_type: 'auto',
+                        public_id: img.name,
+                        overwrite: true,
+                        width: 500,
+                        height: 500,
+                        crop: 'thumb'
+                    });
+        
+                    fs.unlinkSync(img.tempFilePath);
+                    return(result.secure_url);
+                })
+        
+//              Obtener la respuesta post-promesa de el map anterior
+                const imagenes = await Promise.all(imagenesPromises);
+                newLinks = imagenes; // Almacenar ese array en el modelo
+            }else{
+                const result = await cloudinary.uploader.upload(imagenesFiles.tempFilePath, {
+                    folder: id,
+                    resource_type: 'auto',
+                    public_id: imagenesFiles.name,
+                    overwrite: true,
+                    width: 500,
+                    height: 500,
+                    crop: 'thumb'
+                });
+        
+                fs.unlinkSync(imagenesFiles.tempFilePath);
+                newLinks = [ result.secure_url ];
+            }
+        }
+
+        const imagenes = Array.isArray(newImages) ? [...newImages, ...newLinks] : [newImages, ...newLinks];
+        const newData = {...body, "imagenes": imagenes};
+        newData.caracteristicas = caracteristicas;
+        newData.contacto = contacto;
+        newData.formasEntrega = formasEntrega;
+
+        const updatedAnn = await announcementModel.findByIdAndUpdate(id, newData);
+
+        res.send(id);
+    
+    }catch(err){
+        next(err)
     }
 }
 

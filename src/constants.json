@@ -769,6 +769,8 @@
     ],
 
     "pasosCrearAnuncio": ["Tipo", "Datos generales", "Caracteristicas", "Contacto y entrega"],
+    "pasosCrearAnuncioEdit": ["Tipo","Imagenes", "Datos generales", "Caracteristicas", "Contacto y entrega"],
+
 
     "reporte": {
         "vendedor": [

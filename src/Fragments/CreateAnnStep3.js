@@ -5,7 +5,6 @@ import Button from '../Components/Button';
 import Input from '../Components/Input';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import axios from 'axios';
 
 import emailSvg from '../Assets/Icons/email.svg'
 import phoneSvg from '../Assets/Icons/phone.svg'
@@ -28,7 +27,7 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
     const cbRef = useRef(null);
     const user = JSON.parse( localStorage.getItem('user') );
 
-    const [ redirect, setRedirect ] = useState(false)
+    const [ redirect, setRedirect ] = useState(0)
     const [ disabled, setDisabled ] = useState(true);
 
     const [ formasEntrega, setFormasEntrega ] = useState([]);
@@ -61,11 +60,11 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack}) => 
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        if(disabled || ((formasEntrega.length === 0) && (constants.entregas[type]))) return;
+        if(disabled || ( ((!type === 'inmueble') && (formasEntrega.length === 0)) && (constants.entregas[type]) )) return;
 
         const newFormData = {...formData, contacto: contact, formasEntrega: formasEntrega};
         setFormData(newFormData);
-        setRedirect(true);
+        setRedirect(redirect+1);
     }
 
     const renderInput = (element, index) => {
