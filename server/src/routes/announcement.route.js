@@ -15,8 +15,10 @@ router.route('/:id')
     .delete(authHandler, deleteMyAnnoucement)
 
 router.route('/upgrade/:id')
-    .get(getPaymentIntent)
-    .patch(upgradeAnnoncement)
+    .get(authHandler, getPaymentIntent)
+
+router.route('/upgrade/confirm/:id')
+    .get(upgradeAnnoncement)
 
 router.route('/:id/protected')
     .get(authHandler, getAnnouncementProtected)

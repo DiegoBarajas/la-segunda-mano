@@ -137,7 +137,21 @@ const announcementSchema = new Schema({
         enum: [ "estandar", "impulsado", "premium" ],
         default: 'estandar',
         required: true
-    }
+    },
+
+    // Historial de mejoras
+    mejoras: [
+        {
+            nivel: {
+                type: String,
+                enum: [  "impulsado", "premium" ],
+                required: true
+            },
+            fechaInicio: { type: String, required: true },
+            fechaFin: { type: String, required: true },
+            intentId: { type: String, required: true },
+        }
+    ]
 },{
     timestamps: true
 });

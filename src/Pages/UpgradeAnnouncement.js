@@ -36,7 +36,7 @@ const UpgradeAnnouncement = () => {
                 });
 
                 document.title = `La Segunda Mano - Mejorar "${response.data.titulo}"`;
-                setAnnouncement(response.data);
+                setAnnouncement(response.data);                
                 
                 modal.close();
             }catch(err){
@@ -91,8 +91,8 @@ const UpgradeAnnouncement = () => {
     const UpgradePremium = ({}) => {
         return (
             <div className='upgrade-container'>
-                <img src={premiumSvg} alt='Impulsado'/>
-                <h2 className='upgrade-title text-gold'>Anuncio Impulsado</h2>
+                <img src={premiumSvg} alt='Premium'/>
+                <h2 className='upgrade-title text-gold'>Anuncio Premiun</h2>
                 <p>b sjan djk asijdas dhashdhjasbdhjasbdhjasbdhjasbjh sahjdbashjndjasbd hjasdjasbhjdbashjdbashjdb ahsj</p>
 
                 <section className='list-ventajas-upgrade'>
@@ -105,7 +105,9 @@ const UpgradeAnnouncement = () => {
                 </section>
 
                 <h2 className='price-upgrade'>$199.00 MXN</h2>
-                <Button width='50%'>Adquirir</Button>
+                <Button width='50%'
+                    onClick={() => modals.popup(<ModalPayment id={id} plan='premium' />, "swal-show-payment", "Cancelar")}
+                >Adquirir</Button>
             </div>
         )
     }
@@ -113,7 +115,15 @@ const UpgradeAnnouncement = () => {
     return announcement ?
         (
             <PageLayout>
-                <h1 className='h1-upgrade-announcement'>Mejorar anuncio "{announcement.titulo}"</h1>
+                <div className='upgrade-ann-title'>
+                    <h1 className='h1-upgrade-announcement'>Mejorar anuncio "{announcement.titulo}"</h1>
+                    <img src={announcement.imagenes[0]} alt="Imagen del anuncio"/>
+                </div>
+                {
+                    announcement.nivel !== 'estandar' 
+                        ? <p className='p-warning-upgrader-ann'><b>NOTA: </b>El anuncio actualmente cuenta con un nivel "<u>{announcement.nivel.toUpperCase()}</u>", si se mejora se aplicara el nuevo nivel cuando finalice el nivel actual.</p>
+                        : null
+                }
                 <Link to={`/anuncio/${id}`}>Volver al anuncio</Link>
                 <PaginationLayout
                     components={[<UpgradeImpulsed/>, <UpgradePremium/>]}

@@ -52,6 +52,51 @@
     width: min(40%, 550px);
 }
 
+.upgrade-ann-title {
+    display: flex;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-warning-upgrader-ann {
+    margin-top: -30px;
+    width: 70%;
+    text-align: center;
+}
+
+.upgrade-ann-title img {
+    width: 60px;
+    border-radius: 100%;
+    border: 2px solid var(--mint);
+}
+
+.p-beneficts {
+    width: 100%;
+    text-align: justify;
+    margin-top: 25px;
+}
+
+.kind-upgrade {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kind-upgrade h2 {
+    margin: 0px;
+}
+
+.info-upgrade-ann {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.mt-35 {
+    margin-top: 35px;
+}
+
 @media (max-width: 870px) {
     .upgrade-container {
         padding: 0px 30px 0px 30px;
@@ -59,5 +104,25 @@
 
     .swal-show-payment {
         width: 95%;
+    }
+
+    .upgrade-ann-title {
+        display: flex;
+        width: 95%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+
+    .p-warning-upgrader-ann {
+        margin-top: -20px;
+        width: 80%;
+    }
+    
+
+    .upgrade-ann-title img {
+        width: 100px;
+        border-radius: 100%;
+        border: 2px solid var(--mint);
     }
 }

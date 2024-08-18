@@ -20,7 +20,11 @@ const ModalPayment = ({id, plan='impulsado'}) => {
     useEffect(() => {
         const getOptions = async() => {
             try{
-                const response = await axios.get(`${backend}/api/announcement/upgrade/${id}?plan=${plan}`);
+                const response = await axios.get(`${backend}/api/announcement/upgrade/${id}?plan=${plan}`, {
+                    headers: {
+                        Authorization: localStorage.getItem('token')
+                    }
+                });
 
                 setOptions({ clientSecret: response.data.clientSecret });
                 setAmount(response.data.amount);
@@ -47,30 +51,37 @@ const ModalPayment = ({id, plan='impulsado'}) => {
         getOptions();
     }, [id]);
 
-    const CheckoutForm = () => {
+    const CheckoutForm = ({id}) => {
         const stripe = useStripe();
         const elements = useElements();
+
+        const [ isLoading, setIsLoading ] = useState(false);
       
         const handleSubmit = async (event) => {
             event.preventDefault();
             
             if (!stripe || !elements) return;
+
+            setIsLoading(true);
       
             const result = await stripe.confirmPayment({
                 //`Elements` instance that was used to create the Payment Element
                 elements,
                 confirmParams: {
-                    return_url: "http://holaMundo.com?",
+                    return_url: `${backend}/api/announcement/upgrade/confirm/${id}`
                 },
             });
 
             if (result.error) {
-                console.log(result.error.message);
+                console.error(result.error.message);
+                modals.alert("Error", result.error.message, 'error')
             } else {
                 // Your customer will be redirected to your `return_url`. For some payment
                 // methods like iDEAL, your customer will be redirected to an intermediate
                 // site first to authorize the payment, then redirected to the `return_url`.
             }
+
+            setIsLoading(false);
         };
       
         return (
@@ -79,7 +90,8 @@ const ModalPayment = ({id, plan='impulsado'}) => {
                 <PaymentElement
                     options={{ layout: 'accordion' }}
                 />
-                <Button width='100%' disabled={btnDisabled} type='submit'>Pagar</Button>
+                { isLoading ? <Button width='100%' disabled={true}>Cargando...</Button> : <Button width='100%' disabled={btnDisabled} type='submit'>Pagar</Button> }
+                
             </form>
         );
     };
@@ -89,7 +101,7 @@ const ModalPayment = ({id, plan='impulsado'}) => {
             <h2>Agrega tus datos para proceder con el pago</h2>
 
             <Elements stripe={stripePromise} options={options}>
-                <CheckoutForm />
+                <CheckoutForm id={id} />
             </Elements>
         </div>
     ) : (

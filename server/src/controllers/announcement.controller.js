@@ -5,6 +5,7 @@ const CustomError = require('../errors/CustomError');
 const userModel = require('../models/user.model');
 const cloudinary = require('cloudinary').v2;
 const moment = require('moment-timezone');
+const colors = require('colors/safe');
 const Stripe = require('stripe');
 const fs = require('fs');
 require('dotenv').config();
@@ -55,8 +56,8 @@ controller.createAnnouncement = async(req, res, next) => {
                     resource_type: 'auto',
                     public_id: img.name,
                     overwrite: true,
-                    width: 500,
-                    height: 500,
+                    width: 750,
+                    height: 750,
                     crop: 'thumb'
                 });
 
@@ -73,8 +74,8 @@ controller.createAnnouncement = async(req, res, next) => {
                 resource_type: 'auto',
                 public_id: imagenesFiles.name,
                 overwrite: true,
-                width: 500,
-                height: 500,
+                width: 750,
+                height: 750,
                 crop: 'thumb'
             });
 
@@ -435,8 +436,8 @@ controller.editAnnouncement = async(req, res, next) => {
                         resource_type: 'auto',
                         public_id: img.name,
                         overwrite: true,
-                        width: 500,
-                        height: 500,
+                        width: 750,
+                        height: 750,
                         crop: 'thumb'
                     });
         
@@ -453,8 +454,8 @@ controller.editAnnouncement = async(req, res, next) => {
                     resource_type: 'auto',
                     public_id: imagenesFiles.name,
                     overwrite: true,
-                    width: 500,
-                    height: 500,
+                    width: 750,
+                    height: 750,
                     crop: 'thumb'
                 });
         
@@ -481,15 +482,27 @@ controller.editAnnouncement = async(req, res, next) => {
 // Payment intent
 controller.getPaymentIntent = async(req, res, next) => {
     try{
-        const { query } = req;
+        const { query, params, user } = req;
+        const {id} = params;
         const stripe = Stripe(process.env.STRIPE_SECRET);
+
+        const announcement = await announcementModel.findById(id);
+        if(!announcement) throw new CustomError("Anuncio no encontrado", 400);
+        if(user._id.toString() != announcement.userId.toString()) throw new CustomError("Acceso no autorizado, no eres el dueño de el anuncio.", 400);
         
         const AMOUNT = getAmount(query);
         const paymentIntent = await stripe.paymentIntents.create({
             amount: AMOUNT*100,
             currency: 'mxn',
             payment_method_types: ['card'],
+            metadata: {
+                announcement_id: id,
+                plan: query.plan
+            },
         });        
+
+        console.log(paymentIntent.client_secret);
+        
 
         res.send({ clientSecret: paymentIntent.client_secret, amount: paymentIntent.amount, currency: paymentIntent.currency });
     }catch(err){
@@ -500,7 +513,7 @@ controller.getPaymentIntent = async(req, res, next) => {
         const { plan } = query;
         switch(plan){
             case "impulsado": return 99;
-            case "query": return 199;
+            case "premium": return 199;
             default: throw new CustomError("Plan no valido", 400);
         }
     }
@@ -508,15 +521,55 @@ controller.getPaymentIntent = async(req, res, next) => {
 
 // Mejorar el anuncio
 controller.upgradeAnnoncement = async(req, res, next) => {
+    const FRONTEND = process.env.FRONTEND;
     try{
-        const { body, user, params } = req;
-        const { id } = params;
+        const { query } = req;
+
+        if( !query.payment_intent ) throw new CustomError("No se envio el payment intent");
 
         const stripe = Stripe(process.env.STRIPE_SECRET);
+        const paymentIntent = await stripe.paymentIntents.retrieve(query.payment_intent);
+        const { status, metadata } = paymentIntent;
 
+        if(status !== 'succeeded') return res.redirect(`${FRONTEND}/anuncio/mejorar/error?title=Error al mejorar el anuncio&message=El pago no ha sido procesado, el status actual es: ${status}`);
+        const announcement = await announcementModel.findById(metadata.announcement_id);
+
+        if(!announcement) return res.redirect(`${FRONTEND}/anuncio/${announcement._id}/mejorar/error?title=Error al mejorar el anuncio&message=No se encontró el anuncio`);
+        const { mejoras, nivel, fechaExpiracion } = announcement;
+
+        const fechaInicio = mejoras.length > 0
+                                ? moment( mejoras[mejoras.length-1].fechaFin, 'DD-MM-YYYY' ).tz('America/Mexico_City').add(1, 'days')
+                                : moment().tz('America/Mexico_City');
+        const fechaFin = fechaInicio.clone().add(30, 'days');
+        const newFechaExpiracion = moment(fechaExpiracion, 'DD-MM-YYYY').tz('America/Mexico_City').add(30, 'days');
+
+        const mejora = {
+            nivel: metadata.plan,
+            fechaInicio: fechaInicio.format('DD-MM-YYYY'),
+            fechaFin: fechaFin.format('DD-MM-YYYY'),
+            intentId: query.payment_intent
+        }
+
+        await announcementModel.findByIdAndUpdate(announcement._id, {
+            nivel: nivel === 'estandar' ? metadata.plan : nivel,
+            mejoras: [...mejoras, mejora],
+            fechaExpiracion: newFechaExpiracion.format('DD-MM-YYYY')
+        });
+        
+        res.redirect(`${FRONTEND}/anuncio/${announcement._id}/mejorar/exito`);
 
     }catch(err){
-        next(err)
+        const requestTime = moment().tz('America/Mexico_City').format('DD-MM-YYYY HH:mm:ss');
+
+        console.log(colors.red(`${requestTime}    [ ${req.method}: ERROR ] ${req.url}:`))
+        console.error(colors.red(err.stack));
+
+        if(err.type == 'StripeInvalidRequestError') 
+            return res.redirect(`${FRONTEND}/anuncio/mejorar/error?title=Error al mejorar el anuncio&message=${err.message}`);
+        else 
+            return res.redirect(`${FRONTEND}/anuncio/mejorar/error?title=Error al mejorar el anuncio&message=${err.message}`);
+
+        
     }
 }
 
