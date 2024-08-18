@@ -26,7 +26,8 @@
     "moment-timezone": "^0.5.45",
     "mongoose": "^8.4.3",
     "node-cron": "^3.0.3",
-    "nodemailer": "^6.9.14"
+    "nodemailer": "^6.9.14",
+    "stripe": "^16.7.0"
   },
   "devDependencies": {
     "axios": "^1.7.2",

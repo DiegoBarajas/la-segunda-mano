@@ -15,10 +15,12 @@ import favoriteFilledSvg from '../Assets/Icons/favoriteFilled.svg'
 import deleteWhiteSvg from '../Assets/Icons/deleteWhite.svg'
 import categorySvg from '../Assets/Icons/categoryBlack.svg'
 import impulsedSvg from '../Assets/Icons/impulsed.svg'
+import impulsedWhiteSvg from '../Assets/Icons/impulsedWhite.svg'
 import locationSvg from '../Assets/Icons/location.svg'
 import calendarSvg from '../Assets/Icons/calendar.svg'
 import contactSvg from '../Assets/Icons/contact.svg'
 import premiumSvg from '../Assets/Icons/premium.svg'
+import premiumWhiteSvg from '../Assets/Icons/premiumWhite.svg'
 import reportSvg from '../Assets/Icons/report.svg'
 import selledSvg from '../Assets/Icons/selled.svg'
 import stockSvg from '../Assets/Icons/stock.svg'
@@ -251,6 +253,24 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
                     {
                         mio ? (
                                 <section className='show-announcement-buttons'>
+
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <Button 
+                                            width='calc(50% - 3px)' 
+                                            title='Mejorar a Impulsado'
+                                            icon={ impulsedWhiteSvg }
+                                            onClick={() => setRedirect(`/anuncio/${id}/mejorar?tipo=impulsado`)}
+                                            className='button-impulsar'
+                                        >Mejorar a Impulsado</Button>
+
+                                        <Button 
+                                            width='calc(50% - 3px)' 
+                                            title='Mejorar a premium'
+                                            icon={ premiumWhiteSvg }
+                                            className='btn-gold'
+                                            onClick={() => setRedirect(`/anuncio/${id}/mejorar?tipo=premium`)}
+                                        >Mejorar a premium</Button>
+                                    </div>
 
                                     <Button 
                                         width='100%' 

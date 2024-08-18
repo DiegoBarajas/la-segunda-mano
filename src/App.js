@@ -32,6 +32,7 @@ import EditProfile from './Pages/EditProfile';
 import AnnoucementsBySeller from './Pages/AnnoucementsBySeller';
 import MyNotifications from './Pages/MyNotifications';
 import EditAnnouncement from './Pages/EditAnnouncement';
+import UpgradeAnnouncement from './Pages/UpgradeAnnouncement';
 
 const App = () => {
     return (
@@ -48,6 +49,7 @@ const App = () => {
 
 				<Route path='/anuncio/:id' Component={ShowPublicacion} />
 				<Route path='/anuncio/:id/editar' element={ <LoggedRoute> <EditAnnouncement/> </LoggedRoute> } />
+				<Route path='/anuncio/:id/mejorar' element={ <LoggedRoute> <UpgradeAnnouncement/> </LoggedRoute> } />
 				<Route path='/vendedor/:id' Component={AnnoucementsBySeller} />
 
 				<Route path='/vender' element={<LoggedRoute notLoggedElement={<ShouldLogin/>}> <CreateAnnouncement/> </LoggedRoute>} />

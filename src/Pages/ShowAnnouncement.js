@@ -78,7 +78,7 @@ const ShowAnnouncement = () => {
         }
 
         if(location.search === '?modal=true'){
-            modals.popup(<ShowPricing/>, "swal-show-pricing")
+            modals.popup(<ShowPricing id={id}/>, "swal-show-pricing")
         }
 
         getAnnouncement();

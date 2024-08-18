@@ -5,12 +5,15 @@ const CustomError = require('../errors/CustomError');
 const userModel = require('../models/user.model');
 const cloudinary = require('cloudinary').v2;
 const moment = require('moment-timezone');
+const Stripe = require('stripe');
 const fs = require('fs');
+require('dotenv').config();
 
 const { createNotification } = require('./notification.controller');
 const favoriteModel = require('../models/favorite.model');
 const cloudinaryController = require('./cloudinary.controller');
 const announcementModel = require('../models/announcement.model');
+const { log } = require('console');
 
 const controller = {};
 
@@ -470,6 +473,48 @@ controller.editAnnouncement = async(req, res, next) => {
 
         res.send(id);
     
+    }catch(err){
+        next(err)
+    }
+}
+
+// Payment intent
+controller.getPaymentIntent = async(req, res, next) => {
+    try{
+        const { query } = req;
+        const stripe = Stripe(process.env.STRIPE_SECRET);
+        
+        const AMOUNT = getAmount(query);
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: AMOUNT*100,
+            currency: 'mxn',
+            payment_method_types: ['card'],
+        });        
+
+        res.send({ clientSecret: paymentIntent.client_secret, amount: paymentIntent.amount, currency: paymentIntent.currency });
+    }catch(err){
+        next(err)
+    }
+
+    function getAmount(query){
+        const { plan } = query;
+        switch(plan){
+            case "impulsado": return 99;
+            case "query": return 199;
+            default: throw new CustomError("Plan no valido", 400);
+        }
+    }
+}
+
+// Mejorar el anuncio
+controller.upgradeAnnoncement = async(req, res, next) => {
+    try{
+        const { body, user, params } = req;
+        const { id } = params;
+
+        const stripe = Stripe(process.env.STRIPE_SECRET);
+
+
     }catch(err){
         next(err)
     }

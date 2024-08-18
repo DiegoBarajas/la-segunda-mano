@@ -1,0 +1,63 @@
+@import url(../../index.css);
+
+.upgrade-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.upgrade-container img {
+    width: 50px;
+}
+
+.h1-upgrade-announcement {
+    padding: 0px 20px 0px 20px;
+    text-align: center;
+}
+
+.upgrade-title {
+    color: var(--mint);
+    font-size: 30px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.text-gold {
+    color: var(--gold);
+}
+
+.upgrade-container p {
+    text-align: justify;
+}
+
+.price-upgrade {
+    width: 100%;
+    text-align: end;
+    margin-bottom: 20px;
+}
+
+.list-ventajas-upgrade {
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.btn-gold {
+    background-color: var(--gold) !important;
+    border-color: var(--gold) !important;
+}
+
+.swal-show-payment {
+    width: min(40%, 550px);
+}
+
+@media (max-width: 870px) {
+    .upgrade-container {
+        padding: 0px 30px 0px 30px;
+    }
+
+    .swal-show-payment {
+        width: 95%;
+    }
+}

@@ -11,7 +11,7 @@ import noSvg from '../Assets/Icons/no.svg'
 
 import '../Styles/Fragments/ShowPricing.css'
 
-const ShowPricing = () => {
+const ShowPricing = ({id}) => {
     return (
         <div className='show-pricing'>
             <h2>Conoce nuestras mejoras para tu anuncio</h2>
@@ -101,9 +101,9 @@ const ShowPricing = () => {
                                 Me interesa adquirir una mejora de mi anuncio
                             </Tooltip>
                         </td>
-                        <td><section className='td-icon'> Adquirido </section></td>
-                        <td><a className='a-td-button'>Me interesa</a></td>
-                        <td><a className='a-td-button'>Me interesa</a></td>                       
+                        <td><section className='td-icon'> <del>Adquirido</del> </section></td>
+                        <td><a href={`/anuncio/${id}/mejorar?tipo=Impulsado`} className='a-td-button'>Obtener</a></td>
+                        <td><a href={`/anuncio/${id}/mejorar?tipo=Premium`} className='a-td-button'>Obtener</a></td>                       
                     </tr>
                 </tbody>
             </table>
