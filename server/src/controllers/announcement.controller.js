@@ -30,7 +30,7 @@ controller.createAnnouncement = async(req, res, next) => {
 
 //      Obtener la fecha actual de la ciudad de Mexico, y clonar otra con 7 dias adicionales
         const fechaCreacion = moment().tz('America/Mexico_City');
-        const fechaExpiracion = fechaCreacion.clone().add(7, 'days');
+        const fechaExpiracion = fechaCreacion.clone().add(10, 'days');
 
 //      Clonar el body para agregarle mas data (la obtenida previamente)
         const announcementData = {...body};
@@ -288,6 +288,7 @@ controller.getAnnouncementBySellerId = async(req, res, next) => {
 controller.getAnnouncementBySearch = async(req, res, next) => {
     try{
         const { query } = req;
+        const skip = query.page ? query.page*10 : 0;
         const filter = {}
         let sort = { createdAt: -1 }
 
@@ -308,7 +309,8 @@ controller.getAnnouncementBySearch = async(req, res, next) => {
             }
         }
         
-        const annoucements = await AnnouncementModel.find(filter).sort(sort);
+        const annoucements = await AnnouncementModel.find(filter).skip(skip).limit(10).sort(sort);
+        const total = await AnnouncementModel.countDocuments(filter);
 
         if('precio' in sort){
             return res.send(
@@ -321,7 +323,7 @@ controller.getAnnouncementBySearch = async(req, res, next) => {
             )
         }
 
-        res.send(annoucements);
+        res.send({annoucements, total});
 
     }catch(err){
         next(err);
@@ -526,6 +528,7 @@ controller.upgradeAnnoncement = async(req, res, next) => {
         const { query } = req;
 
         if( !query.payment_intent ) throw new CustomError("No se envio el payment intent");
+        
 
         const stripe = Stripe(process.env.STRIPE_SECRET);
         const paymentIntent = await stripe.paymentIntents.retrieve(query.payment_intent);
@@ -540,8 +543,8 @@ controller.upgradeAnnoncement = async(req, res, next) => {
         const fechaInicio = mejoras.length > 0
                                 ? moment( mejoras[mejoras.length-1].fechaFin, 'DD-MM-YYYY' ).tz('America/Mexico_City').add(1, 'days')
                                 : moment().tz('America/Mexico_City');
-        const fechaFin = fechaInicio.clone().add(30, 'days');
-        const newFechaExpiracion = moment(fechaExpiracion, 'DD-MM-YYYY').tz('America/Mexico_City').add(30, 'days');
+        const fechaFin = fechaInicio.clone().add(metadata.plan === "premium" ? 60 : 30, 'days');
+        const newFechaExpiracion = moment(fechaExpiracion, 'DD-MM-YYYY').tz('America/Mexico_City').add(metadata.plan === "premium" ? 60 : 30, 'days');
 
         const mejora = {
             nivel: metadata.plan,

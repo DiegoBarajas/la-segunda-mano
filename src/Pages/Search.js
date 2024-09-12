@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import CardAnnoucement from '../Fragments/CardAnnoucement'
 import ColumnLayout from '../Layouts/ColumnLayout'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import PageLayout from '../Layouts/PageLayout'
 import Filter from '../Fragments/Filter'
 
@@ -9,27 +9,16 @@ import backend from '../backend'
 import modals from '../Modals'
 import axios from 'axios'
 import '../Styles/Pages/MyAnnoucements.css'
-
-const useQuery = () => {
-    document.title = 'La Segunda Mano - Buscar';
-    const query = new URLSearchParams(useLocation().search)
-    const queryObject = {}
-
-    query.forEach((value, key) => {
-        queryObject[key] = value
-    });
-
-    if(queryObject.nombre)
-        window.localStorage.setItem('history', JSON.stringify( updateHistory(queryObject.nombre) ));
-
-    return queryObject;
-}
+import Paginator from '../Components/Paginator'
 
 const Search = () => {
-    const query = useQuery();
     const location = useLocation();
+    const navigate = useNavigate();
+    const queryParams = new URLSearchParams(location.search);
 
     const [ announcements, setAnnouncements ] = useState(null);
+    const [ currentPage, setCurrentPage ] = useState(queryParams.get('page') ? queryParams.get('page') : 0);
+    const [ total, setTotal ] = useState(1);
     
     useEffect(() => {
         window.scrollTo({
@@ -46,9 +35,10 @@ const Search = () => {
                     headers: {
                         Authorization: localStorage.getItem('token')
                     }
-                });
+                });               
 
-                setAnnouncements(response.data);
+                setAnnouncements(response.data.annoucements);
+                setTotal(response.data.total);
             }catch(err){
 
                 if (err.response) {
@@ -74,6 +64,17 @@ const Search = () => {
 
         getAnnucements();
     }, []);
+
+    const handleChangePage = (page) => {
+        const searchParams = new URLSearchParams(location.search);
+    
+        // Agregar o actualizar el valor del parámetro
+        searchParams.set('page', page);
+    
+        // Actualizar la URL sin recargar la página
+        window.location.href = location.pathname + '?' + searchParams.toString()
+    };
+    
 
     return (
         <PageLayout>
@@ -109,9 +110,14 @@ const Search = () => {
                                     <CardAnnoucement/>
                                 </section>
                             </ColumnLayout>
+                
                         )
                 }
             </section>
+            <Paginator total={total / 10+1} handleChange={handleChangePage} defaultCurrent={currentPage}/> 
+            <form style={{ display: 'none' }} id='form-page'>
+                <input type='hidden' value={currentPage}/>
+            </form>
         </PageLayout>
     )
 }

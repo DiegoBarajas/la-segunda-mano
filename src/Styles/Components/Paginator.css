@@ -1,0 +1,44 @@
+@import url(./../../index.css);
+
+.paginator {
+    width: 65vw;
+    justify-content: center;
+    display: flex;
+}
+
+.container-paginator-next-prev-btns {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 5px;
+    margin-right: 10px;
+}
+
+.btn-next-prev-paginator {
+    max-height: 35px !important;
+}
+
+.paginator-btns {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    overflow-x: auto;
+
+    gap: 3.5px;
+}
+
+.current-btn, .current-btn:hover {
+    filter: brightness(0.80);
+}
+
+@media (max-width: 870px){
+    .paginator {
+        width: 95vw;
+        flex-direction: column;
+    }
+
+    .container-paginator-next-prev-btns, .paginator-btns {
+        justify-content: center;
+        align-items: center;
+    }
+}
