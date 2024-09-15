@@ -5,6 +5,9 @@ import ContententLayout from '../Layouts/ContentLayout.js'
 import Slider from '../Fragments/Slider.js';
 
 import '../Styles/Pages/Index.css';
+import CategoriesAndFilters from '../Fragments/CategoriesAndFilters.js';
+import ImpulsedAnnouncements from '../Fragments/ImpulsedAnnouncements.js';
+import RecentAnnouncements from '../Fragments/RecentAnnouncements.js';
 
 const Index = () => {
     document.title = 'La Segunda Mano - Inicio';
@@ -20,6 +23,9 @@ const Index = () => {
         <PageLayout className='no-padding'>
 
             <Slider/>
+            <CategoriesAndFilters/>
+            <ImpulsedAnnouncements/>
+            <RecentAnnouncements/>
             
         
         </PageLayout>

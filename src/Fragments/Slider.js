@@ -26,10 +26,7 @@ const Slider = () => {
             pagination={{
                 clickable: true,
             }}
-            autoplay={{
-                delay: 100,
-                disableOnInteraction: false,
-            }}
+            autoplay={{ delay: 300  }}
             modules={[Pagination]}
             className="slider"
         >

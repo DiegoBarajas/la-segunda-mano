@@ -41,6 +41,8 @@ app.use('/api/review', require('./routes/review.route'));
 app.use('/api/report', require('./routes/report.route'));
 app.use('/api/login', require('./routes/login.route'));
 app.use('/api/user', require('./routes/user.route'));
+app.use('/api/index', require('./routes/index.route'));
+
 
 
 
