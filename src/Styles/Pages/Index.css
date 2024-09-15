@@ -1,0 +1,20 @@
+@import url(../../index.css);
+
+.slider {
+    width: 100vw;
+    max-height: 500px;
+}
+
+.slide {
+   width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    aspect-ratio: 19/7;
+    object-fit: cover;
+}
+
+.no-padding {
+    padding-top: 0px !important;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
-import '../Styles/Layouts/PageLayout.css';
 import Navbar from '../Fragments/Navbar';
 import Footer from '../Fragments/Footer';
 
-const PageLayout = ({ navbar=true, footer=true, children }) => {
+import '../Styles/Layouts/PageLayout.css';
+
+const PageLayout = ({ navbar=true, footer=true, className, children }) => {
     return (
         <>
             { navbar ? <Navbar/> : <></>}
@@ -13,8 +14,8 @@ const PageLayout = ({ navbar=true, footer=true, children }) => {
                     navbar 
                         ? { marginTop: '75px', minHeight: 'calc(100vh - 75px)' } 
                         : {}
-                    } 
-                className='standard-layout'
+                    }
+                className={`standard-layout ${className}`}
             >{children}</main>
 
             { footer ? <Footer/> : <></>}

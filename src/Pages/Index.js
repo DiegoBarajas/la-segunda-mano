@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 
 import PageLayout from '../Layouts/PageLayout'
 import ContententLayout from '../Layouts/ContentLayout.js'
+import Slider from '../Fragments/Slider.js';
+
+import '../Styles/Pages/Index.css';
 
 const Index = () => {
     document.title = 'La Segunda Mano - Inicio';
@@ -14,11 +17,10 @@ const Index = () => {
     }, []);
 
     return (
-        <PageLayout>
+        <PageLayout className='no-padding'>
 
-            <ContententLayout horizontalAlign='center'>
-                <h1>Hola</h1>
-            </ContententLayout>
+            <Slider/>
+            
         
         </PageLayout>
     )
