@@ -17,6 +17,7 @@ import accountSvg from '../Assets/Icons/account.svg'
 import announcementSvg from '../Assets/Icons/announcement.svg'
 import favoriteSvg from '../Assets/Icons/favorite.svg'
 import notificationSvg from '../Assets/Icons/notification.svg'
+import adminSvg from '../Assets/Icons/admin.svg'
 import logoutSvg from '../Assets/Icons/logout.svg'
 import axios from 'axios';
 import backend from '../backend';
@@ -90,6 +91,18 @@ const Navbar = () => {
                                     round
                                 >Mi Perfil</ItemNavbar>
 
+                                {
+                                    user.type === 'admin' ? 
+                                    (
+                                        <ItemNavbar 
+                                            to='/panel'
+                                            icon={adminSvg} 
+                                            title='Ver el panel'
+                                            direction={isMenuOpen ? 'vertical' : 'horizontal'}
+                                        >Panel</ItemNavbar>
+                                    ) : null
+                                }
+
                                 <ItemNavbar 
                                     to='/vender'
                                     icon={sellSvg} 
@@ -124,6 +137,7 @@ const Navbar = () => {
                                     title='Ver un listado de todas las categorias'
                                     direction={isMenuOpen ? 'vertical' : 'horizontal'}
                                 >Todas las categorias</ItemNavbar>
+
 
                                 <ItemNavbar 
                                     to='/logout' 
@@ -225,6 +239,19 @@ const Navbar = () => {
                                         className='item-navbar-account-menu'
                             >Ver mi Perfil</ItemNavbar>
 
+                            {
+                                user.type === 'admin' || user.type === 'moderator' ? 
+                                (
+                                    <ItemNavbar 
+                                        to='/panel'
+                                        icon={adminSvg} 
+                                        title='Ver el panel'
+                                        direction={'vertical'}
+                                        className='item-navbar-account-menu'
+                                    >Panel</ItemNavbar>
+                                ) : null
+                            }
+
                             <ItemNavbar 
                                 to='/vender'
                                 icon={sellSvg} 
@@ -264,6 +291,8 @@ const Navbar = () => {
                                 direction={'vertical'}
                                 className='item-navbar-account-menu'
                             >Todas las categorias</ItemNavbar>
+
+                            
 
                             <ItemNavbar 
                                     to='/logout' 

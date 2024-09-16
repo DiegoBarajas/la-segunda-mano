@@ -3,15 +3,23 @@
 /* SLIDER */
 .slider {
     width: 100vw;
-    max-height: 500px;
+    max-height: min(500px, 50vh);
+    background-color: transparent;
 }
 
 .slide {
    width: 100%;
 }
 
-.slide img {
+.slide-link {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.slide img {
+    width: min(100%, 2000px);
     aspect-ratio: 19/7;
     object-fit: cover;
 }
@@ -199,6 +207,9 @@
           "."
           "."
           ".";
+
+        gap: 5px;
+
     }
 
     .recent-ann {

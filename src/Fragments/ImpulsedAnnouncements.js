@@ -39,7 +39,7 @@ const ImpulsedAnnouncements = () => {
 
     return announcements ? (
         announcements.length > 0 ? (
-            <div className='premium-container'>
+            <div className='premium-container' style={{ marginTop: '-20px' }}>
                 <h4>Anuncios premium</h4>
                 <section className='premium-content'>
                     {
@@ -49,7 +49,7 @@ const ImpulsedAnnouncements = () => {
             </div>
         ) : null
     ) : (
-        <div className='premium-container'>
+        <div className='premium-container' style={{ marginTop: '-20px' }}>
             <h4>Anuncios premium</h4>
             <section className='premium-content'>
                 <CardAnnoucement/> 

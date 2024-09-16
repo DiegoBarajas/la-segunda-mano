@@ -27,8 +27,10 @@ controller.getUser = async(req, res, next) => {
             correo: user.correo,
             estado: user.estado,
             foto: user.foto,
-            sellerId: user.sellerId
+            sellerId: user.sellerId,
+            type: user.type
         });
+        
     }catch(err){
         next(err);
     }
@@ -441,6 +443,16 @@ controller.forgotResend = async(req, res, next) => {
     }
 }
 
+controller.getPermiso = async(req, res, next) => {
+    try {
+        const { user } = req;
+
+        res.send(user.type);
+    } catch(err) {
+        next(err);
+    }
+}
+
 /*
                 E X A M P L E
 */
@@ -448,6 +460,7 @@ controller.protected = async(req, res, next) => {
     console.log(req.user);
     res.send("hasijdhjasuhjdhguiasd")
 }
+
 
 module.exports = controller;
 

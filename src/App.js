@@ -35,6 +35,7 @@ import EditAnnouncement from './Pages/EditAnnouncement';
 import UpgradeAnnouncement from './Pages/UpgradeAnnouncement';
 import UpgradeSuccess from './Pages/UpgradeSuccess';
 import UpgradeError from './Pages/UpgradeError';
+import Panel from './Pages/Panel';
 
 const App = () => {
     return (
@@ -68,7 +69,9 @@ const App = () => {
 				<Route path='/perfil' element={ <LoggedRoute> <Profile/> </LoggedRoute> } />
 				<Route path='/perfil/editar' element={ <LoggedRoute> <EditProfile/> </LoggedRoute> } />
 				<Route path='/perfil/anuncios' element={ <LoggedRoute> <MyAnnoucements/> </LoggedRoute> } />
-				<Route path='/notificaciones' element={ <LoggedRoute> <MyNotifications/> </LoggedRoute> } />			
+				<Route path='/notificaciones' element={ <LoggedRoute> <MyNotifications/> </LoggedRoute> } />
+				<Route path='/panel' element={ <LoggedRoute> <Panel/> </LoggedRoute> } />
+
 
 				<Route path='/buscar' Component={Search} />
 				<Route path='/categorias' Component={Categorias} />

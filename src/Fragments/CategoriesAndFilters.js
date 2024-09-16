@@ -67,7 +67,7 @@ const CategoriesAndFilters = () => {
     }
 
     return (
-        <div className='cat-n-filters-container'>
+        <form className='cat-n-filters-container' action='/buscar'>
             {/* Categotias */}
             <h4 className='subtitle-filters-container'>Categorias</h4>
             <section className='cat-container'>
@@ -133,7 +133,7 @@ const CategoriesAndFilters = () => {
 
                 {
                     showApplyBtn
-                    ? <form style={{ width: '100%', display: 'flex', justifyContent: 'end'}} action='/buscar'>
+                    ? <div style={{ width: '100%', display: 'flex', justifyContent: 'end'}}>
 
                         <section className='filters-apply-button-section-2'>
                             <Button
@@ -157,11 +157,11 @@ const CategoriesAndFilters = () => {
                             >Aplicar y buscar</Button>
                         </section>
 
-                    </form>
+                    </div>
                     : <></>
                 }
            
-        </div>
+        </form>
     )
 }
 

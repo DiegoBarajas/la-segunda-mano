@@ -10,7 +10,8 @@ const userSchema = new Schema({
     estado: { type: String, default: null, required: false },
     foto: { type: String, default: null, required: false },
     
-    active: { type: Boolean, default: true, required: true }
+    active: { type: Boolean, default: true, required: true },
+    type: { type: String, default: 'default', required: true, enum: ['admin', 'default', 'moderator'] }
 },{
     timestapms: true
 });
