@@ -42,6 +42,8 @@ app.use('/api/report', require('./routes/report.route'));
 app.use('/api/login', require('./routes/login.route'));
 app.use('/api/user', require('./routes/user.route'));
 app.use('/api/index', require('./routes/index.route'));
+app.use('/api/banner', require('./routes/banner.route'));
+
 
 
 

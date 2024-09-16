@@ -1,61 +1,86 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 import 'swiper/css';
-import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-/*
-    TMP
-*/
-import banner1Img from '../Assets/Images/banner1.webp'
-import banner2Img from '../Assets/Images/banner2.webp'
-import banner3Img from '../Assets/Images/banner3.webp'
-import banner4Img from '../Assets/Images/banner4.jpeg'
 import { Link } from 'react-router-dom';
-
+import modals from '../Modals';
+import axios from 'axios';
+import backend from '../backend';
+import Loader from '../Components/Loader';
 
 const Slider = () => {
+
+    const [ banners, setBanners ] = useState(null);
+
+    useEffect(() => {
+        async function getBanners() {
+            try{
+                const response = await axios.get(`${backend}/api/banner`);
+
+                console.log(response.data);
+                
+                setBanners(response.data);
+            }catch(err){
+    
+                if (err.response) {
+                    // El servidor respondió con un código de estado fuera del rango 2xx
+                    console.error('Código de estado HTTP:', err.response.status, '\n', 'Error de respuesta:', err.response.data);
+                    modals.alert("Ups", `${err.response.data}`, 'error');
+                    //Modals.alert("Ups", `<b>[${err.response.status}]</b> ${err.response.data}`, 'error');
+                } else if (err.request) {
+                    // La solicitud fue hecha pero no se recibió respuesta
+                    console.error('No se recibió respuesta del servidor:', err.request);
+                    modals.alert("Ha ocurrido un error", `No se recibió respuesta del servidor`, 'error');
+                } else {
+                    // Ocurrió un error antes de enviar la solicitud
+                    console.error('Error al enviar la solicitud:', err.message);
+                    modals.alert("Ha ocurrido un error", `<b>Error al enviar la solicitud</b> ${err.message}`, 'error');
+                }
+            }
+        }
+
+        getBanners();
+    }, []);
+
     return (
         <Swiper
-            slidesPerView={1}
             spaceBetween={30}
-            centeredSlides={true}
-            loop={true}
+            effect={'fade'}
             pagination={{
                 clickable: true,
             }}
-            
-            autoplay={{ delay: 300  }}
-            modules={[Pagination]}
+            autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+            }}
+            modules={[Autoplay, Pagination]}
             className="slider"
+            loop={true}
         >
-            <SwiperSlide className='slide'>
-                <Link className='slide-link'>
-                    <img src={banner1Img}/>
-                </Link>
-            </SwiperSlide>
-
-            <SwiperSlide className='slide'>
-                <Link className='slide-link' to='/'>
-                    <img src={banner2Img}/>
-                </Link>
-            </SwiperSlide>
-
-            <SwiperSlide className='slide'>
-                <Link className='slide-link' to='/'>
-                    <img src={banner3Img}/>
-                </Link>
-            </SwiperSlide>
-
-
-            <SwiperSlide className='slide'>
-                <Link className='slide-link' to='/'>
-                    <img src={banner4Img}/>
-                </Link>
-            </SwiperSlide>
+            {
+                banners ? (
+                    banners.map((b, indx) => 
+                        <SwiperSlide className='slide' key={`slide-${indx}`}>
+                            <Link className='slide-link' to={b.url}>
+                                <img src={b.data} alt='Banner' title={b.title}/>
+                            </Link>
+                        </SwiperSlide>
+                    )
+                ) : ( 
+                    <SwiperSlide className='slide'>
+                        <div className='slide-loading'>
+                            <Loader/>
+                            <p>Cargando banners...</p>
+                        </div>
+                    </SwiperSlide>
+                )
+            }
         </Swiper>
     )
 }

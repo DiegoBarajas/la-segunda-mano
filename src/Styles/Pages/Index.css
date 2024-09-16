@@ -5,6 +5,7 @@
     width: 100vw;
     max-height: min(500px, 50vh);
     background-color: transparent;
+    direction: ltr;
 }
 
 .slide {
@@ -18,14 +19,31 @@
     align-items: start;
 }
 
-.slide img {
-    width: min(100%, 2000px);
+.slide-loading {
+    width: 100%;
+    max-height: min(500px, 50vh);
+    flex-direction: column;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     aspect-ratio: 19/7;
     object-fit: cover;
 }
 
+.slide img {
+    width: min(100vw, 2000px);
+    aspect-ratio: 19/7;
+    object-fit: cover;
+}
 
-/* CATEGORIAS Y FILTROS */
+.swiper-pagination-bullet-active {
+    background-color: var(--mint) !important;
+}
+
+
+/* CATEGORIAS Y FILTROS */  
 .subtitle-filters-container {
     width: 100%;
     margin-bottom: 5px;

@@ -1,0 +1,90 @@
+@import url(../../index.css);
+
+.modal-dialog {
+    background-color: rgba(0,0,0,.5);
+    position: fixed;
+    top: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    border: none;
+    z-index: 50;
+}
+
+.modal-body {
+    z-index: 55;
+    margin: auto;
+    margin-top: 5%;
+}
+
+.close-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.close-btn-modal {
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.close-btn-modal:hover {
+    opacity: 100%;
+}
+
+.preview-banner {
+    width: 95%;
+    cursor: pointer;
+    aspect-ratio: 19/7;
+    object-fit: cover;
+    border: 3px solid var(--mint);
+}
+
+.preview-banner:hover {
+    filter: brightness(90%);
+}
+
+.accordion-info {
+    width: 100% !important;
+    background-color: rgb(236, 236, 236);
+    padding: 2px 20px !important;
+    border-radius: 5px !important;
+}
+
+.form-modal-banner {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    width: 100%;
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 0px 15px; 
+    
+}
+
+
+
+
+.banner-info-container {
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+    gap: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    
+    cursor: pointer;
+}
+
+.banner-info-container:hover {
+    background-color: azure;
+    filter: brightness(90%);
+}
+
+.banner-info-img {
+    aspect-ratio: 19/7;
+    object-fit: cover;
+    width: 50%;
+}

@@ -62,7 +62,8 @@ controller.login = async(req, res, next) => {
             correo: user.correo,
             estado: user.estado,
             foto: user.foto,
-            sellerId: user.sellerId
+            sellerId: user.sellerId,
+            type: user.type
         }
 
 //      Enviar respuesta

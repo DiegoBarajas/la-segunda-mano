@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import PageLayout from '../Layouts/PageLayout'
-import Title from '../Components/Title'
-import ContentLayout from '../Layouts/ContentLayout'
-import modals from '../Modals'
-import axios from 'axios'
-import backend from '../backend'
-import Loader from '../Components/Loader'
-import LoadingPage from './LoadingPage'
-import { Navigate } from 'react-router-dom'
+
 import ManageBanners from '../Fragments/ManageBanners'
 import ManageReports from '../Fragments/ManageReports'
 import ManageUsers from '../Fragments/ManageUsers'
+import PageLayout from '../Layouts/PageLayout'
+import { Navigate } from 'react-router-dom'
+import Title from '../Components/Title'
+import LoadingPage from './LoadingPage'
+
+import axios from 'axios'
+import modals from '../Modals'
+import backend from '../backend'
+
+import '../Styles/Pages/Panel.css'
 
 const Panel = () => {
 
