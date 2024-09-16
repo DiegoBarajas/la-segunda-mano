@@ -44,7 +44,7 @@ const RecentAnnouncements = () => {
                 <h4>Anuncios recientes</h4>
                 <section className='ann-content'>
                     {
-                        announcements.map((ann, index) => <AnnoucementMyAnn ann={ann} className='recent-ann'/> )
+                        announcements.map((ann, index) => <AnnoucementMyAnn showLabel={false} ann={ann} className='recent-ann'/> )
                     }
                 </section>
                 <div style={{ width: '100%', display: 'flex', justifyContent: 'end' }}>
@@ -56,16 +56,16 @@ const RecentAnnouncements = () => {
         <div className='premium-container'>
             <h4>Anuncios recientes</h4>
             <section className='anns-content'>
-                <AnnoucementMyAnn/> 
-                <AnnoucementMyAnn/> 
-                <AnnoucementMyAnn/> 
-                <AnnoucementMyAnn/> 
-                <AnnoucementMyAnn/> 
-                <AnnoucementMyAnn/> 
-                <AnnoucementMyAnn/> 
-                <AnnoucementMyAnn/> 
-                <AnnoucementMyAnn/> 
-                <AnnoucementMyAnn/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
             </section>
             
         </div>

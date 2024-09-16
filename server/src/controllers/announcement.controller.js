@@ -286,49 +286,75 @@ controller.getAnnouncementBySellerId = async(req, res, next) => {
 
 // Obtener resgistros por busqueda
 controller.getAnnouncementBySearch = async(req, res, next) => {
-    try{
+    try {
         const { query } = req;
-        const skip = query.page ? query.page*10 : 0;
+        const skip = query.page ? query.page * 2 : 0;
         const filter = {}
         let sort = { createdAt: -1 }
+        
 
-        for(let key in query){
-            if(query[key] == ignoreValues[key]) continue;
+        for (let key in query) {
+            if (query[key] == ignoreValues[key]) continue;
 
-            if(key === 'estado') filter['caracteristicas.estado'] = query[key];
-            if(key === 'uso') filter['caracteristicas.uso'] = query[key];
-            if(key === 'categoria') filter['categoria'] = query[key];
-            if(key === 'ordenar') sort = order[query[key]];
-            if(key === 'nombre'){ 
-                const regex = new RegExp(query[key].trim(), 'i'); 
+            if (key === 'estado') filter['caracteristicas.estado'] = query[key];
+            if (key === 'uso') filter['caracteristicas.uso'] = query[key];
+            if (key === 'categoria') filter['categoria'] = query[key];
+            if (key === 'ordenar') sort = order[query[key]];
+            if (key === 'nombre') {
+                const regex = new RegExp(query[key].trim(), 'i');
                 filter['titulo'] = regex;
             }
-            if(key === 'ciudad'){ 
-                const regex = new RegExp(query[key], 'i'); 
+            if (key === 'ciudad') {
+                const regex = new RegExp(query[key], 'i');
                 filter['caracteristicas.ciudad'] = regex;
             }
         }
-        
-        const annoucements = await AnnouncementModel.find(filter).skip(skip).limit(10).sort(sort);
+
+
+        // Búsqueda de anuncios regulares
+        const annoucements = await AnnouncementModel.find(filter).skip(skip).limit(2).sort(sort);
         const total = await AnnouncementModel.countDocuments(filter);
 
-        if('precio' in sort){
+        // Búsqueda de anuncios impulsados (2 aleatorios)
+        const boostedAnnouncements = await AnnouncementModel.aggregate([
+            { $match: { nivel: 'impulsado' } },
+            { $sample: { size: 2 } }, // Escoge 2 aleatorios
+            { $addFields: { showLabel: true } }
+        ]);
+
+
+        // Búsqueda de anuncios premium (4 aleatorios)
+        const premiumAnnouncements = await AnnouncementModel.aggregate([
+            { $match: { nivel: 'premium' } },
+            { $sample: { size: 4 } }, // Escoge 4 aleatorios
+            { $addFields: { showLabel: true } }
+        ]);
+
+        // Combinación de anuncios aleatorios con los regulares
+        const finalAnnouncements = [
+            ...boostedAnnouncements,
+            ...premiumAnnouncements,
+            ...annoucements
+        ].slice(0, 10); // Limitar la respuesta a 10 anuncios
+
+        // Ordenar por precio si es necesario
+        if ('precio' in sort) {
             return res.send(
-                annoucements.sort((a, b) => {
+                finalAnnouncements.sort((a, b) => {
                     const precioA = parseFloat(a.precio);
                     const precioB = parseFloat(b.precio);
-            
                     return sort.precio > 0 ? precioA - precioB : precioB - precioA;
                 })
-            )
+            );
         }
 
-        res.send({annoucements, total});
+        res.send({ annoucements: finalAnnouncements, total });
 
-    }catch(err){
+    } catch (err) {
         next(err);
     }
 }
+
 
 // Eliminar anuncio 
 controller.deleteMyAnnoucement = async(req, res, next) => {

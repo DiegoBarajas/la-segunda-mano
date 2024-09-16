@@ -88,7 +88,7 @@ const Search = () => {
                                 <h2 className='h2-title-my-ann'>Coincidencias con la busqueda { announcements ? `(${announcements.length} resultados)` : null }</h2>
                                 <section className='content-cards'>
                                     {
-                                        announcements.map(ann => <CardAnnoucement ann={ann}/>)
+                                        announcements.map(ann => <CardAnnoucement showLabel={ann.showLabel} ann={ann}/>)
                                     }
                                 </section>
                                 {

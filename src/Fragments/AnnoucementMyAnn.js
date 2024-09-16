@@ -10,7 +10,7 @@ import premiumSvg from '../Assets/Icons/premium.svg'
 import '../Styles/Pages/MyAnnoucements.css'
 import ColumnLayout from '../Layouts/ColumnLayout'
 
-const AnnoucementMyAnn = ({ann, className}) => {
+const AnnoucementMyAnn = ({ann, showLabel=true, className}) => {
     return ann ?(
         <Link className={'annoucement-item-my '+className} to={`/anuncio/${ann._id}`}>
             <section className='annoucement-item-my-main'>
@@ -30,11 +30,14 @@ const AnnoucementMyAnn = ({ann, className}) => {
             <section className='annoucement-item-my-sec'>
                 <p className='annoucement-item-my-main-pub'><img src={locationSvg} className='annoucement-item-my-main-icon' alt='Ubicacion'/><b>{capitalizeFirstLetter(ann.caracteristicas.ciudad).trim()}, {capitalizeFirstLetter(ann.caracteristicas.estado)}</b></p>
                 { 
-                    ann.nivel !== 'estandar' 
+                    showLabel ? (
+                        ann.nivel !== 'estandar' 
                         ? ann.nivel === 'impulsado'
                             ? <p className='p-nivel-ann p-mint'><img src={impulsedSvg}/>Impulsado</p>
                             : <p className='p-nivel-ann p-gold'><img src={premiumSvg}/>Premium</p>
                         : null
+                    ) : null
+                    
                 }
             </section>
         </Link>
