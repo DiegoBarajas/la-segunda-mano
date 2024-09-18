@@ -33,7 +33,9 @@
 }
 
 .slide img {
-    width: min(100vw, 2000px);
+    max-width: 100%;
+    max-height: min(500px, 50vh);
+
     aspect-ratio: 19/7;
     object-fit: cover;
 }

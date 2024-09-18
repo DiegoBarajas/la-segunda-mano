@@ -13,8 +13,6 @@ import modals from '../Modals'
 import axios from 'axios'
 import backend from '../backend'
 import Loader from '../Components/Loader'
-import ColumnLayout from '../Layouts/ColumnLayout'
-
 
 const ManageBanners = () => {
 
