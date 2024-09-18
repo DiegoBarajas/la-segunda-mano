@@ -12,7 +12,8 @@ import { Link } from 'react-router-dom';
 import modals from '../Modals';
 import axios from 'axios';
 import backend from '../backend';
-import Loader from '../Components/Loader';
+
+import bannerImg from '../Assets/Logos/banner.png';
 
 const Slider = () => {
 
@@ -74,10 +75,9 @@ const Slider = () => {
                     )
                 ) : ( 
                     <SwiperSlide className='slide'>
-                        <div className='slide-loading'>
-                            <Loader/>
-                            <p>Cargando banners...</p>
-                        </div>
+                        <Link className='slide-link'>
+                            <img src={bannerImg} alt='Banner' title="La Segunda Mano"/>
+                        </Link>
                     </SwiperSlide>
                 )
             }
