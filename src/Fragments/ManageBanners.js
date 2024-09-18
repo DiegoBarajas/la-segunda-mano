@@ -227,10 +227,10 @@ const ManageBanners = () => {
                     <AccordionContentLayout className='accordion-info' titulo='INFO: Subir imagen'>
                         <p style={{ width: '100%' }}>Se recomienda subir imagenes con proporción <b>17:9</b>, por ejemplo:</p>
                         <ul style={{ marginLeft: '50px', width: '100%', marginBottom: '15px' }}>
-                            <li><b>2160 píxeles:</b> 4080×2160px</li>
-                            <li><b>1440 píxeles:</b> 2720×1440px</li>
-                            <li><b>1080 píxeles:</b> 2040×1080px</li>
-                            <li><b>720 píxeles:</b> 1360×720px</li>
+                            <li><b>2160 píxeles:</b> 5863×2160px</li>
+                            <li><b>1440 píxeles:</b> 3909×1440px</li>
+                            <li><b>1080 píxeles:</b> 2931×1080px</li>
+                            <li><b>720 píxeles:</b> 1954×720px</li>
                         </ul>
                     </AccordionContentLayout>
 
