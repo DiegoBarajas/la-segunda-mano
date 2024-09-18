@@ -318,6 +318,7 @@ controller.getAnnouncementBySearch = async(req, res, next) => {
         // Búsqueda de anuncios impulsados (2 aleatorios)
         const boostedAnnouncements = await AnnouncementModel.aggregate([
             { $match: { nivel: 'impulsado' } },
+            { $match: filter },
             { $sample: { size: 2 } }, // Escoge 2 aleatorios
             { $addFields: { showLabel: true } }
         ]);
@@ -326,6 +327,7 @@ controller.getAnnouncementBySearch = async(req, res, next) => {
         // Búsqueda de anuncios premium (4 aleatorios)
         const premiumAnnouncements = await AnnouncementModel.aggregate([
             { $match: { nivel: 'premium' } },
+            { $match: filter },
             { $sample: { size: 4 } }, // Escoge 4 aleatorios
             { $addFields: { showLabel: true } }
         ]);

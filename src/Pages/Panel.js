@@ -16,6 +16,8 @@ import '../Styles/Pages/Panel.css'
 
 const Panel = () => {
 
+    document.title = "La Segunda Mano - Panel"
+
     const [ permiso, setPermiso ] = useState(null);
     const [ redirect, setRedirect ] = useState(null);
 

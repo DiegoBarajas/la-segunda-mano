@@ -6,6 +6,8 @@ import Button from '../Components/Button'
 import '../Styles/Pages/Categorias.css'
 import constants from '../constants.json'
 const Categorias = () => {
+
+    document.title = "La Segunda Mano - Categorias"
     
     useEffect(() => {
         window.scrollTo({

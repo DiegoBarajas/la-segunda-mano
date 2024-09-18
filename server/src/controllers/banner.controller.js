@@ -3,11 +3,9 @@ const bannerModel = require('../models/banner.model');
 const fs = require('fs');
 const controller = {};
 
-const announcementModel = require('../models/announcement.model')
-
 controller.createBanner = async(req, res, next) => {
     try{ 
-        const { body, files, user } = req;
+        const { body, user } = req;
         const { banner } = body;
 
         if(user.type !== 'admin') throw new CustomError("Acceso no autorizado.");
@@ -15,6 +13,8 @@ controller.createBanner = async(req, res, next) => {
 
         const index = await bannerModel.countDocuments();
 
+        console.log(index);
+        
         const contentType = banner.split(';')[0].split(':')[1];
         const base64String = banner.split(',')[1];
         const bufferData = Buffer.from(base64String, 'base64');
@@ -30,7 +30,6 @@ controller.createBanner = async(req, res, next) => {
         }).save();
 
         res.send({ success: true });
-        
     }catch(err){
         next(err);
     }
