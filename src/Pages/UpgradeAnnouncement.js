@@ -70,10 +70,10 @@ const UpgradeAnnouncement = () => {
             <div className='upgrade-container'>
                 <img src={impulsedSvg} alt='Impulsado'/>
                 <h2 className='upgrade-title'>Anuncio Impulsado</h2>
-                <p>b sjan djk asijdas dhashdhjasbdhjasbdhjasbdhjasbjh sahjdbashjndjasbd hjasdjasbhjdbashjdbashjdb ahsj</p>
+                <p>Potencia tu anuncio para maximizar su alcance y vender más rápido. Disfruta de estos beneficios.</p>
 
                 <section className='list-ventajas-upgrade'>
-                    <h4>Ventajas:</h4>
+                    <h4>Beneficios:</h4>
                     <ul>
                         <li>Prioridad de aparición en busquedas relacionadas con tu anuncio.</li>
                         <li>Caduca en 30 días.</li>
@@ -93,14 +93,14 @@ const UpgradeAnnouncement = () => {
             <div className='upgrade-container'>
                 <img src={premiumSvg} alt='Premium'/>
                 <h2 className='upgrade-title text-gold'>Anuncio Premiun</h2>
-                <p>b sjan djk asijdas dhashdhjasbdhjasbdhjasbdhjasbjh sahjdbashjndjasbd hjasdjasbhjdbashjdbashjdb ahsj</p>
+                <p>Impulsa significativamente tu anuncio y extiende su duración sin fecha de caducidad con el plan Premium. Además, disfruta de los siguientes beneficios.</p>
 
                 <section className='list-ventajas-upgrade'>
-                    <h4>Ventajas:</h4>
+                    <h4>Beneficios:</h4>
                     <ul>
                         <li>Sale en la página principal</li>
                         <li>Prioridad de aparición en busquedas relacionadas con tu anuncio.</li>
-                        <li>Caduca en 30 días.</li>
+                        <li>Caduca en 60 días.</li>
                     </ul>
                 </section>
 

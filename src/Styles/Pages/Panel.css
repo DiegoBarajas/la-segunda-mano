@@ -67,6 +67,66 @@
 
 
 
+
+.report-item-container {
+    width: 100%;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    border-bottom: 1px solid black;
+}
+
+.report-item-container:hover {
+    background-color: rgb(215, 227, 227);
+}
+
+.report-item-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.report-item-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px 7.5px;
+    padding-right: 10px;
+    border-radius: 50px;
+    font-size: 12px;
+}
+
+.report-item-type-reseña {
+    background-color: #1abc5d;
+    color:  #0b4825;
+}
+
+.report-item-type-vendedor {
+    background-color: #ffc758;
+    color:  #5b4720;
+}
+
+.report-item-type-publicacion {
+    background-color: #c6e22b;
+    color:  #515c12;
+}
+
+
+.report-item-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    -webkit-line-clamp: 1;
+}
+
+.report-item-status {
+}
+
+
+
+
+
 .banner-info-container {
     width: 100%;
     display: flex;

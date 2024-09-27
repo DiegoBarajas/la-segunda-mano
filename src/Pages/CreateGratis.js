@@ -39,6 +39,8 @@ const CreateGratis = () => {
         }
 
         data.append('tipoAnuncio', TYPE);
+        data.append('categoria', 'gratis');
+
         data.append('precio', 0);
 
         try{

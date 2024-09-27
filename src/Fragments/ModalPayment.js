@@ -8,7 +8,7 @@ import Button from '../Components/Button';
 import {loadStripe} from '@stripe/stripe-js';
 import {Elements, useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
 
-const stripePromise = loadStripe('pk_test_51PaubdJCv3qocvfbPneBOJ7uX8daQHN6gtuHZD8kpQRqSQQgUteGChCSsy5T3aq50T9u4EUZBiPBKd8FXC0F0yQa00PVmAmSEN');
+const stripePromise = loadStripe('pk_live_51PaubdJCv3qocvfbxks9aly7cpiB4yHvMEIRE5z1Up4m6weKOMltJDUtt9r7jO0MadmwkpPXgqOZsMQ6YFGd8VfP00jfj5m6X8');
 
 const ModalPayment = ({id, plan='impulsado'}) => {
 

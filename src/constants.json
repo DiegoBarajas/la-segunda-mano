@@ -318,6 +318,10 @@
             "value": "electrónica"
         },
         {
+            "text": "Gratis",
+            "value": "gratis"
+        },
+        {
             "text": "Herramientas",
             "value": "herramientas"
         },
@@ -1105,14 +1109,6 @@
                     "auxText": "Este es el titulo de tu publicación.",
                     "required": true,
                     "type": "text"
-                },{
-                    "kind": "select",
-                    "name": "categoria",
-                    "label": "Categoria",
-                    "placeholder": "Categoria",
-                    "auxText": "Selecciona la categoria mas acorde a tu articulo",
-                    "required": true,
-                    "options": "categoriasGratis"
                 },{
                     "kind": "inputFile"
                 },

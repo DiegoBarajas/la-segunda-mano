@@ -531,7 +531,7 @@ controller.getPaymentIntent = async(req, res, next) => {
             },
         });        
 
-        console.log(paymentIntent.client_secret);
+        console.log(paymentIntent);
         
 
         res.send({ clientSecret: paymentIntent.client_secret, amount: paymentIntent.amount, currency: paymentIntent.currency });
@@ -540,6 +540,7 @@ controller.getPaymentIntent = async(req, res, next) => {
     }
 
     function getAmount(query){
+        return 10;
         const { plan } = query;
         switch(plan){
             case "impulsado": return 99;

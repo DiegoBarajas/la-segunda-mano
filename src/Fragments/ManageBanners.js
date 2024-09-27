@@ -170,7 +170,7 @@ const ManageBanners = () => {
     }
 
     return (
-        <AccordionContentLayout complete titulo="Administrar Banners" defaultOpened >
+        <AccordionContentLayout complete titulo="Administrar Banners">
             <Button horizontal icon={addSvg} onClick={() => setIsOpen(true)}>Agregar banner</Button>
             <p style={{ marginTop: '10px', fontSize: '12px' }}>Haz doble click en algun banner para eliminarlo.</p>
             {
