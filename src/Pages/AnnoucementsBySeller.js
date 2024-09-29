@@ -246,7 +246,7 @@ const AnnoucementsBySeller = () => {
 
     const handleDelete = async(e, id) => {
         const { target } = e;
-        modals.confirm("Atencion", "¿Deseas borrar la reseña?", 'warning', onConfirm);
+        modals.confirm("Atención", "¿Deseas borrar la reseña?", 'warning', onConfirm);
 
         async function onConfirm(){
             const prevDisplay = hideElement(target);
@@ -366,7 +366,7 @@ const AnnoucementsBySeller = () => {
                     
                                 </form>
                                 : null
-                            : <p style={{ textAlign: 'center', width: '100%', margin: '20px 0px' }}>Ya has escrito una reseña, si deseas modificarla eliminala y crea una nueva.</p>
+                            : <p style={{ textAlign: 'center', width: '100%', margin: '20px 0px' }}>Ya has escrito una reseña, si deseas modificarla deberá eliminarla y crea una nueva.</p>
 
                         : <p><b>Para escribir una reseña necesitas una cuenta.</b> <Link to='/login'>Iniciar sesión</Link></p>
                 }

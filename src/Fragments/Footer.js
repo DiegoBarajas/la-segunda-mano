@@ -17,12 +17,12 @@ const Footer = () => {
             <section className='links-footer'>
                 <Link className='link-footer' onClick={handleReportProblem} title='Reportar un problema'>Reportar un problema</Link>
                 <Link className='link-footer' to='/condiciones' title='Condiciones de uso'>Condiciones de uso</Link>
-                <Link className='link-footer' to='/politicas' title='Politicas de privacidad'>Politicas de privacidad</Link>
-                <Link className='link-footer' to='/' title='Preguntas frecuentes'>Preguntas frecuentes</Link>
+                <Link className='link-footer' to='/politicas' title='Políticas de privacidad'>Políticas de privacidad</Link>
+                <Link className='link-footer' to='/faq' title='Preguntas frecuentes'>Preguntas frecuentes</Link>
             </section>
 
             <section className='info-footer'>
-                <p className='p-info-footer'>La segunda mano 2024 • Version: {packageJSON.version}</p>
+                <p className='p-info-footer'><b>LaSegundaMano.com.mx</b> 2024 • <b>Version:</b> {packageJSON.version}</p>
             </section>
         </footer>
     )

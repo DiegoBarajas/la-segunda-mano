@@ -124,7 +124,7 @@ const Filter = () => {
                     />
 
                     <Select
-                        label="Categoria"
+                        label="Categoría"
                         name='categoria'
                         options={constants.categorias}
                         selectedOption={ query && query.categoria ? query.categoria : null }
@@ -164,7 +164,7 @@ function parseTextFilter(query) {
 
     if (estado && (estado !== '*')) elements.push({ bold: 'Estado', value: estado });
     if (ciudad && (ciudad !== '')) elements.push({ bold: 'Ciudad', value: ciudad });
-    if (categoria && (categoria !== 'Mostrar todo')) elements.push({ bold: 'Categoria', value: categoria });
+    if (categoria && (categoria !== 'Mostrar todo')) elements.push({ bold: 'Categoría', value: categoria });
     if (uso && (uso !== '*')) elements.push({ bold: 'Uso', value: uso });
 
     return elements.length > 0 ? (

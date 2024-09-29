@@ -1057,7 +1057,7 @@
                             "kind": "input",
                             "name": "material",
                             "label": "Material",
-                            "placeholder": "Ej. Poliester y algodón",
+                            "placeholder": "Ej. Poliéster y algodón",
                             "type": "text"
                         }
                     ]

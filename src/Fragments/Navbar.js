@@ -21,6 +21,8 @@ import adminSvg from '../Assets/Icons/admin.svg'
 import logoutSvg from '../Assets/Icons/logout.svg'
 import axios from 'axios';
 import backend from '../backend';
+import modals from '../Modals';
+import ReportProblem from './ReportProblem';
 
 const useSearchValue = () => {
     const query = new URLSearchParams(useLocation().search)
@@ -59,6 +61,10 @@ const Navbar = () => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    const handleReportProblem = () => {
+        modals.popup(<ReportProblem/>, 'popup-saber-tipo')
+    }
 
     return (
         <form action='/buscar'>
@@ -106,7 +112,7 @@ const Navbar = () => {
                                 <ItemNavbar 
                                     to='/vender'
                                     icon={sellSvg} 
-                                    title='Quiero publicar producto, servicio, vehiculo o inmueble'
+                                    title='Quiero publicar producto, servicio, vehículo o inmueble'
                                     direction={isMenuOpen ? 'vertical' : 'horizontal'}
                                 >Vender</ItemNavbar>
 
@@ -134,9 +140,9 @@ const Navbar = () => {
                                 <ItemNavbar 
                                     to='/categorias'
                                     icon={categorySvg} 
-                                    title='Ver un listado de todas las categorias'
+                                    title='Ver un listado de todas las categorías'
                                     direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                                >Todas las categorias</ItemNavbar>
+                                >Todas las categorías</ItemNavbar>
 
 
                                 <ItemNavbar 
@@ -151,7 +157,7 @@ const Navbar = () => {
                             <ItemNavbar 
                                 to='/vender'
                                 icon={sellSvg} 
-                                title='Quiero publicar producto, servicio, vehiculo o inmueble'
+                                title='Quiero publicar producto, servicio, vehículo o inmueble'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Vender</ItemNavbar>
                             
@@ -172,19 +178,19 @@ const Navbar = () => {
                             <ItemNavbar 
                                 to='/categorias'
                                 icon={categorySvg} 
-                                title='Ver un listado de todas las categorias'
+                                title='Ver un listado de todas las categorías'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
-                            >Todas las categorias</ItemNavbar>  
+                            >Todas las categorías</ItemNavbar>  
 
                             <ItemNavbar 
-                                to='/' 
+                                to='/faq' 
                                 icon={helpSvg} 
                                 title='Ver un listado de las preguntas más frecuentes'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Preguntas frecuentes</ItemNavbar>
 
                             <ItemNavbar 
-                                to='/' 
+                                onClick={handleReportProblem}
                                 icon={reportSvg} 
                                 title='Reportar un problema o bug'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
@@ -195,7 +201,7 @@ const Navbar = () => {
                             <ItemNavbar 
                                 to='/vender'
                                 icon={sellSvg} 
-                                title='Quiero publicar producto, servicio, vehiculo o inmueble'
+                                title='Quiero publicar producto, servicio, vehículo o inmueble'
                                 direction={isMenuOpen ? 'vertical' : 'horizontal'}
                             >Quiero vender</ItemNavbar>
 
@@ -221,7 +227,7 @@ const Navbar = () => {
                     }
                 </ul>
                 
-                <div className="navbar-toggle" onClick={toggleMenu} title={isMenuOpen ? "Cerrar menú" : "Abir menú"}>
+                <div className="navbar-toggle" onClick={toggleMenu} title={isMenuOpen ? "Cerrar menú" : "Abrir menú"}>
                     <div className={`burger-line ${isMenuOpen ? 'burger-close-top' : ''}`}></div>
                     <div className="burger-line"></div>
                     <div className={`burger-line ${isMenuOpen ? 'burger-close-bottom' : ''}`}></div>
@@ -255,7 +261,7 @@ const Navbar = () => {
                             <ItemNavbar 
                                 to='/vender'
                                 icon={sellSvg} 
-                                title='Quiero publicar producto, servicio, vehiculo o inmueble'
+                                title='Quiero publicar producto, servicio, vehículo o inmueble'
                                 direction={'vertical'}
                                 className='item-navbar-account-menu'
                             >Vender</ItemNavbar>
@@ -287,10 +293,10 @@ const Navbar = () => {
                             <ItemNavbar 
                                 to='/categorias'
                                 icon={categorySvg} 
-                                title='Ver un listado de todas las categorias'
+                                title='Ver un listado de todas las categorías'
                                 direction={'vertical'}
                                 className='item-navbar-account-menu'
-                            >Todas las categorias</ItemNavbar>
+                            >Todas las categorías</ItemNavbar>
 
                             
 

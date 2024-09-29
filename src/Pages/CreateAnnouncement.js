@@ -49,7 +49,7 @@ const CreateAnnouncement = () => {
             />
 
             <ContentLayout horizontalAlign='center' redirect={redirect}>
-                <p className='info-body-create-ann'>Primero dinos, ¿Qué estas publicando?</p>
+                <p className='info-body-create-ann'>¿Qué estas publicando?</p>
                 <Button
                     width='50%'
                     icon={productSvg}
@@ -90,7 +90,7 @@ const CreateAnnouncement = () => {
                     onClick={() => setRedirect('/vender/inmueble')}
                 >Inmueble</Button>
 
-                <TextButton className='text-button-create-ann' icon={helpMintSvg} onClick={showPoputHow}>¿Comó puedo saber que tipo estoy vendiendo?</TextButton>
+                <TextButton className='text-button-create-ann' icon={helpMintSvg} onClick={showPoputHow}>¿Qué categoría es mi producto/servicio?</TextButton>
             </ContentLayout>
 
         </PageLayout>

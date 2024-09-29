@@ -62,10 +62,10 @@ const HistoryNavbar = ({visible, handleClose}) => {
                         id='Estado'
                         name='estado'
                         label="Estado"
-                        title="Buscar anuncios por algun estado en especifico"
+                        title="Buscar anuncios por algún estado en especifico"
                         options={constants.estados}
                         icon={stateSvg}
-                        value={filters.state}
+                        value={filters.estado}
 
                         onChange={handleSelect}
                     />
@@ -73,11 +73,11 @@ const HistoryNavbar = ({visible, handleClose}) => {
                         className='filters-navbar-select' 
                         id='Categoria' 
                         name='categoria'
-                        label="Categoria"
-                        title="Buscar anuncios con una categoria en especifico"
+                        label="Categoría"
+                        title="Buscar anuncios con una categoría en especifico"
                         options={constants.categorias}
                         icon={categorySvg}
-                        value={filters.category}
+                        value={filters.categoria}
 
                         onChange={handleSelect}
                     />
@@ -89,7 +89,7 @@ const HistoryNavbar = ({visible, handleClose}) => {
                         title="Buscar anuncios por un uso en especifico"
                         options={constants.usos}
                         icon={clockSvg}
-                        value={filters.usage}
+                        value={filters.uso}
 
                         onChange={handleSelect}
                     />
@@ -101,7 +101,7 @@ const HistoryNavbar = ({visible, handleClose}) => {
                         title="Ordenar resultados de una manera en especifico"
                         options={constants.ordenar}
                         icon={orderBySvg}
-                        value={filters.orderBy}
+                        value={filters.ordenar}
 
                         onChange={handleSelect}
                     />

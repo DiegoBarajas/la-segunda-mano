@@ -36,6 +36,7 @@ import UpgradeAnnouncement from './Pages/UpgradeAnnouncement';
 import UpgradeSuccess from './Pages/UpgradeSuccess';
 import UpgradeError from './Pages/UpgradeError';
 import Panel from './Pages/Panel';
+import FAQ from './Pages/FAQ';
 
 const App = () => {
     return (
@@ -78,6 +79,8 @@ const App = () => {
 
 				<Route path='/politicas' Component={Politicas} />
 				<Route path='/condiciones' Component={Condiciones} />
+				<Route path='/faq' Component={FAQ} />
+
 
 				<Route path='*' Component={PageNotFound} />
 			</Routes>

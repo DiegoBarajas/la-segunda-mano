@@ -35,7 +35,7 @@ const PopupSaberTipoAnn = () => {
                             <section className='td-saber-tipo-list'>
                                 <ul>
                                     <li>Celulares.</li> 
-                                    <li>Electrodomesticos.</li> 
+                                    <li>Electrodomésticos.</li> 
                                     <li>Ropa.</li> 
                                     <li>Alimentos. </li>
                                     <li>Calzado. </li>
@@ -56,11 +56,11 @@ const PopupSaberTipoAnn = () => {
                         <td>
                             <section className='td-saber-tipo-list'>
                                 <ul>
-                                    <li>Fontaneria.</li> 
+                                    <li>Fontanería.</li> 
                                     <li>Electricidad.</li> 
-                                    <li>Albañileria.</li> 
-                                    <li>Herreria.</li>
-                                    <li>Carpinteria.</li>
+                                    <li>Albañilería.</li> 
+                                    <li>Herrería.</li>
+                                    <li>Carpintería.</li>
                                 </ul>
                             </section>
                         </td>
@@ -87,8 +87,8 @@ const PopupSaberTipoAnn = () => {
 
                     <tr>
                         <td><section className='td-saber-tipo-icon'> 
-                            <img src={carSvg} alt="Vehiculo"/>
-                            Vehiculo
+                            <img src={carSvg} alt="Vehículo"/>
+                            Vehículo
                         </section></td>
                         <td className='td-saber-tipo'><p>
                             Esta categoría está destinada a la compra y venta de vehículos motorizados y no motorizados. Si deseas vender tu coche, motocicleta, bicicleta o incluso un bote, este es el lugar indicado.
@@ -96,7 +96,7 @@ const PopupSaberTipoAnn = () => {
                         <td>
                             <section className='td-saber-tipo-list'>
                                 <ul>
-                                    <li>Automoviles.</li> 
+                                    <li>Automóviles.</li> 
                                     <li>Motocicletas.</li> 
                                     <li>Lanchas. </li>
                                     <li>Cuatrimotos.</li>
@@ -152,7 +152,7 @@ const PopupSaberTipoAnn = () => {
                     <td><section className='td-saber-tipo-list'>
                         <ul>
                             <li>Celulares.</li> 
-                            <li>Electrodomesticos.</li> 
+                            <li>Electrodomésticos.</li> 
                             <li>Ropa.</li> 
                             <li>Alimentos. </li>
                             <li>Calzado. </li>
@@ -181,11 +181,11 @@ const PopupSaberTipoAnn = () => {
                 <tr>
                     <td><section className='td-saber-tipo-list'>
                         <ul>
-                            <li>Fontaneria.</li> 
+                            <li>Fontanería.</li> 
                             <li>Electricidad.</li> 
-                            <li>Albañileria.</li> 
-                            <li>Herreria.</li>
-                            <li>Carpinteria.</li>
+                            <li>Albañilería.</li> 
+                            <li>Herrería.</li>
+                            <li>Carpintería.</li>
                         </ul>
                     </section></td>
                 </tr>
@@ -222,8 +222,8 @@ const PopupSaberTipoAnn = () => {
                 <tr>
                     <th>
                         <section className='td-saber-tipo-icon'> 
-                            <img src={carSvg} alt="Vehiculo"/>
-                            Vehiculo
+                            <img src={carSvg} alt="Vehículo"/>
+                            Vehículo
                         </section>
                     </th>
                 </tr>
@@ -237,7 +237,7 @@ const PopupSaberTipoAnn = () => {
                 <tr>
                     <td><section className='td-saber-tipo-list'>
                         <ul>
-                            <li>Automoviles.</li>
+                            <li>Automóviles.</li>
                             <li>Motocicletas.</li>
                             <li>Lanchas.</li>
                             <li>Cuatrimotos.</li>

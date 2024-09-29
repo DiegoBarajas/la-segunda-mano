@@ -20,11 +20,11 @@ const ReportProblem = () => {
     return (
         <div className='popup-saber-tipo-body'>
             <h2>Reportar un problema</h2>
-            <p style={{ textAlign: 'justify', marginBottom: '25px' }}>Completa este formulario, esto rellenará un formato de correo electronico a la dirección <a href='mailto:soporte@lasegundamano.com.mx'>soporte@lasegundamano.com.mx</a>. En caso de ser necesario adjunta capturas o el contenido necesario para expresar tu caso, esto puede ayudarnos a solucionar el problema mas facilmente.</p>
+            <p style={{ textAlign: 'justify', marginBottom: '25px' }}>Completa este formulario, esto rellenará un formato de correo electrónico a la dirección <a href='mailto:soporte@lasegundamano.com.mx'>soporte@lasegundamano.com.mx</a>. En caso de ser necesario adjunta capturas o el contenido necesario para expresar tu caso, esto puede ayudarnos a solucionar el problema mas fácilmente.</p>
             <Input
                 id="body"
                 label="Descripción del problema"
-                placeholder="Cuentanos con lujo de detalle que problema tuviste, como llegaste a ese problema."
+                placeholder="Cuéntanos con lujo de detalle que problema tuviste, como llegaste a ese problema."
                 width='100%'
                 value={body}
                 onChange={(e) => setBody(e.target.value)}

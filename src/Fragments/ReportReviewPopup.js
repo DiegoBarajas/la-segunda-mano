@@ -46,7 +46,7 @@ const ReportReviewPopup = ({ id, type, masc=false }) => {
                 }
             );
 
-            modals.alert("Exito!", "Gracias. Tu reporte fue enviado con exito. Te mantendtemos informado", "success");
+            modals.alert("Éxito!", "Gracias. Tu reporte fue enviado con éxito. Te mantendremos informado", "success");
         }catch(err){
             if (err.response) {
                 // El servidor respondió con un código de estado fuera del rango 2xx

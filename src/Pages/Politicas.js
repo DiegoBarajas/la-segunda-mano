@@ -6,7 +6,7 @@ import PageLayout from '../Layouts/PageLayout'
 import '../Styles/Pages/PoliticasCondiciones.css'
 
 const Politicas = () => {
-    document.title = 'La Segunda Mano - Politicas de privacidad';
+    document.title = 'La Segunda Mano - Políticas de privacidad';
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -17,7 +17,7 @@ const Politicas = () => {
     return (
         <PageLayout>
             <ContentLayout horizontalAlign='center' size="small" complete>
-                <h1>Póliticas de privacidad</h1>
+                <h1>Políticas de privacidad</h1>
             </ContentLayout>
 
             <AccordionContentLayout defaultOpened size="small" complete titulo="1. Recopilación de Información" >
@@ -54,7 +54,7 @@ const Politicas = () => {
 
             <AccordionContentLayout defaultOpened size="small" complete titulo="4. Divulgación de Información a Terceros" >
                 <p>
-                    No vendemos, intercambiamos ni transferimos de otro modo a terceros su información personal, excepto en los siguientes casos:
+                    No vendemos, intercambiamos ni transferimos a terceros su información personal, excepto en los siguientes casos:
                     <br/>
                     <ul style={{ marginLeft: '30px' }}>
                         <li>Cuando sea requerido por la ley.</li>
@@ -72,16 +72,16 @@ const Politicas = () => {
 
             <AccordionContentLayout defaultOpened size="small" complete titulo="6. Cambios en la Política de Privacidad" >
                 <p>
-                Nos reservamos el derecho de modificar esta Política de Privacidad en cualquier momento. Las modificaciones serán efectivas inmediatamente después de su publicación en el Sitio. El uso continuado del Sitio constituye la aceptación de la política modificada.
+                Nos reservamos el derecho de modificar esta Política de Privacidad en cualquier momento. Las modificaciones serán efectivas inmediatamente después de su publicación en el Sitio. El uso continuo del Sitio constituye la aceptación de las políticas modificadas.
                 </p>
             </AccordionContentLayout>
 
             <ContentLayout size="small" complete>
                 <p><b>Contacto</b></p>
-                <p>Si tiene alguna pregunta sobre estas Políticas de Privacidad, puede contactarnos a través del correo electrónico: <a href='mailto:contacto@lasegundamano.com.mx'>contacto@lasegundamano.com.mx</a></p>
+                <p>Si tiene alguna duda o aclaración sobre estas Políticas de Privacidad, puede contactarnos a través del correo electrónico: <a href='mailto:contacto@lasegundamano.com.mx'>contacto@lasegundamano.com.mx</a></p>
                 <br/><br/>
                 <p><b>Fecha de Última Actualización</b></p>
-                <p>17 de julio de 2024</p>
+                <p>29 de septiembre del 2024</p>
             </ContentLayout>
 
         </PageLayout>

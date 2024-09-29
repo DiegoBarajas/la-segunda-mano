@@ -89,7 +89,7 @@ const CategoriesAndFilters = () => {
                         title="Buscar anuncios por algun estado en especifico"
                         options={constants.estados}
                         icon={stateSvg}
-                        value={filters.state}
+                        value={filters.estado}
 
                         onChange={handleSelect}
                     />
@@ -101,7 +101,7 @@ const CategoriesAndFilters = () => {
                         title="Buscar anuncios con una categoria en especifico"
                         options={constants.categorias}
                         icon={categorySvg}
-                        value={filters.category}
+                        value={filters.categoria}
 
                         onChange={handleSelect}
                     />
@@ -113,7 +113,7 @@ const CategoriesAndFilters = () => {
                         title="Buscar anuncios por un uso en especifico"
                         options={constants.usos}
                         icon={clockSvg}
-                        value={filters.usage}
+                        value={filters.uso}
 
                         onChange={handleSelect}
                     />
@@ -125,7 +125,7 @@ const CategoriesAndFilters = () => {
                         title="Ordenar resultados de una manera en especifico"
                         options={constants.ordenar}
                         icon={orderBySvg}
-                        value={filters.orderBy}
+                        value={filters.ordenar}
 
                         onChange={handleSelect}
                     />

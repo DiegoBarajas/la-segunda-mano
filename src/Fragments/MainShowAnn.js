@@ -227,7 +227,7 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
 
                             <li>
                                 <img src={categorySvg} alt='Categoria'/>
-                                <p><b>Categoria:</b> <Link to={`/buscar?categoria=${announcement.categoria}`}> { capitalizeFirstLetter(announcement.categoria) } </Link></p>
+                                <p><b>Categoría:</b> <Link to={`/buscar?categoria=${announcement.categoria}`}> { capitalizeFirstLetter(announcement.categoria) } </Link></p>
                             </li>
 
                             <li>
@@ -326,12 +326,12 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
             <main className='show-announcement-main'>
                 
                 <section className='show-announcement-imgs'>
-                    <img src={imageNotFilled} alt='Cargando imagenes' className='loading-image progress'/>
+                    <img src={imageNotFilled} alt='Cargando imágenes' className='loading-image progress'/>
                     <section className='show-announcement-imgs-list'>
-                        <img src={imageNotFilled} alt='Cargando imagenes' className='loading-image progress' style={{ width: '75%' }}/>
-                        <img src={imageNotFilled} alt='Cargando imagenes' className='loading-image progress' style={{ width: '75%' }}/>
-                        <img src={imageNotFilled} alt='Cargando imagenes' className='loading-image progress' style={{ width: '75%' }}/>
-                        <img src={imageNotFilled} alt='Cargando imagenes' className='loading-image progress' style={{ width: '75%' }}/>
+                        <img src={imageNotFilled} alt='Cargando imágenes' className='loading-image progress' style={{ width: '75%' }}/>
+                        <img src={imageNotFilled} alt='Cargando imágenes' className='loading-image progress' style={{ width: '75%' }}/>
+                        <img src={imageNotFilled} alt='Cargando imágenes' className='loading-image progress' style={{ width: '75%' }}/>
+                        <img src={imageNotFilled} alt='Cargando imágenes' className='loading-image progress' style={{ width: '75%' }}/>
                     </section>
                 </section>
 
