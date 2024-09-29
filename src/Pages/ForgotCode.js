@@ -190,6 +190,9 @@ const ForgotCode = () => {
                         isActive ? "Reenviar código": `Reenviar código (0:${seconds<10 ? '0'+seconds : seconds})`
                     }</Link>
 
+                    <p className='p-description-code' style={{ marginTop: -10 }}>Si el correo no llega, intenta revisar en la sección de <b>Spam</b> o <b>Correo no deseado</b>.</p>
+
+
                     <Input
                         label="Contraseña"
                         name='contraseña'

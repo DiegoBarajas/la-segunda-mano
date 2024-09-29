@@ -150,9 +150,9 @@ const SigninCode = () => {
 
             <ContentLayout complete size='small' horizontalAlign='center' className='login-content-layout' redirect={redirect}>
                 <Title>Crear Cuenta</Title>
-                <h3>Confirmar correo electronico</h3>
+                <h3>Confirmar correo electrónico</h3>
 
-                <p className='p-description-code'>Se te envió un código al correo (<b>{email}</b>), ingresa el codigo para confirmar tu correo.</p>
+                <p className='p-description-code'>Se te envió un código al correo (<b>{email}</b>), ingresa el código para confirmar tu correo.</p>
 
                 <form className='form-login' onSubmit={handleSubmit}>
 
@@ -171,11 +171,13 @@ const SigninCode = () => {
                         isActive ? "Reenviar código": `Reenviar código (0:${seconds<10 ? '0'+seconds : seconds})`
                     }</Link>
 
+                    <p className='p-description-code' style={{ marginTop: -10 }}>Si el correo no llega, intenta revisar en la sección de <b>Spam</b> o <b>Correo no deseado</b>.</p>
+
                     <Button
                         width="75%"
                         mb='10px'
                         disabled={disabled}
-                        title="Confirmar codigo"
+                        title="Confirmar código"
                         type='submit'
                     >Confirmar codigo</Button>
                 </form>
