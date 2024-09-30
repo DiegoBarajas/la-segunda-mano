@@ -86,7 +86,7 @@ const ShowPricing = ({id}) => {
                         <td>
                             <section className='td-icon'><a id='precio' className='a-tooltip-element'>Precio <img src={infoSvg} alt='i'/></a></section>
                             <Tooltip anchorSelect="#precio" place="bottom">
-                                Costo unico con impuestos incluidos
+                                Costo único con impuestos incluidos
                             </Tooltip>
                         </td>
                         <td><section className='td-icon'>$0 MXN</section></td>
@@ -115,14 +115,14 @@ const ShowPricing = ({id}) => {
                     <tr>
                         <th>
                             <section className='th-icon'>
-                                <h3>Caracteristicas</h3>
+                                <h3>Características</h3>
                             </section>
                         </th>
 
                         <th>
                             <section className='th-icon'>
                                 <img src={quitSvg} alt='Estandar'/>
-                                <h3>Estandar</h3>
+                                <h3>Estándar</h3>
                             </section>
                         </th>
                     </tr>
@@ -131,9 +131,9 @@ const ShowPricing = ({id}) => {
                 <tbody>
                     <tr>
                         <td>
-                            <section className='td-icon' data-tooltip-id="my-tooltip"><a id="priotity" className='a-tooltip-element'>Prioridad en busquedas <img src={infoSvg} alt='i'/></a></section>
+                            <section className='td-icon' data-tooltip-id="my-tooltip"><a id="priotity" className='a-tooltip-element'>Prioridad en búsquedas <img src={infoSvg} alt='i'/></a></section>
                             <Tooltip anchorSelect="#priotity" place="bottom">
-                                Cuando se realiza una busqueda que coincida con el anuncio, tiene prioridad ante otras publicaciones.
+                                Cuando se realiza una búsqueda que coincida con el anuncio, tiene prioridad ante otras publicaciones.
                             </Tooltip>
                         </td>
                         <td> <section className='td-icon'><img className='yes-no-icon' src={noSvg} alt='No'/> </section></td>
@@ -163,7 +163,7 @@ const ShowPricing = ({id}) => {
                         <td>
                             <section className='td-icon'><a id='precio' className='a-tooltip-element'>Precio <img src={infoSvg} alt='i'/></a></section>
                             <Tooltip anchorSelect="#precio" place="bottom">
-                                Costo unico con impuestos incluidos
+                                Costo único con impuestos incluidos
                             </Tooltip>
                         </td>
                         <td><section className='td-icon'>$0 MXN</section></td>
@@ -185,7 +185,7 @@ const ShowPricing = ({id}) => {
                     <tr>
                         <th>
                             <section className='th-icon'>
-                                <h3>Caracteristicas</h3>
+                                <h3>Características</h3>
                             </section>
                         </th>
 
@@ -201,9 +201,9 @@ const ShowPricing = ({id}) => {
                 <tbody>
                     <tr>
                         <td>
-                            <section className='td-icon' data-tooltip-id="my-tooltip"><a id="priotity" className='a-tooltip-element'>Prioridad en busquedas <img src={infoSvg} alt='i'/></a></section>
+                            <section className='td-icon' data-tooltip-id="my-tooltip"><a id="priotity" className='a-tooltip-element'>Prioridad en búsquedas <img src={infoSvg} alt='i'/></a></section>
                             <Tooltip anchorSelect="#priotity" place="bottom">
-                                Cuando se realiza una busqueda que coincida con el anuncio, tiene prioridad ante otras publicaciones.
+                                Cuando se realiza una búsqueda que coincida con el anuncio, tiene prioridad ante otras publicaciones.
                             </Tooltip>
                         </td>
                         <td> <section className='td-icon'><img className='yes-no-icon' src={yesSvg} alt='SI'/> </section></td>
@@ -255,7 +255,7 @@ const ShowPricing = ({id}) => {
                     <tr>
                         <th>
                             <section className='th-icon'>
-                                <h3>Caracteristicas</h3>
+                                <h3>Características</h3>
                             </section>
                         </th>
                         <th>
@@ -270,9 +270,9 @@ const ShowPricing = ({id}) => {
                 <tbody>
                     <tr>
                         <td>
-                            <section className='td-icon' data-tooltip-id="my-tooltip"><a id="priotity" className='a-tooltip-element'>Prioridad en busquedas <img src={infoSvg} alt='i'/></a></section>
+                            <section className='td-icon' data-tooltip-id="my-tooltip"><a id="priotity" className='a-tooltip-element'>Prioridad en búsquedas <img src={infoSvg} alt='i'/></a></section>
                             <Tooltip anchorSelect="#priotity" place="bottom">
-                                Cuando se realiza una busqueda que coincida con el anuncio, tiene prioridad ante otras publicaciones.
+                                Cuando se realiza una búsqueda que coincida con el anuncio, tiene prioridad ante otras publicaciones.
                             </Tooltip>
                         </td>
                         <td> <section className='td-icon'><img className='yes-no-icon' src={yesSvg} alt='SI'/> </section></td>
@@ -302,7 +302,7 @@ const ShowPricing = ({id}) => {
                         <td>
                             <section className='td-icon'><a id='precio' className='a-tooltip-element'>Precio <img src={infoSvg} alt='i'/></a></section>
                             <Tooltip anchorSelect="#precio" place="bottom">
-                                Costo unico con impuestos incluidos
+                                Costo único con impuestos incluidos
                             </Tooltip>
                         </td>
                         <td><section className='td-icon'>$199 MXN</section></td>

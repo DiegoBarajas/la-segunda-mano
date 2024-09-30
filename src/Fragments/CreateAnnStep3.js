@@ -111,7 +111,7 @@ const CreateAnnStep3 = ({type, formData, setFormData, handleBack, callBack, upda
                             placeholder="Ej. +52 3325875689"
                             type='tel'
                             icon={whatsappSvg}
-                            pattern="^\+\d{1,3}\s\d{6,14}$"                            
+                            pattern="^(\+?\d{10,14}|\d{10,14})$"                            
                             value={element.contenido}
                             onChange={(e) => handleChange(e, index)}
                             auxText="Requiere el formato +52 1234567890"

@@ -69,6 +69,8 @@ const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMake
 
     const handleRecommend = async(e, id) => {
         const { target } = e;
+        if(!localStorage.getItem('token')) return modals.toast("Para recomendar, necesitas iniciar sesión", 'warning', 4)
+
         const prevDisplay = hideElement(target);
 
         try{
@@ -98,6 +100,8 @@ const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMake
     }
     
     const handleReport = async(e, id) => {
+        if(!localStorage.getItem('token')) return modals.toast("Para levantar un reporte, necesitas iniciar sesión", 'error', 4)
+
         modals.popup(
             <ReportReviewPopup id={id} type="reseña"/>, 
             'report-review-popup',

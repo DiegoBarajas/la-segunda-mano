@@ -16,6 +16,8 @@ const SellerShowAnn = ({author, mio}) => {
     const [ redirect, setRedirect ] = useState(null);
 
     const handleReport = () => {
+        if(!localStorage.getItem('token')) return modals.toast("Para levantar un reporte, necesitas iniciar sesión", 'error', 4)
+
         modals.popup(
             <ReportReviewPopup id={author.sellerId} type="vendedor" masc />, 
             'report-review-popup',

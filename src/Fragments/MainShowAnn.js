@@ -164,6 +164,8 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
     }    
     
     const handleReport = () => {
+        if(!localStorage.getItem('token')) return modals.toast("Para levantar un reporte, necesitas iniciar sesión", 'error', 4)
+
         modals.popup(
             <ReportReviewPopup id={id} type="publicacion" />, 
             'report-review-popup',
