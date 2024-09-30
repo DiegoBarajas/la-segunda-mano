@@ -437,7 +437,7 @@ controller.deleteAnnoucement = async(id) => {
 
 // Editar anuncio
 controller.editAnnouncement = async(req, res, next) => {
-    try{
+    try{        
         const { params, body, user, files } = req;
         const { id } = params;
 
@@ -496,9 +496,11 @@ controller.editAnnouncement = async(req, res, next) => {
 
         const imagenes = Array.isArray(newImages) ? [...newImages, ...newLinks] : [newImages, ...newLinks];
         const newData = {...body, "imagenes": imagenes};
+        delete newData.mejoras;
         newData.caracteristicas = caracteristicas;
         newData.contacto = contacto;
         newData.formasEntrega = formasEntrega;
+        
 
         const updatedAnn = await announcementModel.findByIdAndUpdate(id, newData);
 
