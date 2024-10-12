@@ -11,8 +11,8 @@ const SearchNavbar = ({onFocus, onBlur, value, onChange}) => {
             <input 
                 className='input-search-navbar' 
                 type='search'
-                placeholder='Busca productos, caracteristicas o categorias'
-                title='Busca productos, caracteristicas o categorias'
+                placeholder='Busca productos, características o categorías'
+                title='Busca productos, características o categorías'
                 name='nombre'
                 value={value}
                 onChange={onChange}

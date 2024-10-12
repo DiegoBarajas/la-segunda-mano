@@ -6,19 +6,14 @@ import announcementiconColor from '../Assets/Icons/announcementiconColor.svg'
 
 const ReportItem = ({ report }) => {
     return (
-        <div className='report-item-container'>
-            <section className='report-item-header'>
-                <h3>{report.razon}</h3>
-                {chooseType(report.tipo)}
-                
-            </section>
-            <p className='report-item-description'>{report.descripcion}</p>
-
-            <span className='report-item-status'>
-                <b>Estado: </b> <u>{report.estado}</u> 
-            </span>
-
-        </div>
+        <tr className='table-row-report'>
+            <td className='table-field td-center' title={report._id} >{report._id}</td>
+            <td className='table-field td-center' title={report.fechaCreacion} >{parseDate(report.fechaCreacion)}</td>
+            <td className='table-field' title={report.razon} >{report.razon}</td>
+            <td className='table-field' title={report.descripcion} >{report.descripcion}</td>
+            <td className='table-field td-center' title={report.estado} ><p>{report.estado}</p></td>
+            <td className='table-field' title={report.tipo.toUpperCase()} >{ chooseType(report.tipo) }</td>
+        </tr>
     )
 }
 
@@ -49,5 +44,17 @@ function chooseType(type) {
 
         default: return null;
 
+    }
+}
+
+function parseDate(date){
+    try{
+        const [dia, mes, año] = date.split('-');
+        const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+
+
+        return `${dia} ${meses[mes-1].toLowerCase()} ${año}`;
+    }catch(err){       
+        return date;
     }
 }

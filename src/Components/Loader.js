@@ -1,9 +1,9 @@
 import React from 'react'
 import '../Styles/Components/Loader.css'
 
-const Loader = () => {
+const Loader = ({ small=false }) => {
     return (
-        <div className='loader'></div>
+        <div className={small ? 'small-loader' : 'loader'}></div>
     )
 }
 

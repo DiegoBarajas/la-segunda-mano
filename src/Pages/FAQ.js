@@ -41,27 +41,28 @@ const FAQ = () => {
                     <ol style={{ marginLeft: '30px', marginTop: '10px' }}>
                         <li>Tener la sesión iniciada (En caso de no tener una cuenta ver pregunta anterior). <Link to='/login' target='__blank'>Inicia sesión aquí</Link>.</li>
                         <li>Ir a la pestaña <Link to='/vender' target='__blank'>/vender</Link></li>
-                        <li>Seleccionar el tipo de anuncio en caso de no saber hasta abajo hacer click en el texto <i>¿Qué categoría es mi producto/servicio?</i>.</li>
+                        <li>Seleccionar el tipo de anuncio en caso de no saber hasta abajo hacer click en el texto "<i>¿Qué categoría es mi producto/servicio?</i>".</li>
                         <li>Llenar los campos que se solicitan, estos pueden variar en función al tipo de anuncio. <b>NOTA: Los campos marcados con un asterisco son obligatorios</b>.</li>
-                        <li>Repetir paso 4 hasta el punto <u>"Contacto y entrega"</u>. Aquí debes agregar las formas como los compradores pueden comunicarse contigo, y los medios </li>
+                        <li>Repetir paso 4 hasta el punto <u>"Contacto y entrega"</u>. Aquí debes agregar las formas como los compradores pueden comunicarse contigo. </li>
+                        <li>mas abajo debes definir donde entregas, hay algunos campos que requieren especificar, responde lo que se pida.</li>
+                        <li>Acepta los términos y condiciones y presiona enviar</li>
                     </ol>
                 </p>
             </AccordionContentLayout>
 
 
-            <AccordionContentLayout size="small" complete titulo="¿Cómo publicar un anuncio?" >
+            <AccordionContentLayout size="small" complete titulo="¿Cómo comprar?" >
                 <p>
-                    Para publicar un anuncio en <b>LaSegundaMano.com.mx</b> sigue los siguientes pasos:
-                    <br/>
-                    <ol style={{ marginLeft: '30px', marginTop: '10px' }}>
-                        <li>Tener la sesión iniciada (En caso de no tener una cuenta ver pregunta anterior). <Link to='/login' target='__blank'>Inicia sesión aquí</Link>.</li>
-                        <li>Ir a la pestaña <Link to='/vender' target='__blank'>/vender</Link></li>
-                        <li>Seleccionar el tipo de anuncio en caso de no saber hasta abajo hacer click en el texto <i>¿Qué categoría es mi producto/servicio?</i>.</li>
-                        <li>Llenar los campos que se solicitan, estos pueden variar en función al tipo de anuncio. <b>NOTA: Los campos marcados con un asterisco son obligatorios</b>.</li>
-                        <li>Repetir paso 4 hasta el punto <u>"Contacto y entrega"</u>. Aquí debes agregar las formas como los compradores pueden comunicarse contigo, </li>
-                    </ol>
+                    Haz click en la publicación que te interese, y presiona el botón que dice "<i><u>Contactar con el vendedor</u></i>". Selecciona el medio de contacto que prefieras (esto varia según la publicación). Ponte de acuerdo con el vendedor y listo!
                 </p>
             </AccordionContentLayout>
+
+            <AccordionContentLayout size="small" complete titulo="¿Cómo mejorar mi anuncio?" >
+                <p>
+                    
+                </p>
+            </AccordionContentLayout>
+
 
         </PageLayout>
     )

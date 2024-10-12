@@ -772,8 +772,8 @@
         }
     ],
 
-    "pasosCrearAnuncio": ["Tipo", "Datos generales", "Caracteristicas", "Contacto y entrega"],
-    "pasosCrearAnuncioEdit": ["Tipo","Imagenes", "Datos generales", "Caracteristicas", "Contacto y entrega"],
+    "pasosCrearAnuncio": ["Tipo", "Datos generales", "Características", "Contacto y entrega"],
+    "pasosCrearAnuncioEdit": ["Tipo","Imágenes", "Datos generales", "Características", "Contacto y entrega"],
 
 
     "reporte": {
@@ -782,17 +782,17 @@
             "Se hace pasar por otra persona", 
             "Suplantación de identidad",
             "Estafa o engaño", 
-            "Infringe terminos y condiciones", 
+            "Infringe términos y condiciones", 
             "Otra razón"
         ],
         "publicacion": [
-            "La fotografia no coincide con el anuncio", 
+            "La fotografía no coincide con el anuncio", 
             "Vende producto/servicio inapropiado", 
             "Ofrece información engañosa",
             "Irrelevante o sin sentido",
             "Anuncio falso o engañoso", 
             "El precio es engañoso",
-            "Infringe terminos y condiciones", 
+            "Infringe términos y condiciones", 
             "Otra razón"
         ],
         "reseña": [
@@ -802,7 +802,7 @@
             "Incita al odio",
             "Difamación", 
             "Spam",
-            "Infringe terminos y condiciones", 
+            "Infringe términos y condiciones", 
             "Otra razón"
         ]
     },
@@ -837,9 +837,9 @@
                 },{
                     "kind": "select",
                     "name": "categoria",
-                    "label": "Categoria",
-                    "placeholder": "Categoria",
-                    "auxText": "Selecciona la categoria mas acorde a tu articulo",
+                    "label": "Categoría",
+                    "placeholder": "Categoría",
+                    "auxText": "Selecciona la categoría mas acorde a tu articulo",
                     "required": true,
                     "options": "categoriasProductos"
                 },{
@@ -1666,5 +1666,56 @@
 
             ]
         }
-    }
+    },
+
+    "filterTipo": [
+        {
+            "text": "Mostrar todo",
+            "value": ""
+        },
+        {
+            "text": "Vendedor",
+            "value": "vendedor"
+        },
+        {
+            "text": "Reseña",
+            "value": "reseña"
+        },
+        {
+            "text": "publicación",
+            "value": "publicacion"
+        }
+    ],
+    "filterEstado":  [
+        {
+            "text": "Mostrar todo",
+            "value": ""
+        },
+        {
+            "text": "Pendiente",
+            "value": "Pendiente"
+        },
+        {
+            "text": "En revision",
+            "value": "En revision"
+        },
+        {
+            "text": "Anulada",
+            "value": "Anulada"
+        },
+        {
+            "text": "Aceptada",
+            "value": "Aceptada"
+        }
+    ],
+    "orderFilterTable": [
+        {
+            "text": "Más antiguos primero",
+            "value": ""
+        },
+        {
+            "text": "Mas nuevos primero",
+            "value": "new"
+        } 
+    ]
 }

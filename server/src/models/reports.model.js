@@ -36,8 +36,8 @@ const userSchema = new Schema({
     descripcion: { type: String, required: true },
     estado: { 
         type: String, 
-        default:'En revision', 
-        enum: [ "En revision", "Anulada", "Aceptada y cerrada" ], 
+        default:'Pendiente', 
+        enum: [ "Pendiente", "En revision", "Anulada", "Aceptada" ], 
         required: true 
     },
 
@@ -45,7 +45,7 @@ const userSchema = new Schema({
     
     cerrado: { type: Boolean, required: false },
 },{
-    timestapms: true
+    timestamps  : true
 });
 
 module.exports = model('report', userSchema);
