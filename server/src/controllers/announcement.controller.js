@@ -30,7 +30,7 @@ controller.createAnnouncement = async(req, res, next) => {
 
 //      Obtener la fecha actual de la ciudad de Mexico, y clonar otra con 7 dias adicionales
         const fechaCreacion = moment().tz('America/Mexico_City');
-        const fechaExpiracion = fechaCreacion.clone().add(10, 'days');
+        const fechaExpiracion = fechaCreacion.clone().add(15, 'days');
 
 //      Clonar el body para agregarle mas data (la obtenida previamente)
         const announcementData = {...body};
@@ -56,8 +56,8 @@ controller.createAnnouncement = async(req, res, next) => {
                     resource_type: 'auto',
                     public_id: img.name,
                     overwrite: true,
-                    width: 750,
-                    height: 750,
+                    width: 1000,
+                    height: 1000,
                     crop: 'thumb'
                 });
 
@@ -74,8 +74,8 @@ controller.createAnnouncement = async(req, res, next) => {
                 resource_type: 'auto',
                 public_id: imagenesFiles.name,
                 overwrite: true,
-                width: 750,
-                height: 750,
+                width: 1000,
+                height: 1000,
                 crop: 'thumb'
             });
 
@@ -466,8 +466,8 @@ controller.editAnnouncement = async(req, res, next) => {
                         resource_type: 'auto',
                         public_id: img.name,
                         overwrite: true,
-                        width: 750,
-                        height: 750,
+                        width: 1000,
+                        height: 1000,
                         crop: 'thumb'
                     });
         
@@ -484,8 +484,8 @@ controller.editAnnouncement = async(req, res, next) => {
                     resource_type: 'auto',
                     public_id: imagenesFiles.name,
                     overwrite: true,
-                    width: 750,
-                    height: 750,
+                    width: 1000,
+                    height: 1000,
                     crop: 'thumb'
                 });
         
