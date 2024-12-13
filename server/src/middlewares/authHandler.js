@@ -28,6 +28,11 @@ module.exports = async (req, res, next) => {
 
             try {
                 req.user = await UserModel.findById(decoded.user._id);
+                if(!req.user.active){
+                    console.error(colors.yellow(`[ NO AUTORIZADO ] El usuario esta dado de baja`));
+                    return next(new CustomError("El usuario esta dado de baja", 401));
+                }
+
                 if (!req.user) {
                     return next(new CustomError("Usuario no encontrado", 404));
                 }

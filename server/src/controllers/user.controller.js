@@ -47,6 +47,11 @@ controller.login = async(req, res, next) => {
         const user = await UserModel.findOne({ correo });
         if(!user) throw new CustomError(`No hay ninguna cuenta asociada a ese correo.`, 400);
 
+//      Comprobar si el usuario esta activo
+        if(!user.active){
+            throw new CustomError(`El usuario esta dado de baja.`, 401);
+        }
+
 //      Comprobar si la contraseña coincide
         if(!bcrypt.compareSync(contraseña, user.contraseña)){
             throw new CustomError(`La contraseña es invalida.`, 401);

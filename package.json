@@ -1,6 +1,6 @@
 {
   "name": "la-segunda-mano",
-  "version": "alpha 0.0.100",
+  "version": "1.0",
   "private": true,
   "dependencies": {
     "@stripe/react-stripe-js": "^2.7.3",
@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "cropperjs": "^1.6.2",
+    "la-segunda-mano": "file:",
     "react": "^18.3.1",
     "react-cropper": "^2.3.3",
     "react-dom": "^18.3.1",

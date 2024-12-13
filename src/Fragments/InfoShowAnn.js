@@ -4,9 +4,7 @@ import formasEntregaSvg from '../Assets/Icons/formasEntrega.svg'
 import '../Styles/Pages/ShowAnnouncement.css';
 
 const InfoShowAnn = ({announcement}) => {
-
     const [ expandedDescr, setExpandedDescr ] = useState(false);
-
 
     return announcement ? (
         <ContentLayout horizontalAlign='center'>

@@ -1,6 +1,6 @@
 {
   "name": "la-segunda-mano-server",
-  "version": "1.0.0",
+  "version": "1.0",
   "main": "index.js",
   "scripts": {
     "test": "node ./src/",
@@ -22,6 +22,7 @@
     "express-fileupload": "^1.5.0",
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
+    "la-segunda-mano-server": "file:",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.45",
     "mongoose": "^8.4.3",
