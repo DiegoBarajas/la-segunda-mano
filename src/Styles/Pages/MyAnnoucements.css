@@ -59,6 +59,8 @@
 
 .annoucement-item-my-main img {
     width: 150px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 .annoucement-item-my-main .column {

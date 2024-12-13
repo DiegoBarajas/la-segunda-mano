@@ -16,6 +16,8 @@
 
 .img-card-annoucement {
     width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
 .title-card-annoucement {

@@ -14,7 +14,6 @@ const { createNotification } = require('./notification.controller');
 const favoriteModel = require('../models/favorite.model');
 const cloudinaryController = require('./cloudinary.controller');
 const announcementModel = require('../models/announcement.model');
-const { log } = require('console');
 
 const controller = {};
 
@@ -56,9 +55,6 @@ controller.createAnnouncement = async(req, res, next) => {
                     resource_type: 'auto',
                     public_id: img.name,
                     overwrite: true,
-                    width: 1000,
-                    height: 1000,
-                    crop: 'thumb'
                 });
 
                 fs.unlinkSync(img.tempFilePath);
@@ -74,9 +70,6 @@ controller.createAnnouncement = async(req, res, next) => {
                 resource_type: 'auto',
                 public_id: imagenesFiles.name,
                 overwrite: true,
-                width: 1000,
-                height: 1000,
-                crop: 'thumb'
             });
 
             fs.unlinkSync(imagenesFiles.tempFilePath);
@@ -466,9 +459,6 @@ controller.editAnnouncement = async(req, res, next) => {
                         resource_type: 'auto',
                         public_id: img.name,
                         overwrite: true,
-                        width: 1000,
-                        height: 1000,
-                        crop: 'thumb'
                     });
         
                     fs.unlinkSync(img.tempFilePath);
@@ -484,9 +474,6 @@ controller.editAnnouncement = async(req, res, next) => {
                     resource_type: 'auto',
                     public_id: imagenesFiles.name,
                     overwrite: true,
-                    width: 1000,
-                    height: 1000,
-                    crop: 'thumb'
                 });
         
                 fs.unlinkSync(imagenesFiles.tempFilePath);

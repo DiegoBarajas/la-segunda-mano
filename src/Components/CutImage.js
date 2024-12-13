@@ -15,7 +15,7 @@ const CutImage = ({ image, onCancel, setCroppedImage }) => {
 
     useEffect(() => {
         if (image) {
-            reduceImageSize(image, 800, 800, (reducedBlob) => {
+            reduceImageSize(image, 1000, 1000, (reducedBlob) => {
                 const reducedUrl = URL.createObjectURL(reducedBlob);
                 setImageSrc(reducedUrl);
             });
