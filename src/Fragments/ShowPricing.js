@@ -246,7 +246,7 @@ const ShowPricing = ({id}) => {
                                 Me interesa adquirir una mejora de mi anuncio
                             </Tooltip>
                         </td>
-                        <td><a className='a-td-button'>Me interesa</a></td>                    
+                        <td><a href={`/anuncio/${id}/mejorar?tipo=Impulsado`} className='a-td-button'>Me interesa</a></td>                    
                     </tr>
                 </tbody>
             </table>
@@ -315,7 +315,7 @@ const ShowPricing = ({id}) => {
                                 Me interesa adquirir una mejora de mi anuncio
                             </Tooltip>
                         </td>
-                        <td><a className='a-td-button'>Me interesa</a></td>                       
+                        <td><a href={`/anuncio/${id}/mejorar?tipo=Premium`} className='a-td-button'>Me interesa</a></td>                       
                     </tr>
                 </tbody>
             </table>
