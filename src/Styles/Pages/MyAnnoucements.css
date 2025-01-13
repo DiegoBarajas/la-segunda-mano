@@ -29,8 +29,10 @@
     gap: 0;
 }
 
-.annoucement-item-my-main-col {
-    /*margin-left: 10px;*/
+.annoucement-item-my-main-sp {
+    width: 10px;
+    height: 150px;
+    content: '';
 }
 
 .annoucement-item-my-main-pub {
