@@ -16,7 +16,7 @@ const AnnoucementMyAnn = ({ann, showLabel=true, className}) => {
             <section className='annoucement-item-my-main'>
                 <img src={ann.imagenes[0]} alt='Imagen'/>
 
-                <ColumnLayout verticalAlign='start'>
+                <ColumnLayout verticalAlign='start' className="annoucement-item-my-main-col">
                     <h3>{ann.titulo}</h3>
                     <h2>{showPrice(ann.precio)}</h2>
 

@@ -26,7 +26,11 @@
     display: flex;
     justify-content: start;
     align-items: start;
-    gap: 5px;
+    gap: 0;
+}
+
+.annoucement-item-my-main-col {
+    /*margin-left: 10px;*/
 }
 
 .annoucement-item-my-main-pub {
@@ -44,6 +48,7 @@
 }
 
 .annoucement-item-my-main-desc {
+    margin-top: 10px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -70,6 +75,7 @@
 .annoucement-item-my-main .column h2{
     font-weight: 500;
     font-size: 22px;
+    margin-top: 5px;
 }
 
 .annoucement-item-my-main .column h3{
