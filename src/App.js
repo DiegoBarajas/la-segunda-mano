@@ -43,6 +43,10 @@ const App = () => {
     	<div>
 			<Routes>
 				<Route path='/' Component={Index}/>
+				<Route path='/inicio' Component={Index}/>
+				<Route path='/home' Component={Index}/>
+				<Route path='/index' Component={Index}/>
+
 				<Route path='/login' element={<UnloggedRoute> <Login/> </UnloggedRoute>} />
 				<Route path='/forgot' element={<UnloggedRoute> <Forgot/> </UnloggedRoute>} />
 				<Route path='/forgot/code' element={<UnloggedRoute> <ForgotCode/> </UnloggedRoute>} />
