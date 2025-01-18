@@ -22,7 +22,7 @@ const Footer = () => {
             </section>
 
             <section className='info-footer'>
-                <p className='p-info-footer'><b>LaSegundaMano.com.mx</b> 2025 • <b>Version:</b> {packageJSON.version}</p>
+                <p className='p-info-footer'>LaSegundaMano.com.mx 2025 • <b>Versión:</b> {packageJSON.version}</p>
             </section>
         </footer>
     )
