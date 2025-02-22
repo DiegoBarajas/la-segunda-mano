@@ -6,6 +6,7 @@ const Input = ({ label, id, name, className, placeholder, auxText, min, value=nu
     const afterTextElement = useRef(null);
     const [ currentValue, setCurrentValue ] = useState(value ? value : defaultValue);
     const [ userAgent ] = useState(navigator.userAgent);
+    
 
     const handleChange = (e) => {
         const { value } = e.target;

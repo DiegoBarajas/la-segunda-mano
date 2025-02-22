@@ -1,16 +1,19 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import '../Styles/Components/Select.css'
 
 const Select = ({ label, id, name, className, auxText, title, value=null, options=[], width='100%', mb='5px', required=false, icon=null, selectedOption,  onChange }) => {
 
     const afterTextElement = useRef(null);
+    const [ userAgent ] = useState(navigator.userAgent);
+    console.log(userAgent);
+    
 
     return (
         <div className={`input-container ${className}`} style={{ width: width, marginBottom: mb }} title={title}>
             <label htmlFor={id}><b>{label}{required ? <span className='required'>*</span> : ""}</b></label>
             <div className='input-element'>
                 {
-                    icon 
+                    icon && !userAgent.includes("Safari")
                         ? <img src={icon} alt='Icon' className='icon-input' />
                         : <></> 
                 }

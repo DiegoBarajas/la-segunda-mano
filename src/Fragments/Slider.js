@@ -23,8 +23,6 @@ const Slider = () => {
         async function getBanners() {
             try{
                 const response = await axios.get(`${backend}/api/banner`);
-
-                console.log(response.data);
                 
                 setBanners(response.data);
             }catch(err){
