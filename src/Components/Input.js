@@ -5,6 +5,7 @@ const Input = ({ label, id, name, className, placeholder, auxText, min, value=nu
 
     const afterTextElement = useRef(null);
     const [ currentValue, setCurrentValue ] = useState(value ? value : defaultValue);
+    const [ userAgent ] = useState(navigator.userAgent);
 
     const handleChange = (e) => {
         const { value } = e.target;
@@ -18,7 +19,7 @@ const Input = ({ label, id, name, className, placeholder, auxText, min, value=nu
             <label title={title} htmlFor={id}><b>{label}{required ? <span className='required'>*</span> : ""}</b></label>
             <div className='input-element'>
                 {
-                    icon 
+                    icon && !userAgent.includes("Safari") && navigator.userAgent.includes("Chrome")
                         ? <img src={icon} alt='Icon' className='icon-input' />
                         : <></> 
                 }
