@@ -163,7 +163,6 @@ const ReviewsShowAnn = ({ author, reviews, setReviews, canMakeReview, setCanMake
                                     width='100%'
                                     minHeight='45px'
                                     textArea
-                                    required
                                 />
                                 <input type='hidden' name='commentedUser' value={author.sellerId}/>
                 

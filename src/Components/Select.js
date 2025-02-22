@@ -4,9 +4,7 @@ import '../Styles/Components/Select.css'
 const Select = ({ label, id, name, className, auxText, title, value=null, options=[], width='100%', mb='5px', required=false, icon=null, selectedOption,  onChange }) => {
 
     const afterTextElement = useRef(null);
-    const [ isSafari ] = useState(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome"));
-    console.log(isSafari);    
-    
+    const [ isSafari ] = useState(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome"));    
 
     return (
         <div className={`input-container ${className}`} style={{ width: width, marginBottom: mb }} title={title}>

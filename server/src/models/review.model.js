@@ -13,7 +13,7 @@ const reviewSchema = new Schema({
     },
 
     calificacion: { type: Number, required: true, min: 1 },
-    contenido: { type: String, required: true },
+    contenido: { type: String, default: "" },
     fechaCreacion: { type: String, required: true },
     importancia: { type: Number, default: 0, required: true }
 },{
