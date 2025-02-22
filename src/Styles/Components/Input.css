@@ -127,3 +127,9 @@
         flex-direction: column-reverse;
     }
 }
+
+@supports (-webkit-touch-callout: none) {
+    .icon-input {
+      display: none !important;
+    }
+  }

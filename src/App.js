@@ -40,7 +40,7 @@ import FAQ from './Pages/FAQ';
 
 const App = () => {
     return (
-    	<div>
+    	<div style={{ overflowX: 'hidden' }}>
 			<Routes>
 				<Route path='/' Component={Index}/>
 				<Route path='/inicio' Component={Index}/>
