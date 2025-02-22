@@ -4,8 +4,8 @@ import '../Styles/Components/Select.css'
 const Select = ({ label, id, name, className, auxText, title, value=null, options=[], width='100%', mb='5px', required=false, icon=null, selectedOption,  onChange }) => {
 
     const afterTextElement = useRef(null);
-    const [ userAgent ] = useState(navigator.userAgent);
-    console.log(userAgent);
+    const [ isSafari ] = useState(navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome"));
+    console.log(isSafari);    
     
 
     return (
@@ -13,7 +13,7 @@ const Select = ({ label, id, name, className, auxText, title, value=null, option
             <label htmlFor={id}><b>{label}{required ? <span className='required'>*</span> : ""}</b></label>
             <div className='input-element'>
                 {
-                    icon && !userAgent.includes("Safari")
+                    icon && !isSafari
                         ? <img src={icon} alt='Icon' className='icon-input' />
                         : <></> 
                 }
