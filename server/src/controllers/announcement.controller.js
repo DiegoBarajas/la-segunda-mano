@@ -29,7 +29,7 @@ controller.createAnnouncement = async(req, res, next) => {
 
 //      Obtener la fecha actual de la ciudad de Mexico, y clonar otra con 7 dias adicionales
         const fechaCreacion = moment().tz('America/Mexico_City');
-        const fechaExpiracion = fechaCreacion.clone().add(15, 'days');
+        const fechaExpiracion = fechaCreacion.clone().add(30, 'days');
 
 //      Clonar el body para agregarle mas data (la obtenida previamente)
         const announcementData = {...body};

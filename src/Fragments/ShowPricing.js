@@ -77,7 +77,7 @@ const ShowPricing = ({id}) => {
                                 El anuncio tiene un tiempo de caducidad, este tiempo depende del tipo de anuncio.
                             </Tooltip>
                         </td>
-                        <td><section className='td-icon'>15 días</section></td>
+                        <td><section className='td-icon'>30 días</section></td>
                         <td><section className='td-icon'>30 días</section></td>
                         <td><section className='td-icon'>60 días</section></td>
                     </tr>
@@ -296,7 +296,7 @@ const ShowPricing = ({id}) => {
                                 El anuncio tiene un tiempo de caducidad, este tiempo depende del tipo de anuncio.
                             </Tooltip>
                         </td>
-                        <td><section className='td-icon'>15 días</section></td>
+                        <td><section className='td-icon'>30 días</section></td>
                     </tr>
 
                     <tr>
