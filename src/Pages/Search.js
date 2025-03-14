@@ -114,7 +114,7 @@ const Search = () => {
                         )
                 }
             </section>
-            <Paginator total={total / 10+1} handleChange={handleChangePage} defaultCurrent={currentPage}/> 
+            <Paginator total={total / 14+1} handleChange={handleChangePage} defaultCurrent={currentPage}/> 
             <form style={{ display: 'none' }} id='form-page'>
                 <input type='hidden' value={currentPage}/>
             </form>

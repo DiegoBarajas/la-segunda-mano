@@ -280,8 +280,9 @@ controller.getAnnouncementBySellerId = async(req, res, next) => {
 // Obtener resgistros por busqueda
 controller.getAnnouncementBySearch = async(req, res, next) => {
     try {
+        const PageSize = 14;
         const { query } = req;
-        const skip = query.page ? query.page * 15 : 0;
+        const skip = query.page ? query.page * PageSize : 0;
         const filter = {}
         let sort = { createdAt: -1 }
         
@@ -305,7 +306,7 @@ controller.getAnnouncementBySearch = async(req, res, next) => {
 
 
         // Búsqueda de anuncios regulares
-        const annoucements = await AnnouncementModel.find(filter).skip(skip).limit(15).sort(sort);
+        const annoucements = await AnnouncementModel.find(filter).skip(skip).limit(PageSize).sort(sort);
         const total = await AnnouncementModel.countDocuments(filter);
 
         // Búsqueda de anuncios impulsados (2 aleatorios)
