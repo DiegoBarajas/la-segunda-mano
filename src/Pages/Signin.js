@@ -93,11 +93,11 @@ const Signin = () => {
                 <form className='form-login' onSubmit={handleSubmit}>
 
                     <Input
-                        label="Nombre"
+                        label="Nombre personal o de negocio"
                         name='nombre'
                         width="75%"
-                        placeholder="Ej. Juan Carlos"
-                        title="Ingresa tu(s) nombre(s)"
+                        placeholder="Ej. Juan Carlos | Autopartes chavez"
+                        title="Nombre personal o de negocio"
                         required
                         mb='12px'
                         icon={PersonSvg}
@@ -112,7 +112,6 @@ const Signin = () => {
                         width="75%"
                         placeholder="Ej. Lopez Perez"
                         title="Ingresa tu(s) appelido(s)"
-                        required
                         mb='12px'
                         icon={IdCardSvg}
 
