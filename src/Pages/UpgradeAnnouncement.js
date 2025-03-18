@@ -80,7 +80,7 @@ const UpgradeAnnouncement = () => {
                     </ul>
                 </section>
 
-                <h2 className='price-upgrade'>$99.00 MXN</h2>
+                <h2 className='price-upgrade'>$49.00 MXN</h2>
                 <Button width='50%'
                     onClick={() => modals.popup(<ModalPayment id={id} plan='impulsado' />, "swal-show-payment", "Cancelar")}
                 >Adquirir</Button>
@@ -104,7 +104,7 @@ const UpgradeAnnouncement = () => {
                     </ul>
                 </section>
 
-                <h2 className='price-upgrade'>$199.00 MXN</h2>
+                <h2 className='price-upgrade'>$99.00 MXN</h2>
                 <Button width='50%'
                     onClick={() => modals.popup(<ModalPayment id={id} plan='premium' />, "swal-show-payment", "Cancelar")}
                 >Adquirir</Button>
