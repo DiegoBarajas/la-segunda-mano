@@ -44,7 +44,7 @@ const Signin = () => {
         if(disabled) return;
 
         for (let key in formData) 
-            if (formData[key] === '') return Modals.alert("Atención", "Debes llenar <b>TODOS</b> los campos", 'warning');
+            if (formData[key] === '' && key != 'apellido') return Modals.alert("Atención", "Debes llenar <b>TODOS</b> los campos", 'warning');
         if(formData.contraseña !== formData.repetirContraseña) return Modals.alert("Atención", "Las contraseñas <b>NO</b> coinciden", 'warning');
         
         setDisabled(true);
