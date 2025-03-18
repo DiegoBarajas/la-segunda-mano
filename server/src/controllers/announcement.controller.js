@@ -530,7 +530,6 @@ controller.getPaymentIntent = async(req, res, next) => {
     }
 
     function getAmount(query){
-        return 10;
         const { plan } = query;
         switch(plan){
             case "impulsado": return 99;
