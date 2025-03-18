@@ -157,8 +157,8 @@ controller.signin = async(req, res, next) => {
     try{
 //      Obtener los params del body        
         const { nombre, apellido, correo, contraseña } = req.body;
-        if(!nombre || !apellido || !correo || !contraseña) throw new UncompleteFieldsError(["nombre", "apellido", "correo", "contraseña"]);
-        
+        if(!nombre || !correo || !contraseña) throw new UncompleteFieldsError(["nombre", "apellido", "correo", "contraseña"]);
+    
 //      Comprobar si existe el usuario con el correo
         const existentUser = await UserModel.findOne({ correo });
         if(existentUser) throw new CustomError(`Ya hay un usuario con el correo "${correo}".`, 400);
@@ -169,7 +169,7 @@ controller.signin = async(req, res, next) => {
 //      Crear el nuevo objeto de Usuario
         const newUser = {
             nombre,
-            apellido,
+            apellido: apellido ?? "",
             correo,
             contraseña: bcrypt.hashSync(contraseña, 8),
             code: randCode
