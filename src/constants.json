@@ -651,58 +651,46 @@
 
     "entregas": {
         "producto": [
-        {
-            "text": "Encuentro en punto medio"        
-        },
-        {
-            "text": "Recoger en mi casa"
-        },
-        {
-            "text": "Llevar a la casa del comprador"
-        },
-        {
-            "text": "Llevar a la casa del comprador (+ Cargo adicional)"
-        },
-        {
-            "text": "Envío por paquetería"
-        },
-        {
-            "text": "Envío por paquetería (+ Cargo adicional)"
-        },
-        {
-            "text": "Entrega en puntos especificos",
-            "input": true,
-            "required": true,
-            "label": "¿Cuales son los puntos especificos?",
-            "placeholder": "Ej. Centros comerciales, estaciones del metro, centro..."
-        }
+            {
+                "text": "Encuentro en punto medio"        
+            },
+            {
+                "text": "Recoger en mi casa"
+            },
+            {
+                "text": "Llevar a la casa del comprador"
+            },
+            {
+                "text": "Envío por paquetería"
+            },
+            {
+                "text": "Entrega en puntos especificos",
+                "input": true,
+                "required": true,
+                "label": "¿Cuales son los puntos especificos?",
+                "placeholder": "Ej. Centros comerciales, estaciones del metro, centro..."
+            }
         ],
         "gratis": [
-        {
-            "text": "Encuentro en punto medio"        
-        },
-        {
-            "text": "Recoger en mi casa"
-        },
-        {
-            "text": "Llevar a la casa del comprador"
-        },
-        {
-            "text": "Llevar a la casa del comprador (+ Cargo adicional)"
-        },
-        {
-            "text": "Envío por paquetería"
-        },
-        {
-            "text": "Envío por paquetería (+ Cargo adicional)"
-        },
-        {
-            "text": "Entrega en puntos especificos",
-            "input": true,
-            "required": true,
-            "label": "¿Cuales son los puntos especificos?",
-            "placeholder": "Ej. Centros comerciales, estaciones del metro, centro..."
-        }
+            {
+                "text": "Encuentro en punto medio"        
+            },
+            {
+                "text": "Recoger en mi casa"
+            },
+            {
+                "text": "Llevar a la casa del comprador"
+            },
+            {
+                "text": "Envío por paquetería"
+            },
+            {
+                "text": "Entrega en puntos especificos",
+                "input": true,
+                "required": true,
+                "label": "¿Cuales son los puntos especificos?",
+                "placeholder": "Ej. Centros comerciales, estaciones del metro, centro..."
+            }
         ], 
         "vehiculo": [
             {
@@ -713,9 +701,6 @@
             },
             {
                 "text": "Encuentro en la casa del comprador"
-            },
-            {
-                "text": "Encuentro la casa del comprador (+ Cargo adicional)"
             },
             {
                 "text": "Encuentro en puntos especificos",
