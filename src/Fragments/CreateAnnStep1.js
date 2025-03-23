@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { PhotoProvider, PhotoView } from 'react-image-previewer';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
+
 import ContentLayout from '../Layouts/ContentLayout';
 import InputFile from '../Components/InputFile';
 import Select from '../Components/Select';

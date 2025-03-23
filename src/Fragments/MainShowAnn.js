@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { PhotoProvider, PhotoView } from 'react-image-previewer';
-import { SlideToolbar, CloseButton } from 'react-image-previewer/ui';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
+
 import ContactSelllerPopup from './ContactSelllerPopup';
 import ContentLayout from '../Layouts/ContentLayout';
 import ReportReviewPopup from './ReportReviewPopup';
@@ -179,15 +180,7 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
             <main className='show-announcement-main'>
                 
                 <section className='show-announcement-imgs'>
-                    <PhotoProvider overlayRender={props => {
-                            const { onClose } = props
-                            return (
-                            <>
-                                <SlideToolbar {...props} />
-                                <CloseButton onClick={onClose} />
-                            </>
-                            )
-                    }}>
+                    <PhotoProvider>
                         <PhotoView src={ announcement.imagenes[0] }>
                             <img src={announcement.imagenes[0]} alt={announcement.imagenes[0]} title='Haz click para ampliar esta imagen' />
                         </PhotoView>

@@ -55,7 +55,18 @@ const RecentAnnouncements = () => {
     ) : (
         <div className='premium-container'>
             <h4>Anuncios recientes</h4>
+            
             <section className='anns-content'>
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
+                <AnnoucementMyAnn showLabel={false}/> 
                 <AnnoucementMyAnn showLabel={false}/> 
                 <AnnoucementMyAnn showLabel={false}/> 
                 <AnnoucementMyAnn showLabel={false}/> 

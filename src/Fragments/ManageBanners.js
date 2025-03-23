@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import AccordionContentLayout from '../Layouts/AccordionContentLayout'
 import ContentLayout from '../Layouts/ContentLayout'
 import Button from '../Components/Button'
-import { PhotoProvider, PhotoView } from 'react-image-previewer'
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 import addSvg from '../Assets/Icons/add.svg'
 import closeSvg from '../Assets/Icons/cancelBlack.svg'
