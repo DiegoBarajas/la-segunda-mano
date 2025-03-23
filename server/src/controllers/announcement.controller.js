@@ -530,11 +530,10 @@ controller.getPaymentIntent = async(req, res, next) => {
     }
 
     function getAmount(query){
-        return 10;
         const { plan } = query;
         switch(plan){
-            case "impulsado": return 99;
-            case "premium": return 199;
+            case "impulsado": return 49;
+            case "premium": return 99;
             default: throw new CustomError("Plan no valido", 400);
         }
     }

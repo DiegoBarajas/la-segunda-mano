@@ -44,7 +44,7 @@ const Signin = () => {
         if(disabled) return;
 
         for (let key in formData) 
-            if (formData[key] === '') return Modals.alert("Atención", "Debes llenar <b>TODOS</b> los campos", 'warning');
+            if (formData[key] === '' && key != 'apellido') return Modals.alert("Atención", "Debes llenar <b>TODOS</b> los campos", 'warning');
         if(formData.contraseña !== formData.repetirContraseña) return Modals.alert("Atención", "Las contraseñas <b>NO</b> coinciden", 'warning');
         
         setDisabled(true);
@@ -93,11 +93,11 @@ const Signin = () => {
                 <form className='form-login' onSubmit={handleSubmit}>
 
                     <Input
-                        label="Nombre"
+                        label="Nombre personal o de negocio"
                         name='nombre'
                         width="75%"
-                        placeholder="Ej. Juan Carlos"
-                        title="Ingresa tu(s) nombre(s)"
+                        placeholder="Ej. Juan Carlos | Autopartes chavez"
+                        title="Nombre personal o de negocio"
                         required
                         mb='12px'
                         icon={PersonSvg}
@@ -112,7 +112,6 @@ const Signin = () => {
                         width="75%"
                         placeholder="Ej. Lopez Perez"
                         title="Ingresa tu(s) appelido(s)"
-                        required
                         mb='12px'
                         icon={IdCardSvg}
 

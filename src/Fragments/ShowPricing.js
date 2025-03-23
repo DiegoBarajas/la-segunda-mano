@@ -90,8 +90,8 @@ const ShowPricing = ({id}) => {
                             </Tooltip>
                         </td>
                         <td><section className='td-icon'>$0 MXN</section></td>
+                        <td><section className='td-icon'>$49 MXN</section></td>
                         <td><section className='td-icon'>$99 MXN</section></td>
-                        <td><section className='td-icon'>$199 MXN</section></td>
                     </tr>
 
                     <tr>
@@ -167,7 +167,7 @@ const ShowPricing = ({id}) => {
                                 Costo unico con impuestos incluidos
                             </Tooltip>
                         </td>
-                        <td><section className='td-icon'>$99 MXN</section></td>
+                        <td><section className='td-icon'>$49 MXN</section></td>
                     </tr>
 
                     <tr>
@@ -236,7 +236,7 @@ const ShowPricing = ({id}) => {
                                 Costo único con impuestos incluidos
                             </Tooltip>
                         </td>
-                        <td><section className='td-icon'>$199 MXN</section></td>
+                        <td><section className='td-icon'>$99 MXN</section></td>
                     </tr>
 
                     <tr>
