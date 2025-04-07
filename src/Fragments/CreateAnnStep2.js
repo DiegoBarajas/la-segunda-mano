@@ -120,6 +120,19 @@ const CreateAnnStep2 = ({ type, formData, setFormData, callBack, handleBack }) =
                             required
                     />
                 )
+
+                case "buttons":  return (
+                    <section style={{ width: '100%', marginTop: "20px" }} className='buttons-create-ann'>
+                        <Button
+                            color='red'
+                            onClick={handleBack}
+                        >Volver atras</Button>
+
+                        <Button
+                            type='submit'
+                        >Siguiente paso</Button>
+                    </section>
+                )
                 default: return null;
             }
         }

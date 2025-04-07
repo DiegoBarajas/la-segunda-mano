@@ -893,6 +893,9 @@
                             "label": "Tipo de articulo",
                             "placeholder": "Ej. Laptop",
                             "type": "text"
+                        },
+                        {
+                            "kind": "buttons"
                         }
                     ]
                 },{
@@ -1159,6 +1162,9 @@
                             "label": "Tipo de articulo",
                             "placeholder": "Ej. Laptop",
                             "type": "text"
+                        },
+                        {
+                            "kind": "buttons"
                         }
                     ]
                 },{
