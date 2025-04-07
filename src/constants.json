@@ -857,19 +857,18 @@
                             "kind": "estado"
                         }, {
                             "kind": "input",
-                            "name": "cantidad",
-                            "label": "Cantidad",
-                            "placeholder": "Ej. 1",
-                            "min": 1,
-                            "required": true,
-                            "type": "number"
-                        }, {
-                            "kind": "input",
                             "name": "ciudad",
                             "label": "Ciudad",
                             "placeholder": "Ej. Guadalajara",
                             "required": true,
                             "type": "text"
+                        },  {
+                            "kind": "input",
+                            "name": "cantidad",
+                            "label": "Cantidad",
+                            "placeholder": "Ej. 1",
+                            "min": 1,
+                            "type": "number"
                         }, {
                             "kind": "input",
                             "name": "marca",
@@ -1122,14 +1121,6 @@
                             "options": "usosForm"
                         }, {
                             "kind": "estado"
-}, {
-                            "kind": "input",
-                            "name": "cantidad",
-                            "label": "Cantidad",
-                            "placeholder": "Ej. 1",
-                            "min": 1,
-                            "required": true,
-                            "type": "number"
                         }, {
                             "kind": "input",
                             "name": "ciudad",
@@ -1137,6 +1128,13 @@
                             "placeholder": "Ej. Guadalajara",
                             "required": true,
                             "type": "text"
+                        }, {
+                            "kind": "input",
+                            "name": "cantidad",
+                            "label": "Cantidad",
+                            "placeholder": "Ej. 1",
+                            "min": 1,
+                            "type": "number"
                         }, {
                             "kind": "input",
                             "name": "marca",

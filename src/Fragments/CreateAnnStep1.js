@@ -144,7 +144,7 @@ const CreateAnnStep1 = ({ type, formData, setFormData, callBack }) => {
     return (
         <ContentLayout horizontalAlign='center' redirect={redirect}>
             <form className='form-create-ann' onSubmit={handleSubmit} ref={formRef}>
-                <p className='p-nota-create-ann'><b>NOTA:</b> Los campos con <span>*</span> son obligatorios.</p>
+                <p className='p-nota-create-ann'><b>NOTA:</b> Los campos con <span><b>*</b></span> son obligatorios.</p>
 
                 {renderInputs()}
 

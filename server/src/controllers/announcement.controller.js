@@ -59,21 +59,31 @@ controller.createAnnouncement = async(req, res, next) => {
 
                 fs.unlinkSync(img.tempFilePath);
                 return(result.secure_url);
-            })
+            })            
 
 //          Obtener la respuesta post-promesa de el map anterior
-            const imagenes = await Promise.all(imagenesPromises);
+            const imagenes = await Promise.all(imagenesPromises)
+            .catch(err => {
+                console.error(err);
+                throw new CustomError(err.message, err.http_code);
+            });
+            
             newAnnouncement.imagenes = imagenes; // Almacenar ese array en el modelo
         }else{
-            const result = await cloudinary.uploader.upload(imagenesFiles.tempFilePath, {
-                folder: newAnnouncement._id,
-                resource_type: 'auto',
-                public_id: imagenesFiles.name,
-                overwrite: true,
-            });
-
-            fs.unlinkSync(imagenesFiles.tempFilePath);
-            newAnnouncement.imagenes = [ result.secure_url ];
+            try {
+                const result = await cloudinary.uploader.upload(imagenesFiles.tempFilePath, {
+                    folder: newAnnouncement._id,
+                    resource_type: 'auto',
+                    public_id: imagenesFiles.name,
+                    overwrite: true,
+                });
+    
+                fs.unlinkSync(imagenesFiles.tempFilePath);
+                newAnnouncement.imagenes = [ result.secure_url ];
+            }catch(err){
+                console.error(err);
+                throw new CustomError(err.message, err.http_code);
+            }
         }
 
 //      Guardar el modelo en la db

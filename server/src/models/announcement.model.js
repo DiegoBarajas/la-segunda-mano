@@ -43,8 +43,7 @@ const announcementSchema = new Schema({
         cantidad: { //
             type: Number, 
             min: [1, "La cantidad debe ser mayor a 1"], 
-            default: 1, 
-            required: true
+            default: 1
         },
         marca: { type: String, default: null, required: false },//
         modelo: { type: String, default: null, required: false },//

@@ -235,8 +235,4 @@
     .recent-ann {
         width: 100% !important;
     }
-
-    .ann-content > *:nth-child(n+11) {
-        display: none;
-    }
 }

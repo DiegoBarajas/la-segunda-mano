@@ -41,7 +41,7 @@ const CreateAnnStep2 = ({ type, formData, setFormData, callBack, handleBack }) =
                     <ContentLayout horizontalAlign='center'>
                         <div className='form-create-ann'>
                             <h2>{cont.titulo}</h2>
-                            <p className='p-nota-create-ann'><b>NOTA:</b> Los campos con <span>*</span> son obligatorios.</p>
+                            <p className='p-nota-create-ann'><b>NOTA:</b> Los campos con <span><b>*</b></span> son obligatorios.</p>
                             {
                                 renderInputs(cont.data)
                             }
