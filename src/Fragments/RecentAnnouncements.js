@@ -4,82 +4,155 @@ import backend from '../backend';
 import modals from '../Modals';
 import CardAnnoucement from './CardAnnoucement';
 import AnnoucementMyAnn from './AnnoucementMyAnn';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import ColumnLayout from '../Layouts/ColumnLayout';
 
 const RecentAnnouncements = () => {
 
-    const [ announcements, setAnnouncements ] = useState(null);
+    const location = useLocation()
 
+    const [announcements, setAnnouncements] = useState([])
+    const [page, setPage] = useState(0)
+    const [loading, setLoading] = useState(false)
+    const [hasMore, setHasMore] = useState(true)
+
+    // Scroll al top cuando cambia búsqueda
     useEffect(() => {
-        async function getAnns() {
-            try{
-                const response = await axios.get(`${backend}/api/index/reciente`);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
 
-                setAnnouncements(response.data);
-            }catch(err){
-    
-                if (err.response) {
-                    // El servidor respondió con un código de estado fuera del rango 2xx
-                    console.error('Código de estado HTTP:', err.response.status, '\n', 'Error de respuesta:', err.response.data);
-                    modals.alert("Ups", `${err.response.data}`, 'error');
-                    //Modals.alert("Ups", `<b>[${err.response.status}]</b> ${err.response.data}`, 'error');
-                } else if (err.request) {
-                    // La solicitud fue hecha pero no se recibió respuesta
-                    console.error('No se recibió respuesta del servidor:', err.request);
-                    modals.alert("Ha ocurrido un error", `No se recibió respuesta del servidor`, 'error');
-                } else {
-                    // Ocurrió un error antes de enviar la solicitud
-                    console.error('Error al enviar la solicitud:', err.message);
-                    modals.alert("Ha ocurrido un error", `<b>Error al enviar la solicitud</b> ${err.message}`, 'error');
+        // Reset cuando cambia la búsqueda
+        setAnnouncements([])
+        setPage(0)
+        setHasMore(true)
+
+    }, [location.search])
+
+    // Obtener anuncios
+    useEffect(() => {
+
+        const getAnnucements = async () => {
+            if (!hasMore || loading) return
+
+            setLoading(true)
+
+            try {
+                const searchParams = new URLSearchParams(location.search)
+                searchParams.set('page', page)
+
+                const response = await axios.get(
+                    `${backend}/api/announcement/?${searchParams.toString()}`,
+                    {
+                        headers: {
+                            Authorization: localStorage.getItem('token')
+                        }
+                    }
+                )
+
+                const newAnnouncements = response.data.annoucements || []
+
+                setAnnouncements(prev => {
+                    if (page === 0) {
+                        return newAnnouncements;
+                    }
+
+                    const combined = [...prev, ...newAnnouncements];
+
+                    // Eliminar duplicados por _id
+                    const unique = combined.filter((item, index, self) =>
+                        index === self.findIndex(t => t._id === item._id)
+                    );
+
+                    return unique;
+                });
+
+                // Si vienen menos de 14 ya no hay más
+                if (newAnnouncements.length < 14) {
+                    setHasMore(false)
                 }
+
+            } catch (err) {
+
+                if (err.response) {
+                    modals.alert(
+                        "Ups",
+                        `${err.response.data}`,
+                        'error',
+                        'Volver al inicio'
+                    ).then((answer) => {
+                        if (answer.isConfirmed) {
+                            window.location.href = '/'
+                        }
+                    })
+                } else {
+                    modals.alert(
+                        "Ha ocurrido un error",
+                        "No se recibió respuesta del servidor",
+                        'error'
+                    )
+                }
+            }
+
+            setLoading(false)
+        }
+
+        getAnnucements()
+
+    }, [page, location.search])
+
+    // Detectar scroll
+    useEffect(() => {
+        const handleScroll = () => {
+
+            if (
+                window.innerHeight + document.documentElement.scrollTop + 200 >=
+                document.documentElement.scrollHeight &&
+                !loading &&
+                hasMore
+            ) {
+                setPage(prev => prev + 1)
             }
         }
 
-        getAnns();
-    }, []);
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
 
-    return announcements ? (
-        announcements.length > 0 ? (
-            <div className='premium-container'>
-                <h4>Anuncios recientes</h4>
-                <section className='ann-content'>
-                    {
-                        announcements.map((ann, index) => <AnnoucementMyAnn showLabel={false} ann={ann} className='recent-ann'/> )
-                    }
-                </section>
-                <div style={{ width: '100%', display: 'flex', justifyContent: 'end' }}>
-                    <Link to='/buscar'>Ver Todo</Link>
-                </div>
-            </div>
-        ) : null
-    ) : (
-        <div className='premium-container'>
-            <h4>Anuncios recientes</h4>
-            
-            <section className='anns-content'>
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
-                <AnnoucementMyAnn showLabel={false}/> 
+    }, [loading, hasMore])
+
+    return (
+        <ColumnLayout className='premium-container'>
+
+            <section className='premium-content'>
+                {announcements.map((ann, index) => (
+                    <CardAnnoucement
+                        key={ann.id || index}
+                        showLabel={ann.showLabel}
+                        ann={ann}
+                    />
+                ))}
             </section>
-            
-        </div>
+
+            {!loading && announcements.length === 0 && (
+                <p style={{ marginTop: '50px' }}>
+                    No se encontraron coincidencias.
+                </p>
+            )}
+
+            {loading && (
+                <p style={{ textAlign: 'center', margin: '30px 0' }}>
+                    Cargando...
+                </p>
+            )}
+
+            {!hasMore && announcements.length > 0 && (
+                <p style={{ textAlign: 'center', margin: '30px 0' }}>
+                    No hay más resultados
+                </p>
+            )}
+
+        </ColumnLayout>
     )
 }
 

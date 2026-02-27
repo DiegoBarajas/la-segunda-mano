@@ -12,6 +12,10 @@
     width: min(700px, 50%);
 }
 
+.column-content-full {
+    width: 100%
+}
+
 .annoucement-item-my {
     width: 100%;
     color: black;
@@ -135,6 +139,14 @@
     display: grid; 
     grid-auto-columns: 1fr; 
     grid-template-columns: 1fr 1fr 1fr; 
+    gap: 15px 15px;   
+}
+
+.content-cards-index {
+    width: 100%;
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
     gap: 15px 15px;   
 }
 

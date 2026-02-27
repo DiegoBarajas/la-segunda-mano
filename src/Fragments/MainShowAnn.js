@@ -239,9 +239,8 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
                             }
                             <li>
                                 <img src={calendarSvg} alt='Fechas'/>
-                                <p><b>Publicado el:</b> {parseDate(announcement.fechaCreacion)}</p>
+                                <p><b>Publicado:</b> {parseDate(announcement.fechaCreacion)}</p>
                             </li>
-                            <p className='p-expiration-date'>El anuncio expira el {parseDate(announcement.fechaExpiracion)}</p>
                         </ul>
                     </section>
 
@@ -378,13 +377,36 @@ function capitalizeFirstLetter(str) {
     }
 }
 
-function parseDate(date){
-    const [ dia, mes, año ] = date.split('-');
-    const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+function parseDate(dateString) {
+  const [day, month, year] = dateString.split("-");
 
-    return `${dia} de ${meses[parseInt(mes)-1]} del ${año}`;
+  // Crear fecha en formato válido YYYY-MM-DD
+  const past = new Date(`${year}-${month}-${day}`);
+  const now = new Date();
+
+  const diffInSeconds = Math.floor((now - past) / 1000);
+
+  const rtf = new Intl.RelativeTimeFormat("es", { numeric: "auto" });
+
+  const divisions = [
+    { amount: 60, name: "second" },
+    { amount: 60, name: "minute" },
+    { amount: 24, name: "hour" },
+    { amount: 7, name: "day" },
+    { amount: 4.34524, name: "week" },
+    { amount: 12, name: "month" },
+    { amount: Number.POSITIVE_INFINITY, name: "year" },
+  ];
+
+  let duration = diffInSeconds;
+
+  for (let i = 0; i < divisions.length; i++) {
+    if (Math.abs(duration) < divisions[i].amount) {
+      return rtf.format(-Math.round(duration), divisions[i].name);
+    }
+    duration /= divisions[i].amount;
+  }
 }
-
 function showPrice(price){
     if(price == 0) return "GRATIS"
     try{
