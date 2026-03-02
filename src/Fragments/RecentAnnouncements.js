@@ -106,20 +106,23 @@ const RecentAnnouncements = () => {
     useEffect(() => {
         const handleScroll = () => {
 
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            const fullHeight = document.documentElement.offsetHeight;
+
             if (
-                window.innerHeight + document.documentElement.scrollTop + 200 >=
-                document.documentElement.scrollHeight &&
+                scrollTop + windowHeight >= fullHeight - 200 &&
                 !loading &&
                 hasMore
             ) {
-                setPage(prev => prev + 1)
+                setPage(prev => prev + 1);
             }
-        }
+        };
 
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
 
-    }, [loading, hasMore])
+    }, [loading, hasMore]);
 
     return (
         <ColumnLayout className='premium-container'>
