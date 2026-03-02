@@ -50,7 +50,7 @@ const LoggedRoute = ({ children,  to='/', notLoggedElement=null }) => {
 
         getUser();
       
-    }, [])
+    }, [token, to]);
 
     return redirect 
         ? notLoggedElement ?
