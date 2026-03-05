@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 const CardAnnoucement = ({ ann, showLabel = false, className }) => {
     return ann ? (
         <Link to={`/anuncio/${ann._id}`} className={`card-annoucement ${className}`}>
-            <img src={ann.imagenes[0]} alt="Imagen" className='img-card-annoucement' />
+            <img src={optimizeCloudinary(ann.imagenes[0])} alt="Imagen" className='img-card-annoucement' title={ann.imagenes[0]}/>
 
             <div className='card-content'>
                 <h3 className='price-card-annoucement'>
@@ -66,4 +66,8 @@ function capitalizeFirstLetter(str) {
     } catch (err) {
         return str;
     }
+}
+
+function optimizeCloudinary(url) {
+  return url.replace("/upload/", "/upload/f_auto,q_auto/");
 }
