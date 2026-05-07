@@ -23,7 +23,6 @@ const AnnoucementMyAnn = ({ann, showLabel=true, className}) => {
                     <h2>{showPrice(ann.precio)}</h2>
 
                     <p className='annoucement-item-my-main-pub'><img src={calendarSvg} alt='Calendario' className='annoucement-item-my-main-icon'/><b>Publicado el:</b> {ann.fechaCreacion}</p>
-                    <p className='annoucement-item-my-main-exp'><b>Expira el:</b> {ann.fechaExpiracion}</p>
 
                     <p className='annoucement-item-my-main-desc'>{ann.descripcion}</p>
                 </ColumnLayout>
