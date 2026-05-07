@@ -48,7 +48,7 @@
     color: var(--blue);
 
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -69,4 +69,11 @@
     margin: 0; /* elimina cualquier margen raro */
     padding: 0;
     opacity: 0.7;
+}
+
+.location-card-annoucement p {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

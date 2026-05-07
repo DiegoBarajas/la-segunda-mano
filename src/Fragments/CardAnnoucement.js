@@ -24,7 +24,7 @@ const CardAnnoucement = ({ ann, showLabel = false, className }) => {
 
                 <p className='location-card-annoucement'>
                     <img src={locationSvg} alt="Ubicacion" />
-                    {capitalizeFirstLetter(ann.caracteristicas.ciudad).trim()}, {capitalizeFirstLetter(ann.caracteristicas.estado)}
+                    <p>{capitalizeFirstLetter(ann.caracteristicas.ciudad).trim()}, {capitalizeFirstLetter(ann.caracteristicas.estado)}</p>
                 </p>
 
                 {showLabel && ann.nivel !== 'estandar' && (
