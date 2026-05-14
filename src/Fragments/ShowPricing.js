@@ -2,7 +2,6 @@ import React from 'react'
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 
-import impulsedSvg from '../Assets/Icons/impulsed.svg'
 import premiumSvg from '../Assets/Icons/premium.svg'
 import quitSvg from '../Assets/Icons/quit.svg'
 import infoSvg from '../Assets/Icons/info.svg'
@@ -11,313 +10,124 @@ import noSvg from '../Assets/Icons/no.svg'
 
 import '../Styles/Fragments/ShowPricing.css'
 
-const ShowPricing = ({id}) => {
+const ShowPricing = ({ id }) => {
     return (
         <div className='show-pricing'>
-            <h2>Conoce nuestras mejoras para tu anuncio</h2>
+            <h2>Haz que tu anuncio destaque</h2>
+
+            <p className='pricing-subtitle'>
+                Obtén más visibilidad y vende más rápido con Premium
+            </p>
+
             <table className='table-show-pricing'>
                 <thead>
                     <tr>
+                        <th>Características</th>
+
                         <th>
                             <section className='th-icon'>
-                                <h3>Caracteristicas</h3>
+                                <img src={quitSvg} alt='Gratis' />
+                                <h3 className='free-title'>Gratis</h3>
                             </section>
                         </th>
 
                         <th>
                             <section className='th-icon'>
-                                <img src={quitSvg} alt='Estandar'/>
-                                <h3>Estandar</h3>
-                            </section>
-                        </th>
-                        <th>
-                            <section className='th-icon'>
-                                <img src={impulsedSvg} alt='Impulsado'/>
-                                <h3 className='p-mint'>Impulsado</h3>
-                            </section>
-                        </th>
-                        <th>
-                            <section className='th-icon'>
-                                <img src={premiumSvg} alt='Premium'/>
-                                <h3 className='p-gold'>Premium</h3>
+                                <img src={premiumSvg} alt='Premium' />
+                                <h3 className='premium-title'>Premium</h3>
                             </section>
                         </th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>
-                            <section className='td-icon' data-tooltip-id="my-tooltip"><a id="priotity" className='a-tooltip-element'>Prioridad en busquedas <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#priotity" place="bottom">
-                                Cuando se realiza una busqueda que coincida con el anuncio, tiene prioridad ante otras publicaciones.
-                            </Tooltip>
-                        </td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={noSvg} alt='No'/> </section></td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={yesSvg} alt='SI'/> </section></td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={yesSvg} alt='SI'/> </section></td>
-                    </tr>
 
                     <tr>
                         <td>
-                            <section className='td-icon'><a id='aparece' className='a-tooltip-element'>Aparece en la página principal <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#aparece" place="bottom">
-                                Sale al inicio en la página principal, para que los compradores sea lo primero que vean.
+                            <div className='feature-name'>
+                                Prioridad en búsquedas
+                                <span
+                                    data-tooltip-id='priority-tooltip'
+                                    className='tooltip-anchor'
+                                >
+                                    <img src={infoSvg} alt='info' />
+                                </span>
+                            </div>
+
+                            <Tooltip id='priority-tooltip' place='bottom'>
+                                Tu anuncio aparecerá antes que otros resultados.
                             </Tooltip>
                         </td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={noSvg} alt='No'/> </section></td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={noSvg} alt='No'/> </section></td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={yesSvg} alt='SI'/> </section></td>
-                    </tr>
 
-                    <tr>
                         <td>
-                            <section className='td-icon'><a id='duracion' className='a-tooltip-element'>Duración del anuncio <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#duracion" place="bottom">
-                                El anuncio tiene un tiempo de caducidad, este tiempo depende del tipo de anuncio.
-                            </Tooltip>
-                        </td>
-                        <td><section className='td-icon'>30 días</section></td>
-                        <td><section className='td-icon'>30 días</section></td>
-                        <td><section className='td-icon'>60 días</section></td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <section className='td-icon'><a id='precio' className='a-tooltip-element'>Precio <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#precio" place="bottom">
-                                Costo único con impuestos incluidos
-                            </Tooltip>
-                        </td>
-                        <td><section className='td-icon'>$0 MXN</section></td>
-                        <td><section className='td-icon'>$49 MXN</section></td>
-                        <td><section className='td-icon'>$99 MXN</section></td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <section className='td-icon'><a id='adquirir' className='a-tooltip-element'>Adquirir <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#adquirir" place="bottom">
-                                Me interesa adquirir una mejora de mi anuncio
-                            </Tooltip>
-                        </td>
-                        <td><section className='td-icon'> <del>Adquirido</del> </section></td>
-                        <td><a href={`/anuncio/${id}/mejorar?tipo=Impulsado`} className='a-td-button'>Obtener</a></td>
-                        <td><a href={`/anuncio/${id}/mejorar?tipo=Premium`} className='a-td-button'>Obtener</a></td>                       
-                    </tr>
-                </tbody>
-            </table>
-
-
-
-            
-            <table className='table-show-pricing-mobile'>
-                <thead>
-                    <tr>
-                        <th>
-                            <section className='th-icon'>
-                                <h3>Características</h3>
+                            <section className='td-icon'>
+                                <img className='yes-no-icon' src={noSvg} alt='No' />
                             </section>
-                        </th>
+                        </td>
 
-                        <th>
-                            <section className='th-icon'>
-                                <img src={impulsedSvg} alt='Impulsado'/>
-                                <h3 className='p-mint'>Impulsado</h3>
+                        <td>
+                            <section className='td-icon'>
+                                <img className='yes-no-icon' src={yesSvg} alt='Sí' />
                             </section>
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>
-                            <section className='td-icon' data-tooltip-id="my-tooltip"><a id="priotity" className='a-tooltip-element'>Prioridad en búsquedas <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#priotity" place="bottom">
-                                Cuando se realiza una búsqueda que coincida con el anuncio, tiene prioridad ante otras publicaciones.
-                            </Tooltip>
                         </td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={yesSvg} alt='SI'/> </section></td>
                     </tr>
 
                     <tr>
-                        <td>
-                            <section className='td-icon'><a id='aparece' className='a-tooltip-element'>Aparece en la página principal <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#aparece" place="bottom">
-                                Sale al inicio en la página principal, para que los compradores sea lo primero que vean.
-                            </Tooltip>
-                        </td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={noSvg} alt='No'/> </section></td>
-                    </tr>
+                        <td>Aparece en la página principal</td>
 
-                    <tr>
                         <td>
-                            <section className='td-icon'><a id='duracion' className='a-tooltip-element'>Duración del anuncio <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#duracion" place="bottom">
-                                El anuncio tiene un tiempo de caducidad, este tiempo depende del tipo de anuncio.
-                            </Tooltip>
-                        </td>
-                        <td><section className='td-icon'>30 días</section></td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <section className='td-icon'><a id='precio' className='a-tooltip-element'>Precio <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#precio" place="bottom">
-                                Costo unico con impuestos incluidos
-                            </Tooltip>
-                        </td>
-                        <td><section className='td-icon'>$49 MXN</section></td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <section className='td-icon'><a id='adquirir' className='a-tooltip-element'>Adquirir <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#adquirir" place="bottom">
-                                Me interesa adquirir una mejora de mi anuncio
-                            </Tooltip>
-                        </td>
-                        <td><a href={`/anuncio/${id}/mejorar?tipo=Impulsado`} className='a-td-button'>Me interesa</a></td>                    
-                    </tr>
-                </tbody>
-            </table>
-            <table className='table-show-pricing-mobile'>
-                <thead>
-                    <tr>
-                        <th>
-                            <section className='th-icon'>
-                                <h3>Características</h3>
+                            <section className='td-icon'>
+                                <img className='yes-no-icon' src={noSvg} alt='No' />
                             </section>
-                        </th>
-                        <th>
-                            <section className='th-icon'>
-                                <img src={premiumSvg} alt='Premium'/>
-                                <h3 className='p-gold'>Premium</h3>
+                        </td>
+
+                        <td>
+                            <section className='td-icon'>
+                                <img className='yes-no-icon' src={yesSvg} alt='Sí' />
                             </section>
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>
-                            <section className='td-icon' data-tooltip-id="my-tooltip"><a id="priotity" className='a-tooltip-element'>Prioridad en búsquedas <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#priotity" place="bottom">
-                                Cuando se realiza una búsqueda que coincida con el anuncio, tiene prioridad ante otras publicaciones.
-                            </Tooltip>
                         </td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={yesSvg} alt='SI'/> </section></td>
                     </tr>
 
+
                     <tr>
+                        <td>Precio</td>
+
                         <td>
-                            <section className='td-icon'><a id='aparece' className='a-tooltip-element'>Aparece en la página principal <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#aparece" place="bottom">
-                                Sale al inicio en la página principal, para que los compradores sea lo primero que vean.
-                            </Tooltip>
+                            <span className='price-free'>
+                                $0 MXN
+                            </span>
                         </td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={yesSvg} alt='SI'/> </section></td>
-                    </tr>
 
-                    <tr>
                         <td>
-                            <section className='td-icon'><a id='duracion' className='a-tooltip-element'>Duración del anuncio <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#duracion" place="bottom">
-                                El anuncio tiene un tiempo de caducidad, este tiempo depende del tipo de anuncio.
-                            </Tooltip>
+                            <div className='premium-price-wrapper'>
+                                <span className='price-premium'>
+                                    $49MXN
+                                </span>
+
+                                <span className='price-period'>
+                                    / mes
+                                </span>
+                            </div>
                         </td>
-                        <td><section className='td-icon'>60 días</section></td>
                     </tr>
 
                     <tr>
+                        <td></td>
+
                         <td>
-                            <section className='td-icon'><a id='precio' className='a-tooltip-element'>Precio <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#precio" place="bottom">
-                                Costo único con impuestos incluidos
-                            </Tooltip>
+                            Publicación actual
                         </td>
-                        <td><section className='td-icon'>$99 MXN</section></td>
-                    </tr>
 
-                    <tr>
                         <td>
-                            <section className='td-icon'><a id='adquirir' className='a-tooltip-element'>Adquirir <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#adquirir" place="bottom">
-                                Me interesa adquirir una mejora de mi anuncio
-                            </Tooltip>
+                            <a
+                                href={`/anuncio/${id}/mejorar?tipo=Premium`}
+                                className='premium-button'
+                            >
+                                Obtener Premium
+                            </a>
                         </td>
-                        <td><a href={`/anuncio/${id}/mejorar?tipo=Premium`} className='a-td-button'>Me interesa</a></td>                       
-                    </tr>
-                </tbody>
-            </table>
-            <table className='table-show-pricing-mobile'>
-                <thead>
-                    <tr>
-                        <th>
-                            <section className='th-icon'>
-                                <h3>Características</h3>
-                            </section>
-                        </th>
-
-                        <th>
-                            <section className='th-icon'>
-                                <img src={quitSvg} alt='Estandar'/>
-                                <h3>Estándar</h3>
-                            </section>
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>
-                            <section className='td-icon' data-tooltip-id="my-tooltip"><a id="priotity" className='a-tooltip-element'>Prioridad en búsquedas <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#priotity" place="bottom">
-                                Cuando se realiza una búsqueda que coincida con el anuncio, tiene prioridad ante otras publicaciones.
-                            </Tooltip>
-                        </td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={noSvg} alt='No'/> </section></td>
                     </tr>
 
-                    <tr>
-                        <td>
-                            <section className='td-icon'><a id='aparece' className='a-tooltip-element'>Aparece en la página principal <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#aparece" place="bottom">
-                                Sale al inicio en la página principal, para que los compradores sea lo primero que vean.
-                            </Tooltip>
-                        </td>
-                        <td> <section className='td-icon'><img className='yes-no-icon' src={noSvg} alt='No'/> </section></td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <section className='td-icon'><a id='duracion' className='a-tooltip-element'>Duración del anuncio <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#duracion" place="bottom">
-                                El anuncio tiene un tiempo de caducidad, este tiempo depende del tipo de anuncio.
-                            </Tooltip>
-                        </td>
-                        <td><section className='td-icon'>30 días</section></td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <section className='td-icon'><a id='precio' className='a-tooltip-element'>Precio <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#precio" place="bottom">
-                                Costo único con impuestos incluidos
-                            </Tooltip>
-                        </td>
-                        <td><section className='td-icon'>$0 MXN</section></td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <section className='td-icon'><a id='adquirir' className='a-tooltip-element'>Adquirir <img src={infoSvg} alt='i'/></a></section>
-                            <Tooltip anchorSelect="#adquirir" place="bottom">
-                                Me interesa adquirir una mejora de mi anuncio
-                            </Tooltip>
-                        </td>
-                        <td><section className='td-icon'> Adquirido </section></td>                     
-                    </tr>
                 </tbody>
             </table>
         </div>
