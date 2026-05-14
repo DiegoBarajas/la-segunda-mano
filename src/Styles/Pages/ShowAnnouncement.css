@@ -450,6 +450,11 @@
     gap: 2.5px;
 }
 
+.btn-gold {
+    background: linear-gradient(135deg, #ffd54f, #ffb300) !important;
+    border-color: #ffb300 !important;
+}
+
 @media (max-width: 870px) {
     .show-announcement-main {
         flex-direction: column;

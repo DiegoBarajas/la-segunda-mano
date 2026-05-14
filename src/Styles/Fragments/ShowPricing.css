@@ -31,7 +31,7 @@
     overflow: hidden;
     border-radius: 18px;
     background: white;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
 }
 
 .table-show-pricing th,
@@ -153,7 +153,12 @@
     border-radius: 999px;
 }
 
+.premium-button:visited {
+    color: white;
+}
+
 @media (max-width: 700px) {
+
     .table-show-pricing th,
     .table-show-pricing td {
         padding: 14px 10px;
@@ -168,4 +173,5 @@
         width: 100%;
         text-align: center;
     }
+
 }

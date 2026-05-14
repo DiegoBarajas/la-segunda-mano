@@ -112,26 +112,108 @@ const UpgradeAnnouncement = () => {
         )
     }
 
-    return announcement ?
-        (
-            <PageLayout>
-                <div className='upgrade-ann-title'>
-                    <h1 className='h1-upgrade-announcement'>Mejorar anuncio "{announcement.titulo}"</h1>
-                    <img src={announcement.imagenes[0]} alt="Imagen del anuncio"/>
+    return announcement ? (
+    <PageLayout>
+        <div className='upgrade-page'>
+
+            <div className='upgrade-hero'>
+
+                <div className='upgrade-hero-info'>
+                    <span className='premium-badge'>
+                        PREMIUM
+                    </span>
+
+                    <h1>
+                        Haz que tu anuncio venda más rápido
+                    </h1>
+
+                    <p className='upgrade-description'>
+                        Destaca tu publicación frente a miles de anuncios
+                        y obtén mucha más visibilidad dentro de la plataforma.
+                    </p>
+
+                    <div className='upgrade-benefits'>
+                        <div className='benefit-item'>
+                            <img src={premiumSvg} alt='premium' />
+                            <span>
+                                Aparece en la página principal
+                            </span>
+                        </div>
+
+                        <div className='benefit-item'>
+                            <img src={premiumSvg} alt='premium' />
+                            <span>
+                                Prioridad en búsquedas
+                            </span>
+                        </div>
+
+                        <div className='benefit-item'>
+                            <img src={premiumSvg} alt='premium' />
+                            <span>
+                                Mayor visibilidad para compradores
+                            </span>
+                        </div>
+                    </div>
+
+                    <div className='premium-price-box'>
+                        <span className='premium-price'>
+                            $49
+                            <span>MXN</span>
+                        </span>
+
+                        <div className='premium-price-info'>
+                            <span>MXN</span>
+                            <small>Pago mensual</small>
+                        </div>
+                    </div>
+
+                    <Button
+                        width='100%'
+                        className='btn-premium-upgrade'
+                        onClick={() =>
+                            modals.popup(
+                                <ModalPayment id={id} plan='premium' />,
+                                "swal-show-payment",
+                                "Cancelar"
+                            )
+                        }
+                    >
+                        Obtener Premium
+                    </Button>
+
+                    <Link
+                        to={`/anuncio/${id}`}
+                        className='back-announcement-link'
+                    >
+                        Volver al anuncio
+                    </Link>
                 </div>
-                {
-                    announcement.nivel !== 'estandar' 
-                        ? <p className='p-warning-upgrader-ann'><b>NOTA: </b>El anuncio actualmente cuenta con un nivel "<u>{announcement.nivel.toUpperCase()}</u>", si se mejora se aplicara el nuevo nivel cuando finalice el nivel actual.</p>
-                        : null
-                }
-                <Link to={`/anuncio/${id}`}>Volver al anuncio</Link>
-                <PaginationLayout
-                    components={[<UpgradeImpulsed/>, <UpgradePremium/>]}
-                    titles={['Impulsado', 'Premium']} 
-                    defaultIndex={location.search === '?tipo=premium' ? 1 : 0}
-                />
-            </PageLayout>
-        ) : null
+
+                <div className='upgrade-preview'>
+                    <img
+                        src={announcement.imagenes[0]}
+                        alt="Imagen del anuncio"
+                    />
+
+                    <div className='preview-glow'></div>
+                </div>
+
+            </div>
+
+            {
+                announcement.nivel !== 'estandar' &&
+                (
+                    <div className='upgrade-warning'>
+                        Este anuncio ya tiene una mejora activa.
+                        La nueva mejora se aplicará automáticamente
+                        cuando finalice la actual.
+                    </div>
+                )
+            }
+
+        </div>
+    </PageLayout>
+) : null
 }
 
 export default UpgradeAnnouncement

@@ -250,16 +250,8 @@ const MainShowAnn = ({announcement, isFavorite, setIsFavorite, mio}) => {
 
                                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                         <Button 
-                                            width='calc(50% - 3px)' 
-                                            title='Mejorar a Impulsado'
-                                            icon={ impulsedWhiteSvg }
-                                            onClick={() => setRedirect(`/anuncio/${id}/mejorar?tipo=impulsado`)}
-                                            className='button-impulsar'
-                                        >Mejorar a Impulsado</Button>
-
-                                        <Button 
-                                            width='calc(50% - 3px)' 
-                                            title='Mejorar a premium'
+                                            width='100%' 
+                                            title='Mejorar anuncio'
                                             icon={ premiumWhiteSvg }
                                             className='btn-gold'
                                             onClick={() => setRedirect(`/anuncio/${id}/mejorar?tipo=premium`)}

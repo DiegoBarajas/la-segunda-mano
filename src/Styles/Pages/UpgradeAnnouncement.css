@@ -1,128 +1,191 @@
 @import url(../../index.css);
 
-.upgrade-container {
+.upgrade-page {
+    width: min(1100px, 92%);
+    margin: auto;
+    background-color: white;
+
+    border-radius: 15px;
+    padding: 40px 70px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+.upgrade-hero {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 50px;
     align-items: center;
+}
+
+.upgrade-hero-info h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin: 15px 0px;
+    color: rgb(0, 0, 0);
+}
+
+.upgrade-description {
+    font-size: 1.1rem;
+    color: #838383;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+.premium-badge {
+    background: linear-gradient(135deg, #ffd54f, #ffb300);
+    color: black;
+    font-weight: 900;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.upgrade-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 35px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 15px 18px;
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+}
+
+.benefit-item img {
+    width: 26px;
+}
+
+.benefit-item span {
+    color: rgb(138, 138, 138);
+    font-weight: 500;
+}
+
+.premium-price-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.premium-price {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.premium-price span{
+    font-size: 2.5rem;
+}
+
+.premium-price-info {
+    display: flex;
     flex-direction: column;
 }
 
-.upgrade-container img {
-    width: 50px;
+.premium-price-info span {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
-.h1-upgrade-announcement {
-    padding: 0px 20px 0px 20px;
-    text-align: center;
+.premium-price-info small {
+    color: #a0a0a0;
+    font-size: 0.9rem;
 }
 
-.upgrade-title {
-    color: var(--mint);
-    font-size: 30px;
-    margin-bottom: 25px;
-    text-align: center;
+.btn-premium-upgrade {
+    background: linear-gradient(135deg, #ffd54f, #ffb300) !important;
+    border: none !important;
+    color: black !important;
+    font-weight: 900 !important;
+    height: 58px;
+    border-radius: 16px !important;
+    font-size: 1rem !important;
+    transition: 0.2s ease;
 }
 
-.text-gold {
-    color: var(--gold);
+.btn-premium-upgrade:hover {
+    transform: translateY(-2px);
 }
 
-.upgrade-container p {
-    text-align: justify;
+.back-announcement-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #aaa;
+    text-decoration: none;
 }
 
-.price-upgrade {
+.back-announcement-link:hover {
+    color: white;
+}
+
+.upgrade-preview {
+    position: relative;
+}
+
+.upgrade-preview img {
     width: 100%;
-    text-align: end;
-    margin-bottom: 20px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 28px;
+    border: 2px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 2;
 }
 
-.list-ventajas-upgrade {
-    width: 100%;
-    margin-top: 25px;
-    margin-bottom: 10px;
+.preview-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle,
+        rgba(255,215,64,0.35),
+        transparent 70%
+    );
+    filter: blur(50px);
+    z-index: 1;
 }
 
-.btn-gold {
-    background-color: var(--gold) !important;
-    border-color: var(--gold) !important;
+.upgrade-warning {
+    margin-top: 35px;
+    background: rgba(255,193,7,0.12);
+    border: 1px solid rgba(255,193,7,0.25);
+    color: #ffe082;
+    padding: 18px;
+    border-radius: 18px;
+    text-align: center;
 }
 
 .swal-show-payment {
-    width: min(40%, 550px);
+    width: min(95%, 550px);
 }
 
-.upgrade-ann-title {
-    display: flex;
-    width: 95%;
-    justify-content: center;
-    align-items: center;
-}
+@media (max-width: 900px) {
 
-.p-warning-upgrader-ann {
-    margin-top: -30px;
-    width: 70%;
-    text-align: center;
-}
-
-.upgrade-ann-title img {
-    width: 60px;
-    border-radius: 100%;
-    border: 2px solid var(--mint);
-}
-
-.p-beneficts {
-    width: 100%;
-    text-align: justify;
-    margin-top: 25px;
-}
-
-.kind-upgrade {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.kind-upgrade h2 {
-    margin: 0px;
-}
-
-.info-upgrade-ann {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.mt-35 {
-    margin-top: 35px;
-}
-
-@media (max-width: 870px) {
-    .upgrade-container {
-        padding: 0px 30px 0px 30px;
+    .upgrade-hero {
+        grid-template-columns: 1fr;
     }
 
-    .swal-show-payment {
-        width: 95%;
+    .upgrade-hero-info h1 {
+        font-size: 2.2rem;
     }
 
-    .upgrade-ann-title {
-        display: flex;
-        width: 95%;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column-reverse;
+    .upgrade-preview img {
+        height: 320px;
     }
 
-    .p-warning-upgrader-ann {
-        margin-top: -20px;
-        width: 80%;
-    }
-    
-
-    .upgrade-ann-title img {
-        width: 100px;
-        border-radius: 100%;
-        border: 2px solid var(--mint);
+    .premium-price {
+        font-size: 3rem;
     }
 }
