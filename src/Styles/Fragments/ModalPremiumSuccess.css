@@ -1,0 +1,111 @@
+.premium-success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.premium-success-card {
+    position: relative;
+    width: min(100%, 520px);
+    border-radius: 30px;
+    padding: 45px 35px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.premium-success-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(
+        circle,
+        rgba(255,215,64,0.25),
+        transparent 70%
+    );
+    top: -120px;
+    right: -100px;
+    filter: blur(30px);
+}
+
+.premium-success-icon {
+    width: 90px;
+    position: relative;
+    z-index: 2;
+}
+
+.premium-success-badge {
+    display: inline-block;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #ffd54f, #ffb300);
+    color: black;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    border-radius: 999px;
+}
+
+.premium-logo-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.premium-success-card h2 {
+    color: black;
+    font-size: 2rem;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.premium-success-card p {
+    color: #696969;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.premium-benefits-list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.premium-benefit {
+    background: rgba(0, 0, 0, 0.09);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: black;
+    padding: 15px;
+    border-radius: 16px;
+    font-weight: 600;
+}
+
+.premium-success-button {
+    display: inline-block;
+    margin-top: 35px;
+    width: 100%;
+    padding: 16px;
+    border-radius: 18px;
+    text-decoration: none;
+    background: linear-gradient(135deg, #ffd54f, #ffb300);
+    color: black;
+    font-weight: 900;
+    transition: 0.2s ease;
+}
+
+.premium-success-button:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 700px) {
+
+    .premium-success-card {
+        padding: 35px 22px;
+    }
+
+    .premium-success-card h2 {
+        font-size: 1.6rem;
+    }
+
+}

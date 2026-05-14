@@ -44,7 +44,7 @@ class Modals{
         });
     }
 
-    async confirm(title, content, icon=null, onConfirm=()=>{}, onDeny=()=>{},confirmText="Aceptar", denyText="Denegar", showCancelButton=false, cancelText="Cancelar"){
+    async confirm(title, content, icon=null, onConfirm=()=>{}, onDeny=()=>{},confirmText="Aceptar", denyText="Cancelar", showCancelButton=false, cancelText="Cancelar"){
         await Swal.fire({
             title,
             html: content,

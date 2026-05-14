@@ -11,6 +11,7 @@ import '../Styles/Pages/ShowAnnouncement.css';
 import backend from '../backend';
 import modals from '../Modals';
 import axios from 'axios';
+import ModalPremiumSuccess from '../Fragments/ModalPremiumSuccess';
 
 const ShowAnnouncement = () => {
     const token = localStorage.getItem('token');
@@ -79,6 +80,8 @@ const ShowAnnouncement = () => {
 
         if(location.search === '?modal=true'){
             modals.popup(<ShowPricing id={id}/>, "swal-show-pricing")
+        }else if(location.search === "?updated=true"){
+            modals.popup(<ModalPremiumSuccess/>, "swal-show-pricing")
         }
 
         getAnnouncement();

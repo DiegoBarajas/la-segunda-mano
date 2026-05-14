@@ -43,6 +43,8 @@ app.use('/api/login', require('./routes/login.route'));
 app.use('/api/user', require('./routes/user.route'));
 app.use('/api/index', require('./routes/index.route'));
 app.use('/api/banner', require('./routes/banner.route'));
+app.use('/api/subscription', require('./routes/subscription.route'));
+app.use('/api/webhook', require('./routes/webhook.route'));
 
 
 
